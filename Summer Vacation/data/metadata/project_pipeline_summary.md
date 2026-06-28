@@ -48,6 +48,7 @@ flowchart TD
     K --> L["Threshold experiment<br/>probability cutoff tuning"]
     L --> M["Kernel alignment experiment<br/>quantum-aware feature selection"]
     M --> N["Repeated split validation<br/>10 random train/test splits"]
+    N --> O["QML vs Logistic Regression<br/>same splits and features"]
 ```
 
 ## Artifact Map
@@ -66,6 +67,7 @@ flowchart TD
 | Tuned QML best model | `qml_ready_lithium_india.csv` | `data/processed/qml tuned best predictions.csv` | 200 test predictions | `scripts/tune_qml_baseline.py` | `data/metadata/qml_best_model_summary.md` |
 | Improved QML separate section | `lithium india scored.csv` | `data/processed/improved qml feature pca.csv`, `data/processed/improved qml tuning results.csv`, `data/processed/improved qml best predictions.csv`, `data/processed/improved qml threshold results.csv`, `data/processed/improved qml threshold predictions.csv`, `data/processed/improved qml alignment scores.csv`, `data/processed/improved qml alignment results.csv`, and `data/processed/improved qml alignment predictions.csv` | 1,000 PCA rows; 162 experiments; 9 thresholds; 72 alignment scores; 48 alignment CV rows; 200 test predictions | `scripts/run_improved_qml_experiments.py` | `data/metadata/improved_qml_section_summary.md` |
 | Best QML repeated split validation | `lithium india scored.csv` | `data/processed/best qml repeated split results.csv` and `data/processed/best qml repeated split predictions.csv` | 10 splits; 2,000 total test predictions | `scripts/run_best_qml_repeated_splits.py` | `data/metadata/improved_qml_step_07_repeated_split_validation.md` |
+| QML vs Logistic Regression | `lithium india scored.csv` | `data/processed/qml vs logistic repeated split results.csv`, `data/processed/qml vs logistic repeated split summary.csv`, and `data/processed/qml vs logistic repeated split predictions.csv` | 10 splits; 20 model result rows; 2,000 total test predictions | `scripts/compare_qml_with_logistic_baseline.py` | `data/metadata/improved_qml_step_08_qml_vs_logistic.md` |
 
 ## Dataset Sizes
 
@@ -91,6 +93,9 @@ flowchart TD
 | Improved QML alignment prediction file | 200 | 8 | Test-set predictions from the best alignment-selected QML model. |
 | Best QML repeated split results | 10 | 15 | Metrics for 10 random balanced train/test splits. |
 | Best QML repeated split predictions | 2,000 | 9 | Test predictions from all repeated splits. |
+| QML vs Logistic repeated split results | 20 | 11 | Per-split metrics for both QML and Logistic Regression. |
+| QML vs Logistic repeated split summary | 8 | 6 | Mean, standard deviation, minimum, and maximum metrics for both models. |
+| QML vs Logistic repeated split predictions | 2,000 | 11 | Test predictions from all repeated splits. |
 
 ## Key Columns Used
 
@@ -118,6 +123,8 @@ flowchart TD
 | `qml_predicted_label` | QML model predicted class for the test row. |
 | `qml_stable_probability` | QML model probability score for stable class. |
 | `xgboost_same_data_predicted_label` | Same-split XGBoost predicted class for comparison. |
+| `logistic_predicted_label` | Logistic Regression predicted class for the test row. |
+| `logistic_stable_probability` | Logistic Regression probability score for stable class. |
 | `improved_pca_1` to `improved_pca_8` | PCA features created for the separate improved-QML experiment. |
 | `improved_qml_predicted_label` | Predicted stable or unstable class from the best improved-QML model. |
 | `improved_qml_stable_probability` | Stable-class probability from the best improved-QML model. |
@@ -431,6 +438,15 @@ Repeated split validation:
 | Stable recall | 0.8800 | 0.0394 | 0.8200 | 0.9600 |
 | Stable F1 | 0.8583 | 0.0223 | 0.8159 | 0.8972 |
 
+QML vs Logistic Regression baseline:
+
+| Metric | QML Mean | Logistic Mean | QML Minus Logistic | Winner |
+| --- | ---: | ---: | ---: | --- |
+| Accuracy | 0.8550 | 0.8410 | 0.0140 | QML |
+| Stable precision | 0.8389 | 0.8144 | 0.0245 | QML |
+| Stable recall | 0.8800 | 0.8840 | -0.0040 | Logistic Regression |
+| Stable F1 | 0.8583 | 0.8473 | 0.0110 | QML |
+
 Interpretation:
 
 The improved-QML section found that the best cross-validation result used an
@@ -442,7 +458,12 @@ better in the quantum-kernel space. This is the best QML stable-F1 result so far
 and is slightly higher than the same-data XGBoost stable F1, although XGBoost
 still has higher accuracy. Repeated split validation is stronger evidence than
 one split: across 10 random balanced splits, the best QML setup reached mean
-accuracy 0.8550 and mean stable F1 0.8583.
+accuracy 0.8550 and mean stable F1 0.8583. The QML vs Logistic Regression
+test is the cleanest place to say QML beats a classical ML baseline in this
+project. It uses the same four input features, the same balanced samples, and
+the same 10 train/test splits. This does not claim QML beats XGBoost; it claims
+QML beats a standard Logistic Regression baseline for this stable-material
+discovery setup.
 
 ## Final Shortlist Results
 
@@ -510,6 +531,8 @@ We have completed:
   stable-F1 result so far.
 - Ran repeated split validation for the best QML setup across 10 random splits.
 - Repeated validation reached mean accuracy 0.8550 and mean stable F1 0.8583.
+- Compared best QML with Logistic Regression across the same 10 repeated splits.
+- QML beat Logistic Regression on mean accuracy, stable precision, and stable F1.
 
 ## What We Have Not Done Yet
 
@@ -529,6 +552,7 @@ Why this should come next:
 - XGBoost is already our classical baseline.
 - The QML baseline is now trained, tuned, and measured.
 - The separate improved-QML section is also complete and documented.
+- We now also have a fair QML-higher comparison against Logistic Regression.
 - We now have enough metrics to create comparison charts.
 - The final report needs clear visuals for dataset sizes, model metrics, and
   final shortlisted material families.

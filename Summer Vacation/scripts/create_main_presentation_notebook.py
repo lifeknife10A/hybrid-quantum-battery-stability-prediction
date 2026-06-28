@@ -47,6 +47,15 @@ best_qml_repeated_split_results_path = (
 best_qml_repeated_split_predictions_path = (
     processed_folder / "best qml repeated split predictions.csv"
 )
+qml_vs_logistic_results_path = (
+    processed_folder / "qml vs logistic repeated split results.csv"
+)
+qml_vs_logistic_summary_path = (
+    processed_folder / "qml vs logistic repeated split summary.csv"
+)
+qml_vs_logistic_predictions_path = (
+    processed_folder / "qml vs logistic repeated split predictions.csv"
+)
 
 
 def make_markdown_output(markdown_text):
@@ -243,6 +252,9 @@ def main():
     best_qml_repeated_split_predictions_dataframe = pd.read_csv(
         best_qml_repeated_split_predictions_path
     )
+    qml_vs_logistic_results_dataframe = pd.read_csv(qml_vs_logistic_results_path)
+    qml_vs_logistic_summary_dataframe = pd.read_csv(qml_vs_logistic_summary_path)
+    qml_vs_logistic_predictions_dataframe = pd.read_csv(qml_vs_logistic_predictions_path)
 
     improved_best_result = improved_qml_tuning_results_dataframe.sort_values(
         by=["cv_stable_f1", "cv_accuracy", "cv_stable_recall"],
@@ -629,6 +641,42 @@ def main():
         )
     repeated_split_summary_dataframe = pd.DataFrame(repeated_split_summary_rows)
 
+    qml_vs_logistic_comparison_rows = []
+    qml_vs_logistic_metric_names = [
+        "accuracy",
+        "stable_precision",
+        "stable_recall",
+        "stable_f1",
+    ]
+    for metric_name in qml_vs_logistic_metric_names:
+        qml_mean = qml_vs_logistic_summary_dataframe[
+            (qml_vs_logistic_summary_dataframe["model"] == "QML kernel classifier")
+            & (qml_vs_logistic_summary_dataframe["metric"] == metric_name)
+        ]["mean"].iloc[0]
+        logistic_mean = qml_vs_logistic_summary_dataframe[
+            (qml_vs_logistic_summary_dataframe["model"] == "Logistic Regression")
+            & (qml_vs_logistic_summary_dataframe["metric"] == metric_name)
+        ]["mean"].iloc[0]
+        difference = qml_mean - logistic_mean
+        if difference > 0:
+            winner = "QML"
+        elif difference < 0:
+            winner = "Logistic Regression"
+        else:
+            winner = "Tie"
+        qml_vs_logistic_comparison_rows.append(
+            {
+                "metric": metric_name,
+                "qml_mean": round(qml_mean, 4),
+                "logistic_mean": round(logistic_mean, 4),
+                "qml_minus_logistic": round(difference, 4),
+                "winner": winner,
+            }
+        )
+    qml_vs_logistic_comparison_dataframe = pd.DataFrame(
+        qml_vs_logistic_comparison_rows
+    )
+
     cells = []
     execution_count = 1
 
@@ -678,6 +726,9 @@ improved_qml_alignment_results_dataframe = pd.read_csv(processed_folder / "impro
 improved_qml_alignment_predictions_dataframe = pd.read_csv(processed_folder / "improved qml alignment predictions.csv")
 best_qml_repeated_split_results_dataframe = pd.read_csv(processed_folder / "best qml repeated split results.csv")
 best_qml_repeated_split_predictions_dataframe = pd.read_csv(processed_folder / "best qml repeated split predictions.csv")
+qml_vs_logistic_results_dataframe = pd.read_csv(processed_folder / "qml vs logistic repeated split results.csv")
+qml_vs_logistic_summary_dataframe = pd.read_csv(processed_folder / "qml vs logistic repeated split summary.csv")
+qml_vs_logistic_predictions_dataframe = pd.read_csv(processed_folder / "qml vs logistic repeated split predictions.csv")
 
 dataset_summary = pd.DataFrame([
     {"dataset": "Lithium India scored", "rows": len(lithium_scored_dataframe), "columns": len(lithium_scored_dataframe.columns)},
@@ -695,6 +746,9 @@ dataset_summary = pd.DataFrame([
     {"dataset": "Improved QML alignment predictions", "rows": len(improved_qml_alignment_predictions_dataframe), "columns": len(improved_qml_alignment_predictions_dataframe.columns)},
     {"dataset": "Best QML repeated split results", "rows": len(best_qml_repeated_split_results_dataframe), "columns": len(best_qml_repeated_split_results_dataframe.columns)},
     {"dataset": "Best QML repeated split predictions", "rows": len(best_qml_repeated_split_predictions_dataframe), "columns": len(best_qml_repeated_split_predictions_dataframe.columns)},
+    {"dataset": "QML vs Logistic results", "rows": len(qml_vs_logistic_results_dataframe), "columns": len(qml_vs_logistic_results_dataframe.columns)},
+    {"dataset": "QML vs Logistic summary", "rows": len(qml_vs_logistic_summary_dataframe), "columns": len(qml_vs_logistic_summary_dataframe.columns)},
+    {"dataset": "QML vs Logistic predictions", "rows": len(qml_vs_logistic_predictions_dataframe), "columns": len(qml_vs_logistic_predictions_dataframe.columns)},
 ])
 display(dataset_summary)"""
     dataset_summary_dataframe = pd.DataFrame(
@@ -773,6 +827,21 @@ display(dataset_summary)"""
                 "dataset": "Best QML repeated split predictions",
                 "rows": len(best_qml_repeated_split_predictions_dataframe),
                 "columns": len(best_qml_repeated_split_predictions_dataframe.columns),
+            },
+            {
+                "dataset": "QML vs Logistic results",
+                "rows": len(qml_vs_logistic_results_dataframe),
+                "columns": len(qml_vs_logistic_results_dataframe.columns),
+            },
+            {
+                "dataset": "QML vs Logistic summary",
+                "rows": len(qml_vs_logistic_summary_dataframe),
+                "columns": len(qml_vs_logistic_summary_dataframe.columns),
+            },
+            {
+                "dataset": "QML vs Logistic predictions",
+                "rows": len(qml_vs_logistic_predictions_dataframe),
+                "columns": len(qml_vs_logistic_predictions_dataframe.columns),
             },
         ]
     )
@@ -1416,6 +1485,47 @@ display(repeated_split_summary_dataframe)"""
     )
     execution_count += 1
 
+    qml_vs_logistic_source = """qml_vs_logistic_comparison_rows = []
+metric_names = ["accuracy", "stable_precision", "stable_recall", "stable_f1"]
+
+for metric_name in metric_names:
+    qml_mean = qml_vs_logistic_summary_dataframe[
+        (qml_vs_logistic_summary_dataframe["model"] == "QML kernel classifier")
+        & (qml_vs_logistic_summary_dataframe["metric"] == metric_name)
+    ]["mean"].iloc[0]
+    logistic_mean = qml_vs_logistic_summary_dataframe[
+        (qml_vs_logistic_summary_dataframe["model"] == "Logistic Regression")
+        & (qml_vs_logistic_summary_dataframe["metric"] == metric_name)
+    ]["mean"].iloc[0]
+    difference = qml_mean - logistic_mean
+    if difference > 0:
+        winner = "QML"
+    elif difference < 0:
+        winner = "Logistic Regression"
+    else:
+        winner = "Tie"
+
+    qml_vs_logistic_comparison_rows.append(
+        {
+            "metric": metric_name,
+            "qml_mean": round(qml_mean, 4),
+            "logistic_mean": round(logistic_mean, 4),
+            "qml_minus_logistic": round(difference, 4),
+            "winner": winner,
+        }
+    )
+
+qml_vs_logistic_comparison_dataframe = pd.DataFrame(qml_vs_logistic_comparison_rows)
+display(qml_vs_logistic_comparison_dataframe)"""
+    cells.append(
+        make_code_cell(
+            qml_vs_logistic_source,
+            [make_table_output(qml_vs_logistic_comparison_dataframe)],
+            execution_count,
+        )
+    )
+    execution_count += 1
+
     conclusion_markdown = """# Presentation Conclusion
 
 **What we achieved**
@@ -1431,6 +1541,7 @@ display(repeated_split_summary_dataframe)"""
 - Added a threshold experiment for the improved-QML stable probability.
 - Added a kernel-alignment experiment for quantum-aware feature selection.
 - Validated the best QML setup across 10 random train/test splits.
+- Compared best QML with Logistic Regression on the same repeated splits.
 
 **Main model result**
 
@@ -1445,6 +1556,8 @@ display(repeated_split_summary_dataframe)"""
 - Improved QML kernel-alignment stable F1: **0.8302**
 - Repeated-split mean accuracy: **0.8550**
 - Repeated-split mean stable F1: **0.8583**
+- QML vs Logistic mean accuracy: **0.8550 vs 0.8410**
+- QML vs Logistic mean stable F1: **0.8583 vs 0.8473**
 - Same-data XGBoost accuracy: **0.8300**
 
 **Next step**
@@ -1468,6 +1581,7 @@ Write the final model-comparison interpretation and try a hardware-oriented QML 
 - Added a threshold experiment for the improved-QML stable probability.
 - Added a kernel-alignment experiment for quantum-aware feature selection.
 - Validated the best QML setup across 10 random train/test splits.
+- Compared best QML with Logistic Regression on the same repeated splits.
 
 **Main model result**
 
@@ -1482,6 +1596,8 @@ Write the final model-comparison interpretation and try a hardware-oriented QML 
 - Improved QML kernel-alignment stable F1: **0.8302**
 - Repeated-split mean accuracy: **0.8550**
 - Repeated-split mean stable F1: **0.8583**
+- QML vs Logistic mean accuracy: **0.8550 vs 0.8410**
+- QML vs Logistic mean stable F1: **0.8583 vs 0.8473**
 - Same-data XGBoost accuracy: **0.8300**
 
 **Next step**

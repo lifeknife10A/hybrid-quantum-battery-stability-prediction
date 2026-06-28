@@ -38,6 +38,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 12. Test probability-threshold tuning for the improved-QML model.
 13. Test quantum-kernel alignment feature selection.
 14. Validate the best QML setup across repeated random train/test splits.
+15. Compare best QML with Logistic Regression as a simpler classical baseline.
 
 ## Current Results
 
@@ -59,6 +60,8 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 - Improved QML alignment-selected stable F1: 0.8302
 - Repeated-split best QML mean accuracy: 0.8550
 - Repeated-split best QML mean stable F1: 0.8583
+- QML vs Logistic Regression mean accuracy: 0.8550 vs 0.8410
+- QML vs Logistic Regression mean stable F1: 0.8583 vs 0.8473
 - Same-data XGBoost accuracy on QML-ready test split: 0.8300
 
 ## Important Files
@@ -78,6 +81,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | `scripts/train_qml_baseline.py` | Trains the first simple QML classifier and compares it with XGBoost. |
 | `scripts/tune_qml_baseline.py` | Tunes QML feature count, angle scale, and SVM `C`. |
 | `scripts/run_improved_qml_experiments.py` | Runs the separate improved-QML section with feature importance, PCA, and entangled kernels. |
+| `scripts/compare_qml_with_logistic_baseline.py` | Compares best QML with Logistic Regression on repeated balanced splits. |
 | `scripts/create_main_presentation_notebook.py` | Regenerates the presentation notebook. |
 | `data/metadata/project_pipeline_summary.md` | Full current pipeline summary. |
 | `data/metadata/qml_baseline_results.md` | QML classifier results and XGBoost comparison. |
@@ -87,6 +91,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | `data/metadata/improved_qml_step_05_threshold_experiment.md` | Separate improved-QML threshold experiment. |
 | `data/metadata/improved_qml_step_06_kernel_alignment.md` | Separate quantum-kernel alignment experiment. |
 | `data/metadata/improved_qml_step_07_repeated_split_validation.md` | Repeated train/test split validation for the best QML setup. |
+| `data/metadata/improved_qml_step_08_qml_vs_logistic.md` | Repeated-split QML vs Logistic Regression comparison. |
 
 ## Reproduce Locally
 
@@ -109,10 +114,11 @@ python3 scripts/train_qml_baseline.py
 python3 scripts/tune_qml_baseline.py
 python3 scripts/run_improved_qml_experiments.py
 python3 scripts/run_best_qml_repeated_splits.py
+python3 scripts/compare_qml_with_logistic_baseline.py
 ```
 
 ## Next Step
 
 Create the final report section comparing XGBoost, the original QML baseline,
-tuned QML, threshold QML, kernel-alignment QML, and the India-focused material
-shortlist.
+tuned QML, threshold QML, kernel-alignment QML, QML vs Logistic Regression, and
+the India-focused material shortlist.

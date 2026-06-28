@@ -1,0 +1,2001 @@
+material_id,formula,battery_family,india_feasibility_score,india_decision_label,split_random_state,target_is_stable,logistic_predicted_label,logistic_stable_probability,qml_predicted_label,qml_stable_probability
+mp-705031,Li2Ni(PO4)2,Other lithium material,48,Caution,11,0,0,0.114105,0,0.109917
+mp-5614,Li3BS3,Li-S or sulfide-family,78,Research Candidate,11,1,1,0.961056,1,0.858107
+mp-3222752,NaLi4Eu3Bi4,Other lithium material,61,Caution,11,1,1,0.633016,1,0.863708
+mp-3203859,RbLiCO3,Carbon-family,95,Recommend,11,1,0,0.121137,0,0.109841
+mp-865750,Li2TeO3,Other lithium material,55,Caution,11,0,0,0.119696,0,0.109843
+mp-3205836,Li4AlZnPd6,Other lithium material,61,Caution,11,1,1,0.809144,1,0.881318
+mp-19260,Li2WO4,Other lithium material,61,Caution,11,1,1,0.587359,1,0.857766
+mp-862555,LiY2Al,Other lithium material,61,Caution,11,1,1,0.866248,1,0.85251
+mp-761277,LiFe2(BO3)2,Other lithium material,54,Caution,11,0,0,0.111978,0,0.109941
+mp-555186,Li2ZnSnS4,Li-S or sulfide-family,78,Research Candidate,11,1,1,0.947049,1,0.861587
+mp-3248414,LiHoSi2Pd,Other lithium material,63,Caution,11,1,1,0.771573,1,0.895524
+mp-860890,LiMnPO4,LMO-family,82,Research Candidate,11,0,0,0.151729,0,0.109901
+mp-3245529,LiPaAsN,Other lithium material,51,Caution,11,1,1,0.77681,1,0.898855
+mp-3253504,Li3Dy3ZnSb2,Other lithium material,61,Caution,11,1,1,0.836778,1,0.872178
+mp-3211746,Li3PdPt4,Other lithium material,61,Caution,11,1,1,0.818427,1,0.875191
+mp-3324303,Li3MgZn8,Other lithium material,61,Caution,11,1,1,0.811764,1,0.846582
+mp-3204774,K2LiTiSb2,Other lithium material,63,Caution,11,1,1,0.719805,1,0.877497
+mp-677135,Li2CoCl4,Other lithium material,41,Caution,11,0,1,0.747972,1,0.784406
+mp-767625,LiVF4,Other lithium material,47,Caution,11,0,1,0.622377,0,0.084174
+mp-752803,Li4Co7(OF7)2,LCO-family,37,Avoid / Benchmark,11,0,0,0.11216,0,0.109904
+mp-705315,LiCr(PO3)5,Other lithium material,55,Caution,11,0,0,0.11886,0,0.109857
+mp-3204423,K3Li2ZrP3,Other lithium material,63,Caution,11,1,1,0.708834,1,0.873873
+mp-558917,LiMoIO6,Other lithium material,61,Caution,11,1,1,0.578618,1,0.858786
+mp-3269284,Li8Sn5Pd3,Other lithium material,61,Caution,11,1,1,0.857784,1,0.855692
+mp-1175717,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,11,0,0,0.114552,0,0.109518
+mp-756577,Li4MnNb(WO6)2,LMO-family,82,Research Candidate,11,0,0,0.111419,0,0.109884
+mp-1027758,LiMg14Co,Other lithium material,46,Caution,11,0,1,0.684268,1,0.807834
+mp-760155,Li5Co4(NiO6)2,LCO-family,37,Avoid / Benchmark,11,0,0,0.11501,0,0.108898
+mp-1105393,Li7(Eu2Bi3)2,Other lithium material,61,Caution,11,1,1,0.949375,1,0.855786
+mp-755386,Li(CoO2)2,LCO-family,43,Avoid / Benchmark,11,0,0,0.155128,0,0.11097
+mp-6179,KLiSO4,Li-S or sulfide-family,72,Research Candidate,11,0,1,0.784462,1,0.855214
+mp-3251254,LiSmSnPd,Other lithium material,61,Caution,11,1,1,0.857043,1,0.856137
+mp-3205208,Rb2Li2SnS4,Li-S or sulfide-family,78,Research Candidate,11,1,1,0.715117,1,0.856569
+mp-1193106,Li2Mg(HN)2,Other lithium material,61,Caution,11,1,1,0.705331,1,0.873068
+mp-774863,LiNi9S10,Li-S or sulfide-family,63,Research Candidate,11,0,1,0.630074,1,0.868216
+mp-758628,Li3Mn(CO3)4,LMO-family,82,Research Candidate,11,0,0,0.117281,0,0.109716
+mp-3213220,LiLuB4Ir5,Other lithium material,61,Caution,11,1,1,0.683018,1,0.868068
+mp-859104,LiNi(PO3)3,Other lithium material,49,Caution,11,0,0,0.152343,0,0.109765
+mp-3272026,LiTi2Rh3,Other lithium material,63,Caution,11,1,1,0.639552,1,0.865979
+mp-1104144,Li2Sm2Ge3,Other lithium material,61,Caution,11,1,1,0.962102,1,0.854251
+mp-21471,LiFeAs,Other lithium material,54,Caution,11,1,1,0.974323,1,0.852346
+mp-560894,Li4Be3P3ClO12,Other lithium material,53,Caution,11,1,1,0.822835,1,0.853008
+mp-1223324,Li2MoO3,Other lithium material,55,Caution,11,0,0,0.113091,0,0.109914
+mp-1177489,Li3V3P8O29,Other lithium material,55,Caution,11,0,0,0.113285,0,0.109789
+mp-3251776,LiNdPt3Rh,Other lithium material,61,Caution,11,1,1,0.811332,1,0.891523
+mp-865612,LiCd3,Other lithium material,51,Caution,11,1,1,0.843854,1,0.850837
+mp-3252413,Li3Ho3CdP2,Other lithium material,53,Caution,11,1,1,0.835894,1,0.876352
+mp-27417,Li3InO3,Other lithium material,55,Caution,11,0,0,0.249453,0,0.107234
+mp-765227,Li6Sn5(P2O7)4,Other lithium material,53,Caution,11,0,0,0.111792,0,0.10984
+mp-977393,LiLu2Ru,Other lithium material,61,Caution,11,1,1,0.86578,1,0.852855
+mp-1223569,Li4Zr8V3(P3O16)3,Other lithium material,57,Caution,11,0,0,0.108685,0,0.108401
+mp-3204600,LiSc2B2RuRh4,Other lithium material,61,Caution,11,1,1,0.780325,1,0.893005
+mp-1040014,LiMg30BiO32,Other lithium material,53,Caution,11,0,0,0.201946,0,0.109836
+mp-1097959,LiEu4(BN2)3,Other lithium material,61,Caution,11,1,1,0.98517,1,0.854453
+mp-774577,Li4Ti4VCr4O18,LTO-family,75,Research Candidate,11,0,0,0.145458,0,0.110373
+mp-1211124,Li6NiCl8,Other lithium material,57,Caution,11,1,1,0.85878,1,0.831014
+mp-3253686,Li2Dy2Si2Sn,Other lithium material,63,Caution,11,1,1,0.708832,1,0.874295
+mp-772456,Li2Mn3CuO8,LMO-family,80,Research Candidate,11,0,0,0.118653,0,0.109725
+mp-1029331,LiHf2N3,Other lithium material,61,Caution,11,1,1,0.700029,1,0.748801
+mp-3202312,Li2Sb2PtRh2,Other lithium material,61,Caution,11,1,1,0.812502,1,0.882601
+mp-753362,LiFeSiO4,Silicon-family,82,Research Candidate,11,0,0,0.122586,0,0.109891
+mp-757138,Li2Sn(PO3)4,Other lithium material,53,Caution,11,0,0,0.118906,0,0.109857
+mp-3207913,Li2Cr3SbSe8,Other lithium material,61,Caution,11,1,1,0.816785,1,0.88834
+mp-3253283,LiNpF6,Other lithium material,57,Caution,11,1,1,0.782343,1,0.644771
+mp-3253417,Li3Th4Si6Ag,Other lithium material,63,Caution,11,1,1,0.638449,1,0.867112
+mp-1223032,Li9Nd2(PS4)5,Li-S or sulfide-family,80,Research Candidate,11,1,1,0.641739,1,0.82908
+mp-753382,LiMnPO4,LMO-family,82,Research Candidate,11,0,0,0.167655,0,0.109597
+mp-1113736,Rb2LiCoF6,Other lithium material,52,Caution,11,1,1,0.854297,1,0.790826
+mp-1177791,Li2VF6,Other lithium material,51,Caution,11,0,1,0.604466,0,0.126061
+mp-765004,Li3Fe2(CO4)2,Carbon-family,88,Recommend,11,0,0,0.11694,0,0.109784
+mp-505381,NaLi3(H2N)4,Other lithium material,61,Caution,11,1,1,0.966192,1,0.852822
+mp-3252335,LiTbMnPt3,Other lithium material,64,Caution,11,1,1,0.810635,1,0.895607
+mp-1303296,LiNbFeO4,Other lithium material,56,Caution,11,0,0,0.152289,0,0.109775
+mp-861915,LiDy2Ir,Other lithium material,61,Caution,11,1,1,0.864779,1,0.852818
+mp-3323819,LiTb9Se10,Other lithium material,61,Caution,11,1,1,0.616439,1,0.644826
+mp-3247874,Li3Ho3HgBi2,Other lithium material,51,Caution,11,1,1,0.837171,1,0.870055
+mp-1236522,LiO8,Other lithium material,51,Caution,11,0,0,0.126948,0,0.109218
+mp-1176976,Li6MnV3(PO4)6,LMO-family,86,Research Candidate,11,0,0,0.1103,0,0.109511
+mp-757976,LiNiCO4,Carbon-family,81,Recommend,11,0,0,0.12248,0,0.109812
+mp-9607,Li2UO4,Other lithium material,61,Caution,11,1,1,0.645587,1,0.853583
+mp-3211653,LiMg(Ta2N3)2,Other lithium material,61,Caution,11,1,1,0.832374,1,0.885313
+mp-3247291,Li2NdTmSi3,Other lithium material,63,Caution,11,1,1,0.709208,1,0.873768
+mp-3204575,Sr3LiFeO6,Other lithium material,64,Caution,11,1,0,0.250573,0,0.108871
+mp-1517740,LiSm(FeO3)4,Other lithium material,49,Caution,11,0,0,0.212242,0,0.109145
+mp-1174236,Li5Mn(CoO4)2,LCO-family,44,Avoid / Benchmark,11,0,0,0.117989,0,0.109714
+mp-3200714,LiZr2BIr5,Other lithium material,61,Caution,11,1,1,0.758524,1,0.893939
+mp-1639368,Li7Mn4CoO12,LCO-family,46,Avoid / Benchmark,11,0,0,0.113362,0,0.109877
+mp-1195757,Li2Sn(H5O4)2,Other lithium material,61,Caution,11,1,1,0.593721,1,0.854775
+mp-3203106,LiGa2AgS4,Li-S or sulfide-family,78,Research Candidate,11,1,1,0.729937,1,0.883045
+mp-1100540,Li9Mn7O16,LMO-family,82,Research Candidate,11,0,0,0.113069,0,0.109916
+mp-780193,LiCr(PO3)3,Other lithium material,57,Caution,11,0,0,0.121598,0,0.109918
+mp-9059,KLi6TaO6,Other lithium material,61,Caution,11,1,1,0.776048,1,0.854585
+mp-1185437,LiThHg2,Other lithium material,51,Caution,11,1,1,0.865882,1,0.8528
+mp-753292,LiCo2(CO3)4,LCO-family,43,Avoid / Benchmark,11,0,0,0.114766,0,0.109054
+mp-857663,LiNi3P3O11,Other lithium material,49,Caution,11,0,0,0.120132,0,0.109858
+mp-3248217,Li2TmThSi3,Other lithium material,63,Caution,11,1,1,0.709473,1,0.873162
+mp-6031,Li16Nb2N8O,Other lithium material,61,Caution,11,1,1,0.767812,1,0.845707
+mp-780431,LiFePH2O5,LFP-family,96,Recommend,11,0,0,0.130406,0,0.109811
+mp-769050,Li2NbS3,Li-S or sulfide-family,68,Research Candidate,11,0,1,0.64039,1,0.806746
+mp-684534,LiNbP4O13,Other lithium material,57,Caution,11,0,0,0.110317,0,0.10952
+mp-1235366,Sr2LiO12,Other lithium material,50,Caution,11,0,0,0.117146,0,0.107216
+mp-3205916,K2Li2TiS4,Li-S or sulfide-family,80,Research Candidate,11,1,1,0.779733,1,0.90003
+mp-1020164,Na3LiP2O7,Other lithium material,63,Caution,11,1,1,0.591717,1,0.856107
+mp-765080,Li5V3P8O29,Other lithium material,55,Caution,11,0,0,0.110582,0,0.109637
+mp-849778,Li6Mn3Nb(PO4)6,LMO-family,82,Research Candidate,11,0,0,0.110526,0,0.109614
+mp-3207853,Li4NiRh3O8,Other lithium material,57,Caution,11,1,0,0.257078,0,0.114817
+mp-6396,Li3V2(PO4)3,Other lithium material,63,Caution,11,1,1,0.58223,1,0.855314
+mp-1175903,Li9Mn2Co5O16,LCO-family,44,Avoid / Benchmark,11,0,0,0.113703,0,0.109602
+mp-1175997,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,11,0,0,0.114209,0,0.109369
+mp-753043,Li2VO2F,Other lithium material,47,Caution,11,0,0,0.113481,0,0.109703
+mp-770190,Li4V2Si(PO6)2,Silicon-family,79,Research Candidate,11,0,0,0.114969,0,0.109696
+mp-850918,Li2Mn5(PO4)4,LMO-family,82,Research Candidate,11,0,0,0.111456,0,0.109752
+mp-3280177,Sr2LiCd21,Other lithium material,51,Caution,11,1,1,0.647588,1,0.848237
+mp-1104651,Li(Mo3Se4)2,Other lithium material,53,Caution,11,0,1,0.976776,1,0.852469
+mp-1173010,Li2PWO4F,Other lithium material,44,Caution,11,0,0,0.11225,0,0.109938
+mp-770623,Li4Ti2Mn3V3O16,LMO-family,82,Research Candidate,11,0,0,0.110801,0,0.10972
+mp-3222731,Li4La3PrRh4,Other lithium material,61,Caution,11,1,1,0.636349,1,0.86622
+mp-772597,Li2CuNiO4,Other lithium material,51,Caution,11,0,0,0.124031,0,0.109882
+mp-758847,Li3Fe(PO4)2,LFP-family,94,Recommend,11,0,0,0.111064,0,0.109803
+mp-1021322,LiMg6W,Other lithium material,46,Caution,11,0,1,0.685706,1,0.771937
+mp-3246959,LiTm2PRh5,Other lithium material,63,Caution,11,1,1,0.75803,1,0.895203
+mp-756768,Li3BePCO7,Carbon-family,77,Recommend,11,0,0,0.117024,0,0.109842
+mp-3201968,K4LiBi2Au,Other lithium material,61,Caution,11,1,1,0.644194,1,0.866263
+mp-1147732,Li4Zn(PS4)2,Li-S or sulfide-family,74,Research Candidate,11,0,1,0.624278,1,0.855582
+mp-3205771,Cs4LiFeS4,Li-S or sulfide-family,81,Research Candidate,11,1,1,0.652643,1,0.827889
+mp-766510,Li12MnFe3P4(CO7)4,LMFP-family,97,Research Candidate,11,0,0,0.114586,0,0.109893
+mp-768858,Li5Mn2P2(CO7)2,LMO-family,86,Research Candidate,11,0,0,0.111555,0,0.109906
+mp-756227,LiV2F7,Other lithium material,49,Caution,11,0,1,0.623393,0,0.073999
+mp-3231491,LiTb3S4,Li-S or sulfide-family,78,Research Candidate,11,1,1,0.782291,1,0.86736
+mp-3240076,LiYAl3Pd,Other lithium material,61,Caution,11,1,1,0.835698,1,0.870248
+mp-3327632,LiPdF2,Other lithium material,57,Caution,11,1,1,0.808904,1,0.895853
+mp-1222772,Li(TiTe2)5,Other lithium material,63,Caution,11,1,1,0.626248,1,0.858971
+mp-757875,Li2Co3SnO8,LCO-family,43,Avoid / Benchmark,11,0,0,0.310967,0,0.11325
+mp-1174586,Li4MnCo2O7,LCO-family,43,Avoid / Benchmark,11,0,0,0.120504,0,0.109788
+mp-769595,Li4VCr3O8,Other lithium material,55,Caution,11,0,0,0.111944,0,0.109871
+mp-3252358,LiErInAg,Other lithium material,61,Caution,11,1,1,0.859029,1,0.854688
+mp-16506,Li3Al2,Other lithium material,61,Caution,11,1,1,0.979466,1,0.85244
+mp-9562,LiBeAs,Other lithium material,51,Caution,11,1,1,0.974282,1,0.852405
+mp-3204293,BaLi2Bi2Pb,Other lithium material,51,Caution,11,1,1,0.816047,1,0.881463
+mp-3248834,Li3Dy3CdBi2,Other lithium material,51,Caution,11,1,1,0.837465,1,0.868362
+mp-3214331,LiSc3Ag2Sn3,Other lithium material,61,Caution,11,1,1,0.678591,1,0.866652
+mp-3205934,K2LiVSe4,Other lithium material,61,Caution,11,1,1,0.712938,1,0.857198
+mp-776001,Li4Nb3V3(SbO8)2,Other lithium material,51,Caution,11,0,0,0.115289,0,0.109839
+mp-1031048,CsLiMg6O7,Other lithium material,46,Caution,11,0,0,0.184565,0,0.109116
+mp-3204190,Li3ScAs6Rh7,Other lithium material,51,Caution,11,1,1,0.817173,1,0.885687
+mp-776753,Li4CrFe2Ni3(PO4)6,LFP-family,90,Recommend,11,0,0,0.111732,0,0.109926
+mp-3203483,Sr2Li2Si2Sb,Other lithium material,63,Caution,11,1,1,0.708521,1,0.874441
+mp-3202657,NaLiCdTe2,Other lithium material,51,Caution,11,1,1,0.807125,1,0.896378
+mp-20988,Cs2LiCr(CN)6,Carbon-family,84,Recommend,11,0,1,0.9854,1,0.851511
+mp-1178001,Li2CrO2,Other lithium material,55,Caution,11,0,0,0.161306,0,0.109563
+mp-1581648,LiCoBO3,LCO-family,40,Avoid / Benchmark,11,0,0,0.120212,0,0.109857
+mp-3252585,Li2La3NdAs4,Other lithium material,51,Caution,11,1,1,0.803556,1,0.905425
+mp-1177858,Li2TiCoO4,LCO-family,45,Avoid / Benchmark,11,0,0,0.116343,0,0.109831
+mp-976291,LiAlH4,Other lithium material,55,Caution,11,0,1,0.742312,1,0.843217
+mp-3223866,Li(NdSb)2,Other lithium material,61,Caution,11,1,1,0.838234,1,0.877443
+mp-3334970,LiAl5Ir2,Other lithium material,61,Caution,11,1,1,0.807998,1,0.890901
+mp-555256,Li4CO4,Carbon-family,84,Recommend,11,0,0,0.132012,0,0.109844
+mp-754904,Li3NbV2O6,Other lithium material,51,Caution,11,0,0,0.117778,0,0.109854
+mp-773135,Li3Cu3(PO4)2,Other lithium material,53,Caution,11,0,0,0.112799,0,0.109873
+mp-1185362,LiGd2In,Other lithium material,55,Caution,11,0,1,0.865842,1,0.852823
+mp-1198188,Li2P(H2O3)2,Other lithium material,53,Caution,11,0,1,0.590306,1,0.858
+mp-757919,LiVP2O7,Other lithium material,53,Caution,11,0,0,0.111009,0,0.10959
+mp-3213696,Cs3Li2ZrP3,Other lithium material,63,Caution,11,1,1,0.709126,1,0.874428
+mp-757227,LiFePO4,LFP-family,94,Recommend,11,0,0,0.15184,0,0.109727
+mp-504854,Na2Li3CoO4,LCO-family,51,Avoid / Benchmark,11,1,1,0.652614,1,0.849823
+mp-1185378,LiGd2Tl,Other lithium material,61,Caution,11,1,1,0.866197,1,0.852559
+mp-554747,Li5La3Nb2O12,Other lithium material,46,Caution,11,0,1,0.833093,1,0.853464
+mp-1185262,LiPd2Au,Other lithium material,53,Caution,11,0,1,0.866106,1,0.852639
+mp-3253603,RbLi2LaBi2,Other lithium material,61,Caution,11,1,1,0.815026,1,0.889156
+mp-754734,Li2Mn3(BO3)3,LMO-family,80,Research Candidate,11,0,0,0.111811,0,0.109844
+mp-757478,Li4Mn3Cr3(FeO8)2,LMO-family,82,Research Candidate,11,0,0,0.11701,0,0.109861
+mp-1100579,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,11,0,0,0.116934,0,0.109629
+mp-758448,Li5NiO3F,Other lithium material,43,Caution,11,0,0,0.119679,0,0.109844
+mp-3267719,Li3Ca2Mg,Other lithium material,61,Caution,11,1,1,0.844609,1,0.844819
+mp-1101601,LiV2(PO4)3,Other lithium material,63,Caution,11,1,0,0.117602,0,0.109822
+mp-1174908,Li7Mn2(CoO4)3,LCO-family,43,Avoid / Benchmark,11,0,0,0.114287,0,0.109624
+mp-567157,Ba7Na5Li3N3,Other lithium material,53,Caution,11,0,1,0.984622,1,0.851713
+mp-770491,Li3AlNiO4,Other lithium material,47,Caution,11,0,0,0.174484,0,0.109396
+mp-865622,Li2HoIn,Other lithium material,61,Caution,11,1,1,0.866203,1,0.852554
+mp-1029592,Li3YN2,Other lithium material,61,Caution,11,1,1,0.849252,1,0.863333
+mp-3209691,K2Li2SnS4,Li-S or sulfide-family,78,Research Candidate,11,1,1,0.638993,1,0.829788
+mp-3252780,LiEuH6Rh,Other lithium material,61,Caution,11,1,1,0.858459,1,0.855425
+mp-510430,Li13In3,Other lithium material,61,Caution,11,1,1,0.98558,1,0.851385
+mp-3204140,Li(TaPd4)3,Other lithium material,61,Caution,11,1,1,0.836703,1,0.863512
+mp-756744,LiCoBO3,LCO-family,40,Avoid / Benchmark,11,0,0,0.260434,0,0.106948
+mp-29250,Li6VCl8,Other lithium material,61,Caution,11,1,1,0.984393,1,0.854828
+mp-1174523,Li7Mn2(CoO4)3,LCO-family,44,Avoid / Benchmark,11,0,0,0.114102,0,0.109689
+mp-559715,Li2Cd(PO3)4,Other lithium material,47,Caution,11,0,1,0.650872,1,0.856586
+mp-777352,LiMnF3,Other lithium material,52,Caution,11,0,1,0.686682,0,0.113539
+mp-760262,Li2V2F7,Other lithium material,49,Caution,11,0,1,0.622879,0,0.096798
+mp-27403,LiUF5,Other lithium material,57,Caution,11,1,1,0.962892,1,0.850314
+mp-1275547,Li3Mn(CoO3)2,LCO-family,44,Avoid / Benchmark,11,0,0,0.11445,0,0.10956
+mp-1177856,Li2TiV3O8,LTO-family,79,Research Candidate,11,0,0,0.178638,0,0.109295
+mp-1111112,K2LiGaF6,Other lithium material,57,Caution,11,1,1,0.85234,1,0.767337
+mp-765549,Li7CoOF7,LCO-family,37,Avoid / Benchmark,11,0,0,0.124268,0,0.110344
+mp-3285076,LiCd21Pd4,Other lithium material,51,Caution,11,1,1,0.815275,1,0.848563
+mp-1111550,NaLi2CoF6,Other lithium material,37,Caution,11,0,1,0.855387,1,0.802422
+mp-3208055,Li2Y6Ru3Rh,Other lithium material,61,Caution,11,1,1,0.706649,1,0.861137
+mp-1195831,Li(HoGe)4,Other lithium material,61,Caution,11,1,1,0.961703,1,0.855294
+mp-21270,LiFe(GeO3)2,Other lithium material,58,Caution,11,0,1,0.588678,1,0.858404
+mp-3249356,Li6Lu2UN6,Other lithium material,61,Caution,22,1,1,0.800395,1,0.84127
+mp-35591,LiErS2,Li-S or sulfide-family,72,Research Candidate,22,0,1,0.751772,1,0.800598
+mp-3214824,Li14TaNbAs8,Other lithium material,51,Caution,22,1,1,0.609974,1,0.844154
+mp-3212582,LiSc(IO3)4,Other lithium material,61,Caution,22,1,0,0.16607,0,0.148266
+mp-1222646,Li2MgHg,Other lithium material,51,Caution,22,1,1,0.875543,1,0.828564
+mp-1253150,LiAlFeO4,Other lithium material,53,Caution,22,0,0,0.145942,0,0.148006
+mp-557403,LiFe2F6,Other lithium material,60,Caution,22,1,1,0.94504,1,0.843253
+mp-3200983,LiZrScIr,Other lithium material,61,Caution,22,1,1,0.867153,1,0.830358
+mp-3231664,LiHo3Hg3Pd2,Other lithium material,51,Caution,22,1,1,0.843886,1,0.835469
+mp-1378948,Li6V2OF11,Other lithium material,42,Caution,22,0,0,0.130809,0,0.143711
+mp-2286,Li2Se,Other lithium material,61,Caution,22,1,1,0.980263,1,0.829126
+mp-728,Li2Pd,Other lithium material,61,Caution,22,1,1,0.979907,1,0.82773
+mp-867220,LiTm2Ir,Other lithium material,61,Caution,22,1,1,0.874416,1,0.82887
+mp-755722,Li2Mn3CrO8,LMO-family,75,Research Candidate,22,0,0,0.16323,0,0.14844
+mp-1174157,Li3Mn2O5,LMO-family,75,Research Candidate,22,0,0,0.33263,0,0.149911
+mp-753531,LiTi3VO8,LTO-family,75,Research Candidate,22,0,0,0.285664,0,0.184698
+mp-1211339,KLiMoO4,Other lithium material,50,Caution,22,0,0,0.353724,0,0.158598
+mp-772396,Li2Cr2O7,Other lithium material,51,Caution,22,0,0,0.146758,0,0.147851
+mp-1210761,Li2NiN,Other lithium material,51,Caution,22,0,1,0.852912,1,0.832239
+mp-3248341,KLiUS3,Li-S or sulfide-family,78,Research Candidate,22,1,1,0.659556,1,0.727108
+mp-1175273,Li7Mn4CoO12,LCO-family,44,Avoid / Benchmark,22,0,0,0.14165,0,0.14707
+mp-773045,Li2V3FeO8,Other lithium material,54,Caution,22,0,0,0.309073,0,0.154395
+mp-3215312,Rb2Li2TiS4,Li-S or sulfide-family,80,Research Candidate,22,1,1,0.758906,1,0.836036
+mp-1236486,LiCe2O3,Other lithium material,50,Caution,22,0,0,0.125429,0,0.143439
+mp-780733,LiMn2P2HO9,LMO-family,84,Research Candidate,22,0,0,0.142102,0,0.14729
+mp-3255843,Na3Li(RuO3)2,Other lithium material,61,Caution,22,1,0,0.160476,0,0.147839
+mp-1100693,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,22,0,0,0.154596,0,0.147803
+mp-753506,LiBiS2,Li-S or sulfide-family,68,Research Candidate,22,0,1,0.770672,1,0.848377
+mp-778680,Li5Mn8(BO3)8,LMO-family,80,Research Candidate,22,0,0,0.131889,0,0.144123
+mp-3245765,LiCeH6Ru,Other lithium material,61,Caution,22,1,1,0.86894,1,0.830522
+mp-28146,LiGa5O8,Other lithium material,61,Caution,22,1,1,0.839698,1,0.833405
+mp-1245555,LiIrN2,Other lithium material,46,Caution,22,0,1,0.799578,1,0.775498
+mp-773582,LiTe(H3N)4,Other lithium material,61,Caution,22,1,1,0.931364,1,0.829099
+mp-774507,Li3(CoO2)5,LCO-family,41,Avoid / Benchmark,22,0,0,0.153551,0,0.148715
+mp-762632,LiFeSiO4,Silicon-family,80,Research Candidate,22,0,0,0.285918,0,0.14972
+mp-1174428,Li5Mn2CoO8,LCO-family,43,Avoid / Benchmark,22,0,0,0.148673,0,0.147575
+mp-1077191,Li2Tl,Other lithium material,61,Caution,22,1,1,0.954922,1,0.820798
+mp-37873,Li3ErBr6,Other lithium material,55,Caution,22,0,1,0.572608,1,0.533948
+mp-3239881,LiYNi3Rh,Other lithium material,57,Caution,22,1,1,0.826851,1,0.827702
+mp-1206280,Li3YSb2,Other lithium material,61,Caution,22,1,1,0.813364,1,0.843013
+mp-865907,LiZn3,Other lithium material,61,Caution,22,1,1,0.883948,1,0.825053
+mp-28060,LiGeTe2,Other lithium material,55,Caution,22,0,1,0.929923,1,0.835103
+mp-555869,LiV2O5,Other lithium material,51,Caution,22,0,1,0.608451,1,0.827461
+mp-757342,LiCrPO4,Other lithium material,53,Caution,22,0,0,0.281658,0,0.148668
+mp-774651,LiZnAsH2O5,Other lithium material,45,Caution,22,0,1,0.640049,1,0.827185
+mp-1185409,LiPmGa2,Other lithium material,61,Caution,22,1,1,0.877401,1,0.828786
+mp-3204481,Cs2LiScSb2,Other lithium material,61,Caution,22,1,1,0.697334,1,0.843222
+mp-759210,Li2Cr2CoO6,LCO-family,41,Avoid / Benchmark,22,0,0,0.142272,0,0.147076
+mp-867665,LiV3(OF3)2,Other lithium material,57,Caution,22,1,0,0.128621,0,0.14797
+mp-758310,Li3Ti2(PO4)3,LTO-family,77,Research Candidate,22,0,0,0.126118,0,0.142479
+mp-1235143,Sr4LiSm2Ta2O12,Other lithium material,50,Caution,22,0,0,0.114506,0,0.136113
+mp-3215652,Rb2LiInSb2,Other lithium material,61,Caution,22,1,1,0.705213,1,0.84306
+mp-1192746,LiAs2H3O7,Other lithium material,51,Caution,22,1,1,0.612839,1,0.826178
+mp-3215352,Li4As6Ir5Pt2,Other lithium material,51,Caution,22,1,1,0.676871,1,0.845351
+mp-755582,Li2MnF4,Other lithium material,50,Caution,22,0,1,0.509417,0,0.082686
+mp-1222769,Li2Ga7,Other lithium material,61,Caution,22,1,1,0.640983,1,0.842567
+mp-661707,Li4TeO5,Other lithium material,46,Caution,22,0,0,0.177281,0,0.147153
+mp-776628,Li4TiV5O12,LTO-family,74,Research Candidate,22,0,0,0.138404,0,0.147262
+mp-754779,Li2NbS3,Li-S or sulfide-family,68,Research Candidate,22,0,1,0.59657,1,0.770082
+mp-3205776,Li4SiSe4,Other lithium material,63,Caution,22,1,1,0.681021,1,0.824141
+mp-761763,Li2FeCo3O8,LCO-family,46,Avoid / Benchmark,22,0,0,0.160172,0,0.147781
+mp-764735,Li5Mn2Cu5O12,LMO-family,80,Research Candidate,22,0,0,0.155582,0,0.148057
+mp-3231126,Li3Y3Si2Pb,Other lithium material,53,Caution,22,1,1,0.844371,1,0.835378
+mp-2647033,Li2H2C6N9Cl,Carbon-family,95,Recommend,22,1,1,0.62057,1,0.85306
+mp-3248959,LiPmNdSi3,Other lithium material,63,Caution,22,1,1,0.620735,1,0.850065
+mp-1177633,Li3Mn3CoO8,LCO-family,44,Avoid / Benchmark,22,0,0,0.17461,0,0.150836
+mp-765474,Li2Ni3(P2O7)2,Other lithium material,51,Caution,22,0,0,0.134876,0,0.14514
+mp-504670,LiCa2Ge3,Other lithium material,61,Caution,22,1,1,0.951047,1,0.830739
+mp-558054,SrLi2Ta2O7,Other lithium material,61,Caution,22,1,1,0.622439,1,0.82834
+mp-1211093,LiCaFeF6,Other lithium material,60,Caution,22,1,1,0.73559,1,0.66062
+mp-757500,Li4VFe(WO6)2,Other lithium material,54,Caution,22,0,0,0.137037,0,0.145858
+mp-1176659,LiVCO5,Carbon-family,85,Recommend,22,0,0,0.139176,0,0.146461
+mp-1177201,Li4V3P8O29,Other lithium material,53,Caution,22,0,0,0.129209,0,0.143072
+mp-1001786,LiScS2,Li-S or sulfide-family,78,Research Candidate,22,1,1,0.967923,1,0.828011
+mp-28510,Li3BiO3,Other lithium material,61,Caution,22,1,1,0.582443,1,0.828282
+mp-3200912,LiMgScHg,Other lithium material,51,Caution,22,1,1,0.874008,1,0.829397
+mp-769411,Li6B3SbO9,Other lithium material,51,Caution,22,0,0,0.14166,0,0.148006
+mp-3252296,LiPmInCu,Other lithium material,61,Caution,22,1,1,0.872159,1,0.83009
+mp-758592,Li6NbCo3(PO4)6,LCO-family,43,Avoid / Benchmark,22,0,0,0.13126,0,0.143885
+mp-3265963,Li2La3Al7,Other lithium material,61,Caution,22,1,1,0.82978,1,0.832574
+mp-864755,LiAcTe2,Other lithium material,61,Caution,22,1,1,0.857247,1,0.812674
+mp-11247,Li3Au,Other lithium material,61,Caution,22,1,1,0.98376,1,0.827437
+mp-3336489,LiY3Pt5,Other lithium material,61,Caution,22,1,1,0.831805,1,0.832804
+mp-769871,Li2CrFe3O8,Other lithium material,53,Caution,22,0,0,0.178038,0,0.15166
+mp-684497,LiBi(PO3)4,Other lithium material,55,Caution,22,0,0,0.140048,0,0.148004
+mp-757863,Li4VCr(WO6)2,Other lithium material,51,Caution,22,0,0,0.134666,0,0.145108
+mp-772974,Li2U(WO5)2,Other lithium material,53,Caution,22,0,0,0.132975,0,0.145063
+mp-1079418,LiH2N,Other lithium material,53,Caution,22,0,1,0.771085,1,0.835548
+mp-861875,LiHf2Re,Other lithium material,61,Caution,22,1,1,0.883134,1,0.825802
+mp-756130,LiMnF3,Other lithium material,50,Caution,22,0,1,0.747793,1,0.715048
+mp-12128,Li2MgIn,Other lithium material,61,Caution,22,1,1,0.984315,1,0.82688
+mp-3248069,LiTbPt4,Other lithium material,61,Caution,22,1,1,0.860408,1,0.827315
+mp-3253669,Li2ThAs2Pd,Other lithium material,51,Caution,22,1,1,0.801543,1,0.845419
+mp-767671,Li3VF6,Other lithium material,47,Caution,22,0,1,0.50927,0,0.057697
+mp-776064,Li2VPO4F,Other lithium material,53,Caution,22,0,0,0.1769,0,0.158668
+mp-3209816,LiHg2ClO2,Other lithium material,51,Caution,22,1,0,0.396945,0,0.16658
+mp-861629,LiMnPd2,Other lithium material,64,Caution,22,1,1,0.879996,1,0.827915
+mp-3329501,Li(InAu)2,Other lithium material,61,Caution,22,1,1,0.828527,1,0.831579
+mp-35841,Li2CuGe,Other lithium material,61,Caution,22,1,1,0.874506,1,0.829153
+mp-650024,RbLiBi2(MoO4)4,Other lithium material,55,Caution,22,0,1,0.600986,1,0.827917
+mp-757618,LiFeSi3O8,Silicon-family,80,Research Candidate,22,0,0,0.13782,0,0.151047
+mp-867590,LiCu2F5,Other lithium material,47,Caution,22,0,1,0.643825,1,0.60704
+mp-8481,LiPrGe,Other lithium material,61,Caution,22,1,1,0.978447,1,0.82747
+mp-3215316,LiS4IO14,Li-S or sulfide-family,78,Research Candidate,22,1,0,0.161271,0,0.148523
+mp-1189919,LiPO4,Other lithium material,48,Caution,22,0,1,0.787111,1,0.828566
+mp-1647854,Li7Mn4CoO12,LCO-family,44,Avoid / Benchmark,22,0,0,0.141731,0,0.146962
+mp-7936,LiNbS2,Li-S or sulfide-family,78,Research Candidate,22,1,1,0.975414,1,0.826668
+mp-3231145,LiTc2B4W,Other lithium material,61,Caution,22,1,1,0.6305,1,0.850964
+mp-759263,Li3Bi3(PO4)4,Other lithium material,53,Caution,22,0,0,0.143395,0,0.148295
+mp-1222495,Li3Cd,Other lithium material,40,Caution,22,0,1,0.839789,1,0.814468
+mp-7396,Li3Tl,Other lithium material,61,Caution,22,1,1,0.984154,1,0.827052
+mp-1289276,Li3Ni2SnO6,Other lithium material,49,Caution,22,0,0,0.147697,0,0.147976
+mp-3308165,Li(La4Ir3)2,Other lithium material,61,Caution,22,1,1,0.803454,1,0.842843
+mp-3321868,Li3Tc3O8,Other lithium material,61,Caution,22,1,0,0.324449,0,0.14934
+mp-10517,LiScP2O7,Other lithium material,63,Caution,22,1,1,0.533289,1,0.827409
+mp-1222349,LiGeRhO4,Other lithium material,61,Caution,22,1,0,0.214772,0,0.156941
+mp-3244661,LiPmSnPt,Other lithium material,61,Caution,22,1,1,0.860292,1,0.827231
+mp-3332804,Li4ZnGa3,Other lithium material,61,Caution,22,1,1,0.826255,1,0.828734
+mp-18640,LiTi2(PO4)3,LTO-family,87,Research Candidate,22,1,1,0.772873,1,0.830868
+mp-26911,Li4CrP2O9,Other lithium material,55,Caution,22,0,0,0.137412,0,0.147192
+mp-753715,Li4Si2NiO7,Silicon-family,75,Research Candidate,22,0,0,0.128279,0,0.142686
+mp-2012,LiHg,Other lithium material,51,Caution,22,1,1,0.983415,1,0.827437
+mp-766469,LiMn2(PO4)2,LMO-family,82,Research Candidate,22,0,0,0.135624,0,0.145674
+mp-18722,Cs2LiMnO4,LMO-family,90,Research Candidate,22,1,1,0.639377,1,0.827473
+mp-3223526,Li4Sm2HoPb4,Other lithium material,51,Caution,22,1,1,0.715503,1,0.84185
+mp-780111,Li2Mn3(BO3)3,LMO-family,80,Research Candidate,22,0,0,0.132631,0,0.144394
+mp-1147684,Li10Zn(PS4)4,Li-S or sulfide-family,74,Research Candidate,22,0,1,0.60017,1,0.815967
+mp-779011,Li6MnFe5(BO3)6,LMO-family,87,Research Candidate,22,0,0,0.137713,0,0.146009
+mp-504262,LiCo(PO3)3,LCO-family,45,Avoid / Benchmark,22,0,0,0.131952,0,0.144154
+mp-1174180,Li3MnCoO5,LCO-family,43,Avoid / Benchmark,22,0,0,0.144427,0,0.147641
+mp-861933,LiTmHg2,Other lithium material,51,Caution,22,1,1,0.877485,1,0.82877
+mp-1176992,Li6MnV3(PO4)6,LMO-family,86,Research Candidate,22,0,0,0.12678,0,0.142042
+mp-10814,SrLiBO3,Other lithium material,61,Caution,22,1,1,0.55365,1,0.827436
+mp-3208636,LiTc(SnSb)2,Other lithium material,61,Caution,22,1,1,0.631667,1,0.842566
+mp-14495,Li6ZnO4,Other lithium material,61,Caution,22,1,1,0.770641,1,0.830676
+mp-1113705,Rb2LiRuF6,Other lithium material,57,Caution,22,1,1,0.82668,1,0.725684
+mp-1177227,Li4V3Cr3(FeO8)2,Other lithium material,54,Caution,22,0,0,0.135755,0,0.145463
+mp-1246553,LiGeN,Other lithium material,51,Caution,22,0,1,0.71191,1,0.832644
+mp-1235383,LiLuZnFeO4,Other lithium material,54,Caution,22,0,0,0.137482,0,0.1462
+mp-1222651,Li2MgGe,Other lithium material,61,Caution,22,1,1,0.874435,1,0.82919
+mp-3203914,Li7Cd(PPd3)4,Other lithium material,53,Caution,22,1,1,0.804755,1,0.83942
+mp-3221785,LiTb2TmPt2,Other lithium material,61,Caution,22,1,1,0.642216,1,0.829633
+mp-3216068,Li3InGePt3,Other lithium material,61,Caution,22,1,1,0.812165,1,0.840677
+mp-1190535,Li2Al2Si4HO14,Silicon-family,76,Research Candidate,22,0,0,0.125728,0,0.141575
+mp-3203173,BaLiAgAs2,Other lithium material,51,Caution,22,1,1,0.769851,1,0.846087
+mp-12029,Li2CuP,Other lithium material,63,Caution,22,1,1,0.979218,1,0.8275
+mp-531826,Li2PtO3,Other lithium material,61,Caution,22,1,0,0.152711,0,0.147976
+mp-643458,LiHSO4,Li-S or sulfide-family,78,Research Candidate,22,1,1,0.602677,1,0.827748
+mp-1211180,Li4Pt,Other lithium material,46,Caution,22,0,1,0.889662,1,0.818687
+mp-4995,LiSbO3,Other lithium material,61,Caution,22,1,1,0.653353,1,0.82751
+mp-3210132,LiY9Cd3Pd,Other lithium material,51,Caution,22,1,1,0.857549,1,0.830693
+mp-3203426,Cs6Li2Sn7Pb,Other lithium material,51,Caution,22,1,1,0.630413,1,0.851018
+mp-3250921,LiDyMgHg,Other lithium material,51,Caution,22,1,1,0.873187,1,0.829746
+mp-863368,LiFeSiO4,Silicon-family,84,Research Candidate,22,0,0,0.183,0,0.152411
+mp-1545896,Li2Sb,Other lithium material,61,Caution,22,1,1,0.84488,1,0.835264
+mp-6342,LiCa3RuO6,Other lithium material,61,Caution,22,1,1,0.785468,1,0.833796
+mp-757748,Li3Mn2(PO4)3,LMO-family,82,Research Candidate,22,0,0,0.133406,0,0.144839
+mp-776445,Li4Ti2Cu3Sb3O16,LTO-family,75,Research Candidate,22,0,0,0.145102,0,0.147268
+mp-1175400,Li9Co7O16,LCO-family,41,Avoid / Benchmark,22,0,0,0.149902,0,0.148221
+mp-3337710,Li3CdHg2,Other lithium material,51,Caution,22,1,1,0.830948,1,0.827856
+mp-3231681,Sr2Li3ErPt3,Other lithium material,61,Caution,22,1,1,0.663777,1,0.844947
+mp-1222628,Li5Al(Co2O5)2,LCO-family,40,Avoid / Benchmark,22,0,0,0.33428,0,0.149432
+mp-25403,Li2VPO4F,Other lithium material,51,Caution,22,0,0,0.125915,0,0.141659
+mp-1176530,LiVF4,Other lithium material,47,Caution,22,0,1,0.51905,0,0.056816
+mp-1176523,LiVO2,Other lithium material,55,Caution,22,0,0,0.402432,0,0.178246
+mp-1094665,LiMg3,Other lithium material,55,Caution,22,0,1,0.858892,1,0.82138
+mp-3310637,LiBi5S8,Li-S or sulfide-family,78,Research Candidate,22,1,1,0.622997,1,0.852993
+mp-1185266,LiNi3,Other lithium material,47,Caution,22,0,1,0.818181,1,0.782388
+mp-759382,Li2Ti7Nb6O30,LTO-family,75,Research Candidate,22,0,0,0.253211,0,0.1496
+mp-3309592,Li2Pr2Zn15,Other lithium material,61,Caution,22,1,1,0.833859,1,0.826477
+mp-753051,LiCrPHO5,Other lithium material,63,Caution,22,1,0,0.132796,0,0.144451
+mp-3252178,Li2AcYSi2,Other lithium material,63,Caution,22,1,1,0.823757,1,0.837271
+mp-758199,LiCoSiO4,LCO-family,42,Avoid / Benchmark,22,0,0,0.146862,0,0.148006
+mp-756771,Li2Si5Ni5O16,Silicon-family,73,Research Candidate,22,0,0,0.133517,0,0.144714
+mp-1113008,Cs2LiPrI6,Other lithium material,61,Caution,22,1,1,0.851342,1,0.801225
+mp-1185265,Li3Sn,Other lithium material,61,Caution,22,1,1,0.879594,1,0.828101
+mp-776240,Li4Co3Sn3(SbO8)2,LCO-family,45,Avoid / Benchmark,22,0,0,0.148782,0,0.147582
+mp-3252257,Li6Y2NpN6,Other lithium material,61,Caution,22,1,1,0.798138,1,0.844238
+mp-758914,RbLiVPO5,Other lithium material,52,Caution,22,0,0,0.14456,0,0.149733
+mp-568322,Sr3Li3(NiN)4,Other lithium material,57,Caution,22,1,1,0.954584,1,0.831395
+mp-753940,KLiMnS2,Li-S or sulfide-family,81,Research Candidate,22,1,1,0.755242,1,0.846612
+mp-754051,LiFeF3,Other lithium material,45,Caution,22,0,1,0.743536,1,0.749725
+mp-1026794,LiMg14Mo,Other lithium material,50,Caution,22,0,1,0.862245,1,0.815455
+mp-3210734,LiCa2C3F,Carbon-family,91,Recommend,22,1,1,0.768943,1,0.849131
+mp-756399,Li4Mn3Nb2Cr3O16,LMO-family,80,Research Candidate,22,0,0,0.136765,0,0.146071
+mp-1176153,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,22,0,0,0.1469,0,0.14805
+mp-752905,Li3V2(CO3)4,Carbon-family,85,Recommend,22,0,0,0.143026,0,0.146994
+mp-754601,Li2V3TeO8,Other lithium material,51,Caution,22,0,0,0.349916,0,0.162205
+mp-770527,Li2Mn4O9,LMO-family,80,Research Candidate,22,0,0,0.332723,0,0.149392
+mp-26864,LiMo(PO4)2,Other lithium material,53,Caution,22,0,0,0.142974,0,0.148307
+mp-758570,LiV2(CO3)4,Carbon-family,85,Recommend,22,0,0,0.160816,0,0.149113
+mp-3214101,Rb2LiAsS4,Li-S or sulfide-family,68,Research Candidate,22,1,1,0.698288,1,0.838088
+mp-753230,LiFe(CO3)2,Carbon-family,88,Recommend,22,0,0,0.152395,0,0.147753
+mp-849667,Li4Co5O9F,LCO-family,36,Avoid / Benchmark,22,0,0,0.15104,0,0.148535
+mp-1305328,Li6Mn(FeO3)2,LMO-family,83,Research Candidate,22,0,0,0.144368,0,0.14763
+mp-779165,Li2MnF5,Other lithium material,50,Caution,22,0,1,0.558434,0,0.107116
+mp-30591,Li2CuSn,Other lithium material,61,Caution,22,1,1,0.983026,1,0.827454
+mp-1175076,Li7Mn2(CoO4)3,LCO-family,43,Avoid / Benchmark,22,0,0,0.145778,0,0.147876
+mp-3201272,LiLuHgPb,Other lithium material,51,Caution,22,1,1,0.871026,1,0.830351
+mp-3248396,Li2Eu(AgSb)2,Other lithium material,61,Caution,22,1,1,0.823807,1,0.838717
+mp-1104368,Li2Pr2Ge3,Other lithium material,61,Caution,33,1,1,0.956665,1,0.85916
+mp-3252250,Li3Dy4ZnSi6,Other lithium material,63,Caution,33,1,1,0.642301,1,0.850746
+mp-3206046,LiY19(Cd3Ru)2,Other lithium material,51,Caution,33,1,1,0.819361,1,0.828555
+mp-1305888,Li2VNiO4,Other lithium material,49,Caution,33,0,0,0.14321,0,0.140378
+mp-540803,Sr3(LiSb)4,Other lithium material,61,Caution,33,1,1,0.958295,1,0.879031
+mp-1199453,KLiMoO4,Other lithium material,61,Caution,33,1,1,0.792543,1,0.835507
+mp-766466,Li2Mn(BO3)2,LMO-family,80,Research Candidate,33,0,0,0.143642,0,0.141936
+mp-766703,Li3CoPCO7,LCO-family,45,Avoid / Benchmark,33,0,0,0.144214,0,0.141064
+mp-756217,Li2CoBO4,LCO-family,41,Avoid / Benchmark,33,0,0,0.148935,0,0.14011
+mp-1176092,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,33,0,0,0.136663,0,0.142446
+mp-755639,Li4MnFe3(BO3)4,LMO-family,87,Research Candidate,33,0,0,0.134675,0,0.141802
+mp-3231422,LiDy3In3Ag2,Other lithium material,61,Caution,33,1,1,0.839229,1,0.861872
+mp-850751,LiVP2(HO4)2,Other lithium material,57,Caution,33,0,0,0.140161,0,0.14179
+mp-775319,Li2Mn3NiO8,LMO-family,76,Research Candidate,33,0,0,0.286512,0,0.140518
+mp-1210789,Li2SiS3,Li-S or sulfide-family,80,Research Candidate,33,1,1,0.675126,1,0.820885
+mp-757050,LiFeCoO4,LCO-family,44,Avoid / Benchmark,33,0,0,0.216838,0,0.238405
+mp-1113706,Rb2LiPdF6,Other lithium material,49,Caution,33,0,1,0.858996,1,0.894978
+mp-3241113,Li(WN)3,Other lithium material,61,Caution,33,1,1,0.862592,1,0.882334
+mp-757109,Li6VCoP2(CO7)2,LCO-family,45,Avoid / Benchmark,33,0,0,0.138172,0,0.141736
+mp-849998,Li3V3P8O29,Other lithium material,53,Caution,33,0,0,0.139747,0,0.142018
+mp-1095352,LiEuAs,Other lithium material,51,Caution,33,1,1,0.956024,1,0.878814
+mp-3328612,Li(NdIr)2,Other lithium material,61,Caution,33,1,1,0.722388,1,0.848392
+mp-3215974,LiTa3(TiH4)4,Other lithium material,63,Caution,33,1,1,0.649575,1,0.842479
+mp-867255,LiZn2Au,Other lithium material,61,Caution,33,1,1,0.866143,1,0.850738
+mp-759479,LiCoSiO4,LCO-family,42,Avoid / Benchmark,33,0,0,0.140668,0,0.141303
+mp-1020059,LiGe2N3,Other lithium material,61,Caution,33,1,1,0.949856,1,0.827505
+mp-769609,Li4VCr3O8,Other lithium material,55,Caution,33,0,0,0.135208,0,0.141727
+mp-801743,Li6V2OF11,Other lithium material,42,Caution,33,0,0,0.137227,0,0.14245
+mp-3302198,LiEr9S10,Li-S or sulfide-family,78,Research Candidate,33,1,1,0.623973,0,0.39731
+mp-3320590,Li30Si7Pt,Other lithium material,63,Caution,33,1,1,0.803234,1,0.819058
+mp-853240,LiCoO2,LCO-family,43,Avoid / Benchmark,33,0,0,0.195821,0,0.183483
+mp-759645,Li4Mn5Cr(PO4)6,LMO-family,82,Research Candidate,33,0,0,0.134154,0,0.141461
+mp-765150,LiSn4(PO4)3,Other lithium material,53,Caution,33,0,0,0.135686,0,0.141897
+mp-3257213,Li(Zn2Ni)4,Other lithium material,57,Caution,33,1,1,0.796956,1,0.805303
+mp-755521,Li2Ti3FeO8,LTO-family,80,Research Candidate,33,0,0,0.28013,0,0.161447
+mp-1020146,Na2LiB5(PO7)2,Other lithium material,63,Caution,33,1,1,0.592431,1,0.834177
+mp-757121,Li3V2FeO6,Other lithium material,58,Caution,33,0,0,0.142592,0,0.141433
+mp-764792,Li4Ni8O9F7,Other lithium material,43,Caution,33,0,0,0.136669,0,0.142446
+mp-26045,Li3Cr2(PO4)3,Other lithium material,57,Caution,33,0,0,0.142806,0,0.142556
+mp-3208829,K3Li2SiAs3,Other lithium material,53,Caution,33,1,1,0.713705,1,0.852874
+mp-753984,LiMnCoO4,LCO-family,46,Avoid / Benchmark,33,0,0,0.195475,0,0.176408
+mp-752788,Li2VP2O7,Other lithium material,53,Caution,33,0,0,0.134541,0,0.141354
+mp-28567,LiBiF4,Other lithium material,57,Caution,33,1,1,0.960107,1,0.914973
+mp-699460,KLiH4S2(NO3)2,Li-S or sulfide-family,68,Research Candidate,33,0,1,0.591616,1,0.833458
+mp-757019,LiFePO4,LFP-family,94,Recommend,33,0,1,0.664553,1,0.832468
+mp-849472,Li5Co7O3F13,LCO-family,37,Avoid / Benchmark,33,0,0,0.134745,0,0.141842
+mp-27811,Li2Te2O5,Other lithium material,61,Caution,33,1,1,0.603059,1,0.835518
+mp-861651,Li2PdPb,Other lithium material,41,Caution,33,0,1,0.866247,1,0.845512
+mp-774463,Li3Cr2(PO4)3,Other lithium material,55,Caution,33,0,0,0.136589,0,0.141679
+mp-3251633,Li2Ho2Si3,Other lithium material,63,Caution,33,1,1,0.712728,1,0.850854
+mp-1366652,Li4Co3O7,LCO-family,36,Avoid / Benchmark,33,0,0,0.143261,0,0.138938
+mp-1246087,LiGeN,Other lithium material,51,Caution,33,0,1,0.837195,1,0.851402
+mp-3210526,Li6Ca6Ag10N,Other lithium material,61,Caution,33,1,1,0.644494,1,0.840787
+mp-758608,Li4V2Fe5O12,Other lithium material,54,Caution,33,0,0,0.138037,0,0.141341
+mp-756775,Li4CrGa3O8,Other lithium material,51,Caution,33,0,0,0.134958,0,0.141958
+mp-776224,Li3V5O12,Other lithium material,51,Caution,33,0,0,0.143519,0,0.142077
+mp-865875,Li3Ag,Other lithium material,61,Caution,33,1,1,0.867034,1,0.79647
+mp-3208668,Li3MgAs6Ir7,Other lithium material,51,Caution,33,1,1,0.82001,1,0.856509
+mp-3325114,KLiZn2O3,Other lithium material,61,Caution,33,1,0,0.259452,0,0.179376
+mp-6318,KLiSO4,Li-S or sulfide-family,72,Research Candidate,33,0,1,0.592891,1,0.83512
+mp-1100602,Li9Mn2Co5O16,LCO-family,39,Avoid / Benchmark,33,0,0,0.14049,0,0.139233
+mp-753509,Li3MnOF4,LMO-family,76,Research Candidate,33,0,0,0.137978,0,0.141728
+mp-1029932,LiVN2,Other lithium material,61,Caution,33,1,1,0.673017,1,0.846692
+mp-3246935,Li4Tb3YSi6,Other lithium material,63,Caution,33,1,1,0.681631,1,0.853264
+mp-25991,Li2Ni3(P2O7)2,Other lithium material,59,Caution,33,1,1,0.599419,1,0.8348
+mp-3200652,BaLiPRh2,Other lithium material,63,Caution,33,1,1,0.762174,1,0.853049
+mp-3215578,Sr4LiCdSi6,Other lithium material,53,Caution,33,1,1,0.689218,1,0.840672
+mp-771908,LiFePO4F,LFP-family,92,Recommend,33,0,0,0.157571,0,0.142448
+mp-762932,Li4(NiO2)5,Other lithium material,49,Caution,33,0,0,0.138134,0,0.142328
+mp-1201607,Li7CuSi2,Other lithium material,63,Caution,33,1,1,0.956988,1,0.817405
+mp-1018783,LiBeB,Other lithium material,51,Caution,33,1,1,0.649873,1,0.817611
+mp-758966,LiBi(PO3)4,Other lithium material,53,Caution,33,0,0,0.144072,0,0.142285
+mp-673023,LiBi(PO3)4,Other lithium material,55,Caution,33,0,0,0.143262,0,0.142318
+mp-772558,NaLi2MnPCO7,LMO-family,86,Research Candidate,33,0,0,0.134624,0,0.141772
+mp-3213742,Na5Li2TaAs4,Other lithium material,51,Caution,33,1,1,0.672393,1,0.853739
+mp-3252605,Li2YHoSi3,Other lithium material,63,Caution,33,1,1,0.712681,1,0.851324
+mp-1176764,LiCu2PO4,Other lithium material,52,Caution,33,0,0,0.136421,0,0.142422
+mp-3253283,LiNpF6,Other lithium material,57,Caution,33,1,1,0.790116,0,0.14096
+mp-778403,LiMn2(BO3)2,LMO-family,80,Research Candidate,33,0,0,0.134491,0,0.14169
+mp-3343296,Li(GaRh)2,Other lithium material,61,Caution,33,1,1,0.783137,1,0.851531
+mp-29149,Li4NCl,Other lithium material,61,Caution,33,1,1,0.97564,1,0.892141
+mp-775764,Li2FeF5,Other lithium material,50,Caution,33,0,1,0.698345,0,0.178883
+mp-21293,Li3In2,Other lithium material,61,Caution,33,1,1,0.976063,1,0.847515
+mp-771579,Li7W5O16,Other lithium material,51,Caution,33,0,0,0.135191,0,0.142069
+mp-3308214,Li7U2N6,Other lithium material,61,Caution,33,1,1,0.814039,1,0.873794
+mp-1180498,LiBC,Carbon-family,80,Recommend,33,0,1,0.84933,0,0.354622
+mp-1273740,Li2FeWO6,Other lithium material,54,Caution,33,0,0,0.135974,0,0.142339
+mp-849457,Li3Ni(SbO3)4,Other lithium material,47,Caution,33,0,0,0.136135,0,0.142375
+mp-3346224,Li(PrP)2,Other lithium material,63,Caution,33,1,1,0.839558,1,0.899647
+mp-1209431,Rb3Li2Al(MoO4)4,Other lithium material,55,Caution,33,0,0,0.24094,0,0.143816
+mp-1235524,K2BaLiCo(NO2)6,LCO-family,36,Avoid / Benchmark,33,0,0,0.138672,0,0.142201
+mp-1211480,KLiLuF5,Other lithium material,57,Caution,33,1,1,0.629619,0,0.006511
+mp-1188898,LiLa(CO3)2,Carbon-family,95,Recommend,33,1,1,0.599354,1,0.834353
+mp-761188,LiV3(CoO6)2,LCO-family,40,Avoid / Benchmark,33,0,0,0.145757,0,0.137205
+mp-561288,K3LiIrO4,Other lithium material,61,Caution,33,1,1,0.605853,1,0.834802
+mp-765488,Li3V3P8O29,Other lithium material,55,Caution,33,0,0,0.139718,0,0.142028
+mp-754656,LiMnO2,LMO-family,90,Research Candidate,33,1,0,0.14313,0,0.140534
+mp-504262,LiCo(PO3)3,LCO-family,45,Avoid / Benchmark,33,0,0,0.135018,0,0.141637
+mp-864784,LiSnRh2,Other lithium material,61,Caution,33,1,1,0.865565,1,0.875556
+mp-5920,LiAlGe,Other lithium material,61,Caution,33,1,1,0.982093,1,0.816156
+mp-862774,LiInPt2,Other lithium material,61,Caution,33,1,1,0.865344,1,0.883296
+mp-1110936,K2LiYI6,Other lithium material,51,Caution,33,0,1,0.862179,1,0.928741
+mp-22200,LiMnFeF6,Other lithium material,63,Caution,33,1,1,0.971887,1,0.912704
+mp-3170218,LiPr2(P3Pd10)2,Other lithium material,63,Caution,33,1,1,0.865164,1,0.888983
+mp-770620,Li4VNi3O8,Other lithium material,47,Caution,33,0,0,0.136441,0,0.142424
+mp-3303677,Ba3LiCd11,Other lithium material,51,Caution,33,1,1,0.843907,1,0.839126
+mp-555232,LiU4P3O20,Other lithium material,63,Caution,33,1,1,0.59359,1,0.836166
+mp-26317,LiCrPO4,Other lithium material,57,Caution,33,0,0,0.182225,0,0.139641
+mp-777528,Li3VF6,Other lithium material,47,Caution,33,0,1,0.791859,0,0.27846
+mp-3247363,LiNdCu4,Other lithium material,61,Caution,33,1,1,0.860728,1,0.807689
+mp-1210935,Li3Dy3(TeO6)2,Other lithium material,61,Caution,33,1,0,0.371213,0,0.154086
+mp-1222897,Li2Al2CrSbO8,Other lithium material,55,Caution,33,0,0,0.138468,0,0.141956
+mp-755447,Li3Cu3(PO4)2,Other lithium material,53,Caution,33,0,0,0.135706,0,0.142266
+mp-28146,LiGa5O8,Other lithium material,61,Caution,33,1,1,0.827432,1,0.837193
+mp-760008,Li3Fe(PO4)2,LFP-family,98,Recommend,33,0,0,0.141034,0,0.142195
+mp-3207514,SrLiCu12,Other lithium material,61,Caution,33,1,1,0.868016,1,0.7714
+mp-1210924,LiTb2RuO6,Other lithium material,61,Caution,33,1,0,0.142105,0,0.142445
+mp-1222769,Li2Ga7,Other lithium material,61,Caution,33,1,1,0.645086,1,0.833241
+mp-3231260,Li4CuP2Pd,Other lithium material,63,Caution,33,1,1,0.836898,1,0.876523
+mp-1078961,LiTbGe,Other lithium material,61,Caution,33,1,1,0.978833,1,0.864604
+mp-3250651,BaLiTmS3,Li-S or sulfide-family,78,Research Candidate,33,1,1,0.703456,1,0.552166
+mp-3231924,Li2CeNdSb4,Other lithium material,61,Caution,33,1,1,0.75225,1,0.858139
+mp-3252596,Li3Ho3HgAs2,Other lithium material,51,Caution,33,1,1,0.837368,1,0.891377
+mp-5614,Li3BS3,Li-S or sulfide-family,78,Research Candidate,33,1,1,0.955757,1,0.889002
+mp-7756,SrLiSb,Other lithium material,61,Caution,33,1,1,0.956039,1,0.878186
+mp-1646935,Li2Fe(CoO3)2,LCO-family,44,Avoid / Benchmark,33,0,0,0.137351,0,0.142442
+mp-1176296,Li9Mn2Co5O16,LCO-family,44,Avoid / Benchmark,33,0,0,0.144268,0,0.137843
+mp-560793,Li2U(MoO5)2,Other lithium material,61,Caution,33,1,1,0.581224,1,0.834332
+mp-15950,Li(SiNi)6,Other lithium material,53,Caution,33,0,1,0.979229,1,0.84339
+mp-1101504,LiMo(PO4)2,Other lithium material,53,Caution,33,0,0,0.134441,0,0.141658
+mp-1174046,Li3MnCoO5,LCO-family,44,Avoid / Benchmark,33,0,0,0.138879,0,0.140898
+mp-504151,LiBi2(PO4)3,Other lithium material,53,Caution,33,0,0,0.135611,0,0.141876
+mp-3253325,Li2TbThSi3,Other lithium material,63,Caution,33,1,1,0.71275,1,0.850633
+mp-765589,Li2VOF4,Other lithium material,47,Caution,33,0,0,0.145357,0,0.142726
+mp-759224,Li5CuF8,Other lithium material,51,Caution,33,0,1,0.702772,0,0.242779
+mp-638690,Li2Y5In9,Other lithium material,61,Caution,33,1,1,0.970264,1,0.870007
+mp-3210771,LiY16In3Pd4,Other lithium material,61,Caution,33,1,1,0.81489,1,0.851456
+mp-1204089,CsLiU(PS4)2,Li-S or sulfide-family,80,Research Candidate,33,1,1,0.975696,1,0.897446
+mp-867903,LiLuAu2,Other lithium material,61,Caution,33,1,1,0.864827,1,0.898231
+mp-3209063,Rb3Li2TiP3,Other lithium material,65,Caution,33,1,1,0.71315,1,0.856545
+mp-755437,Li4VFe3O8,Other lithium material,54,Caution,33,0,0,0.135843,0,0.142306
+mp-1199747,Li2MgB4(H17N3)2,Other lithium material,55,Caution,33,0,1,0.964326,1,0.847771
+mp-6425,Li3In2(PO4)3,Other lithium material,63,Caution,33,1,1,0.76566,1,0.831009
+mp-3263379,Li3U2VO8,Other lithium material,61,Caution,33,1,0,0.141402,0,0.141766
+mp-777446,Li3Mn2FeO6,LMO-family,83,Research Candidate,33,0,0,0.14357,0,0.139608
+mp-3211294,LiSc(TeO4)2,Other lithium material,61,Caution,33,1,0,0.14635,0,0.13741
+mp-706252,LiFe5O8,Other lithium material,54,Caution,33,0,0,0.137015,0,0.142457
+mp-3211211,K3LiAuO4,Other lithium material,61,Caution,33,1,0,0.148535,0,0.129796
+mp-3202449,Li3Y3CdAs2,Other lithium material,51,Caution,33,1,1,0.837599,1,0.889371
+mp-1111097,Li2CuSbF6,Other lithium material,42,Caution,33,0,1,0.860134,1,0.91691
+mp-1177982,Li2Fe(BO3)2,Other lithium material,54,Caution,33,0,0,0.269844,0,0.139349
+mp-3209939,Cs3Li2NbAs3,Other lithium material,51,Caution,33,1,1,0.713507,1,0.854441
+mp-1220813,NaLi2(RuO2)6,Other lithium material,53,Caution,33,0,0,0.305807,0,0.13912
+mp-1175308,Li7Mn5O12,LMO-family,82,Research Candidate,33,0,0,0.136132,0,0.141982
+mp-3204098,KLi2(P3Pd10)2,Other lithium material,63,Caution,33,1,1,0.859455,1,0.868961
+mp-777877,LiCr(PO3)3,Other lithium material,55,Caution,33,0,0,0.134678,0,0.141443
+mp-1176324,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,33,0,0,0.144471,0,0.137275
+mp-1173970,Li3Co2O5,LCO-family,41,Avoid / Benchmark,33,0,0,0.14473,0,0.136516
+mp-1222578,LiSc(BH4)4,Other lithium material,61,Caution,33,1,1,0.682213,1,0.833272
+mp-976047,Li3Hg,Other lithium material,51,Caution,33,1,1,0.796588,1,0.817893
+mp-1103298,LiH3IN,Other lithium material,61,Caution,33,1,1,0.939638,1,0.819822
+mp-1176304,Li9Mn2Co5O16,LCO-family,44,Avoid / Benchmark,33,0,0,0.144318,0,0.137704
+mp-3247803,LiErSnPd,Other lithium material,61,Caution,33,1,1,0.858266,1,0.900631
+mp-935925,Li3Cu(PO4)2,Other lithium material,48,Caution,33,0,0,0.138526,0,0.142239
+mp-753767,LiMnBO3,LMO-family,84,Research Candidate,33,0,0,0.134914,0,0.141582
+mp-3230260,Li3Y3AgP2,Other lithium material,63,Caution,33,1,1,0.837674,1,0.888629
+mp-758102,Li3Co2(SiO4)2,LCO-family,43,Avoid / Benchmark,33,0,0,0.138737,0,0.141787
+mp-560518,RbLi2Be2F7,Other lithium material,47,Caution,33,1,1,0.938766,1,0.837747
+mp-3307918,Cs11LiMn4O16,LMO-family,90,Research Candidate,33,1,0,0.241906,0,0.174339
+mp-1327635,Li2NiP2O7,Other lithium material,44,Caution,33,0,0,0.144581,0,0.13906
+mp-1210897,LiV4O8,Other lithium material,51,Caution,33,0,0,0.142143,0,0.141965
+mp-780723,Li6Mn3(PO4)4,LMO-family,82,Research Candidate,33,0,0,0.133974,0,0.141329
+mp-1175057,Li7Mn2(CoO4)3,LCO-family,39,Avoid / Benchmark,33,0,0,0.137066,0,0.142456
+mp-1223017,Li2TiCr(PO4)3,LTO-family,87,Research Candidate,33,1,0,0.156346,0,0.1433
+mp-3230805,Li3Pr3Si2Pb,Other lithium material,53,Caution,33,1,1,0.838698,1,0.873702
+mp-760195,Li3Fe4(BO3)4,Other lithium material,56,Caution,33,0,0,0.134918,0,0.141937
+mp-3208609,LiAlI4,Other lithium material,61,Caution,33,1,1,0.648116,1,0.837041
+mp-3259330,Li(PaPt4)3,Other lithium material,61,Caution,33,1,1,0.835761,1,0.89002
+mp-765979,Li4Si3(NiO5)2,Silicon-family,75,Research Candidate,33,0,0,0.143876,0,0.142452
+mp-559129,Li3Er(NO3)6,Other lithium material,61,Caution,33,1,1,0.605942,1,0.832956
+mp-772260,Li10Ti4O13,LTO-family,75,Research Candidate,33,0,0,0.133923,0,0.140875
+mp-1222492,Li3ErBr6,Other lithium material,61,Caution,33,1,1,0.62938,1,0.518567
+mp-755691,Li2BiO2,Other lithium material,51,Caution,33,0,0,0.192864,0,0.175416
+mp-3249593,LiNdMgHg,Other lithium material,51,Caution,33,1,1,0.859925,1,0.850301
+mp-770237,LiMnPCO7,LMO-family,86,Research Candidate,33,0,0,0.1445,0,0.140501
+mp-767403,Li5SbS,Li-S or sulfide-family,68,Research Candidate,33,0,1,0.709678,1,0.857382
+mp-727147,LiCoP2O7,LCO-family,38,Avoid / Benchmark,33,0,0,0.154999,0,0.145648
+mp-778976,LiVP4(H2O3)6,Other lithium material,53,Caution,33,0,0,0.146119,0,0.138109
+mp-1222462,Li4CoTeO6,LCO-family,51,Avoid / Benchmark,33,1,0,0.138753,0,0.141018
+mp-18002,KLi3GeO4,Other lithium material,61,Caution,33,1,1,0.583404,1,0.835471
+mp-768250,LiPrPCO7,Carbon-family,86,Recommend,33,0,0,0.135941,0,0.141589
+mp-3200756,Li2Y3(CuSi2)2,Other lithium material,63,Caution,33,1,1,0.647664,1,0.851322
+mp-3205557,Li6ReTc2H27,Other lithium material,61,Caution,33,1,1,0.828156,1,0.822804
+mp-3316479,Ba2Li6P5,Other lithium material,63,Caution,33,1,1,0.793757,1,0.862739
+mp-1174572,Li7Mn2(CoO4)3,LCO-family,39,Avoid / Benchmark,33,0,0,0.144598,0,0.136907
+mp-3342038,Li2P2Pd,Other lithium material,63,Caution,33,1,1,0.782874,1,0.854437
+mp-3294779,K2Li3AlO4,Other lithium material,61,Caution,33,1,0,0.191506,0,0.145769
+mp-22899,LiI,Other lithium material,53,Caution,33,0,1,0.982465,1,0.868969
+mp-865935,Li2MgSn,Other lithium material,53,Caution,33,0,1,0.866433,1,0.835424
+mp-3214046,LiCa(NiH3)2,Other lithium material,57,Caution,33,1,1,0.866063,1,0.854635
+mp-778811,Li2Fe(BO3)2,Other lithium material,54,Caution,44,0,0,0.146586,0,0.142297
+mp-3223485,Li3Dy3ZnSi2,Other lithium material,63,Caution,44,1,1,0.821633,1,0.818682
+mp-1222553,LiAlSiO4,Silicon-family,79,Research Candidate,44,0,0,0.131055,0,0.142319
+mp-758448,Li5NiO3F,Other lithium material,43,Caution,44,0,0,0.147988,0,0.142429
+mp-1211162,LiDyF2,Other lithium material,42,Caution,44,0,1,0.750512,1,0.801629
+mp-3202785,LiCaP2Pd,Other lithium material,63,Caution,44,1,1,0.751326,1,0.856944
+mp-1194726,Li2Se2O7,Other lithium material,61,Caution,44,1,1,0.665258,1,0.813196
+mp-3215782,Li2B2OsRh,Other lithium material,61,Caution,44,1,1,0.64171,1,0.814758
+mp-1210835,Li2BeCl4,Other lithium material,45,Caution,44,0,1,0.671266,1,0.801866
+mp-705277,Li2Co(PO3)4,LCO-family,47,Avoid / Benchmark,44,0,0,0.144233,0,0.142363
+mp-989579,Rb2LiTlCl6,Other lithium material,55,Caution,44,0,1,0.835397,1,0.819612
+mp-1980018,Li2Fe(CoO3)2,LCO-family,43,Avoid / Benchmark,44,0,0,0.150996,0,0.14282
+mp-3249136,Li2Er2Si2Ge,Other lithium material,63,Caution,44,1,1,0.694659,1,0.827946
+mp-1196671,LiZnSi2H47C17N4,Carbon-family,86,Recommend,44,0,1,0.938059,1,0.790461
+mp-859117,LiNi(PO3)3,Other lithium material,49,Caution,44,0,0,0.306169,0,0.133132
+mp-779641,LiCu5(PO4)2,Other lithium material,52,Caution,44,0,0,0.144229,0,0.142407
+mp-569396,BaLi2(MgGe)2,Other lithium material,61,Caution,44,1,1,0.971635,1,0.815049
+mp-753866,Li2VCr(P2O7)2,Other lithium material,63,Caution,44,1,0,0.134127,0,0.142552
+mp-1097183,LiPbAu2,Other lithium material,36,Caution,44,0,1,0.729221,0,0.308907
+mp-1018769,Li3NdSb2,Other lithium material,61,Caution,44,1,1,0.970027,1,0.821946
+mp-779073,LiMnF3,Other lithium material,50,Caution,44,0,1,0.770624,1,0.727911
+mp-1196318,Cs2Li3B3P6(PbO12)2,Other lithium material,53,Caution,44,1,1,0.792861,1,0.814118
+mp-3203044,Cs2LiAlBi2,Other lithium material,61,Caution,44,1,1,0.707997,1,0.807984
+mp-3247075,Li2LaDy2Al7,Other lithium material,61,Caution,44,1,1,0.80285,1,0.817676
+mp-1110649,Rb2LiYF6,Other lithium material,57,Caution,44,1,1,0.815091,1,0.797123
+mp-769611,Li4V3CrO8,Other lithium material,55,Caution,44,0,0,0.136951,0,0.142621
+mp-25991,Li2Ni3(P2O7)2,Other lithium material,59,Caution,44,1,1,0.588131,1,0.813666
+mp-1290773,LiFe2(CO3)4,Carbon-family,88,Recommend,44,0,0,0.143583,0,0.142458
+mp-3244454,Li2NdTcH6,Other lithium material,61,Caution,44,1,1,0.842181,1,0.815983
+mp-753237,Li2Co3NiO8,LCO-family,32,Avoid / Benchmark,44,0,0,0.301194,0,0.180925
+mp-585261,LiMo4(P2O11)2,Other lithium material,57,Caution,44,0,0,0.138522,0,0.142641
+mp-768420,Li24Ti7Cr5O36,LTO-family,79,Research Candidate,44,0,0,0.134524,0,0.142576
+mp-1175947,Li9Mn2Co5O16,LCO-family,44,Avoid / Benchmark,44,0,0,0.142389,0,0.14254
+mp-780203,Li9(FeO4)2,Other lithium material,54,Caution,44,0,0,0.141452,0,0.142591
+mp-775129,Li2Cr3(FeO6)2,Other lithium material,54,Caution,44,0,0,0.186909,0,0.142567
+mp-15845,SrLi4N2,Other lithium material,61,Caution,44,1,1,0.967261,1,0.817174
+mp-721252,Li10Sn(PSe6)2,Other lithium material,63,Caution,44,1,1,0.611554,1,0.769055
+mp-3277772,Li2LaCd9,Other lithium material,51,Caution,44,1,1,0.783123,1,0.792034
+mp-759234,Li3CuF6,Other lithium material,57,Caution,44,1,1,0.62406,0,0.428538
+mp-759070,Li4Fe3P3O12F,LFP-family,90,Recommend,44,0,0,0.341594,0,0.134021
+mp-3240300,LiPrZn3Ir,Other lithium material,61,Caution,44,1,1,0.820917,1,0.819323
+mp-753463,LiV2O2F3,Other lithium material,47,Caution,44,0,0,0.139633,0,0.142652
+mp-31980,LiMn(PO3)4,LMO-family,82,Research Candidate,44,0,0,0.137799,0,0.14256
+mp-1103298,LiH3IN,Other lithium material,61,Caution,44,1,1,0.931796,1,0.819242
+mp-3318191,LiEr9Se10,Other lithium material,61,Caution,44,1,1,0.596042,1,0.523565
+mp-585338,Li3Mn3(PO4)4,LMO-family,86,Research Candidate,44,0,0,0.135693,0,0.142631
+mp-3267513,Li9Al3Pt4,Other lithium material,61,Caution,44,1,1,0.839874,1,0.815408
+mp-1222651,Li2MgGe,Other lithium material,61,Caution,44,1,1,0.844431,1,0.816374
+mp-1235682,LiNb2(PO5)2,Other lithium material,52,Caution,44,0,0,0.223675,0,0.142896
+mp-867197,LiGaNi2,Other lithium material,57,Caution,44,1,1,0.850921,1,0.812088
+mp-758022,LiCoPO4,LCO-family,53,Avoid / Benchmark,44,1,0,0.140832,0,0.142481
+mp-1235281,LiTl6C2(O3F)2,Carbon-family,81,Recommend,44,0,0,0.144991,0,0.142341
+mp-17240,RbNa3Li12(SiO4)4,Silicon-family,87,Research Candidate,44,1,1,0.676503,1,0.812617
+mp-3240403,LiMg(GeRh)2,Other lithium material,61,Caution,44,1,1,0.736331,1,0.822344
+mp-3213981,Li2Sn8OsRh,Other lithium material,61,Caution,44,1,1,0.739745,1,0.755333
+mp-865879,Li2AgAu,Other lithium material,61,Caution,44,1,1,0.8501,1,0.813122
+mp-866191,Li2YbSi,Other lithium material,52,Caution,44,0,1,0.851507,1,0.811303
+mp-12283,Li5Tl2,Other lithium material,61,Caution,44,1,1,0.971938,1,0.812875
+mp-772290,LiAgO,Other lithium material,61,Caution,44,1,0,0.270295,0,0.161659
+mp-728627,Li5Bi2P5O18,Other lithium material,48,Caution,44,0,0,0.16201,0,0.140961
+mp-8864,Li(Co3P2)2,Other lithium material,58,Caution,44,1,1,0.974229,1,0.816939
+mp-1235688,RbLiCu2H3(SO5)2,Li-S or sulfide-family,68,Research Candidate,44,0,0,0.149276,0,0.142686
+mp-25929,Li3Bi2(PO4)3,Other lithium material,55,Caution,44,0,0,0.260593,0,0.137201
+mp-3326821,Li3SiPd,Other lithium material,63,Caution,44,1,1,0.82885,1,0.81821
+mp-1175923,Li9Mn2Co5O16,LCO-family,44,Avoid / Benchmark,44,0,0,0.142319,0,0.142544
+mp-3278527,LiNpO4,Other lithium material,61,Caution,44,1,0,0.143185,0,0.142438
+mp-777467,LiMn2(BO3)2,LMO-family,80,Research Candidate,44,0,0,0.136725,0,0.142661
+mp-3203761,Li3InSiPt3,Other lithium material,63,Caution,44,1,1,0.789041,1,0.828021
+mp-758341,Li3Mn(CO3)3,LMO-family,82,Research Candidate,44,0,0,0.168363,0,0.142359
+mp-1198027,LiSi2B,Other lithium material,63,Caution,44,1,1,0.967599,1,0.807626
+mp-753930,Li2VFeO5,Other lithium material,54,Caution,44,0,0,0.245772,0,0.13781
+mp-1018784,LiCe(CuP)2,Other lithium material,63,Caution,44,1,1,0.970535,1,0.819749
+mp-3214391,Na12Li3MgIn8,Other lithium material,61,Caution,44,1,1,0.806118,1,0.809646
+mp-3201554,LiInPdRh,Other lithium material,61,Caution,44,1,1,0.842392,1,0.816038
+mp-778621,Li32Ti3Cr13O48,LTO-family,79,Research Candidate,44,0,0,0.137179,0,0.142669
+mp-11977,LiSnAu,Other lithium material,61,Caution,44,1,1,0.975573,1,0.814667
+mp-756789,Li3V(Si2O5)3,Silicon-family,79,Research Candidate,44,0,0,0.174329,0,0.142637
+mp-3230040,Li3Tb3Sn2Hg,Other lithium material,51,Caution,44,1,1,0.820172,1,0.817304
+mp-24585,LiZnPH2O5,Other lithium material,57,Caution,44,0,1,0.617539,1,0.81346
+mp-19260,Li2WO4,Other lithium material,61,Caution,44,1,1,0.59001,1,0.813682
+mp-3285298,LiLa8(ZnSi4)3,Other lithium material,63,Caution,44,1,1,0.622202,1,0.804079
+mp-3205776,Li4SiSe4,Other lithium material,63,Caution,44,1,1,0.685338,1,0.849782
+mp-766880,LiCo2(PO4)2,LCO-family,45,Avoid / Benchmark,44,0,0,0.138585,0,0.142673
+mp-764655,Li6MnV3(PO4)6,LMO-family,82,Research Candidate,44,0,0,0.137344,0,0.142531
+mp-760798,Li2CuF5,Other lithium material,47,Caution,44,0,1,0.603895,0,0.401031
+mp-3206340,Li2Ta3NbN6,Other lithium material,61,Caution,44,1,1,0.655988,1,0.807036
+mp-780115,Li7Cr3Co(PO4)6,LCO-family,43,Avoid / Benchmark,44,0,0,0.257779,0,0.138201
+mp-3215708,LiCa3SbO6,Other lithium material,61,Caution,44,1,0,0.278346,0,0.140482
+mp-3252605,Li2YHoSi3,Other lithium material,63,Caution,44,1,1,0.69534,1,0.824122
+mp-850768,Li9V6(P8O29)2,Other lithium material,55,Caution,44,0,0,0.13517,0,0.142609
+mp-1238844,Li(CrS2)2,Li-S or sulfide-family,67,Research Candidate,44,0,1,0.688753,1,0.845161
+mp-777273,LiCrP2O7,Other lithium material,53,Caution,44,0,0,0.143441,0,0.142417
+mp-705001,LiCrP2O7,Other lithium material,55,Caution,44,0,0,0.143394,0,0.142421
+mp-867258,LiZnPd2,Other lithium material,61,Caution,44,1,1,0.84814,1,0.815291
+mp-3345148,Li(LaBi)2,Other lithium material,61,Caution,44,1,1,0.819152,1,0.808763
+mp-3202037,LiSc2ZnPt2,Other lithium material,61,Caution,44,1,1,0.627307,1,0.7906
+mp-755845,Li5V3(NiO5)2,Other lithium material,47,Caution,44,0,0,0.139859,0,0.142635
+mp-1193106,Li2Mg(HN)2,Other lithium material,61,Caution,44,1,1,0.691449,1,0.825504
+mp-3215909,Ba2Li(CuP2)2,Other lithium material,63,Caution,44,1,1,0.703522,1,0.839214
+mp-759278,Li2Cu(PO3)4,Other lithium material,53,Caution,44,0,0,0.145689,0,0.142305
+mp-1174276,Li4Co3O7,LCO-family,41,Avoid / Benchmark,44,0,0,0.144449,0,0.142473
+mp-3200710,LiZr3P2Ir3,Other lithium material,63,Caution,44,1,1,0.814537,1,0.809034
+mp-1177863,Li2Ti3FeO8,LTO-family,78,Research Candidate,44,0,0,0.309417,0,0.153928
+mp-3202289,LiLuHf2N4,Other lithium material,61,Caution,44,1,1,0.737989,1,0.869295
+mp-753207,LiMnPO4,LMO-family,82,Research Candidate,44,0,0,0.140798,0,0.142453
+mp-752847,Li4Fe3(OF3)2,Other lithium material,50,Caution,44,0,0,0.136373,0,0.142607
+mp-867272,LiAlCu2,Other lithium material,61,Caution,44,1,1,0.851829,1,0.810854
+mp-15558,Li3GaF6,Other lithium material,57,Caution,44,1,1,0.923716,1,0.833501
+mp-861624,LiLaHg2,Other lithium material,51,Caution,44,1,1,0.848807,1,0.8146
+mp-757874,LiSiBiO4,Silicon-family,79,Research Candidate,44,0,0,0.157791,0,0.142242
+mp-2012,LiHg,Other lithium material,51,Caution,44,1,1,0.978943,1,0.812879
+mp-35040,LiMg9B20,Other lithium material,55,Caution,44,0,1,0.629399,1,0.821191
+mp-768549,Li2MnV(PO4)3,LMO-family,86,Research Candidate,44,0,0,0.135116,0,0.142606
+mp-849525,Li2Fe3O3F5,Other lithium material,49,Caution,44,0,0,0.142031,0,0.142451
+mp-11644,Li2Ca,Other lithium material,55,Caution,44,0,1,0.980173,1,0.808977
+mp-757654,Li7V3P8O29,Other lithium material,57,Caution,44,0,0,0.134293,0,0.142562
+mp-15999,Li3AuS2,Li-S or sulfide-family,78,Research Candidate,44,1,1,0.950541,1,0.833142
+mp-766101,Li2FeP2HO8,LFP-family,100,Recommend,44,1,0,0.138683,0,0.142568
+mp-3333570,LiHo2Pt5,Other lithium material,61,Caution,44,1,1,0.769542,1,0.849118
+mp-560160,Li2U5MoO19,Other lithium material,53,Caution,44,0,1,0.571735,1,0.813075
+mp-3252983,LiNdMnPt3,Other lithium material,64,Caution,44,1,1,0.791854,1,0.827861
+mp-1177709,Li3Cr4P5O24,Other lithium material,53,Caution,44,0,0,0.143517,0,0.142424
+mp-3503,Li6WN4,Other lithium material,61,Caution,44,1,1,0.965534,1,0.823908
+mp-772427,Li3Fe(PO4)2,LFP-family,96,Recommend,44,0,0,0.144833,0,0.142354
+mp-3222752,NaLi4Eu3Bi4,Other lithium material,61,Caution,44,1,1,0.621509,1,0.795566
+mp-761189,LiFeO3,Other lithium material,49,Caution,44,0,0,0.157022,0,0.143735
+mp-1197580,Li6Ca17Hg9,Other lithium material,51,Caution,44,1,1,0.979862,1,0.812131
+mp-3203216,SrLi3As2Pd,Other lithium material,51,Caution,44,1,1,0.791729,1,0.827982
+mp-3210308,LiCu2(Se3I)3,Other lithium material,61,Caution,44,1,1,0.640357,1,0.814179
+mp-1174200,Li3MnCoO5,LCO-family,43,Avoid / Benchmark,44,0,0,0.146345,0,0.14253
+mp-774626,Li4Ti3Mn4(FeO9)2,LMO-family,85,Research Candidate,44,0,0,0.154079,0,0.142151
+mp-3258163,Li(NbSe2)3,Other lithium material,61,Caution,44,1,1,0.81815,1,0.808588
+mp-3253026,LiSmHgPt3,Other lithium material,51,Caution,44,1,1,0.792482,1,0.827179
+mp-3265233,Li(ZrPd4)3,Other lithium material,61,Caution,44,1,1,0.817846,1,0.816875
+mp-1113081,Cs2LiScF6,Other lithium material,51,Caution,44,0,1,0.81571,1,0.798238
+mp-849625,Li5Mn6(BO3)6,LMO-family,82,Research Candidate,44,0,0,0.140875,0,0.14246
+mp-3207036,LiB2Ir2Pt,Other lithium material,61,Caution,44,1,1,0.640601,1,0.815252
+mp-25857,Li4Mn5(P3O11)2,LMO-family,84,Research Candidate,44,0,0,0.143677,0,0.142399
+mp-606680,CsLi2Br3,Other lithium material,55,Caution,44,0,1,0.683911,1,0.83891
+mp-3211975,LiCoPtS4,Li-S or sulfide-family,73,Research Candidate,44,1,1,0.707099,1,0.832322
+mp-3200746,Li2Lu3MgSn3,Other lithium material,61,Caution,44,1,1,0.665861,1,0.817012
+mp-753933,Li4SbTe2WO12,Other lithium material,51,Caution,44,0,0,0.141229,0,0.142602
+mp-759692,Li7V5O12,Other lithium material,51,Caution,44,0,0,0.143932,0,0.142358
+mp-772176,Li3Nb7O19,Other lithium material,51,Caution,44,0,0,0.285261,0,0.149305
+mp-504426,LiH5S(NO2)2,Li-S or sulfide-family,68,Research Candidate,44,0,1,0.634847,1,0.809126
+mp-1174215,Li4Mn3CoO8,LCO-family,46,Avoid / Benchmark,44,0,0,0.14122,0,0.142608
+mp-3247282,LiEr4MnC8,Carbon-family,98,Recommend,44,1,1,0.651122,1,0.811482
+mp-755022,Li2CoOF3,LCO-family,37,Avoid / Benchmark,44,0,0,0.141596,0,0.142435
+mp-764988,Li4V3P8O29,Other lithium material,55,Caution,44,0,0,0.135322,0,0.142616
+mp-1236728,LiSc2(AgO2)2,Other lithium material,46,Caution,44,0,0,0.270172,0,0.135329
+mp-778284,Li4V3Co2Sn3O16,LCO-family,41,Avoid / Benchmark,44,0,0,0.139419,0,0.142662
+mp-1175100,Li7Mn2(CoO4)3,LCO-family,43,Avoid / Benchmark,44,0,0,0.146837,0,0.142551
+mp-764642,Li2CoSiO4,LCO-family,45,Avoid / Benchmark,44,0,0,0.233413,0,0.139966
+mp-1174003,Li5Co3O8,LCO-family,43,Avoid / Benchmark,44,0,0,0.150901,0,0.142688
+mp-3248983,LiDy3Ag2Sn3,Other lithium material,61,Caution,44,1,1,0.664873,1,0.818932
+mp-557456,Li4Al3Ge3IO12,Other lithium material,61,Caution,44,1,1,0.811132,1,0.814524
+mp-764481,LiMnV(P2O7)2,LMO-family,86,Research Candidate,44,0,0,0.135163,0,0.142608
+mp-3267719,Li3Ca2Mg,Other lithium material,61,Caution,44,1,1,0.830945,1,0.822253
+mp-3241433,Li3NpAs2,Other lithium material,51,Caution,44,1,1,0.793794,1,0.825714
+mp-756948,Li4Cu3SbO8,Other lithium material,51,Caution,44,0,0,0.294366,0,0.149009
+mp-6332,Li2TiSiO5,LTO-family,87,Research Candidate,44,1,1,0.717161,1,0.814057
+mp-774293,Li4Ti4Mn4CoO18,LCO-family,46,Avoid / Benchmark,44,0,0,0.174248,0,0.142518
+mp-1102842,Li4Nd3Ge4,Other lithium material,61,Caution,44,1,1,0.952254,1,0.818227
+mp-1369597,Li2CrSi7O16,Silicon-family,72,Research Candidate,44,0,0,0.210153,0,0.143187
+mp-722502,Li3P11(H3N)17,Other lithium material,57,Caution,44,0,1,0.933063,1,0.801249
+mp-782660,LiMnP3H8O13,LMO-family,82,Research Candidate,44,0,0,0.141654,0,0.142596
+mp-864614,LiMg2Pt,Other lithium material,61,Caution,44,1,1,0.847877,1,0.815549
+mp-757776,Li2CoP2O7,LCO-family,45,Avoid / Benchmark,44,0,0,0.144763,0,0.142336
+mp-3229788,LiNp2CdBi4,Other lithium material,51,Caution,44,1,1,0.754973,1,0.805051
+mp-3276762,LiZnSbO4,Other lithium material,61,Caution,44,1,0,0.217481,0,0.141756
+mp-3211370,Li3SiSnPt3,Other lithium material,63,Caution,44,1,1,0.78939,1,0.827237
+mp-3205735,Sr2Li(As3Pd10)2,Other lithium material,51,Caution,44,1,1,0.848929,1,0.814468
+mp-561410,LiFeMoClO4,Other lithium material,64,Caution,44,1,1,0.592256,1,0.813662
+mp-850939,Li2MnV(P2O7)2,LMO-family,92,Research Candidate,44,1,0,0.134484,0,0.142574
+mp-766812,Li2SiNiO4,Silicon-family,75,Research Candidate,44,0,0,0.14519,0,0.142319
+mp-772620,Li4Ni2(PO4)3,Other lithium material,49,Caution,44,0,0,0.137834,0,0.142636
+mp-37906,LiMgN,Other lithium material,61,Caution,44,1,1,0.839294,1,0.814863
+mp-1173948,Li3Mn2CoO6,LCO-family,44,Avoid / Benchmark,44,0,0,0.148627,0,0.142471
+mp-754582,Li5Nb2Fe3O10,Other lithium material,54,Caution,44,0,0,0.138614,0,0.142641
+mp-766883,Li4Ti4Mn4VO18,LMO-family,82,Research Candidate,44,0,0,0.172907,0,0.142574
+mp-779364,Li2CoBO4,LCO-family,41,Avoid / Benchmark,44,0,0,0.184274,0,0.142537
+mp-3221819,Li4Pr4PtRh3,Other lithium material,61,Caution,44,1,1,0.627134,1,0.815283
+mp-849612,LiFe4(BO3)4,Other lithium material,54,Caution,44,0,0,0.138503,0,0.142674
+mp-1212005,KLiWO4,Other lithium material,61,Caution,44,1,0,0.146488,0,0.142297
+mp-776339,LiFeF4,Other lithium material,50,Caution,44,0,1,0.595296,0,0.23132
+mp-1650352,Li3CoPCO7,LCO-family,45,Avoid / Benchmark,44,0,0,0.138176,0,0.142675
+mp-1080625,Sr2LiReO6,Other lithium material,61,Caution,44,1,1,0.674327,1,0.812913
+mp-28146,LiGa5O8,Other lithium material,61,Caution,44,1,1,0.80974,1,0.814422
+mp-3342903,LiDy7Hg4,Other lithium material,51,Caution,44,1,1,0.629554,1,0.818816
+mp-766462,Li2FePO5,LFP-family,94,Recommend,44,0,0,0.140758,0,0.142482
+mp-3215314,Ba8Li(AgO4)3,Other lithium material,61,Caution,44,1,0,0.166058,0,0.14227
+mp-807965,Li4MnFe3(PO4)4,LMFP-family,88,Research Candidate,44,0,0,0.152662,0,0.141806
+mp-831271,LiFe3O3F4,Other lithium material,49,Caution,44,0,0,0.278238,0,0.133483
+mp-1188255,LiLaGe2,Other lithium material,61,Caution,44,1,1,0.949835,1,0.818936
+mp-1176189,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,44,0,0,0.142583,0,0.142528
+mp-279,LiIr,Other lithium material,61,Caution,44,1,1,0.974911,1,0.813265
+mp-570931,SrLi3MnN3,Other lithium material,64,Caution,44,1,1,0.96798,1,0.820318
+mp-3201746,BaLi2SiSe4,Other lithium material,63,Caution,44,1,1,0.747255,1,0.870904
+mp-1197150,Li(PrGe)4,Other lithium material,61,Caution,44,1,1,0.949507,1,0.821917
+mp-3331826,LiNd3S4,Li-S or sulfide-family,78,Research Candidate,44,1,1,0.649592,1,0.695478
+mp-1176659,LiVCO5,Carbon-family,85,Recommend,55,0,0,0.147652,0,0.155821
+mp-1178332,Li(CoO2)2,LCO-family,43,Avoid / Benchmark,55,0,0,0.155355,0,0.15596
+mp-8310,Li(NiP)2,Other lithium material,59,Caution,55,1,1,0.97827,1,0.833327
+mp-31441,Li2GaIr,Other lithium material,61,Caution,55,1,1,0.985584,1,0.846606
+mp-1211848,KLiMoO5,Other lithium material,46,Caution,55,0,0,0.197448,0,0.262141
+mp-775012,Li3Co2(PO4)3,LCO-family,43,Avoid / Benchmark,55,0,0,0.268997,0,0.155784
+mp-1020031,LiCaAlN2,Other lithium material,61,Caution,55,1,1,0.957094,1,0.870029
+mp-760791,Li4Cu5F17,Other lithium material,49,Caution,55,0,1,0.606792,0,0.457142
+mp-1093889,Li2ZnAg,Other lithium material,46,Caution,55,0,1,0.744507,0,0.477697
+mp-3250067,Li2DyThSi3,Other lithium material,63,Caution,55,1,1,0.708809,1,0.839858
+mp-760014,LiSbF4,Other lithium material,47,Caution,55,0,1,0.591676,0,0.171115
+mp-3231218,LiEr3Cd3Au2,Other lithium material,51,Caution,55,1,1,0.824795,1,0.840332
+mp-619100,LiEuTiO4,LTO-family,74,Research Candidate,55,0,1,0.724081,1,0.868898
+mp-764928,LiVP2O7,Other lithium material,55,Caution,55,0,0,0.146441,0,0.15581
+mp-3210013,Na5Li3(SiS4)2,Li-S or sulfide-family,80,Research Candidate,55,1,1,0.64061,1,0.765811
+mp-780579,Li3V3P8O29,Other lithium material,55,Caution,55,0,0,0.148213,0,0.15561
+mp-9918,LiGe,Other lithium material,61,Caution,55,1,1,0.972717,1,0.813302
+mp-6726,CsLiSO4,Li-S or sulfide-family,78,Research Candidate,55,1,1,0.693884,1,0.831368
+mp-644136,Li2H2Pt,Other lithium material,61,Caution,55,1,1,0.969494,1,0.836544
+mp-755926,Li3CoO3,LCO-family,43,Avoid / Benchmark,55,0,0,0.151573,0,0.15545
+mp-7243,LiSnPd2,Other lithium material,61,Caution,55,1,1,0.986008,1,0.85567
+mp-774762,Li2Cu2S3,Li-S or sulfide-family,68,Research Candidate,55,0,1,0.65088,1,0.829729
+mp-3200748,SrLi2Bi2Pb,Other lithium material,51,Caution,55,1,1,0.804907,1,0.8444
+mp-763784,LiMn2F6,Other lithium material,50,Caution,55,0,1,0.594506,0,0.13782
+mp-3263156,Li5(ZnNi3)2,Other lithium material,57,Caution,55,1,1,0.809625,1,0.812547
+mp-753439,Li3MnVP2(HO5)2,LMO-family,84,Research Candidate,55,0,0,0.144266,0,0.155665
+mp-3281538,Li(In4Ir)2,Other lithium material,61,Caution,55,1,1,0.660561,1,0.842265
+mp-893207,Li5Mn6(BO3)6,LMO-family,75,Research Candidate,55,0,0,0.147155,0,0.155802
+mp-1285961,Li(CoO2)3,LCO-family,43,Avoid / Benchmark,55,0,0,0.164432,0,0.15375
+mp-3208831,LiV3(SeO6)2,Other lithium material,61,Caution,55,1,0,0.150715,0,0.155485
+mp-1223097,Li2HN,Other lithium material,55,Caution,55,0,1,0.691507,1,0.837965
+mp-22439,Li2MoF6,Other lithium material,57,Caution,55,1,1,0.972953,1,0.868411
+mp-3211058,Li3BiPtO6,Other lithium material,55,Caution,55,0,0,0.158217,0,0.153606
+mp-1193504,Li4H7RhS3O13,Li-S or sulfide-family,63,Research Candidate,55,0,1,0.836661,1,0.78712
+mp-3202483,LiCaPRh2,Other lithium material,63,Caution,55,1,1,0.750737,1,0.855035
+mp-3246412,Li6Nd2NpN6,Other lithium material,61,Caution,55,1,1,0.791823,1,0.861298
+mp-3298696,LiBi4Pd11,Other lithium material,61,Caution,55,1,1,0.673433,1,0.836785
+mp-3215663,Ba2LiZn25,Other lithium material,61,Caution,55,1,1,0.839594,1,0.830219
+mp-1205186,Li2Fe2P2O8F,LFP-family,89,Recommend,55,0,0,0.18662,0,0.167769
+mp-26897,LiSn(PO3)3,Other lithium material,55,Caution,55,0,0,0.307795,0,0.156289
+mp-3203859,RbLiCO3,Carbon-family,95,Recommend,55,1,0,0.158168,0,0.155508
+mp-1211152,Li3Eu3(TeO6)2,Other lithium material,55,Caution,55,0,0,0.357442,0,0.163212
+mp-7955,Li3Sb,Other lithium material,61,Caution,55,1,1,0.983452,1,0.848739
+mp-756915,Li3VCr4O8,Other lithium material,51,Caution,55,0,0,0.153543,0,0.155342
+mp-2426,LiAg,Other lithium material,61,Caution,55,1,1,0.98632,1,0.837363
+mp-861955,LiPm2Ge,Other lithium material,61,Caution,55,1,1,0.85272,1,0.830239
+mp-673706,Li7(Mo3Se4)4,Other lithium material,61,Caution,55,1,1,0.632865,1,0.824262
+mp-643069,Li2HIO,Other lithium material,61,Caution,55,1,1,0.755387,1,0.835769
+mp-3201272,LiLuHgPb,Other lithium material,51,Caution,55,1,1,0.84602,1,0.833287
+mp-27466,LiTe3,Other lithium material,61,Caution,55,1,1,0.986248,1,0.85789
+mp-1211360,Li8EuSn7,Other lithium material,51,Caution,55,0,1,0.714294,1,0.823287
+mp-7744,LiSO3F,Li-S or sulfide-family,74,Research Candidate,55,1,1,0.693162,1,0.821752
+mp-1100698,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,55,0,0,0.158276,0,0.154016
+mp-3266786,RbLi6SbO6,Other lithium material,61,Caution,55,1,0,0.292106,0,0.147208
+mp-3213228,CsLi2TaS4,Li-S or sulfide-family,78,Research Candidate,55,1,1,0.667589,1,0.770307
+mp-756952,Li4MnF8,Other lithium material,52,Caution,55,0,1,0.591207,0,0.127991
+mp-755000,LiTiO2,LTO-family,75,Research Candidate,55,0,0,0.297324,0,0.159132
+mp-1180721,Li4CO4,Carbon-family,85,Recommend,55,0,0,0.152326,0,0.154826
+mp-3202989,LiReF6,Other lithium material,57,Caution,55,1,1,0.761725,1,0.843527
+mp-5061,Li5ReO6,Other lithium material,61,Caution,55,1,1,0.691528,1,0.829085
+mp-1567493,Li2V(CO3)2,Carbon-family,87,Recommend,55,0,0,0.156234,0,0.155591
+mp-3323719,Li6Ga13Ag,Other lithium material,61,Caution,55,1,1,0.653286,1,0.844932
+mp-766456,LiFe2(PO4)2,LFP-family,96,Recommend,55,0,0,0.163726,0,0.158823
+mp-3252406,Li3Tb3CdBi2,Other lithium material,51,Caution,55,1,1,0.824516,1,0.840773
+mp-762500,LiTi2P3O11,LTO-family,76,Research Candidate,55,0,0,0.141887,0,0.155814
+mp-777446,Li3Mn2FeO6,LMO-family,83,Research Candidate,55,0,0,0.156018,0,0.155038
+mp-1177472,Li4Co(BO3)2,LCO-family,41,Avoid / Benchmark,55,0,0,0.185563,0,0.170512
+mp-1662795,Li4Ti2Fe3Sb3O16,LTO-family,78,Research Candidate,55,0,0,0.146129,0,0.155758
+mp-768150,LiBi3(BrO2)2,Other lithium material,61,Caution,55,1,0,0.198867,0,0.264969
+mp-3337287,Li(CuS)4,Li-S or sulfide-family,78,Research Candidate,55,1,1,0.807329,1,0.837084
+mp-3249359,LiLa7PaIr6,Other lithium material,61,Caution,55,1,1,0.787464,1,0.853127
+mp-780485,LiVP2HO8,Other lithium material,55,Caution,55,0,0,0.143499,0,0.155622
+mp-3206165,LiGaPtO4,Other lithium material,61,Caution,55,1,0,0.210257,0,0.32317
+mp-3368,LiNb3O8,Other lithium material,61,Caution,55,1,1,0.680561,1,0.849321
+mp-14871,Li16Ta2N8O,Other lithium material,61,Caution,55,1,1,0.836471,1,0.796375
+mp-1210919,LiLa(WO4)2,Other lithium material,61,Caution,55,1,0,0.142059,0,0.155556
+mp-3200903,KLiMnSe2,Other lithium material,64,Caution,55,1,1,0.754182,1,0.867455
+mp-756414,Li2Cr3CoO8,LCO-family,41,Avoid / Benchmark,55,0,0,0.292101,0,0.147212
+mp-3255843,Na3Li(RuO3)2,Other lithium material,61,Caution,55,1,0,0.161103,0,0.15429
+mp-697926,LiCd2HSe2O7,Other lithium material,51,Caution,55,1,1,0.708682,1,0.704812
+mp-3253283,LiNpF6,Other lithium material,57,Caution,55,1,1,0.744713,1,0.74558
+mp-778622,Li3Fe2(SiO4)2,Silicon-family,80,Research Candidate,55,0,0,0.147389,0,0.155527
+mp-760844,Li4Mn2V3O12,LMO-family,82,Research Candidate,55,0,0,0.15365,0,0.155672
+mp-3212227,LiTaMoN3,Other lithium material,61,Caution,55,1,1,0.672211,1,0.805184
+mp-9719,Na2LiAlP2,Other lithium material,63,Caution,55,1,1,0.968219,1,0.841835
+mp-1174860,Li7Mn2(CoO4)3,LCO-family,43,Avoid / Benchmark,55,0,0,0.151703,0,0.155444
+mp-771156,Li5Nb2Ni5O12,Other lithium material,46,Caution,55,0,0,0.151498,0,0.154827
+mp-1233010,Rb2LiNd2(WO4)4,Other lithium material,51,Caution,55,0,0,0.145294,0,0.155606
+mp-3247426,LiThFeH6,Other lithium material,64,Caution,55,1,1,0.846691,1,0.832275
+mp-1222657,Li2GePd,Other lithium material,61,Caution,55,1,1,0.845206,1,0.834436
+mp-3322925,LiCr(SbO3)4,Other lithium material,61,Caution,55,1,0,0.172516,0,0.174229
+mp-559814,Li5SbS3I2,Li-S or sulfide-family,78,Research Candidate,55,1,1,0.965333,1,0.866419
+mp-1177229,Li4V3P8O29,Other lithium material,55,Caution,55,0,0,0.142471,0,0.155559
+mp-779071,LiV2(OF)3,Other lithium material,46,Caution,55,0,0,0.140781,0,0.155446
+mp-3204423,K3Li2ZrP3,Other lithium material,63,Caution,55,1,1,0.70597,1,0.84278
+mp-1175347,Li7Mn5O12,LMO-family,82,Research Candidate,55,0,0,0.154899,0,0.155182
+mp-1104857,Sr3Li4(SiN3)2,Other lithium material,63,Caution,55,1,1,0.957195,1,0.86843
+mp-1235437,LiFePbO3,Other lithium material,39,Caution,55,0,0,0.259486,0,0.264703
+mp-1174419,Li4MnCo2O7,LCO-family,44,Avoid / Benchmark,55,0,0,0.151505,0,0.155453
+mp-754890,Li4Mn(PO3)6,LMO-family,82,Research Candidate,55,0,0,0.142066,0,0.155533
+mp-779446,Li3MnFe2(BO3)3,LMO-family,87,Research Candidate,55,0,0,0.14783,0,0.15539
+mp-3250921,LiDyMgHg,Other lithium material,51,Caution,55,1,1,0.847232,1,0.831415
+mp-1174817,Li4MnCo2O7,LCO-family,43,Avoid / Benchmark,55,0,0,0.156089,0,0.154039
+mp-1112669,Cs2LiTbCl6,Other lithium material,61,Caution,55,1,1,0.827509,1,0.830914
+mp-762387,Li2(NiO2)5,Other lithium material,47,Caution,55,0,0,0.160609,0,0.154881
+mp-26125,Li2Fe(PO3)4,LFP-family,98,Recommend,55,0,0,0.185882,0,0.153858
+mp-753231,Li2V4O3F8,Other lithium material,47,Caution,55,0,0,0.138778,0,0.155433
+mp-762515,Li2Cu3(CO3)3,Carbon-family,85,Recommend,55,0,0,0.154026,0,0.155956
+mp-752752,LiMnF6,Other lithium material,60,Caution,55,1,1,0.764404,1,0.851647
+mp-1196457,Li2B3O4F3,Other lithium material,57,Caution,55,1,1,0.685779,1,0.853296
+mp-3210359,Rb2LiAlH6,Other lithium material,61,Caution,55,1,1,0.810609,1,0.831593
+mp-754783,Li3MnV4O12,LMO-family,80,Research Candidate,55,0,0,0.147478,0,0.155384
+mp-3203038,LiZn(Sn4Ru)2,Other lithium material,61,Caution,55,1,1,0.742243,1,0.795327
+mp-780192,Li5FeO4,Other lithium material,56,Caution,55,0,0,0.149052,0,0.155868
+mp-1110869,K2LiBiCl6,Other lithium material,61,Caution,55,1,1,0.835087,1,0.839752
+mp-3212842,Rb12Li4Si15Ge,Other lithium material,63,Caution,55,1,1,0.653556,1,0.842807
+mp-771080,Li2NiBO4,Other lithium material,47,Caution,55,0,0,0.170888,0,0.169772
+mp-3248323,LiCe2Si4Ag,Other lithium material,63,Caution,55,1,1,0.68181,1,0.838643
+mp-752607,LiVF3,Other lithium material,49,Caution,55,0,1,0.75344,1,0.806691
+mp-3203653,Ba4LiCr3N8,Other lithium material,61,Caution,55,1,1,0.639844,1,0.817653
+mp-759219,LiMn2(PO3)5,LMO-family,82,Research Candidate,55,0,0,0.14807,0,0.155628
+mp-560739,K3Li3TeO6,Other lithium material,61,Caution,55,1,1,0.75046,1,0.862568
+mp-851349,Li4Fe3Sn2Sb3O16,Other lithium material,56,Caution,55,0,0,0.154275,0,0.154433
+mp-1581648,LiCoBO3,LCO-family,40,Avoid / Benchmark,55,0,0,0.155569,0,0.155615
+mp-1176833,Li8MnFe7(BO3)8,LMO-family,87,Research Candidate,55,0,0,0.144999,0,0.155704
+mp-1176393,Na2LiCu(PO3)4,Other lithium material,55,Caution,55,0,0,0.148957,0,0.155512
+mp-775971,Li5Sn5(PO4)6,Other lithium material,53,Caution,55,0,0,0.144345,0,0.155669
+mp-767600,Li2MnF5,Other lithium material,50,Caution,55,0,1,0.592496,0,0.128103
+mp-1222447,LiP5Pb2O15,Other lithium material,53,Caution,55,1,0,0.146754,0,0.155607
+mp-3241310,Li2CoAs2Ru,Other lithium material,46,Caution,55,1,1,0.763119,1,0.838377
+mp-768476,Li3VS4,Li-S or sulfide-family,68,Research Candidate,55,0,1,0.674019,1,0.798126
+mp-3246068,LiNdH6Os,Other lithium material,61,Caution,55,1,1,0.844608,1,0.835227
+mp-3252342,NaLi2LaAs2,Other lithium material,51,Caution,55,1,1,0.797724,1,0.858853
+mp-861667,LiSbRh2,Other lithium material,61,Caution,55,1,1,0.85035,1,0.834283
+mp-3203453,LiZn(Sn4Os)2,Other lithium material,61,Caution,55,1,1,0.743864,1,0.780178
+mp-560667,CsLi(PO3)2,Other lithium material,63,Caution,55,1,1,0.717819,1,0.87534
+mp-1210400,Na3LiTi2F12,Other lithium material,59,Caution,55,1,1,0.709947,1,0.493312
+mp-759667,Li2Sn(BO3)2,Other lithium material,51,Caution,55,0,0,0.145144,0,0.155566
+mp-1174248,Li4Mn3O7,LMO-family,82,Research Candidate,55,0,0,0.148002,0,0.155565
+mp-755686,Li2VF6,Other lithium material,47,Caution,55,0,1,0.660957,0,0.222166
+mp-3231556,LiPd3Au4,Other lithium material,61,Caution,55,1,1,0.789204,1,0.818198
+mp-3244789,LiSm2Ag3O8,Other lithium material,61,Caution,55,1,0,0.153078,0,0.155379
+mp-3204508,Rb2LiLuAs2,Other lithium material,51,Caution,55,1,1,0.703381,1,0.840717
+mp-973561,LiCe2Ru,Other lithium material,50,Caution,55,0,1,0.856522,1,0.821681
+mp-776954,Li2MnPHO5,LMO-family,82,Research Candidate,55,0,0,0.145575,0,0.155594
+mp-780863,Li4V2Fe3Cu3O16,Other lithium material,53,Caution,55,0,0,0.157004,0,0.153832
+mp-1313454,LiMnCo3O8,LCO-family,46,Avoid / Benchmark,55,0,0,0.161707,0,0.153274
+mp-1177705,Li3CoPCO7,LCO-family,45,Avoid / Benchmark,55,0,0,0.145785,0,0.155742
+mp-760112,Li2MnO2F,LMO-family,78,Research Candidate,55,0,0,0.187783,0,0.165459
+mp-3250351,Li2Sm2Si2Sn,Other lithium material,63,Caution,55,1,1,0.707019,1,0.841912
+mp-774252,Li4Cr2Fe3Sb3O16,Other lithium material,54,Caution,55,0,0,0.148869,0,0.155863
+mp-759977,LiVF4,Other lithium material,46,Caution,55,0,1,0.583832,0,0.077922
+mp-3259042,Li(TiS2)4,Li-S or sulfide-family,80,Research Candidate,55,1,1,0.632074,1,0.707321
+mp-1035108,LiMg14GaO16,Other lithium material,55,Caution,55,0,0,0.169714,0,0.141155
+mp-1174825,Li4MnCo2O7,LCO-family,44,Avoid / Benchmark,55,0,0,0.155538,0,0.154162
+mp-1223032,Li9Nd2(PS4)5,Li-S or sulfide-family,80,Research Candidate,55,1,1,0.641784,1,0.776433
+mp-753500,Li4V(PO4)2,Other lithium material,55,Caution,55,0,0,0.142224,0,0.15556
+mp-3284638,Li2ZrSe3,Other lithium material,61,Caution,55,1,1,0.631821,1,0.703873
+mp-25446,Li3NiPCO7,Carbon-family,85,Recommend,55,0,0,0.152256,0,0.155321
+mp-989512,LiTl2InCl6,Other lithium material,61,Caution,55,1,1,0.839084,1,0.841484
+mp-25284,LiMn2NiO6,LMO-family,76,Research Candidate,55,0,0,0.162179,0,0.155902
+mp-760785,Li8VNi3(PO4)6,Other lithium material,49,Caution,55,0,0,0.263559,0,0.15591
+mp-1185034,Li2CdIn,Other lithium material,43,Caution,55,0,1,0.854005,1,0.827641
+mp-780112,Li5Mn8(BO3)8,LMO-family,80,Research Candidate,55,0,0,0.143916,0,0.155646
+mp-568863,LiEu2CBr3N2,Carbon-family,95,Recommend,55,1,1,0.984835,1,0.864578
+mp-771145,Li2NiCSO7,Li-S or sulfide-family,66,Research Candidate,55,0,0,0.156026,0,0.154747
+mp-1290831,Li2VO2F,Other lithium material,47,Caution,55,0,0,0.142117,0,0.155558
+mp-1262173,Li2Fe2Si2O9,Silicon-family,79,Research Candidate,55,0,0,0.167998,0,0.163064
+mp-757550,Li3V3P8O29,Other lithium material,55,Caution,55,0,0,0.143007,0,0.155592
+mp-776389,LiV2OF5,Other lithium material,47,Caution,55,0,0,0.252536,0,0.154763
+mp-1222798,Li14MgSi4,Other lithium material,63,Caution,55,1,1,0.774754,1,0.807222
+mp-1218822,Sr2LiB10H3O19,Other lithium material,61,Caution,55,1,0,0.140306,0,0.155412
+mp-7714,Li4UO5,Other lithium material,61,Caution,55,1,1,0.758739,1,0.877767
+mp-3222500,Li2Cr(NiAs)3,Other lithium material,47,Caution,55,1,1,0.683694,1,0.83804
+mp-1174834,Li6Mn3CoO10,LCO-family,44,Avoid / Benchmark,55,0,0,0.149107,0,0.15587
+mp-25991,Li2Ni3(P2O7)2,Other lithium material,59,Caution,55,1,1,0.692336,1,0.837084
+mp-504263,Li14Co9(P2O7)8,LCO-family,45,Avoid / Benchmark,55,0,0,0.144495,0,0.155593
+mp-3210659,Ba4LiAuO6,Other lithium material,61,Caution,55,1,0,0.19148,0,0.187587
+mp-755743,Li2TiCrO4,LTO-family,75,Research Candidate,55,0,0,0.194548,0,0.147003
+mp-3323200,Li4IrO5,Other lithium material,61,Caution,55,1,0,0.153101,0,0.155377
+mp-638141,LiSn5Rh3,Other lithium material,61,Caution,55,1,1,0.967505,1,0.836609
+mp-1222600,Li2ZnSn,Other lithium material,61,Caution,55,1,1,0.848003,1,0.830126
+mp-557892,BaLi(BS2)3,Li-S or sulfide-family,78,Research Candidate,55,1,1,0.955944,1,0.870856
+mp-806951,LiVFeP2(O4F)2,LFP-family,85,Recommend,55,0,0,0.183347,0,0.155308
+mp-1185391,LiPr2Al,Other lithium material,55,Caution,55,0,1,0.855223,1,0.824902
+mp-11807,LiPt,Other lithium material,61,Caution,55,1,1,0.982995,1,0.843009
+mp-1211541,Li6Sm(BO3)3,Other lithium material,61,Caution,55,1,0,0.148256,0,0.155714
+mp-766592,Li3NiPCO7,Carbon-family,83,Recommend,55,0,0,0.154766,0,0.155641
+mp-3286656,LiTm3Pt2,Other lithium material,61,Caution,55,1,1,0.665147,1,0.816144
+mp-1100639,Li9Mn2Co5O16,LCO-family,39,Avoid / Benchmark,55,0,0,0.157343,0,0.153754
+mp-3205940,LiY3(Si4Tc3)2,Other lithium material,63,Caution,55,1,1,0.63668,1,0.837832
+mp-3202571,LiCaInN2,Other lithium material,61,Caution,55,1,1,0.798322,1,0.845016
+mp-766702,Li4Si3NiO9,Silicon-family,73,Research Candidate,55,0,0,0.143879,0,0.155714
+mp-756117,Li2TiTeO6,LTO-family,85,Research Candidate,55,1,0,0.166836,0,0.159433
+mp-3229829,LiNd3Hg3Pt2,Other lithium material,51,Caution,55,1,1,0.821992,1,0.844352
+mp-3248093,Li6Sm2PuN6,Other lithium material,61,Caution,55,1,1,0.793046,1,0.859404
+mp-3214723,Rb2LiCrH6,Other lithium material,61,Caution,55,1,1,0.811189,1,0.829488
+mp-1174216,Li4Mn3CoO8,LCO-family,46,Avoid / Benchmark,55,0,0,0.14947,0,0.155528
+mp-754086,Li2CuS2,Li-S or sulfide-family,68,Research Candidate,55,0,1,0.674303,1,0.824721
+mp-1177564,Li3MnV(PO4)3,LMO-family,84,Research Candidate,55,0,0,0.141757,0,0.155513
+mp-1111150,K2LiCoF6,Other lithium material,52,Caution,66,1,1,0.789007,1,0.774556
+mp-4913,LiGa2Rh,Other lithium material,61,Caution,66,1,1,0.980245,1,0.865174
+mp-1176186,Li9Mn2Co5O16,LCO-family,39,Avoid / Benchmark,66,0,0,0.170853,0,0.139763
+mp-644419,LiHS,Li-S or sulfide-family,78,Research Candidate,66,1,1,0.731798,1,0.884402
+mp-777187,Li3Fe9O5F11,Other lithium material,50,Caution,66,0,0,0.149699,0,0.138315
+mp-752528,LiP2WO7,Other lithium material,57,Caution,66,0,0,0.141262,0,0.137542
+mp-2426,LiAg,Other lithium material,61,Caution,66,1,1,0.981831,1,0.843977
+mp-1312877,Li2VOF4,Other lithium material,51,Caution,66,0,0,0.123764,0,0.134226
+mp-19440,LiVO3,Other lithium material,61,Caution,66,1,0,0.149873,0,0.138693
+mp-3210771,LiY16In3Pd4,Other lithium material,61,Caution,66,1,1,0.840804,1,0.860745
+mp-3206151,LiAs(PS3)2,Li-S or sulfide-family,70,Research Candidate,66,1,1,0.748297,1,0.872578
+mp-3304315,Li6OsO6,Other lithium material,61,Caution,66,1,0,0.259544,0,0.161306
+mp-25273,LiMo3O8,Other lithium material,46,Caution,66,0,0,0.271381,0,0.154543
+mp-1176885,Li7Fe6(SiO4)6,Silicon-family,82,Research Candidate,66,0,0,0.139889,0,0.137055
+mp-3210206,LiAlCdF6,Other lithium material,47,Caution,66,1,1,0.715531,1,0.733771
+mp-771777,Li4Mn3O8,LMO-family,82,Research Candidate,66,0,0,0.263777,0,0.138908
+mp-976426,LiLuHg2,Other lithium material,51,Caution,66,1,1,0.874485,1,0.850705
+mp-1111848,Cs2LiCeBr6,Other lithium material,61,Caution,66,1,1,0.815379,1,0.805253
+mp-677135,Li2CoCl4,Other lithium material,41,Caution,66,0,1,0.824736,1,0.796559
+mp-14457,Na3Li3Ti2F12,Other lithium material,59,Caution,66,1,1,0.959496,1,0.836571
+mp-27069,Li3Bi2(PO4)3,Other lithium material,55,Caution,66,0,0,0.146466,0,0.139121
+mp-776155,Li2FeF5,Other lithium material,50,Caution,66,0,1,0.625037,0,0.210589
+mp-977119,Li3Be,Other lithium material,36,Caution,66,0,1,0.881992,1,0.841184
+mp-861905,LiBiPd2,Other lithium material,61,Caution,66,1,1,0.875658,1,0.851033
+mp-645662,Ba14Na14LiN6,Other lithium material,61,Caution,66,1,1,0.981549,1,0.851283
+mp-780235,LiSn2(PO4)3,Other lithium material,57,Caution,66,0,0,0.140336,0,0.137214
+mp-1236349,LiMn2(B4O7)2,LMO-family,75,Research Candidate,66,0,0,0.160096,0,0.140437
+mp-3251179,LiPmInPt,Other lithium material,61,Caution,66,1,1,0.859666,1,0.850559
+mp-3208829,K3Li2SiAs3,Other lithium material,53,Caution,66,1,1,0.773028,1,0.871464
+mp-1275142,LiMn2O3F,LMO-family,78,Research Candidate,66,0,0,0.15238,0,0.137818
+mp-1176070,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,66,0,0,0.165214,0,0.139534
+mp-1180547,LiAlH4,Other lithium material,55,Caution,66,0,1,0.958652,1,0.849447
+mp-1176762,LiMn(PO3)3,LMO-family,82,Research Candidate,66,0,0,0.141497,0,0.138468
+mp-753263,Li3Cr2CuO6,Other lithium material,53,Caution,66,0,0,0.161822,0,0.136003
+mp-1175497,Li9Co7O16,LCO-family,40,Avoid / Benchmark,66,0,0,0.177541,0,0.132349
+mp-1029492,Li3CoN2,Other lithium material,56,Caution,66,1,1,0.868331,1,0.853756
+mp-763567,LiV(CO3)2,Carbon-family,84,Recommend,66,0,0,0.158763,0,0.138064
+mp-1235758,LiEr4Zr4O14,Other lithium material,50,Caution,66,0,0,0.11662,0,0.144806
+mp-1095380,LiEuBi,Other lithium material,61,Caution,66,1,1,0.959807,1,0.851153
+mp-865622,Li2HoIn,Other lithium material,61,Caution,66,1,1,0.880361,1,0.852021
+mp-865863,Li2TlPd,Other lithium material,61,Caution,66,1,1,0.877516,1,0.851487
+mp-1177343,Li4Nb2Fe3Cu3O16,Other lithium material,54,Caution,66,0,0,0.164388,0,0.136411
+mp-1174578,Li7Mn2(CoO4)3,LCO-family,43,Avoid / Benchmark,66,0,0,0.169025,0,0.13439
+mp-861603,Li2SiNiO4,Silicon-family,75,Research Candidate,66,0,0,0.158956,0,0.139786
+mp-801461,Li3VOF5,Other lithium material,42,Caution,66,0,0,0.177401,0,0.139907
+mp-766599,Li3VPCO7,Carbon-family,87,Recommend,66,0,0,0.143176,0,0.13752
+mp-20779,Li2CeSb2,Other lithium material,50,Caution,66,0,1,0.96833,1,0.860857
+mp-3250710,Li2NdHoSi3,Other lithium material,63,Caution,66,1,1,0.773274,1,0.871388
+mp-3200907,CsLiHgSe2,Other lithium material,51,Caution,66,1,1,0.794327,1,0.86447
+mp-1174027,Li4MnCo3O8,LCO-family,44,Avoid / Benchmark,66,0,0,0.171601,0,0.134505
+mp-1203841,LiVPH4O7,Other lithium material,55,Caution,66,0,1,0.635657,1,0.855333
+mp-756390,Li3MnCu3O8,LMO-family,80,Research Candidate,66,0,0,0.298012,0,0.196051
+mp-3249519,Li3Ca2YbPb3,Other lithium material,51,Caution,66,1,1,0.852385,1,0.859099
+mp-3279742,Li2Ta3Ni9P7,Other lithium material,59,Caution,66,1,1,0.840069,1,0.864209
+mp-770903,Li3Mn(BO3)2,LMO-family,82,Research Candidate,66,0,0,0.140406,0,0.137222
+mp-23894,LiAs(HO2)2,Other lithium material,45,Caution,66,0,1,0.626555,1,0.845636
+mp-3291816,LiAl11Tc3,Other lithium material,61,Caution,66,1,1,0.739291,1,0.871618
+mp-3207268,LiFe(IO3)4,Other lithium material,64,Caution,66,1,0,0.210399,0,0.137746
+mp-3223048,LiTm3In4Ru,Other lithium material,61,Caution,66,1,1,0.846113,1,0.861007
+mp-754386,Li2CrFeO4,Other lithium material,58,Caution,66,0,0,0.152112,0,0.138358
+mp-1001835,LiB,Other lithium material,61,Caution,66,1,1,0.979521,1,0.848167
+mp-1036089,LiMg14MnO16,LMO-family,84,Research Candidate,66,0,0,0.193487,0,0.138756
+mp-754085,Li2BiS2,Li-S or sulfide-family,67,Research Candidate,66,0,1,0.75199,1,0.866739
+mp-541578,Li4Mo5O17,Other lithium material,55,Caution,66,0,1,0.571248,1,0.863989
+mp-1174760,Li4MnCo2O7,LCO-family,44,Avoid / Benchmark,66,0,0,0.163671,0,0.139453
+mp-567658,Ba2Li3NbN4,Other lithium material,55,Caution,66,0,1,0.95012,1,0.851934
+mp-766811,LiCoPO4,LCO-family,45,Avoid / Benchmark,66,0,0,0.149257,0,0.137994
+mp-3303677,Ba3LiCd11,Other lithium material,51,Caution,66,1,1,0.865171,1,0.853688
+mp-3203675,K3LiSn3Pb,Other lithium material,51,Caution,66,1,1,0.74957,1,0.865106
+mp-1176508,LiVSiO4,Silicon-family,77,Research Candidate,66,0,0,0.1381,0,0.140197
+mp-1020026,LiBeBO3,Other lithium material,45,Caution,66,0,1,0.519575,1,0.863895
+mp-3213468,Rb3Li2TaP3,Other lithium material,63,Caution,66,1,1,0.772686,1,0.871552
+mp-1176663,LiMnP2O7,LMO-family,84,Research Candidate,66,0,0,0.139805,0,0.137042
+mp-771060,Na5LiNi2P2(CO7)2,Carbon-family,87,Recommend,66,0,0,0.149512,0,0.138294
+mp-571109,Li2Nd2Si3,Other lithium material,63,Caution,66,1,1,0.962154,1,0.851123
+mp-3206046,LiY19(Cd3Ru)2,Other lithium material,51,Caution,66,1,1,0.850983,1,0.852514
+mp-766709,Li3Fe4(PO4)6,LFP-family,94,Recommend,66,0,0,0.147075,0,0.138015
+mp-31746,Li3Cr(PO4)2,Other lithium material,53,Caution,66,0,0,0.137892,0,0.137268
+mp-6015,LiSiNO,Silicon-family,87,Research Candidate,66,1,1,0.596419,1,0.847651
+mp-3270749,Li2PPd3,Other lithium material,63,Caution,66,1,1,0.862445,1,0.852914
+mp-3203364,Li2ZnSiSe4,Other lithium material,63,Caution,66,1,1,0.733134,1,0.880771
+mp-1175760,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,66,0,0,0.164989,0,0.139523
+mp-850982,LiCo3(OF3)2,LCO-family,41,Avoid / Benchmark,66,0,0,0.161094,0,0.136014
+mp-3303629,Li9Rh7O16,Other lithium material,61,Caution,66,1,0,0.182316,0,0.131183
+mp-758931,LiNi5O3F5,Other lithium material,43,Caution,66,0,0,0.269382,0,0.151663
+mp-779443,Li2MnP2HO8,LMO-family,86,Research Candidate,66,0,0,0.14305,0,0.137663
+mp-1110974,Cs2LiMoF6,Other lithium material,57,Caution,66,1,1,0.778945,1,0.762331
+mp-1174373,Li4Mn3O7,LMO-family,82,Research Candidate,66,0,0,0.159167,0,0.136555
+mp-1079781,LiCaAl3,Other lithium material,46,Caution,66,0,1,0.98024,1,0.829031
+mp-3231491,LiTb3S4,Li-S or sulfide-family,78,Research Candidate,66,1,1,0.752456,1,0.783352
+mp-3249757,NaLiPrPt3,Other lithium material,61,Caution,66,1,1,0.828055,1,0.867922
+mp-3200840,Li2AlInTe4,Other lithium material,61,Caution,66,1,1,0.779315,1,0.868087
+mp-3336624,LiPd2Au5,Other lithium material,55,Caution,66,0,1,0.838852,1,0.848649
+mp-778510,LiFeF4,Other lithium material,54,Caution,66,0,1,0.651705,0,0.198656
+mp-1175969,Li9Mn2Co5O16,LCO-family,44,Avoid / Benchmark,66,0,0,0.164783,0,0.139512
+mp-3230057,Li2Yb3HfPt3,Other lithium material,61,Caution,66,1,1,0.738852,1,0.877353
+mp-760664,LiCu(PO3)2,Other lithium material,52,Caution,66,0,0,0.148952,0,0.138232
+mp-1175841,Li9Mn2Co5O16,LCO-family,44,Avoid / Benchmark,66,0,0,0.164001,0,0.139471
+mp-1177781,Li2VFe(P2O7)2,LFP-family,100,Recommend,66,1,0,0.136114,0,0.13647
+mp-3231232,LiHo2Pd5,Other lithium material,61,Caution,66,1,1,0.814771,1,0.868673
+mp-754576,Li4MgCo3O8,LCO-family,43,Avoid / Benchmark,66,0,0,0.274179,0,0.146816
+mp-1031524,LiMg6AlO8,Other lithium material,51,Caution,66,0,0,0.190215,0,0.142414
+mp-1246000,LiMnN2,Other lithium material,64,Caution,66,1,1,0.818918,1,0.861685
+mp-22200,LiMnFeF6,Other lithium material,63,Caution,66,1,1,0.950728,1,0.856458
+mp-2759992,LiCu2F7,Other lithium material,57,Caution,66,1,1,0.660446,1,0.775737
+mp-773105,Li2Zr7Fe(PO4)12,LFP-family,98,Recommend,66,0,0,0.124487,0,0.134369
+mp-3213434,LiGeB6,Other lithium material,61,Caution,66,1,1,0.796078,1,0.837932
+mp-1100430,LiZnSb,Other lithium material,55,Caution,66,0,1,0.871159,1,0.852459
+mp-851114,Li4V3P8O29,Other lithium material,53,Caution,66,0,0,0.138008,0,0.13677
+mp-1080241,Li2Ge(S2O7)3,Li-S or sulfide-family,78,Research Candidate,66,1,0,0.261792,0,0.165691
+mp-769533,LiMn(PO3)4,LMO-family,82,Research Candidate,66,0,0,0.14671,0,0.139312
+mp-3213283,Li8Hf3MnBr24,Other lithium material,64,Caution,66,1,1,0.788933,1,0.855538
+mp-1175355,Li7Mn4CoO12,LCO-family,43,Avoid / Benchmark,66,0,0,0.164435,0,0.136405
+mp-772315,Na5LiMn2P2(CO7)2,LMO-family,88,Research Candidate,66,0,0,0.144948,0,0.137752
+mp-764554,Li5Fe8(BO3)8,Other lithium material,56,Caution,66,0,0,0.14757,0,0.138074
+mp-777652,Li4Fe3(SiO4)3,Silicon-family,79,Research Candidate,66,0,0,0.144423,0,0.137816
+mp-3252438,LiLa7CeIr6,Other lithium material,61,Caution,66,1,1,0.823299,1,0.867585
+mp-3336866,LiMn2Pd5,Other lithium material,64,Caution,66,1,1,0.784264,1,0.863368
+mp-3214292,Li16TiSiAs8,Other lithium material,55,Caution,66,1,1,0.859459,1,0.850506
+mp-753425,LiCuCO3,Carbon-family,87,Recommend,66,0,0,0.210979,0,0.152789
+mp-766043,Li4MnFe3(PO4)4,LMFP-family,97,Research Candidate,66,0,0,0.143122,0,0.138042
+mp-851095,Li4Mn3Cu3(WO8)2,LMO-family,80,Research Candidate,66,0,0,0.166272,0,0.136159
+mp-3251830,LiHoNi3Rh,Other lithium material,57,Caution,66,1,1,0.845573,1,0.856176
+mp-1019615,Cs3Li4(BO2)7,Other lithium material,61,Caution,66,1,1,0.67572,1,0.92361
+mp-698705,Li4Mn13O24,LMO-family,82,Research Candidate,66,0,0,0.157319,0,0.139028
+mp-862928,LiPmTl2,Other lithium material,61,Caution,66,1,1,0.875785,1,0.851066
+mp-22983,LiAlCl4,Other lithium material,61,Caution,66,1,1,0.936673,1,0.853669
+mp-3273187,Li4Pr6PPd12,Other lithium material,63,Caution,66,1,1,0.866108,1,0.844805
+mp-31468,LiCaN,Other lithium material,61,Caution,66,1,1,0.95981,1,0.851153
+mp-754963,Li4Mn3Cr2O10,LMO-family,79,Research Candidate,66,0,0,0.151877,0,0.138542
+mp-754086,Li2CuS2,Li-S or sulfide-family,68,Research Candidate,66,0,1,0.738564,1,0.877166
+mp-862632,LiCa2Al,Other lithium material,61,Caution,66,1,1,0.883595,1,0.852376
+mp-3321166,LiTb3Au5,Other lithium material,61,Caution,66,1,1,0.762563,1,0.870483
+mp-3215846,Li2ScTcH6,Other lithium material,61,Caution,66,1,1,0.869725,1,0.852344
+mp-3200823,Li3Y3HgAs2,Other lithium material,51,Caution,66,1,1,0.838636,1,0.862586
+mp-36111,LiMgP,Other lithium material,63,Caution,66,1,1,0.861479,1,0.851
+mp-1648601,Li2SiNiO4,Silicon-family,73,Research Candidate,66,0,0,0.143908,0,0.137617
+mp-3244816,LiCe(BPt4)2,Other lithium material,61,Caution,66,1,1,0.851418,1,0.859324
+mp-3215458,Li2TcSn8Pt,Other lithium material,61,Caution,66,1,1,0.814425,1,0.845292
+mp-504354,LiBi(PO3)4,Other lithium material,63,Caution,66,1,0,0.145117,0,0.139594
+mp-780327,LiMn3(BO3)3,LMO-family,80,Research Candidate,66,0,0,0.144341,0,0.13767
+mp-1180507,LiB11,Other lithium material,46,Caution,66,0,1,0.862574,1,0.828727
+mp-675964,Li5GeAs3,Other lithium material,45,Caution,66,0,1,0.740836,1,0.878112
+mp-776121,Li4V3Fe3(SnO8)2,Other lithium material,56,Caution,66,0,0,0.15541,0,0.137441
+mp-1113008,Cs2LiPrI6,Other lithium material,61,Caution,66,1,1,0.833699,1,0.823995
+mp-1208619,SrLiGaF6,Other lithium material,57,Caution,66,1,1,0.703935,1,0.703523
+mp-1211055,LiPt3O4,Other lithium material,61,Caution,66,1,0,0.372639,0,0.27717
+mp-765222,LiSn3(P3O10)2,Other lithium material,53,Caution,66,0,0,0.152244,0,0.139125
+mp-1198780,LiSbO2,Other lithium material,61,Caution,66,1,1,0.590157,1,0.85376
+mp-3309578,K4LiCu3F12,Other lithium material,57,Caution,66,1,1,0.801844,1,0.773974
+mp-1210977,LiMn2TeO6,LMO-family,90,Research Candidate,66,1,0,0.160305,0,0.139246
+mp-558619,Li2Ti6PbO14,LTO-family,75,Research Candidate,66,1,1,0.558626,1,0.852438
+mp-3212505,Li12VReN8,Other lithium material,61,Caution,66,1,1,0.798359,1,0.866896
+mp-3253511,Li3Ca2TmPb3,Other lithium material,51,Caution,66,1,1,0.852035,1,0.859253
+mp-756035,LiTi4O8,LTO-family,77,Research Candidate,66,0,0,0.117489,0,0.135369
+mp-753538,Li7MnO5F,LMO-family,76,Research Candidate,66,0,0,0.151478,0,0.138502
+mp-7688,Li2CdGeO4,Other lithium material,51,Caution,66,1,1,0.598861,1,0.847219
+mp-3250661,Cs2Li2CeS4,Li-S or sulfide-family,78,Research Candidate,66,1,1,0.674635,1,0.817494
+mp-3201211,LiZrIrRh,Other lithium material,61,Caution,66,1,1,0.863361,1,0.851404
+mp-1305703,Li3Co3SbO8,LCO-family,41,Avoid / Benchmark,66,0,0,0.168825,0,0.139021
+mp-3296010,Ba2Li6As5,Other lithium material,51,Caution,66,1,1,0.811455,1,0.868767
+mp-3241213,KLi(SnPt)2,Other lithium material,61,Caution,66,1,1,0.840484,1,0.862348
+mp-1100646,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,66,0,0,0.16916,0,0.135752
+mp-757622,Li3V3P8O29,Other lithium material,55,Caution,66,0,0,0.139516,0,0.136999
+mp-1236297,Sr4LiMn2(GaO5)2,LMO-family,80,Research Candidate,66,0,0,0.159688,0,0.141287
+mp-764318,Li2VFe(P2O7)2,LFP-family,98,Recommend,66,0,0,0.136137,0,0.136474
+mp-771832,Li2Ti3SnO8,LTO-family,74,Research Candidate,66,0,0,0.236537,0,0.211496
+mp-3202370,LiTiGaRh,Other lithium material,63,Caution,66,1,1,0.864825,1,0.85168
+mp-3230098,LiPr3Pt2Pb3,Other lithium material,51,Caution,66,1,1,0.843871,1,0.861688
+mp-1211146,Li5Ni9As7,Other lithium material,47,Caution,66,1,1,0.848302,1,0.859556
+mp-1176861,Li7V3P8O29,Other lithium material,57,Caution,66,0,0,0.134151,0,0.136145
+mp-1246553,LiGeN,Other lithium material,51,Caution,66,0,1,0.784826,1,0.860083
+mp-684024,Li2SiN2,Other lithium material,63,Caution,66,1,1,0.956238,1,0.851178
+mp-758265,LiCu2F6,Other lithium material,57,Caution,66,1,1,0.756801,1,0.793992
+mp-1177916,Li2MnCr3O8,LMO-family,80,Research Candidate,66,0,0,0.204785,0,0.142758
+mp-1175575,Li9Mn2Co5O16,LCO-family,44,Avoid / Benchmark,66,0,0,0.164502,0,0.138947
+mp-1176305,Li9Mn2Co5O16,LCO-family,44,Avoid / Benchmark,66,0,0,0.165287,0,0.138428
+mp-3250360,LiPrCdPt3,Other lithium material,51,Caution,66,1,1,0.826465,1,0.868369
+mp-757431,LiSn(PO3)4,Other lithium material,53,Caution,66,0,0,0.148272,0,0.138811
+mp-3201701,KLiHgSe2,Other lithium material,51,Caution,66,1,1,0.796379,1,0.86562
+mp-3201368,LiTc2Sn8Ge,Other lithium material,61,Caution,66,1,1,0.815342,1,0.824592
+mp-30738,LiIr3,Other lithium material,61,Caution,66,1,1,0.962971,1,0.850522
+mp-866195,Li2LaTl,Other lithium material,61,Caution,66,1,1,0.880552,1,0.852049
+mp-759014,Li4MnO2F3,LMO-family,76,Research Candidate,66,0,0,0.138249,0,0.138255
+mp-3244635,LiLaSi2Au,Other lithium material,63,Caution,66,1,1,0.806845,1,0.867344
+mp-882474,LiCo3Sb(PO4)6,LCO-family,38,Avoid / Benchmark,66,0,0,0.345491,0,0.142034
+mp-3248792,Li2DyHoSi3,Other lithium material,63,Caution,66,1,1,0.773787,1,0.871192
+mp-757181,Li4Fe5SnO12,Other lithium material,54,Caution,66,0,0,0.171122,0,0.133897
+mp-935267,Li4UC3O11,Carbon-family,87,Recommend,66,0,0,0.245233,0,0.142811
+mp-1197982,K2LiIn(MoO4)3,Other lithium material,61,Caution,66,1,1,0.570358,1,0.862628
+mp-1013899,LiFe3P3O13,LFP-family,94,Recommend,66,0,0,0.153723,0,0.137549
+mp-752747,Li5VO3F2,Other lithium material,47,Caution,66,0,0,0.144406,0,0.138949
+mp-1307,LiGa,Other lithium material,61,Caution,66,1,1,0.981283,1,0.856204
+mp-3299076,LiHf2Rh3,Other lithium material,61,Caution,66,1,1,0.829061,1,0.867852
+mp-3230260,Li3Y3AgP2,Other lithium material,63,Caution,66,1,1,0.842005,1,0.862065
+mp-3333877,Li2Tb3In4,Other lithium material,61,Caution,66,1,1,0.760485,1,0.874084
+mp-3252966,Li2PuS3,Li-S or sulfide-family,78,Research Candidate,66,1,1,0.677696,1,0.827833
+mp-757568,LiMnPO4,LMO-family,82,Research Candidate,66,0,0,0.144225,0,0.13947
+mp-770832,Li2BSeO4,Other lithium material,51,Caution,66,0,0,0.160334,0,0.136203
+mp-16577,Li2CaHfF8,Other lithium material,57,Caution,66,1,1,0.917584,1,0.847536
+mp-1177203,Li4V3P8O29,Other lithium material,55,Caution,77,0,0,0.158878,0,0.15425
+mp-768583,Li4MnV(PO4)3,LMO-family,84,Research Candidate,77,0,0,0.152152,0,0.154536
+mp-3250067,Li2DyThSi3,Other lithium material,63,Caution,77,1,1,0.734165,1,0.831742
+mp-756427,Li5SbS4,Li-S or sulfide-family,68,Research Candidate,77,0,1,0.687131,1,0.817078
+mp-752914,Li(CoO2)2,LCO-family,41,Avoid / Benchmark,77,0,0,0.189749,0,0.150543
+mp-728,Li2Pd,Other lithium material,61,Caution,77,1,1,0.96192,1,0.825196
+mp-556165,LiB(CO2)4,Carbon-family,84,Recommend,77,0,1,0.561518,1,0.829368
+mp-758411,Li3CoSiO5,LCO-family,45,Avoid / Benchmark,77,0,0,0.180087,0,0.15285
+mp-3252715,Li2NdLu2Al7,Other lithium material,55,Caution,77,0,1,0.826562,1,0.844595
+mp-861667,LiSbRh2,Other lithium material,61,Caution,77,1,1,0.861352,1,0.825889
+mp-3223032,LiSm2Si3Ir4,Other lithium material,63,Caution,77,1,1,0.770374,1,0.853317
+mp-3252257,Li6Y2NpN6,Other lithium material,61,Caution,77,1,1,0.799925,1,0.846131
+mp-3254609,LiHo9Se10,Other lithium material,61,Caution,77,1,1,0.620895,1,0.661469
+mp-775194,Li2Fe3WO8,Other lithium material,56,Caution,77,0,0,0.192722,0,0.15059
+mp-1193498,LiMgAlH6,Other lithium material,61,Caution,77,1,1,0.954192,1,0.824979
+mp-19294,LiFeP2O7,LFP-family,100,Recommend,77,1,0,0.461087,1,0.819902
+mp-1211340,Li6Tm(BO3)3,Other lithium material,61,Caution,77,1,0,0.156714,0,0.154684
+mp-3207987,Li12SiOsN8,Other lithium material,63,Caution,77,1,1,0.779566,1,0.846956
+mp-760071,Li5V3P8O29,Other lithium material,55,Caution,77,0,0,0.152693,0,0.154582
+mp-1106082,LiCeSi2,Other lithium material,63,Caution,77,1,1,0.927867,1,0.826102
+mp-25829,LiMn2P3O11,LMO-family,84,Research Candidate,77,0,0,0.158242,0,0.15436
+mp-755221,Li2V5CoO12,LCO-family,40,Avoid / Benchmark,77,0,0,0.162496,0,0.154229
+mp-3252432,Li4Ac4Si5Pb,Other lithium material,53,Caution,77,1,1,0.709374,1,0.835439
+mp-1175535,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,77,0,0,0.171788,0,0.154486
+mp-30134,Li8Al3Si5,Other lithium material,48,Caution,77,0,1,0.96791,1,0.824053
+mp-12128,Li2MgIn,Other lithium material,61,Caution,77,1,1,0.968399,1,0.824334
+mp-1176411,Na2LiFePCO7,LFP-family,100,Recommend,77,0,0,0.159746,0,0.15467
+mp-768997,LiBi3O5,Other lithium material,51,Caution,77,0,0,0.222598,0,0.157239
+mp-1079607,LiLaSn2,Other lithium material,61,Caution,77,1,1,0.927251,1,0.827309
+mp-1211878,Li3Pr2Sb3,Other lithium material,46,Caution,77,0,1,0.803524,1,0.784155
+mp-775948,LiVP2HO8,Other lithium material,55,Caution,77,0,0,0.155579,0,0.154624
+mp-759760,Li2VFe(P2O7)2,LFP-family,98,Recommend,77,0,0,0.154406,0,0.154475
+mp-775484,Ba6Li2Ti16O39,LTO-family,79,Research Candidate,77,0,0,0.142117,0,0.155434
+mp-18002,KLi3GeO4,Other lithium material,61,Caution,77,1,0,0.470466,1,0.830075
+mp-774797,Li2Ti3ZnO8,LTO-family,85,Research Candidate,77,1,0,0.309578,0,0.155186
+mp-9723,Sr4Li(BN2)3,Other lithium material,61,Caution,77,1,1,0.96348,1,0.826829
+mp-27419,LiBiF6,Other lithium material,57,Caution,77,1,1,0.936702,1,0.82663
+mp-3253701,Li3Ho3InGe2,Other lithium material,61,Caution,77,1,1,0.83638,1,0.843328
+mp-3269724,Li3Ho5Pt4,Other lithium material,61,Caution,77,1,1,0.662819,1,0.840336
+mp-770354,Li3V3(BO5)2,Other lithium material,51,Caution,77,0,0,0.162219,0,0.154083
+mp-3214892,Li4Cu3PbF12,Other lithium material,47,Caution,77,1,1,0.804703,1,0.621546
+mp-3207411,LiRuCl6,Other lithium material,61,Caution,77,1,1,0.79976,1,0.855345
+mp-1175904,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,77,0,0,0.172835,0,0.154713
+mp-1111833,Cs2LiYBr6,Other lithium material,61,Caution,77,1,1,0.828957,1,0.672795
+mp-3313762,LiY9Se10,Other lithium material,61,Caution,77,1,1,0.619554,1,0.64891
+mp-1222532,Li7(SnO3)4,Other lithium material,51,Caution,77,0,0,0.166306,0,0.154095
+mp-779353,Li3Fe5OF11,Other lithium material,50,Caution,77,0,0,0.153136,0,0.154589
+mp-3212574,LiAlPdO4,Other lithium material,61,Caution,77,1,0,0.223257,0,0.160139
+mp-13914,LiCo2Ge,Other lithium material,56,Caution,77,1,1,0.968422,1,0.824316
+mp-754273,Li3Co(CuO2)4,LCO-family,43,Avoid / Benchmark,77,0,0,0.189709,0,0.151129
+mp-770586,Li3AlCrO5,Other lithium material,51,Caution,77,0,0,0.176427,0,0.153719
+mp-3209699,Li12TiOsN8,Other lithium material,63,Caution,77,1,1,0.778471,1,0.848572
+mp-756157,Li2Fe3CoO8,LCO-family,46,Avoid / Benchmark,77,0,0,0.32527,0,0.204176
+mp-752426,Li3SbS4,Li-S or sulfide-family,68,Research Candidate,77,0,1,0.668591,1,0.834425
+mp-676361,Li3ErCl6,Other lithium material,61,Caution,77,1,1,0.767176,1,0.736423
+mp-16804,LiCaPO4,Other lithium material,57,Caution,77,0,1,0.627837,1,0.952919
+mp-3251665,Li2NdAgP2,Other lithium material,63,Caution,77,1,1,0.806344,1,0.853365
+mp-759811,Li2VCrP2(HO5)2,Other lithium material,57,Caution,77,0,0,0.156595,0,0.154558
+mp-1290754,Li2TiFe3O8,LTO-family,80,Research Candidate,77,0,0,0.162919,0,0.154694
+mp-1035479,RbLiMg14O15,Other lithium material,50,Caution,77,0,0,0.166873,0,0.154489
+mp-3210659,Ba4LiAuO6,Other lithium material,61,Caution,77,1,0,0.207117,0,0.155142
+mp-1290836,K2LiMn2O4,LMO-family,80,Research Candidate,77,0,0,0.171498,0,0.154489
+mp-753151,LiVCoO4,LCO-family,45,Avoid / Benchmark,77,0,0,0.210398,0,0.1554
+mp-773423,Li2V3WO8,Other lithium material,55,Caution,77,0,0,0.347999,0,0.150835
+mp-1174485,Li7Mn2(CoO4)3,LCO-family,44,Avoid / Benchmark,77,0,0,0.176385,0,0.152514
+mp-1030649,Li6RuN4,Other lithium material,61,Caution,77,1,1,0.803567,1,0.841006
+mp-774864,Li4Cr3Ni3(SnO8)2,Other lithium material,47,Caution,77,0,0,0.173944,0,0.15326
+mp-1174288,Li4Mn3O7,LMO-family,82,Research Candidate,77,0,0,0.163718,0,0.15455
+mp-779056,Li2FeP2O7,LFP-family,98,Recommend,77,0,0,0.155638,0,0.154457
+mp-778272,Li8Mn7Fe(BO3)8,LMO-family,87,Research Candidate,77,0,0,0.155531,0,0.154623
+mp-18050,Li2MoO4,Other lithium material,61,Caution,77,1,1,0.646644,1,0.875796
+mp-3247282,LiEr4MnC8,Carbon-family,98,Recommend,77,1,1,0.700882,1,0.834657
+mp-770698,Li2AlFeO4,Other lithium material,53,Caution,77,0,0,0.165729,0,0.153667
+mp-757514,Li4Cu2Si3O10,Silicon-family,77,Research Candidate,77,0,0,0.165345,0,0.153744
+mp-772992,Li9Fe3(WO4)7,Other lithium material,54,Caution,77,0,0,0.300768,0,0.165054
+mp-15788,LiYS2,Li-S or sulfide-family,78,Research Candidate,77,1,1,0.943806,1,0.825071
+mp-865581,Li2DyTl,Other lithium material,61,Caution,77,1,1,0.86754,1,0.827267
+mp-1288374,LiV3O4,Other lithium material,55,Caution,77,0,0,0.184028,0,0.152291
+mp-3248093,Li6Sm2PuN6,Other lithium material,61,Caution,77,1,1,0.804994,1,0.851918
+mp-3249015,LiPmInAg,Other lithium material,61,Caution,77,1,1,0.859071,1,0.832597
+mp-3250125,K2Li2CeS4,Li-S or sulfide-family,78,Research Candidate,77,1,1,0.64204,1,0.732429
+mp-1094602,LiMg3,Other lithium material,55,Caution,77,0,1,0.854643,1,0.829855
+mp-29324,Li(Mo4O5)2,Other lithium material,46,Caution,77,0,1,0.64294,1,0.550921
+mp-26712,LiV2(PO4)3,Other lithium material,57,Caution,77,0,0,0.290923,0,0.148815
+mp-775164,Li2NbCr3O8,Other lithium material,55,Caution,77,0,0,0.342798,0,0.148855
+mp-1213345,LiEu6B3O14,Other lithium material,50,Caution,77,0,0,0.151449,0,0.155175
+mp-1112663,Cs2LiYI6,Other lithium material,61,Caution,77,1,1,0.839862,1,0.753904
+mp-774236,Li3CrSiCO7,Silicon-family,81,Research Candidate,77,0,0,0.161872,0,0.154032
+mp-1175053,Li7Mn2(CoO4)3,LCO-family,43,Avoid / Benchmark,77,0,0,0.169681,0,0.154716
+mp-504304,LiCuPO4,Other lithium material,53,Caution,77,0,0,0.18518,0,0.15168
+mp-541365,LiEuH3,Other lithium material,61,Caution,77,1,1,0.965639,1,0.825613
+mp-760294,LiVF5,Other lithium material,49,Caution,77,0,1,0.592709,0,0.158049
+mp-758973,Li3Fe2(SiO4)2,Silicon-family,80,Research Candidate,77,0,0,0.157288,0,0.15443
+mp-3980,LiSbF6,Other lithium material,57,Caution,77,1,1,0.931079,1,0.826861
+mp-769449,Li4Mn5(Fe2O9)2,LMO-family,83,Research Candidate,77,0,0,0.176285,0,0.152775
+mp-8482,LiYbGe,Other lithium material,61,Caution,77,1,1,0.958732,1,0.825194
+mp-3259330,Li(PaPt4)3,Other lithium material,61,Caution,77,1,1,0.828889,1,0.838661
+mp-771006,Na3Li3Fe2P2(CO7)2,LFP-family,100,Recommend,77,0,0,0.15944,0,0.154667
+mp-756785,LiVBO3,Other lithium material,51,Caution,77,0,0,0.303894,0,0.150503
+mp-3245958,LiPmAlCu,Other lithium material,61,Caution,77,1,1,0.861875,1,0.832328
+mp-1030911,NaLiMg6O7,Other lithium material,46,Caution,77,0,0,0.230747,0,0.157587
+mp-3202167,LiGa2AgSe4,Other lithium material,61,Caution,77,1,1,0.747352,1,0.840324
+mp-1026797,LiMg14W,Other lithium material,50,Caution,77,0,1,0.736018,1,0.740833
+mp-690617,LiMn3Al2(HO2)6,LMO-family,90,Research Candidate,77,1,0,0.172846,0,0.152899
+mp-3247212,LiSmNiPt3,Other lithium material,57,Caution,77,1,1,0.812454,1,0.852836
+mp-759513,Li7Ni(O2F)2,Other lithium material,42,Caution,77,0,0,0.163769,0,0.154699
+mp-774155,Li2FeO3,Other lithium material,64,Caution,77,1,0,0.171855,0,0.153879
+mp-5048,LiGaTe2,Other lithium material,61,Caution,77,1,1,0.943005,1,0.826452
+mp-1147596,Li6Zn3(PS4)4,Li-S or sulfide-family,74,Research Candidate,77,0,1,0.656504,1,0.841394
+mp-3208105,Cs2LiRhBr6,Other lithium material,61,Caution,77,1,1,0.800332,1,0.831633
+mp-765400,Li3Cr(CO3)3,Carbon-family,85,Recommend,77,0,0,0.192635,0,0.151417
+mp-3253580,NaLiTbPt3,Other lithium material,61,Caution,77,1,1,0.811568,1,0.852805
+mp-3204410,Cs2Li14Hf3O14,Other lithium material,61,Caution,77,1,0,0.204939,0,0.155685
+mp-30228,Li4HN,Other lithium material,61,Caution,77,1,1,0.936845,1,0.824987
+mp-1223068,Li7Eu8Si4Cl7O16,Silicon-family,81,Research Candidate,77,0,0,0.149177,0,0.154646
+mp-756507,LiFePHO5,LFP-family,100,Recommend,77,1,0,0.470273,1,0.829981
+mp-3203216,SrLi3As2Pd,Other lithium material,51,Caution,77,1,1,0.810206,1,0.852504
+mp-3202795,LiTaIrRu,Other lithium material,61,Caution,77,1,1,0.858816,1,0.83254
+mp-560739,K3Li3TeO6,Other lithium material,61,Caution,77,1,1,0.556656,1,0.835061
+mp-1078209,LiLa2FeO6,Other lithium material,64,Caution,77,1,1,0.628127,1,0.937934
+mp-15349,Li2GeO3,Other lithium material,61,Caution,77,1,1,0.509288,1,0.82301
+mp-1026850,RbLiMg14,Other lithium material,50,Caution,77,0,1,0.854129,1,0.816126
+mp-760043,LiVFeP2(HO5)2,LFP-family,96,Recommend,77,0,0,0.160229,0,0.15456
+mp-3245765,LiCeH6Ru,Other lithium material,61,Caution,77,1,1,0.856896,1,0.831677
+mp-26731,Li2VP2O7,Other lithium material,55,Caution,77,0,0,0.152588,0,0.154539
+mp-3202416,LiPt5Rh2,Other lithium material,61,Caution,77,1,1,0.753305,1,0.798355
+mp-1211541,Li6Sm(BO3)3,Other lithium material,61,Caution,77,1,0,0.157079,0,0.154647
+mp-1203059,LiAs3H2O9,Other lithium material,51,Caution,77,1,1,0.509028,1,0.833182
+mp-1214633,Ba2LiTeO6,Other lithium material,61,Caution,77,1,0,0.364237,0,0.152559
+mp-1235966,LiPr2Ta2Cl2O7,Other lithium material,53,Caution,77,0,0,0.143971,0,0.154861
+mp-3345014,Li3Nd2ThPt3,Other lithium material,61,Caution,77,1,1,0.700968,1,0.835724
+mp-771179,Li4Nb5Cr3O16,Other lithium material,50,Caution,77,0,0,0.158061,0,0.154297
+mp-772934,Li2Fe3CuO8,Other lithium material,54,Caution,77,0,0,0.36661,0,0.213108
+mp-3252473,RbLi2TbBi2,Other lithium material,61,Caution,77,1,1,0.817459,1,0.851646
+mp-22994,LiIO3,Other lithium material,55,Caution,77,0,1,0.543863,1,0.828558
+mp-28030,Li8Nb2O9,Other lithium material,61,Caution,77,1,0,0.454456,1,0.817984
+mp-1175316,Li7Mn5O12,LMO-family,82,Research Candidate,77,0,0,0.163978,0,0.154549
+mp-22173,LiFe(GeO3)2,Other lithium material,56,Caution,77,0,0,0.493629,1,0.828843
+mp-675504,Li19(Mn3As4)3,Other lithium material,43,Caution,77,0,1,0.703696,1,0.832347
+mp-3207003,LiZn2ReN4,Other lithium material,61,Caution,77,1,1,0.710593,1,0.827492
+mp-1301636,Li3Mn(CoO3)2,LCO-family,44,Avoid / Benchmark,77,0,0,0.171158,0,0.154493
+mp-3326240,LiLaZn12,Other lithium material,61,Caution,77,1,1,0.868591,1,0.8264
+mp-3250923,LiTmInAu,Other lithium material,61,Caution,77,1,1,0.853947,1,0.828902
+mp-760139,Li2MnF4,Other lithium material,52,Caution,77,0,1,0.629166,0,0.176952
+mp-3241113,Li(WN)3,Other lithium material,61,Caution,77,1,1,0.858978,1,0.828161
+mp-3212119,Li3Ti10Al9Ir8,Other lithium material,63,Caution,77,1,1,0.811397,1,0.852784
+mp-3277772,Li2LaCd9,Other lithium material,51,Caution,77,1,1,0.812479,1,0.824212
+mp-1175340,Li7Mn5O12,LMO-family,80,Research Candidate,77,0,0,0.164255,0,0.154548
+mp-1222607,Li2SnPt,Other lithium material,61,Caution,77,1,1,0.855495,1,0.830575
+mp-3320473,LiTi2(AsO4)3,LTO-family,75,Research Candidate,77,1,0,0.310243,0,0.166793
+mp-3212640,LiMg(Sn4Os)2,Other lithium material,61,Caution,77,1,1,0.772104,1,0.773588
+mp-3223419,Ba2LiAg3Bi4,Other lithium material,61,Caution,77,1,1,0.784265,1,0.837027
+mp-3200907,CsLiHgSe2,Other lithium material,51,Caution,77,1,1,0.773667,1,0.854153
+mp-1174385,Li5Mn2CoO8,LCO-family,46,Avoid / Benchmark,77,0,0,0.166885,0,0.154365
+mp-756530,Li3Cr(BO3)2,Other lithium material,51,Caution,77,0,0,0.154251,0,0.154549
+mp-766592,Li3NiPCO7,Carbon-family,83,Recommend,77,0,0,0.169504,0,0.153201
+mp-1020016,Li4Ca2Mg(SiN3)2,Other lithium material,63,Caution,77,1,1,0.901345,1,0.837716
+mp-3215250,Li7Si2AgP16,Other lithium material,65,Caution,77,1,1,0.677791,1,0.846904
+mp-758544,Li2CrSiO4,Silicon-family,77,Research Candidate,77,0,0,0.161964,0,0.154112
+mp-3240737,Li2AcNdPb2,Other lithium material,51,Caution,77,1,1,0.813229,1,0.851789
+mp-1101989,SrLiAs,Other lithium material,51,Caution,77,1,1,0.920382,1,0.833903
+mp-780658,LiMn3(P3O10)2,LMO-family,82,Research Candidate,77,0,0,0.184063,0,0.15349
+mp-1185391,LiPr2Al,Other lithium material,55,Caution,77,0,1,0.869471,1,0.825838
+mp-756520,Li2AlCoO4,LCO-family,41,Avoid / Benchmark,77,0,0,0.171778,0,0.153008
+mp-6425,Li3In2(PO4)3,Other lithium material,63,Caution,77,1,1,0.634828,1,0.922843
+mp-776027,LiFeF3,Other lithium material,50,Caution,77,0,1,0.687658,0,0.428076
+mp-25393,Li2FePO4F,LFP-family,92,Recommend,77,0,0,0.153229,0,0.15459
+mp-3201730,K2LiIrCl6,Other lithium material,61,Caution,77,1,1,0.797633,1,0.823888
+mp-1198663,K2Li(H2N)3,Other lithium material,61,Caution,77,1,1,0.935456,1,0.825192
+mp-1235196,LiAl2(CuO3)2,Other lithium material,46,Caution,77,0,0,0.30054,0,0.172802
+mp-7936,LiNbS2,Li-S or sulfide-family,78,Research Candidate,77,1,1,0.954713,1,0.824865
+mp-759751,LiMn3OF8,LMO-family,76,Research Candidate,77,0,0,0.15541,0,0.154423
+mp-1100488,Li9Mn7O16,LMO-family,82,Research Candidate,77,0,0,0.171139,0,0.153084
+mp-805888,Li3CrH12(CO3)6,Carbon-family,80,Recommend,77,0,0,0.217751,0,0.15368
+mp-752984,LiNiPO4,Other lithium material,49,Caution,77,0,0,0.16265,0,0.154224
+mp-759755,Li6V3P8O29,Other lithium material,55,Caution,77,0,0,0.15191,0,0.154569
+mp-1210792,Li2Al,Other lithium material,46,Caution,77,0,1,0.877001,1,0.812257
+mp-861625,LiZnAg2,Other lithium material,61,Caution,77,1,1,0.87032,1,0.824909
+mp-3253669,Li2ThAs2Pd,Other lithium material,51,Caution,77,1,1,0.802972,1,0.851246
+mp-1176088,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,77,0,0,0.170819,0,0.154716
+mp-1642421,Li4Mn3(CoO4)3,LCO-family,44,Avoid / Benchmark,77,0,0,0.1718,0,0.154486
+mp-3247539,Li2CaPaF8,Other lithium material,57,Caution,77,1,1,0.641772,0,0.034529
+mp-3312894,Li5Co19P12,Other lithium material,58,Caution,77,1,1,0.839556,1,0.843939
+mp-1208625,SrLiVF6,Other lithium material,57,Caution,77,1,1,0.737902,0,0.273991
+mp-6644,LiLa2RuO6,Other lithium material,61,Caution,77,1,0,0.459784,1,0.793199
+mp-1020019,Li2PNO2,Other lithium material,63,Caution,77,1,1,0.515396,1,0.827332
+mp-3268294,LiZr6Co17P12,Other lithium material,58,Caution,77,1,1,0.685778,1,0.836817
+mp-3209510,Sr2Li2Si2Bi,Other lithium material,63,Caution,77,1,1,0.733198,1,0.832993
+mp-1178043,Li2CrFe3O8,Other lithium material,53,Caution,77,0,0,0.321706,0,0.194085
+mp-1273164,Li4CoOF5,LCO-family,37,Avoid / Benchmark,77,0,0,0.157106,0,0.154393
+mp-720509,Li10Si(PS6)2,Li-S or sulfide-family,76,Research Candidate,77,0,1,0.647509,1,0.821474
+mp-3294465,RbLi6UO6,Other lithium material,61,Caution,77,1,0,0.294203,0,0.150596
+mp-3247610,LiNdSnPt,Other lithium material,61,Caution,77,1,1,0.849358,1,0.821146
+mp-1035532,LiLaMg14O16,Other lithium material,50,Caution,77,0,0,0.238617,0,0.151046
+mp-560555,Li8Bi2PdO10,Other lithium material,61,Caution,77,1,0,0.49894,1,0.832627
+mp-1174159,Li3MnCoO5,LCO-family,43,Avoid / Benchmark,77,0,0,0.169053,0,0.154716
+mp-756149,Li3Nb4FeO12,Other lithium material,54,Caution,77,0,0,0.1501,0,0.154538
+mp-26692,Li2Ni(PO4)2,Other lithium material,48,Caution,77,0,0,0.166547,0,0.153772
+mp-3305163,LiCoPtO4,LCO-family,51,Avoid / Benchmark,77,1,0,0.243095,0,0.172119
+mp-1019555,BaNaLi3(BO2)6,Other lithium material,61,Caution,77,1,1,0.624943,1,0.943178
+mp-760013,Li3V2(O2F)2,Other lithium material,47,Caution,88,0,0,0.144619,0,0.12958
+mp-1175591,Li9Mn2Co5O16,LCO-family,44,Avoid / Benchmark,88,0,0,0.144309,0,0.129674
+mp-1021283,LiMg6Si,Other lithium material,52,Caution,88,0,1,0.724609,1,0.797918
+mp-777790,Li4MnFe3(BO3)4,LMO-family,87,Research Candidate,88,0,0,0.142653,0,0.129553
+mp-23774,K2LiAlH6,Other lithium material,61,Caution,88,1,1,0.974924,1,0.839455
+mp-3241188,LiPa(NiP)2,Other lithium material,59,Caution,88,1,1,0.831153,1,0.8545
+mp-1174081,Li4MnCo3O8,LCO-family,43,Avoid / Benchmark,88,0,0,0.144637,0,0.129695
+mp-3293939,Li3Zn7Ag3,Other lithium material,61,Caution,88,1,1,0.830036,1,0.835604
+mp-3290976,Li(Zn5Pd)2,Other lithium material,61,Caution,88,1,1,0.691957,1,0.843889
+mp-3269531,K2LiMnO4,LMO-family,90,Research Candidate,88,1,0,0.150395,0,0.12972
+mp-3261079,LiHg4Pd11,Other lithium material,51,Caution,88,1,1,0.710361,1,0.83254
+mp-753906,Li2MnO2F,LMO-family,75,Research Candidate,88,0,0,0.149621,0,0.129763
+mp-26009,LiMo2P2O11,Other lithium material,57,Caution,88,0,1,0.575642,1,0.867559
+mp-3299589,Li2Nd2Zn15,Other lithium material,61,Caution,88,1,1,0.834002,1,0.841739
+mp-3297,Li10Zn4O9,Other lithium material,61,Caution,88,1,1,0.721664,1,0.864409
+mp-3246068,LiNdH6Os,Other lithium material,61,Caution,88,1,1,0.865824,1,0.841261
+mp-1203266,SrLi2Al4(PO5)4,Other lithium material,52,Caution,88,0,1,0.647818,1,0.846683
+mp-5418,Li6Zr2O7,Other lithium material,61,Caution,88,1,1,0.578704,1,0.852564
+mp-756138,Li2V3SbO8,Other lithium material,61,Caution,88,1,0,0.278269,0,0.132477
+mp-3215560,Li8Hf3TeBr24,Other lithium material,61,Caution,88,1,1,0.817351,1,0.877927
+mp-849747,LiFe8(BO3)8,Other lithium material,54,Caution,88,0,0,0.142962,0,0.129592
+mp-3230573,Li3Sc3SnPb2,Other lithium material,51,Caution,88,1,1,0.838999,1,0.846302
+mp-778174,Li8Mn5Fe3(BO3)8,LMO-family,87,Research Candidate,88,0,0,0.142527,0,0.129536
+mp-752421,Na5LiCo2P2(CO7)2,LCO-family,49,Avoid / Benchmark,88,0,0,0.146067,0,0.129672
+mp-550474,Li4CO4,Carbon-family,84,Recommend,88,0,0,0.273447,0,0.130844
+mp-3170679,Li4Pr6Pt13,Other lithium material,61,Caution,88,1,1,0.872635,1,0.843322
+mp-1176849,Li7V3P8O29,Other lithium material,55,Caution,88,0,0,0.14712,0,0.129668
+mp-860880,Li2Mn4Si4O13,LMO-family,86,Research Candidate,88,0,0,0.142574,0,0.129483
+mp-1113920,Na2LiCeCl6,Other lithium material,50,Caution,88,0,1,0.868463,1,0.837028
+mp-3269800,Li3Al3Pd10,Other lithium material,61,Caution,88,1,1,0.692889,1,0.843872
+mp-3223681,Li3Ca4MgAg4,Other lithium material,61,Caution,88,1,1,0.689975,1,0.84323
+mp-3207410,NaLi4H9Pt2,Other lithium material,61,Caution,88,1,1,0.814389,1,0.84576
+mp-3295359,Li2Sn3Pt2,Other lithium material,61,Caution,88,1,1,0.852209,1,0.843353
+mp-12185,LiCu(PO3)3,Other lithium material,63,Caution,88,1,1,0.5854,1,0.858495
+mp-768636,LiBi2BO5,Other lithium material,51,Caution,88,0,0,0.185824,0,0.129546
+mp-771007,NaLi2FePCO7,LFP-family,98,Recommend,88,0,0,0.14277,0,0.129568
+mp-3222533,Li3Er3InSb2,Other lithium material,61,Caution,88,1,1,0.848595,1,0.843339
+mp-3211029,LiCa4(AsIr)6,Other lithium material,51,Caution,88,1,1,0.872949,1,0.842398
+mp-3270749,Li2PPd3,Other lithium material,63,Caution,88,1,1,0.863331,1,0.841253
+mp-1293029,Li3Co3SbO8,LCO-family,41,Avoid / Benchmark,88,0,0,0.144523,0,0.129688
+mp-1516357,NaLiZrWO6,Other lithium material,51,Caution,88,0,0,0.331403,0,0.133528
+mp-777293,LiMn2(BO3)2,LMO-family,80,Research Candidate,88,0,0,0.142554,0,0.129539
+mp-755903,Li2Mn2CuO6,LMO-family,79,Research Candidate,88,0,0,0.188013,0,0.13001
+mp-3203794,BaLiGaF6,Other lithium material,57,Caution,88,1,1,0.688171,0,0.163881
+mp-1191292,LiAlSi2HO7,Silicon-family,77,Research Candidate,88,0,1,0.561635,1,0.871365
+mp-3251610,Li3Tb3ZnBi2,Other lithium material,61,Caution,88,1,1,0.848968,1,0.8441
+mp-757736,Li7(NiO2)9,Other lithium material,51,Caution,88,0,0,0.145193,0,0.129716
+mp-1222424,Li3Tl2Cd,Other lithium material,51,Caution,88,1,1,0.801488,1,0.825364
+mp-16699,Li6Gd(BO3)3,Other lithium material,55,Caution,88,0,1,0.577677,1,0.856126
+mp-1211124,Li6NiCl8,Other lithium material,57,Caution,88,1,1,0.868945,1,0.83922
+mp-849590,LiFe2(BO3)2,Other lithium material,54,Caution,88,0,0,0.14285,0,0.129578
+mp-1176306,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,88,0,0,0.150887,0,0.129642
+mp-3246690,LiPrAgPt3,Other lithium material,61,Caution,88,1,1,0.828611,1,0.853748
+mp-780457,Li5Fe7O3F13,Other lithium material,50,Caution,88,0,0,0.142403,0,0.129519
+mp-766531,Li12Mn3CrP4(CO7)4,LMO-family,84,Research Candidate,88,0,0,0.145734,0,0.129653
+mp-1192681,LiTcH6O7,Other lithium material,61,Caution,88,1,1,0.770057,1,0.854029
+mp-763349,Li2MnF4,Other lithium material,50,Caution,88,0,1,0.739342,1,0.715569
+mp-530399,LiAl5O8,Other lithium material,61,Caution,88,1,0,0.324508,0,0.131242
+mp-1174005,Li3Co2O5,LCO-family,41,Avoid / Benchmark,88,0,0,0.144565,0,0.129691
+mp-3205535,Rb2LiLuBi2,Other lithium material,61,Caution,88,1,1,0.747983,1,0.858
+mp-777357,Li8Mn7Fe(BO3)8,LMO-family,87,Research Candidate,88,0,0,0.142442,0,0.129524
+mp-849343,LiMn(PO3)4,LMO-family,82,Research Candidate,88,0,0,0.144269,0,0.12959
+mp-1174930,Li7Mn2(CoO4)3,LCO-family,44,Avoid / Benchmark,88,0,0,0.143577,0,0.129664
+mp-755653,LiFeF5,Other lithium material,54,Caution,88,0,1,0.692434,1,0.530063
+mp-560164,Li3AlMo2(AsO7)2,Other lithium material,45,Caution,88,0,1,0.565078,1,0.876379
+mp-1175866,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,88,0,0,0.144364,0,0.129678
+mp-3208250,Ba4LiAgO6,Other lithium material,61,Caution,88,1,0,0.18625,0,0.129386
+mp-581225,KLiNd2(MoO4)4,Other lithium material,61,Caution,88,1,1,0.580014,1,0.862744
+mp-705011,LiFeP2O7,LFP-family,93,Recommend,88,0,0,0.151651,0,0.129804
+mp-1174692,Li4MnCo2O7,LCO-family,44,Avoid / Benchmark,88,0,0,0.14364,0,0.129671
+mp-1111358,Li2GaCuF6,Other lithium material,42,Caution,88,0,1,0.867925,1,0.833829
+mp-1177599,Li3MnV(PO4)3,LMO-family,82,Research Candidate,88,0,0,0.142218,0,0.129494
+mp-1235697,BaSrLiNdTlCu2O7,Other lithium material,50,Caution,88,0,0,0.146308,0,0.129679
+mp-3202972,Li2NiH6Rh,Other lithium material,57,Caution,88,1,1,0.871512,1,0.83952
+mp-3204949,Li4Cd3SbPd8,Other lithium material,51,Caution,88,1,1,0.800914,1,0.845594
+mp-1185180,Li3B,Other lithium material,46,Caution,88,0,1,0.815585,1,0.780656
+mp-3248043,LiTbInAu,Other lithium material,61,Caution,88,1,1,0.865575,1,0.840809
+mp-1220982,NaLiGa2(SiO3)4,Silicon-family,79,Research Candidate,88,0,0,0.144218,0,0.129523
+mp-3207480,Rb2LiScAs2,Other lithium material,51,Caution,88,1,1,0.747279,1,0.868634
+mp-1195542,Rb2LiNd(BO3)2,Other lithium material,61,Caution,88,1,1,0.629891,1,0.839383
+mp-863403,LiNbP2O7,Other lithium material,52,Caution,88,0,0,0.144051,0,0.129564
+mp-555562,LiIO3,Other lithium material,50,Caution,88,0,1,0.669172,1,0.671836
+mp-757346,LiCrPO4,Other lithium material,53,Caution,88,0,0,0.144338,0,0.129597
+mp-772597,Li2CuNiO4,Other lithium material,51,Caution,88,0,0,0.153439,0,0.129474
+mp-759212,LiCoSiO4,LCO-family,43,Avoid / Benchmark,88,0,0,0.1852,0,0.129332
+mp-26297,LiV(PO3)3,Other lithium material,57,Caution,88,0,0,0.142774,0,0.12951
+mp-3213485,Li8As3PPd12,Other lithium material,53,Caution,88,1,1,0.825513,1,0.848363
+mp-1174158,Li3Co2O5,LCO-family,40,Avoid / Benchmark,88,0,0,0.151047,0,0.129609
+mp-3204423,K3Li2ZrP3,Other lithium material,63,Caution,88,1,1,0.74763,1,0.864039
+mp-12240,Na2LiBe2F7,Other lithium material,47,Caution,88,1,1,0.965929,1,0.846266
+mp-862318,LiAl2Ni,Other lithium material,57,Caution,88,1,1,0.871262,1,0.840353
+mp-867474,Li2EuSn,Other lithium material,61,Caution,88,1,1,0.871268,1,0.840333
+mp-704600,LiTi4Mn(PO4)6,LMO-family,88,Research Candidate,88,0,0,0.258558,0,0.131357
+mp-8430,KLiS,Li-S or sulfide-family,78,Research Candidate,88,1,1,0.969417,1,0.842839
+mp-4604,Li7VN4,Other lithium material,61,Caution,88,1,1,0.979166,1,0.839393
+mp-3327523,LiLuGa4,Other lithium material,61,Caution,88,1,1,0.847834,1,0.844557
+mp-1176702,LiFeF4,Other lithium material,54,Caution,88,0,1,0.691234,0,0.382555
+mp-760111,Li4V3P8O29,Other lithium material,55,Caution,88,0,0,0.142273,0,0.129501
+mp-3230128,Li3Tm3InGe2,Other lithium material,61,Caution,88,1,1,0.8488,1,0.843801
+mp-764754,LiV3O5F3,Other lithium material,47,Caution,88,0,0,0.14711,0,0.129667
+mp-761083,Li9V3P8O29,Other lithium material,57,Caution,88,0,0,0.142017,0,0.129466
+mp-757550,Li3V3P8O29,Other lithium material,55,Caution,88,0,0,0.142363,0,0.129514
+mp-3274394,LiSmCr2O8,Other lithium material,61,Caution,88,1,0,0.232914,0,0.12957
+mp-776381,LiVPO5,Other lithium material,53,Caution,88,0,0,0.150514,0,0.12978
+mp-3249740,LiPrInAg,Other lithium material,61,Caution,88,1,1,0.866088,1,0.841554
+mp-1176775,LiCu2C2O7,Carbon-family,85,Recommend,88,0,0,0.152689,0,0.12951
+mp-9719,Na2LiAlP2,Other lithium material,63,Caution,88,1,1,0.958377,1,0.845132
+mp-770871,Li6Cr2O7,Other lithium material,51,Caution,88,0,0,0.150725,0,0.12976
+mp-1175337,Li7Mn5O12,LMO-family,82,Research Candidate,88,0,0,0.143733,0,0.129625
+mp-772133,Li2VAsCO7,Carbon-family,77,Recommend,88,0,0,0.149479,0,0.129736
+mp-3248462,LiDy2Pd5,Other lithium material,61,Caution,88,1,1,0.812773,1,0.863923
+mp-777379,LiCrP2O7,Other lithium material,53,Caution,88,0,0,0.147234,0,0.12968
+mp-3247075,Li2LaDy2Al7,Other lithium material,61,Caution,88,1,1,0.833619,1,0.845563
+mp-3252697,LiDyFeH6,Other lithium material,64,Caution,88,1,1,0.865923,1,0.841392
+mp-3258163,Li(NbSe2)3,Other lithium material,61,Caution,88,1,1,0.850639,1,0.840072
+mp-862658,LiCu3,Other lithium material,61,Caution,88,1,1,0.814759,1,0.812123
+mp-1185398,LiPm2Pb,Other lithium material,45,Caution,88,0,1,0.871552,1,0.839369
+mp-1176196,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,88,0,0,0.143748,0,0.129682
+mp-759143,Li2V(FeO3)2,Other lithium material,53,Caution,88,0,0,0.150379,0,0.129722
+mp-3312015,Li10IN3,Other lithium material,61,Caution,88,1,1,0.847655,1,0.844422
+mp-770805,Li6Hf2O7,Other lithium material,55,Caution,88,0,0,0.149777,0,0.129682
+mp-759457,Li8NbNi3(PO4)6,Other lithium material,49,Caution,88,0,0,0.258037,0,0.131355
+mp-3260577,Li8Si5Pt3,Other lithium material,63,Caution,88,1,1,0.865188,1,0.841246
+mp-562473,LiSn2(PO4)3,Other lithium material,57,Caution,88,0,1,0.749778,1,0.885893
+mp-3247291,Li2NdTmSi3,Other lithium material,63,Caution,88,1,1,0.747224,1,0.853646
+mp-3252503,LiYbNi4,Other lithium material,57,Caution,88,1,1,0.866318,1,0.841653
+mp-25284,LiMn2NiO6,LMO-family,76,Research Candidate,88,0,0,0.152941,0,0.129616
+mp-772131,Li3Fe3SbO8,Other lithium material,56,Caution,88,0,0,0.150569,0,0.129697
+mp-3368,LiNb3O8,Other lithium material,61,Caution,88,1,1,0.577027,1,0.846893
+mp-776870,Li2V3SnO8,Other lithium material,61,Caution,88,1,0,0.147602,0,0.129709
+mp-1093641,Li2HgPt,Other lithium material,36,Caution,88,0,1,0.759203,1,0.559376
+mp-3208230,Rb2Li2SiS4,Li-S or sulfide-family,80,Research Candidate,88,1,1,0.695912,1,0.797844
+mp-1177518,Li4Mn2Ni3Sn(PO4)6,LMO-family,78,Research Candidate,88,0,0,0.142635,0,0.12955
+mp-756535,LiFeF4,Other lithium material,49,Caution,88,0,1,0.741163,1,0.77798
+mp-1177300,Li4VCr3O8,Other lithium material,55,Caution,88,0,0,0.149565,0,0.129762
+mp-3320910,LiIn6Pd7,Other lithium material,61,Caution,88,1,1,0.820271,1,0.849817
+mp-1211137,LiNd(WO4)2,Other lithium material,61,Caution,88,1,0,0.142767,0,0.129509
+mp-3230168,LiTb3Cd3Au2,Other lithium material,51,Caution,88,1,1,0.848933,1,0.844044
+mp-3214783,LiCa2InPb2,Other lithium material,51,Caution,88,1,1,0.746395,1,0.850539
+mp-1192133,LiBH4,Other lithium material,61,Caution,88,1,1,0.74688,1,0.837892
+mp-778208,Li3V4(OF3)3,Other lithium material,47,Caution,88,0,0,0.141554,0,0.129401
+mp-752829,LiMnF3,Other lithium material,52,Caution,88,0,1,0.814706,1,0.875595
+mp-1175843,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,88,0,0,0.144359,0,0.129678
+mp-1185306,LiCrRh2,Other lithium material,61,Caution,88,1,1,0.871846,1,0.83812
+mp-3282238,LiTa(NiP)2,Other lithium material,59,Caution,88,1,1,0.709533,1,0.845764
+mp-3206556,Li28ScSi8Ag,Other lithium material,63,Caution,88,1,1,0.766096,1,0.819567
+mp-1101557,Li2Mn(PO4)2,LMO-family,84,Research Candidate,88,0,0,0.144363,0,0.1296
+mp-753573,LiVF6,Other lithium material,49,Caution,88,0,1,0.776847,1,0.8863
+mp-3206271,Rb2LiLuSb2,Other lithium material,61,Caution,88,1,1,0.747583,1,0.864734
+mp-1934,LiZn,Other lithium material,61,Caution,88,1,1,0.981543,1,0.839547
+mp-865658,LiPrGe2,Other lithium material,61,Caution,88,1,1,0.957947,1,0.84571
+mp-40575,LiNi2P4H3O14,Other lithium material,59,Caution,88,1,0,0.147986,0,0.129718
+mp-3203544,Ba2Sr(LiSb)4,Other lithium material,61,Caution,88,1,1,0.753767,1,0.874673
+mp-1097959,LiEu4(BN2)3,Other lithium material,61,Caution,88,1,1,0.981439,1,0.840797
+mp-3223821,Li2Tb2IrPt,Other lithium material,61,Caution,88,1,1,0.709565,1,0.845877
+mp-3245082,Li3Dy3HgBi2,Other lithium material,51,Caution,88,1,1,0.848813,1,0.843826
+mp-7955,Li3Sb,Other lithium material,61,Caution,88,1,1,0.97806,1,0.839173
+mp-3251934,Li3Ac2LuGe3,Other lithium material,61,Caution,88,1,1,0.722229,1,0.849851
+mp-1100741,Li9Mn2Co5O16,LCO-family,44,Avoid / Benchmark,88,0,0,0.150756,0,0.129666
+mp-863727,LiTiRh2,Other lithium material,63,Caution,88,1,1,0.870994,1,0.841036
+mp-4995,LiSbO3,Other lithium material,61,Caution,88,1,1,0.626579,1,0.81663
+mp-3252708,LiPr3Cd3Ga2,Other lithium material,51,Caution,88,1,1,0.84922,1,0.844416
+mp-766814,Li12MnCo3P4(CO7)4,LCO-family,48,Avoid / Benchmark,88,0,0,0.14598,0,0.129668
+mp-3307847,Li3GePd,Other lithium material,61,Caution,88,1,1,0.85496,1,0.84343
+mp-867244,LiGdAu2,Other lithium material,61,Caution,88,1,1,0.870875,1,0.84127
+mp-762609,Li2CrCo3O8,LCO-family,43,Avoid / Benchmark,88,0,0,0.146511,0,0.129663
+mp-1185208,Li3Lu,Other lithium material,46,Caution,88,0,1,0.853835,1,0.844413
+mp-758101,Li4Cu3F10,Other lithium material,47,Caution,88,0,1,0.67841,1,0.5
+mp-759785,LiVOF2,Other lithium material,47,Caution,88,0,0,0.141661,0,0.129416
+mp-1236727,LiTa2Te4Br10O,Other lithium material,53,Caution,88,0,0,0.144819,0,0.129765
+mp-677627,Li3Nd3(TeO6)2,Other lithium material,61,Caution,88,1,0,0.347126,0,0.133226
+mp-758030,Li3V3P8O29,Other lithium material,55,Caution,88,0,0,0.14237,0,0.129514
+mp-3267901,LiIn5Te8,Other lithium material,61,Caution,88,1,1,0.687823,1,0.845729
+mp-756561,KLi4FeO5,Other lithium material,56,Caution,88,0,0,0.14441,0,0.129681
+mp-3230708,Li3Ac2PrGe3,Other lithium material,61,Caution,88,1,1,0.722198,1,0.850034
+mp-756855,Li5Cr2Ni3O10,Other lithium material,49,Caution,88,0,0,0.144233,0,0.129669
+mp-3246849,LiTbTmOs,Other lithium material,61,Caution,88,1,1,0.866367,1,0.841656
+mp-3201403,NaLiZrBr6,Other lithium material,61,Caution,88,1,1,0.818476,1,0.878261
+mp-758415,LiCuPO4,Other lithium material,53,Caution,88,0,0,0.185514,0,0.129416
+mp-778376,Li32Mn5Cr11O48,LMO-family,82,Research Candidate,88,0,0,0.145466,0,0.129658
+mp-1174234,Li3MnCoO5,LCO-family,43,Avoid / Benchmark,88,0,0,0.147983,0,0.129684
+mp-1235800,Rb2Li(SbO2)2,Other lithium material,46,Caution,88,0,0,0.14663,0,0.129658
+mp-3247212,LiSmNiPt3,Other lithium material,57,Caution,88,1,1,0.828536,1,0.85447
+mp-1222873,Li2Al(NiO2)3,Other lithium material,51,Caution,88,0,0,0.146038,0,0.129674
+mp-2032538,Li2ZnGe,Other lithium material,61,Caution,88,1,1,0.852652,1,0.844315
+mp-1259488,LiFe(SiO3)2,Silicon-family,82,Research Candidate,88,0,0,0.154187,0,0.129843
+mp-3317204,Li4TcO5,Other lithium material,61,Caution,88,1,0,0.15223,0,0.129755
+mp-781626,Li2NbO3,Other lithium material,51,Caution,88,0,0,0.151139,0,0.129795
+mp-3332893,Li4Al3Zn,Other lithium material,61,Caution,88,1,1,0.829869,1,0.838182
+mp-3247886,LiHoH6Os,Other lithium material,61,Caution,88,1,1,0.865765,1,0.841169
+mp-1018764,Li3HoSb2,Other lithium material,61,Caution,88,1,1,0.974446,1,0.839493
+mp-758552,LiCoPO4,LCO-family,43,Avoid / Benchmark,88,0,0,0.260492,0,0.131232
+mp-1018134,Li,Other lithium material,61,Caution,88,1,1,0.975063,1,0.839879
+mp-1139958,LiY(TlCl3)2,Other lithium material,55,Caution,88,0,1,0.86854,1,0.837423
+mp-12283,Li5Tl2,Other lithium material,61,Caution,88,1,1,0.974957,1,0.839529
+mp-25447,LiCrPO4,Other lithium material,57,Caution,88,0,0,0.184594,0,0.12929
+mp-9250,RbLiSe,Other lithium material,61,Caution,88,1,1,0.969437,1,0.842716
+mp-774432,K2Li3NiO4,Other lithium material,57,Caution,88,1,0,0.152358,0,0.1296
+mp-862928,LiPmTl2,Other lithium material,61,Caution,88,1,1,0.871369,1,0.840018
+mp-774496,Li5Mn(SiO3)4,LMO-family,82,Research Candidate,88,0,0,0.144396,0,0.12955
+mp-1205568,Sr2LiOsO6,Other lithium material,61,Caution,99,1,0,0.413139,0,0.147545
+mp-3205940,LiY3(Si4Tc3)2,Other lithium material,63,Caution,99,1,1,0.635913,1,0.862967
+mp-26702,LiSn2(PO4)3,Other lithium material,57,Caution,99,0,0,0.148682,0,0.139108
+mp-2900776,LiCu4(PO4)3,Other lithium material,57,Caution,99,0,0,0.164534,0,0.13798
+mp-768787,Li5Mn2P2(CO7)2,LMO-family,86,Research Candidate,99,0,0,0.148607,0,0.138994
+mp-3252813,LiTbH6Ru,Other lithium material,61,Caution,99,1,1,0.878222,1,0.84806
+mp-1222609,Li4MnCo2NiO8,NMC-family,50,Caution,99,0,0,0.157338,0,0.138391
+mp-3211823,Ba3Na2(LiSb2)2,Other lithium material,61,Caution,99,1,1,0.644337,1,0.859408
+mp-3264577,Li(TaPt4)3,Other lithium material,61,Caution,99,1,1,0.854626,1,0.859859
+mp-1174836,Li4MnCo2O7,LCO-family,44,Avoid / Benchmark,99,0,0,0.154331,0,0.138613
+mp-760512,LiCuCO3,Carbon-family,85,Recommend,99,0,0,0.1522,0,0.139002
+mp-761801,LiV2CoO6,LCO-family,40,Avoid / Benchmark,99,0,0,0.14459,0,0.138933
+mp-759202,Li2CrPO4F,Other lithium material,49,Caution,99,0,0,0.188663,0,0.138881
+mp-3215321,SrLiRhF6,Other lithium material,57,Caution,99,1,1,0.794173,1,0.78301
+mp-762700,Li2Ti2Fe3O10,LTO-family,78,Research Candidate,99,0,0,0.141618,0,0.138874
+mp-557892,BaLi(BS2)3,Li-S or sulfide-family,78,Research Candidate,99,1,1,0.931037,1,0.845772
+mp-1200209,Li2B6O9F2,Other lithium material,57,Caution,99,1,1,0.557329,1,0.843762
+mp-31885,Li3Fe2P5O16,LFP-family,98,Recommend,99,0,0,0.147449,0,0.139101
+mp-976023,Li3Ga,Other lithium material,55,Caution,99,0,1,0.889274,1,0.843314
+mp-1314136,LiMnCo3O8,LCO-family,46,Avoid / Benchmark,99,0,0,0.155436,0,0.139033
+mp-867235,LiY2Ir,Other lithium material,61,Caution,99,1,1,0.8855,1,0.844613
+mp-755593,Li4CoO3,LCO-family,43,Avoid / Benchmark,99,0,0,0.155023,0,0.138569
+mp-3323200,Li4IrO5,Other lithium material,61,Caution,99,1,0,0.151293,0,0.138992
+mp-768567,Li2MnV(PO4)3,LMO-family,84,Research Candidate,99,0,0,0.137368,0,0.138827
+mp-3209742,Na2LiInBi2,Other lithium material,61,Caution,99,1,1,0.730667,1,0.837156
+mp-779091,LiFe4(BO3)4,Other lithium material,54,Caution,99,0,0,0.147462,0,0.138892
+mp-684493,LiSn2P3O10,Other lithium material,55,Caution,99,0,0,0.150184,0,0.139067
+mp-1034028,KLiMg14O15,Other lithium material,50,Caution,99,0,0,0.154743,0,0.13909
+mp-758917,Li8Mn6(FeO6)3,LMO-family,82,Research Candidate,99,0,0,0.153231,0,0.138686
+mp-867285,LiTb2Ir,Other lithium material,61,Caution,99,1,1,0.885335,1,0.844616
+mp-3170855,Li2Ho3AgSn3,Other lithium material,61,Caution,99,1,1,0.689254,1,0.855711
+mp-3202852,LiTi2(SnIr)2,Other lithium material,63,Caution,99,1,1,0.831274,1,0.86761
+mp-3311365,CsLiGe2O5,Other lithium material,61,Caution,99,1,0,0.148459,0,0.13887
+mp-3207485,Li12SnRuN8,Other lithium material,61,Caution,99,1,1,0.790613,1,0.850344
+mp-2314,LiPb,Other lithium material,51,Caution,99,1,1,0.983791,1,0.852642
+mp-685293,Li7Mn11O24,LMO-family,80,Research Candidate,99,0,0,0.154958,0,0.138663
+mp-777735,Li32Ti5Cr11O48,LTO-family,77,Research Candidate,99,0,0,0.139234,0,0.138841
+mp-766130,Li4MnFe3(PO4)4,LMFP-family,97,Research Candidate,99,0,0,0.163662,0,0.13919
+mp-757664,Li2CoSiO4,LCO-family,45,Avoid / Benchmark,99,0,0,0.149547,0,0.139087
+mp-3213862,K3LiSn3Se8,Other lithium material,61,Caution,99,1,1,0.792895,1,0.876189
+mp-1105387,Li2FeGeS4,Li-S or sulfide-family,73,Research Candidate,99,0,1,0.931752,1,0.858648
+mp-3294393,LiEu2(SO4)3,Li-S or sulfide-family,78,Research Candidate,99,1,0,0.33212,0,0.136818
+mp-1192746,LiAs2H3O7,Other lithium material,51,Caution,99,1,1,0.599321,1,0.844046
+mp-778482,Li4Mn2Co3O10,LCO-family,44,Avoid / Benchmark,99,0,0,0.149529,0,0.13897
+mp-1211639,LiCa11Sb9,Other lithium material,61,Caution,99,1,1,0.801478,1,0.879247
+mp-771611,Li5V4O8,Other lithium material,51,Caution,99,0,0,0.317567,0,0.141858
+mp-779625,Li4Mn2(PO4)3,LMO-family,84,Research Candidate,99,0,0,0.147608,0,0.139124
+mp-753429,Li4Bi2S7,Li-S or sulfide-family,68,Research Candidate,99,0,1,0.648943,1,0.860276
+mp-776164,LiFeF4,Other lithium material,54,Caution,99,0,1,0.595082,0,0.29402
+mp-3206966,Ba2NaLi3S5,Li-S or sulfide-family,78,Research Candidate,99,1,1,0.625172,1,0.790094
+mp-3252032,LiTbCu4,Other lithium material,61,Caution,99,1,1,0.883807,1,0.846479
+mp-3338107,LiSi3Ni4,Other lithium material,59,Caution,99,1,1,0.822238,1,0.857841
+mp-780807,Li2TiCr3O8,LTO-family,75,Research Candidate,99,0,0,0.13932,0,0.13886
+mp-762163,Li3TiMn2O6,LMO-family,82,Research Candidate,99,0,0,0.147847,0,0.139058
+mp-3250218,BaLi2La4O8,Other lithium material,61,Caution,99,1,0,0.135747,0,0.138767
+mp-1193172,Li2Mn(SO4)2,LMO-family,91,Research Candidate,99,1,1,0.586316,1,0.844431
+mp-942704,LiCoHSO5,LCO-family,46,Avoid / Benchmark,99,0,0,0.159643,0,0.138282
+mp-697263,LiAsH2OF6,Other lithium material,41,Caution,99,0,1,0.67452,1,0.848014
+mp-3247382,Li2NdYSi3,Other lithium material,63,Caution,99,1,1,0.724397,1,0.853754
+mp-753783,Li5InO4,Other lithium material,53,Caution,99,0,0,0.199754,0,0.138959
+mp-972125,LiTb3,Other lithium material,50,Caution,99,0,1,0.873376,1,0.840359
+mp-1235053,Rb2Li(OsO3)2,Other lithium material,51,Caution,99,0,0,0.320549,0,0.144566
+mp-764945,LiCoSiO4,LCO-family,43,Avoid / Benchmark,99,0,0,0.297761,0,0.141516
+mp-977380,LiMg2Pd,Other lithium material,61,Caution,99,1,1,0.886516,1,0.844499
+mp-3249753,LiHoHgPb,Other lithium material,51,Caution,99,1,1,0.879658,1,0.848071
+mp-1176151,Li9Mn2Co5O16,LCO-family,44,Avoid / Benchmark,99,0,0,0.148654,0,0.139032
+mp-768747,Li7Bi(BO4)2,Other lithium material,51,Caution,99,0,0,0.150487,0,0.13896
+mp-1180504,LiH2IO,Other lithium material,61,Caution,99,1,0,0.204381,0,0.136027
+mp-1057216,LiS,Li-S or sulfide-family,63,Research Candidate,99,0,1,0.966542,1,0.845056
+mp-3215757,Cs2LiGaSb2,Other lithium material,61,Caution,99,1,1,0.727344,1,0.849383
+mp-831246,Li2Ti2NiO6,LTO-family,71,Research Candidate,99,0,0,0.191406,0,0.138958
+mp-3211654,LiPb4BrO4,Other lithium material,51,Caution,99,1,0,0.241572,0,0.145554
+mp-3212172,SrLi2(P3Pd10)2,Other lithium material,63,Caution,99,1,1,0.878686,1,0.848094
+mp-3253587,LiPmNiSn,Other lithium material,57,Caution,99,1,1,0.878709,1,0.848095
+mp-6075,Ba2Li(BO2)5,Other lithium material,61,Caution,99,1,1,0.556592,1,0.843835
+mp-1211020,LiGa(PO3)4,Other lithium material,63,Caution,99,1,0,0.189288,0,0.138914
+mp-3247207,LiDyNi3Ir,Other lithium material,57,Caution,99,1,1,0.836761,1,0.854923
+mp-1177067,Li5V3P8O29,Other lithium material,55,Caution,99,0,0,0.136865,0,0.138825
+mp-1222772,Li(TiTe2)5,Other lithium material,63,Caution,99,1,1,0.628845,1,0.861426
+mp-772829,Ba6Li2Ti7(Sb3O14)3,LTO-family,75,Research Candidate,99,0,0,0.140832,0,0.139026
+mp-3343641,LiEu2(BO3)2,Other lithium material,61,Caution,99,1,0,0.311276,0,0.183323
+mp-1545896,Li2Sb,Other lithium material,61,Caution,99,1,1,0.857298,1,0.858485
+mp-26089,Li2CoP2O7,LCO-family,47,Avoid / Benchmark,99,0,0,0.149654,0,0.139119
+mp-3210658,Li2Ge(IO3)6,Other lithium material,61,Caution,99,1,0,0.335494,0,0.216677
+mp-776780,Li4Ti3Cr3(SnO8)2,LTO-family,77,Research Candidate,99,0,0,0.1417,0,0.139022
+mp-3208522,Li3Hg(Pd3Pb)2,Other lithium material,51,Caution,99,1,1,0.658301,1,0.846712
+mp-1235188,Sr2LiZrCrO6,Other lithium material,50,Caution,99,0,0,0.302702,0,0.182189
+mp-773187,Li4Mn3V5O16,LMO-family,80,Research Candidate,99,0,0,0.140808,0,0.138862
+mp-3201345,Li2HfScPt2,Other lithium material,61,Caution,99,1,1,0.685144,1,0.858597
+mp-1204508,LiBePO5,Other lithium material,38,Caution,99,0,1,0.613852,1,0.843923
+mp-9143,LiPF6,Other lithium material,59,Caution,99,1,1,0.96461,1,0.830034
+mp-585305,Li9Bi3P8O29,Other lithium material,55,Caution,99,0,0,0.318667,0,0.154017
+mp-1175862,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,99,0,0,0.149142,0,0.139044
+mp-26015,LiCo(PO3)3,LCO-family,53,Avoid / Benchmark,99,1,0,0.139306,0,0.13886
+mp-865871,Li2ZnAu,Other lithium material,55,Caution,99,0,1,0.887374,1,0.844269
+mp-3204774,K2LiTiSb2,Other lithium material,63,Caution,99,1,1,0.73562,1,0.855907
+mp-1177206,Li4V3Fe5O16,Other lithium material,54,Caution,99,0,0,0.144943,0,0.138941
+mp-3206909,K3LiPtO4,Other lithium material,61,Caution,99,1,0,0.167599,0,0.137053
+mp-3336482,Li2FePt5,Other lithium material,64,Caution,99,1,1,0.738684,1,0.841408
+mp-758265,LiCu2F6,Other lithium material,57,Caution,99,1,1,0.78145,1,0.847437
+mp-862934,Li2PmTl,Other lithium material,61,Caution,99,1,1,0.887934,1,0.844052
+mp-3214643,K3Li2TaP3,Other lithium material,63,Caution,99,1,1,0.724282,1,0.856965
+mp-3285032,LiOs3O8,Other lithium material,61,Caution,99,1,0,0.169729,0,0.136626
+mp-570213,LiMgBi,Other lithium material,61,Caution,99,1,1,0.983008,1,0.854442
+mp-3215312,Rb2Li2TiS4,Li-S or sulfide-family,80,Research Candidate,99,1,1,0.787438,1,0.87513
+mp-761914,LiAgF4,Other lithium material,49,Caution,99,0,1,0.623129,1,0.748092
+mp-3200756,Li2Y3(CuSi2)2,Other lithium material,63,Caution,99,1,1,0.653189,1,0.858977
+mp-1214633,Ba2LiTeO6,Other lithium material,61,Caution,99,1,0,0.414897,0,0.144532
+mp-1174005,Li3Co2O5,LCO-family,41,Avoid / Benchmark,99,0,0,0.15146,0,0.138994
+mp-15821,LiNdGe,Other lithium material,61,Caution,99,1,1,0.979081,1,0.853963
+mp-3215154,Sr6Li7In9N,Other lithium material,61,Caution,99,1,1,0.700058,1,0.844025
+mp-1175207,Li7Mn2(CoO4)3,LCO-family,39,Avoid / Benchmark,99,0,0,0.329008,0,0.139166
+mp-1185028,Li2CaAl,Other lithium material,55,Caution,99,0,1,0.890488,1,0.842368
+mp-1175124,Li7Mn2(CoO4)3,LCO-family,43,Avoid / Benchmark,99,0,0,0.152792,0,0.138722
+mp-974059,LiDyIn2,Other lithium material,53,Caution,99,0,1,0.886173,1,0.844556
+mp-31168,Li2AlAg,Other lithium material,61,Caution,99,1,1,0.983308,1,0.850207
+mp-753427,LiP2WO8,Other lithium material,53,Caution,99,0,0,0.140919,0,0.138908
+mp-16691,SrLi2Ti6O14,LTO-family,85,Research Candidate,99,1,1,0.62977,1,0.842495
+mp-1177908,Li2MnPCO7,LMO-family,86,Research Candidate,99,0,0,0.145954,0,0.138929
+mp-1189725,Li2HN,Other lithium material,61,Caution,99,1,1,0.725401,1,0.847215
+mp-1177995,Li2CuSnO4,Other lithium material,51,Caution,99,0,0,0.27452,0,0.140723
+mp-3200840,Li2AlInTe4,Other lithium material,61,Caution,99,1,1,0.745181,1,0.864384
+mp-1173970,Li3Co2O5,LCO-family,41,Avoid / Benchmark,99,0,0,0.159929,0,0.138155
+mp-3288982,Li2FePd3,Other lithium material,64,Caution,99,1,1,0.841597,1,0.851658
+mp-3230482,Li2Yb3AlPt3,Other lithium material,61,Caution,99,1,1,0.680329,1,0.856222
+mp-3324425,NaLiMnF6,Other lithium material,60,Caution,99,1,1,0.793854,1,0.781013
+mp-3250721,LiNdInAu,Other lithium material,61,Caution,99,1,1,0.877164,1,0.847876
+mp-1175062,Li7Mn2(CoO4)3,LCO-family,43,Avoid / Benchmark,99,0,0,0.148524,0,0.139028
+mp-10615,BaLiP,Other lithium material,55,Caution,99,0,1,0.978321,1,0.857842
+mp-1177329,Li4Ti2Co7O18,LCO-family,42,Avoid / Benchmark,99,0,0,0.152934,0,0.138717
+mp-1235775,LiV4(NiO6)2,Other lithium material,46,Caution,99,0,0,0.145795,0,0.138961
+mp-17240,RbNa3Li12(SiO4)4,Silicon-family,87,Research Candidate,99,1,1,0.684705,1,0.849353
+mp-1101935,Li4Mg(HN)3,Other lithium material,61,Caution,99,1,1,0.699586,1,0.851959
+mp-753270,Li2V3(P2O7)2,Other lithium material,55,Caution,99,0,0,0.137773,0,0.138856
+mp-1209991,NaLiLu2F8,Other lithium material,57,Caution,99,1,1,0.635663,0,0.017695
+mp-770749,Li2Ti(BO3)2,LTO-family,75,Research Candidate,99,0,0,0.133221,0,0.138839
+mp-1176143,Li9Mn2Co5O16,LCO-family,44,Avoid / Benchmark,99,0,0,0.148524,0,0.139029
+mp-768968,Li4B4Sb2SO16,Li-S or sulfide-family,68,Research Candidate,99,0,0,0.20504,0,0.13905
+mp-770556,Li3MnO3,LMO-family,80,Research Candidate,99,0,0,0.311088,0,0.13592
+mp-1273630,Li2TiCrO4,LTO-family,75,Research Candidate,99,0,0,0.14507,0,0.139099
+mp-3203206,Rb4LiAgBi2,Other lithium material,61,Caution,99,1,1,0.658721,1,0.849127
+mp-3215459,Li4B4Ir3Os,Other lithium material,61,Caution,99,1,1,0.647081,1,0.854553
+mp-3213432,Na5LiSi2S7,Li-S or sulfide-family,80,Research Candidate,99,1,1,0.641331,1,0.844825
+mp-766112,Li4MnV3(P2O7)4,LMO-family,86,Research Candidate,99,0,0,0.138234,0,0.13892
+mp-3250344,Li6Tm2NpN6,Other lithium material,61,Caution,99,1,1,0.823611,1,0.8735
+mp-1311086,Li4Co2OF7,LCO-family,39,Avoid / Benchmark,99,0,0,0.142836,0,0.139042
+mp-1222615,Li2MgSn,Other lithium material,61,Caution,99,1,1,0.881934,1,0.847505
+mp-753150,Li3Mn3CoO8,LCO-family,44,Avoid / Benchmark,99,0,0,0.336858,0,0.134304
+mp-758257,LiFeSiO4,Silicon-family,80,Research Candidate,99,0,0,0.332492,0,0.149457
+mp-1018134,Li,Other lithium material,61,Caution,99,1,1,0.977643,1,0.831282
+mp-18860,Li2VSiO5,Silicon-family,87,Research Candidate,99,1,1,0.737636,1,0.851165
+mp-759820,LiVFe(P2O7)2,LFP-family,98,Recommend,99,0,0,0.137605,0,0.138828
+mp-851029,Li4Ti3Ni3(SnO8)2,LTO-family,73,Research Candidate,99,0,0,0.140862,0,0.138863
+mp-1311067,Li5Ti2Mn3O10,LMO-family,84,Research Candidate,99,0,0,0.137917,0,0.138856
+mp-3215476,Cs2LiTi3F12,Other lithium material,59,Caution,99,1,1,0.785916,1,0.704015
+mp-754267,Li2MnCu3O8,LMO-family,82,Research Candidate,99,0,0,0.353029,0,0.152215
+mp-761257,Li2Fe4OF8,Other lithium material,50,Caution,99,0,0,0.139097,0,0.138859
+mp-753943,Li2FeS2,Li-S or sulfide-family,70,Research Candidate,99,0,1,0.82256,1,0.874523
+mp-1174822,Li6Mn3CoO10,LCO-family,44,Avoid / Benchmark,99,0,0,0.14558,0,0.138956
+mp-3252178,Li2AcYSi2,Other lithium material,63,Caution,99,1,1,0.837132,1,0.862949
+mp-1222635,Li2PS3,Li-S or sulfide-family,69,Research Candidate,99,0,1,0.849579,1,0.862024
+mp-3248216,Li2TbHoSi3,Other lithium material,63,Caution,99,1,1,0.724667,1,0.85309
+mp-1211480,KLiLuF5,Other lithium material,57,Caution,99,1,1,0.565608,0,0.021915
+mp-1222510,Li3MnCoNiO6,NMC-family,52,Caution,99,0,0,0.151957,0,0.138783
+mp-1192357,Sr3LiAs2H,Other lithium material,51,Caution,99,1,1,0.951329,1,0.844928
+mp-3540,Li2SnO3,Other lithium material,61,Caution,99,1,1,0.587001,1,0.844337
+mp-629430,SrLi2CrN3,Other lithium material,61,Caution,99,1,1,0.951327,1,0.847065
+mp-3251559,LiDyHfS4,Li-S or sulfide-family,78,Research Candidate,99,1,1,0.706716,1,0.77701
+mp-3246908,LiEuCoH6,Other lithium material,56,Caution,99,1,1,0.880137,1,0.848013
+mp-1198324,Li2B8SeO15,Other lithium material,61,Caution,99,1,1,0.573136,1,0.8439
+mp-1111067,Li3VF6,Other lithium material,42,Caution,99,0,1,0.852883,1,0.771817
+mp-2710677,LiVF6,Other lithium material,57,Caution,99,1,1,0.58751,0,0.220106
+mp-1198472,Li2V18O39,Other lithium material,51,Caution,99,0,1,0.576858,1,0.844283
+mp-1222572,Li7Cu2N3,Other lithium material,61,Caution,99,1,1,0.841797,1,0.856309
+mp-3327949,SrLiPt4,Other lithium material,61,Caution,99,1,1,0.876435,1,0.847664
+mp-1147646,LiCuN,Other lithium material,46,Caution,99,0,1,0.809195,1,0.783031
+mp-768527,LiMnV(PO4)3,LMO-family,84,Research Candidate,99,0,0,0.138535,0,0.138835
+mp-3251791,CsLi2LaSb2,Other lithium material,61,Caution,99,1,1,0.83088,1,0.871291
+mp-861629,LiMnPd2,Other lithium material,64,Caution,99,1,1,0.887659,1,0.844166
+mp-31066,LiUN2,Other lithium material,61,Caution,99,1,1,0.968731,1,0.848275
+mp-757212,LiV(CO3)2,Carbon-family,85,Recommend,99,0,0,0.310429,0,0.13607
+mp-3211524,Rb2Li2H6Ru,Other lithium material,61,Caution,99,1,1,0.650174,1,0.846996
+mp-1211137,LiNd(WO4)2,Other lithium material,61,Caution,99,1,0,0.137283,0,0.138856
+mp-19373,LiVO3,Other lithium material,61,Caution,99,1,1,0.581009,1,0.844125
+mp-726129,Li2Ti4Co(PO5)4,LCO-family,47,Avoid / Benchmark,99,0,0,0.142492,0,0.139027
+mp-3201827,KLi2YBi2,Other lithium material,61,Caution,99,1,1,0.834363,1,0.86762
+mp-758811,Li3Co2Si3O10,LCO-family,43,Avoid / Benchmark,99,0,0,0.144806,0,0.139018
+mp-975780,Li2TlSn,Other lithium material,55,Caution,99,0,1,0.888679,1,0.843681
+mp-753587,LiV(CO3)2,Carbon-family,85,Recommend,99,0,0,0.147501,0,0.138877
+mp-772157,Li4Ti5Nb3O16,LTO-family,74,Research Candidate,99,0,0,0.137135,0,0.139011
+mp-7507,Sr3Li2,Other lithium material,55,Caution,99,0,1,0.97298,1,0.831125
+mp-760165,LiCu2(PO3)5,Other lithium material,55,Caution,99,0,0,0.146525,0,0.138916
+mp-757460,Li2Fe(Si2O5)3,Silicon-family,79,Research Candidate,99,0,0,0.139868,0,0.139042
+mp-3203467,RbLiPdSe5,Other lithium material,61,Caution,99,1,1,0.650605,1,0.860286
+mp-3335603,Li2Tm3In4,Other lithium material,61,Caution,99,1,1,0.694597,1,0.84462
+mp-778120,Li5Mn4(Si3O10)2,LMO-family,82,Research Candidate,99,0,0,0.135577,0,0.138824
+mp-1175263,Li7Mn4CoO12,LCO-family,44,Avoid / Benchmark,99,0,0,0.14537,0,0.138951
+mp-3323779,Li3NiGe,Other lithium material,57,Caution,99,1,1,0.869143,1,0.852281
+mp-1653728,Li7Co5O12,LCO-family,43,Avoid / Benchmark,99,0,0,0.151929,0,0.138906
+mp-3201228,LiY(NiPt)2,Other lithium material,57,Caution,99,1,1,0.697995,1,0.854821
+mp-755329,Li3Fe(OF)2,Other lithium material,50,Caution,111,0,0,0.154926,0,0.143139
+mp-697784,LiFe2(PO4)3,LFP-family,94,Recommend,111,0,0,0.152389,0,0.143058
+mp-3283073,Li2GeS3,Li-S or sulfide-family,78,Research Candidate,111,1,1,0.641909,1,0.822306
+mp-755397,Li5Mn3(SnO5)2,LMO-family,82,Research Candidate,111,0,0,0.147038,0,0.14315
+mp-19373,LiVO3,Other lithium material,61,Caution,111,1,1,0.512371,1,0.805866
+mp-758707,Li2Mn3WO8,LMO-family,80,Research Candidate,111,0,0,0.161043,0,0.143015
+mp-26883,Li3Ti2(PO4)3,LTO-family,77,Research Candidate,111,0,0,0.298955,0,0.142151
+mp-1198027,LiSi2B,Other lithium material,63,Caution,111,1,1,0.9514,1,0.804026
+mp-14827,Li7NbN4,Other lithium material,61,Caution,111,1,1,0.967267,1,0.813555
+mp-3248830,LiTmBPt6,Other lithium material,61,Caution,111,1,1,0.848826,1,0.816611
+mp-1235490,Rb2LiPu(Cl2O)2,Other lithium material,46,Caution,111,0,0,0.155156,0,0.142999
+mp-3240020,LiSc4Al3,Other lithium material,61,Caution,111,1,1,0.860367,1,0.804333
+mp-1661410,Li2Mn3FeO8,LMO-family,85,Research Candidate,111,0,0,0.15318,0,0.14297
+mp-655001,Li3BH6,Other lithium material,46,Caution,111,0,1,0.594429,1,0.80965
+mp-3249441,LiTmFeH6,Other lithium material,64,Caution,111,1,1,0.849676,1,0.812534
+mp-1212397,Li2Ce5Sn7,Other lithium material,61,Caution,111,1,1,0.619348,1,0.821711
+mp-768608,LiMn2(SO4)3,LMO-family,85,Research Candidate,111,0,0,0.329108,0,0.143088
+mp-757098,Li2Fe2S3,Li-S or sulfide-family,66,Research Candidate,111,0,1,0.610485,1,0.821429
+mp-1199122,Li2Ca(SiN2)2,Other lithium material,63,Caution,111,1,1,0.967011,1,0.813478
+mp-761124,KLiMnPCO7,LMO-family,94,Research Candidate,111,1,0,0.148053,0,0.143115
+mp-757138,Li2Sn(PO3)4,Other lithium material,53,Caution,111,0,0,0.155744,0,0.143136
+mp-1185184,Li3Nb,Other lithium material,46,Caution,111,0,1,0.860317,1,0.765019
+mp-1023253,LiCaMg6,Other lithium material,51,Caution,111,0,1,0.650339,1,0.734971
+mp-759455,LiSbP2O7,Other lithium material,53,Caution,111,0,0,0.155844,0,0.143118
+mp-1094124,LiPH2,Other lithium material,48,Caution,111,0,1,0.761048,1,0.692195
+mp-1176265,Li9Mn2Co5O16,LCO-family,44,Avoid / Benchmark,111,0,0,0.15607,0,0.142924
+mp-3245836,LiNdHgPt3,Other lithium material,51,Caution,111,1,1,0.797514,1,0.835627
+mp-3246318,Li(HoP)2,Other lithium material,63,Caution,111,1,1,0.827991,1,0.827526
+mp-1222392,LiUI6,Other lithium material,61,Caution,111,1,1,0.595013,1,0.794999
+mp-867474,Li2EuSn,Other lithium material,61,Caution,111,1,1,0.856986,1,0.80879
+mp-3247776,LiPmBeSi2,Other lithium material,53,Caution,111,1,1,0.754196,1,0.79878
+mp-24446,LiH2SO4,Li-S or sulfide-family,70,Research Candidate,111,0,1,0.589604,1,0.815296
+mp-3206232,Ba2Sr(LiBi)4,Other lithium material,61,Caution,111,1,1,0.69162,1,0.839679
+mp-1174822,Li6Mn3CoO10,LCO-family,44,Avoid / Benchmark,111,0,0,0.146597,0,0.143207
+mp-541569,Sr2Li3TaN4,Other lithium material,61,Caution,111,1,1,0.92085,1,0.807141
+mp-3208419,Li2HgPd4Pb,Other lithium material,51,Caution,111,1,1,0.759063,1,0.792202
+mp-1185454,LiScIn2,Other lithium material,53,Caution,111,0,1,0.857124,1,0.807634
+mp-757200,Li3Si2Bi3O10,Silicon-family,77,Research Candidate,111,0,0,0.150443,0,0.143104
+mp-3252179,RbLi2NdSb2,Other lithium material,61,Caution,111,1,1,0.801313,1,0.836928
+mp-771508,Li6Fe3Sb3O16,Other lithium material,54,Caution,111,0,0,0.152582,0,0.142961
+mp-1203394,Li2MnP2O7,LMO-family,92,Research Candidate,111,1,1,0.509384,1,0.80577
+mp-1211233,LiDy6B3O14,Other lithium material,61,Caution,111,1,0,0.152399,0,0.144208
+mp-3245049,SrLi3Sm2Pb3,Other lithium material,51,Caution,111,1,1,0.824416,1,0.819876
+mp-768508,Li2FePCO7,LFP-family,100,Recommend,111,0,0,0.14583,0,0.143136
+mp-562394,Cs4Li2(Si2O5)3,Silicon-family,87,Research Candidate,111,1,1,0.503053,1,0.805414
+mp-3271918,Li4Tb4Sn3Sb,Other lithium material,61,Caution,111,1,1,0.601381,1,0.820665
+mp-1377376,Li5Mn3(NiO5)2,LMO-family,71,Research Candidate,111,0,0,0.15168,0,0.143209
+mp-542219,Li2ZrF6,Other lithium material,57,Caution,111,1,1,0.892342,1,0.805042
+mp-1375399,Li9Mn2Co5O16,LCO-family,39,Avoid / Benchmark,111,0,0,0.150188,0,0.143466
+mp-1222972,Li2TiFe(PO4)3,LFP-family,100,Recommend,111,1,0,0.17132,0,0.143149
+mp-1979362,Li7Mn2(CoO4)3,LCO-family,44,Avoid / Benchmark,111,0,0,0.147061,0,0.143249
+mp-762322,LiTi2(PO4)3,LTO-family,81,Research Candidate,111,0,0,0.146909,0,0.143133
+mp-1177120,Li5Mn2(PO4)3,LMO-family,82,Research Candidate,111,0,0,0.145742,0,0.143077
+mp-676685,LiNi9S10,Li-S or sulfide-family,64,Research Candidate,111,0,1,0.611736,1,0.823409
+mp-758369,Li4Co(SiO3)3,LCO-family,43,Avoid / Benchmark,111,0,0,0.147848,0,0.143134
+mp-1177778,Li2VFe(P2O7)2,LFP-family,98,Recommend,111,0,0,0.144856,0,0.143047
+mp-773085,LiCoSbO4,LCO-family,51,Avoid / Benchmark,111,1,0,0.214626,0,0.151365
+mp-9719,Na2LiAlP2,Other lithium material,63,Caution,111,1,1,0.924267,1,0.80637
+mp-849570,Li2V3SbO8,Other lithium material,55,Caution,111,0,0,0.392414,0,0.142969
+mp-861963,LiLu2Os,Other lithium material,61,Caution,111,1,1,0.85745,1,0.804681
+mp-504854,Na2Li3CoO4,LCO-family,51,Avoid / Benchmark,111,1,1,0.583179,1,0.815212
+mp-758866,Na2Li4Ni2C4SO16,Li-S or sulfide-family,66,Research Candidate,111,0,0,0.210071,0,0.148758
+mp-861915,LiDy2Ir,Other lithium material,61,Caution,111,1,1,0.856737,1,0.810748
+mp-1078961,LiTbGe,Other lithium material,61,Caution,111,1,1,0.964073,1,0.811865
+mp-3325341,Li3(P3Pd10)2,Other lithium material,63,Caution,111,1,1,0.856798,1,0.810282
+mp-774496,Li5Mn(SiO3)4,LMO-family,82,Research Candidate,111,0,0,0.147589,0,0.143136
+mp-1195868,LiCeF5,Other lithium material,57,Caution,111,1,1,0.929543,1,0.806576
+mp-753109,Li4Fe2SiO7,Silicon-family,80,Research Candidate,111,0,0,0.146664,0,0.143131
+mp-1175706,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,111,0,0,0.14805,0,0.143194
+mp-1175108,Li7Mn2(CoO4)3,LCO-family,43,Avoid / Benchmark,111,0,0,0.151084,0,0.143
+mp-3252780,LiEuH6Rh,Other lithium material,61,Caution,111,1,1,0.84964,1,0.812735
+mp-736,Li3P,Other lithium material,63,Caution,111,1,1,0.965076,1,0.812753
+mp-3279086,LiAc4Ru,Other lithium material,61,Caution,111,1,1,0.850962,1,0.803272
+mp-1192528,LiCa3As2H,Other lithium material,51,Caution,111,1,1,0.9227,1,0.807302
+mp-3240293,LiPr(ZnRu)2,Other lithium material,61,Caution,111,1,1,0.648995,1,0.782675
+mp-781502,Li2Mn3(BO3)3,LMO-family,80,Research Candidate,111,0,0,0.145366,0,0.143093
+mp-5670,LiTi2O4,LTO-family,85,Research Candidate,111,1,1,0.797391,1,0.796566
+mp-753817,Sr2Li2NiO4,Other lithium material,47,Caution,111,0,0,0.146781,0,0.143137
+mp-3215983,LiScCr2O8,Other lithium material,61,Caution,111,1,0,0.196512,0,0.142837
+mp-758429,LiP4WO12,Other lithium material,53,Caution,111,0,0,0.155758,0,0.143133
+mp-3221785,LiTb2TmPt2,Other lithium material,61,Caution,111,1,1,0.634694,1,0.819878
+mp-1185313,LiAlO3,Other lithium material,46,Caution,111,0,0,0.407739,0,0.144869
+mp-1197729,Li2Sm5Sn7,Other lithium material,61,Caution,111,1,1,0.901726,1,0.805524
+mp-776573,LiFe2O3F,Other lithium material,49,Caution,111,0,0,0.153049,0,0.142984
+mp-1013796,Li3Ni2(GeO4)3,Other lithium material,42,Caution,111,0,0,0.424463,0,0.155532
+mp-1190882,LiLu(WO4)2,Other lithium material,61,Caution,111,1,1,0.507743,1,0.805711
+mp-3333570,LiHo2Pt5,Other lithium material,61,Caution,111,1,1,0.774223,1,0.85662
+mp-25987,LiMo(PO3)4,Other lithium material,57,Caution,111,0,0,0.197568,0,0.141557
+mp-759092,LiFePO4,LFP-family,93,Recommend,111,0,0,0.147187,0,0.143116
+mp-1235110,LiCo6(OF5)2,LCO-family,36,Avoid / Benchmark,111,0,0,0.147247,0,0.143161
+mp-761049,Li9V3P8O29,Other lithium material,57,Caution,111,0,0,0.144615,0,0.143025
+mp-757489,Li4CoCu3(PO4)4,LCO-family,45,Avoid / Benchmark,111,0,0,0.149993,0,0.143086
+mp-3294779,K2Li3AlO4,Other lithium material,61,Caution,111,1,0,0.211067,0,0.143607
+mp-3201929,NaLi2(CuO2)2,Other lithium material,61,Caution,111,1,0,0.157367,0,0.14289
+mp-3203748,CsK2LiPb4,Other lithium material,51,Caution,111,1,1,0.683335,1,0.787158
+mp-861259,Li3V(BO3)2,Other lithium material,51,Caution,111,0,0,0.145699,0,0.143074
+mp-1173925,Li3Mn(CoO3)2,LCO-family,44,Avoid / Benchmark,111,0,0,0.156122,0,0.142921
+mp-3308214,Li7U2N6,Other lithium material,61,Caution,111,1,1,0.798609,1,0.844514
+mp-698703,Li15Mn21O43,LMO-family,79,Research Candidate,111,0,0,0.146682,0,0.143215
+mp-752884,Li5CoOF5,LCO-family,39,Avoid / Benchmark,111,0,0,0.267178,0,0.140697
+mp-3214961,Li4ZnAsPd6,Other lithium material,51,Caution,111,1,1,0.794719,1,0.814327
+mp-1246045,LiPbN,Other lithium material,36,Caution,111,0,1,0.827236,1,0.786902
+mp-863416,LiFe(SiO3)2,Silicon-family,80,Research Candidate,111,0,0,0.160169,0,0.143265
+mp-555939,Li2Te2O5,Other lithium material,55,Caution,111,0,1,0.579801,1,0.815211
+mp-3229928,LiTiPt6,Other lithium material,63,Caution,111,1,1,0.757768,1,0.831591
+mp-753649,LiZrPCO7,Carbon-family,87,Recommend,111,0,0,0.146856,0,0.143107
+mp-752696,Li3FePCO7,LFP-family,98,Recommend,111,0,0,0.148055,0,0.143115
+mp-3244789,LiSm2Ag3O8,Other lithium material,61,Caution,111,1,0,0.148313,0,0.143203
+mp-756553,Li5Cu3(SbO5)2,Other lithium material,53,Caution,111,0,0,0.148092,0,0.143196
+mp-772569,Li2Ni2BiO6,Other lithium material,49,Caution,111,0,0,0.205742,0,0.16218
+mp-3246412,Li6Nd2NpN6,Other lithium material,61,Caution,111,1,1,0.793434,1,0.847939
+mp-1280637,Li4MgNi3O8,Other lithium material,51,Caution,111,0,0,0.156463,0,0.142905
+mp-771835,Li6V3P8O29,Other lithium material,57,Caution,111,0,0,0.144776,0,0.143039
+mp-3251948,LiSmH6Ru,Other lithium material,61,Caution,111,1,1,0.849493,1,0.813546
+mp-1245984,LiSnN,Other lithium material,46,Caution,111,0,1,0.826531,1,0.797239
+mp-753560,LiVPHO5,Other lithium material,63,Caution,111,1,0,0.146039,0,0.143095
+mp-3211961,K2LiAsO4,Other lithium material,51,Caution,111,1,0,0.155661,0,0.142952
+mp-2927,LiAg2Sn,Other lithium material,61,Caution,111,1,1,0.971483,1,0.804938
+mp-773112,LiMn(SO4)2,LMO-family,85,Research Candidate,111,0,0,0.146699,0,0.143217
+mp-530600,Li14Ti21O48,LTO-family,79,Research Candidate,111,0,0,0.148673,0,0.143311
+mp-3251294,LiPmNiPb,Other lithium material,47,Caution,111,1,1,0.849954,1,0.810851
+mp-761271,Li2VOF4,Other lithium material,51,Caution,111,0,0,0.143751,0,0.142954
+mp-769476,Li6Fe3Cu(PO4)6,LFP-family,94,Recommend,111,0,0,0.145556,0,0.14311
+mp-849414,Li5Mn6(BO3)6,LMO-family,82,Research Candidate,111,0,0,0.149278,0,0.143128
+mp-1272606,Li2CrO2,Other lithium material,53,Caution,111,0,0,0.155337,0,0.142981
+mp-3239896,Li2CaCeSn2,Other lithium material,61,Caution,111,1,1,0.802399,1,0.822757
+mp-774457,LiNb7V12O48,Other lithium material,51,Caution,111,0,0,0.145127,0,0.143071
+mp-1302394,Li4V3O8,Other lithium material,51,Caution,111,0,0,0.146187,0,0.143104
+mp-771939,LiTi2Ni(PO5)2,LTO-family,73,Research Candidate,111,0,0,0.154781,0,0.143358
+mp-3244333,CsLiNpS3,Li-S or sulfide-family,78,Research Candidate,111,1,1,0.676245,1,0.796796
+mp-3291816,LiAl11Tc3,Other lithium material,61,Caution,111,1,1,0.593045,1,0.823634
+mp-1190624,LiLuSn,Other lithium material,61,Caution,111,1,1,0.963502,1,0.810649
+mp-3231356,LiEu3Hg3Pd2,Other lithium material,51,Caution,111,1,1,0.826331,1,0.818825
+mp-1275349,Li2CoCuO4,LCO-family,41,Avoid / Benchmark,111,0,0,0.153757,0,0.142831
+mp-34148,Li2MnCl4,Other lithium material,64,Caution,111,1,1,0.691045,1,0.816623
+mp-21293,Li3In2,Other lithium material,61,Caution,111,1,1,0.958982,1,0.807485
+mp-1100662,Li9Mn2Co5O16,LCO-family,44,Avoid / Benchmark,111,0,0,0.15285,0,0.142932
+mp-1174467,Li7Mn2(CoO4)3,LCO-family,46,Avoid / Benchmark,111,0,0,0.155795,0,0.142942
+mp-755069,LiAl2FeO6,Other lithium material,53,Caution,111,0,0,0.154389,0,0.143097
+mp-11944,LiYbGe2,Other lithium material,61,Caution,111,1,1,0.923362,1,0.806334
+mp-26001,LiNi(PO3)3,Other lithium material,59,Caution,111,1,0,0.159928,0,0.143093
+mp-3231839,LiPr3In3Pd2,Other lithium material,61,Caution,111,1,1,0.825927,1,0.821688
+mp-638276,LiEu4C3(IN2)3,Carbon-family,89,Recommend,111,0,1,0.964772,1,0.813669
+mp-675606,Li5AuO4,Other lithium material,51,Caution,111,0,0,0.148272,0,0.143202
+mp-800159,Li5Mn3(FeO5)2,LMO-family,78,Research Candidate,111,0,0,0.157318,0,0.142939
+mp-3205735,Sr2Li(As3Pd10)2,Other lithium material,51,Caution,111,1,1,0.856918,1,0.809343
+mp-977126,Li3Ag,Other lithium material,55,Caution,111,0,1,0.832459,1,0.804341
+mp-1222481,LiCe(MoO4)2,Other lithium material,51,Caution,111,0,0,0.220976,0,0.141424
+mp-3247888,LiDyH6Os,Other lithium material,61,Caution,111,1,1,0.849429,1,0.813883
+mp-3200907,CsLiHgSe2,Other lithium material,51,Caution,111,1,1,0.751697,1,0.857748
+mp-2659,LiN3,Other lithium material,61,Caution,111,1,1,0.898716,1,0.805419
+mp-3328542,LiAl2Ir3,Other lithium material,61,Caution,111,1,1,0.801714,1,0.832299
+mp-774681,Li5Mn2V5O12,LMO-family,80,Research Candidate,111,0,0,0.14884,0,0.143112
+mp-1235425,LiNb2(PO5)2,Other lithium material,52,Caution,111,0,0,0.148418,0,0.143163
+mp-1222756,Li(TmGe2)2,Other lithium material,53,Caution,111,0,1,0.599907,1,0.824863
+mp-697926,LiCd2HSe2O7,Other lithium material,51,Caution,111,1,1,0.516004,1,0.797922
+mp-1218749,Sr2LiMgSi3,Other lithium material,63,Caution,111,1,1,0.645446,1,0.800193
+mp-849567,Li5Mn6(BO3)6,LMO-family,82,Research Candidate,111,0,0,0.145299,0,0.143087
+mp-1238813,Li(CrS2)2,Li-S or sulfide-family,70,Research Candidate,111,0,1,0.606223,1,0.808285
+mp-759282,Li3Fe2(PO4)3,LFP-family,98,Recommend,111,0,0,0.159065,0,0.143109
+mp-1096022,LiTiAu2,Other lithium material,48,Caution,111,0,1,0.702223,0,0.136727
+mp-3245528,LiCeInPt3,Other lithium material,61,Caution,111,1,1,0.797363,1,0.837508
+mp-3247572,Li2Dy2Si3,Other lithium material,63,Caution,111,1,1,0.681948,1,0.821182
+mp-866196,Li2PrIn,Other lithium material,61,Caution,111,1,1,0.857205,1,0.806927
+mp-1177743,Li32Ti3Cr13O48,LTO-family,79,Research Candidate,111,0,0,0.145589,0,0.143113
+mp-3252813,LiTbH6Ru,Other lithium material,61,Caution,111,1,1,0.849444,1,0.813806
+mp-1222413,LiB3,Other lithium material,61,Caution,111,1,1,0.764211,1,0.771834
+mp-3209223,LiSc(CO3)2,Carbon-family,95,Recommend,111,1,0,0.302033,0,0.143848
+mp-3245387,LiHoH6Ru,Other lithium material,61,Caution,111,1,1,0.849442,1,0.813814
+mp-3317204,Li4TcO5,Other lithium material,61,Caution,111,1,0,0.157911,0,0.142983
+mp-757743,Li2MnSi3O8,LMO-family,82,Research Candidate,111,0,0,0.146543,0,0.1431
+mp-754470,Li3CrO4,Other lithium material,51,Caution,111,0,0,0.204434,0,0.145923
+mp-559052,LiNb3(Bi2O7)2,Other lithium material,61,Caution,111,1,1,0.512359,1,0.805867
+mp-3248093,Li6Sm2PuN6,Other lithium material,61,Caution,111,1,1,0.793744,1,0.844965
+mp-1211459,KLiErF5,Other lithium material,51,Caution,111,0,1,0.59392,0,0.017035
+mp-3208515,Li2ZnPt3O8,Other lithium material,61,Caution,111,1,0,0.323673,0,0.143831
+mp-1176090,Li9Mn2Co5O16,LCO-family,43,Avoid / Benchmark,111,0,0,0.147297,0,0.14327
+mp-9588,LiP,Other lithium material,63,Caution,111,1,1,0.899,1,0.805486
+mp-1235395,LiPr2Zn2(PO)2,Other lithium material,52,Caution,111,0,0,0.153184,0,0.142895
+mp-3269703,Li4La3Ge4,Other lithium material,61,Caution,111,1,1,0.927081,1,0.807016
+mp-3214313,LiLu6Zn22Si,Other lithium material,63,Caution,111,1,1,0.857335,1,0.805759
+mp-6591,SrLiAlF6,Other lithium material,57,Caution,111,1,1,0.954874,1,0.754237
+mp-3246849,LiTbTmOs,Other lithium material,61,Caution,111,1,1,0.850422,1,0.807621
+mp-3214455,Sr2LiHC3,Carbon-family,95,Recommend,111,1,1,0.764116,1,0.775813
+mp-766112,Li4MnV3(P2O7)4,LMO-family,86,Research Candidate,111,0,0,0.147058,0,0.143111
+mp-770681,LiCr10O15,Other lithium material,50,Caution,111,0,0,0.20289,0,0.14382
+mp-558045,NaLi2PO4,Other lithium material,63,Caution,111,1,1,0.584321,1,0.813336
+mp-558483,K4LiIO6,Other lithium material,61,Caution,111,1,1,0.588602,1,0.813819
+mp-1573004,Li2Mn2FeO6,LMO-family,83,Research Candidate,111,0,0,0.181344,0,0.145114
+mp-1225887,CsLiZnS2,Li-S or sulfide-family,78,Research Candidate,111,1,1,0.750489,1,0.869397
+mp-779534,Li9V6(P8O29)2,Other lithium material,55,Caution,111,0,0,0.144963,0,0.143056
+mp-14753,Li7TaN4,Other lithium material,61,Caution,111,1,1,0.96722,1,0.813762
+mp-973979,LiFePd2,Other lithium material,58,Caution,111,0,1,0.857676,1,0.802442
+mp-585354,LiCr2P3O10,Other lithium material,55,Caution,111,0,0,0.153054,0,0.143178
+mp-770635,LiNiO2,Other lithium material,51,Caution,111,0,0,0.296421,0,0.148872
+mp-3229749,Li3SnPd4,Other lithium material,61,Caution,111,1,1,0.804794,1,0.816336
+mp-3319166,LiIn5S8,Li-S or sulfide-family,78,Research Candidate,111,1,1,0.848757,1,0.816873
+mp-3203583,CsLiHfTe3,Other lithium material,61,Caution,111,1,1,0.604023,1,0.795681
+mp-1176754,LiCu5(PO4)2,Other lithium material,52,Caution,111,0,0,0.15174,0,0.142937
+mp-1203059,LiAs3H2O9,Other lithium material,51,Caution,111,1,1,0.515245,1,0.800263
