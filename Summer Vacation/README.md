@@ -50,6 +50,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | File | Purpose |
 | --- | --- |
 | `Project understanding.md` | Main project understanding document. |
+| `Summer Vacation Main Presentation.ipynb` | Presentation-ready notebook with outputs in every cell. |
 | `Indian Battery Materials Report.docx` | Report on India-relevant battery materials. |
 | `Literature Review.xlsx` | Literature review workbook. |
 | `scripts/process_materials_project_dataset.py` | Creates the lithium-filtered dataset. |
@@ -59,6 +60,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | `scripts/create_final_india_battery_shortlist.py` | Creates the final India shortlist. |
 | `scripts/create_qml_ready_dataset.py` | Creates the balanced and scaled QML-ready dataset. |
 | `scripts/train_qml_baseline.py` | Trains the first simple QML classifier and compares it with XGBoost. |
+| `scripts/create_main_presentation_notebook.py` | Regenerates the presentation notebook. |
 | `data/metadata/project_pipeline_summary.md` | Full current pipeline summary. |
 | `data/metadata/qml_baseline_results.md` | QML classifier results and XGBoost comparison. |
 
