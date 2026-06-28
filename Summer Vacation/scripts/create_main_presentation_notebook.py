@@ -41,6 +41,12 @@ improved_qml_alignment_results_path = (
 improved_qml_alignment_predictions_path = (
     processed_folder / "improved qml alignment predictions.csv"
 )
+best_qml_repeated_split_results_path = (
+    processed_folder / "best qml repeated split results.csv"
+)
+best_qml_repeated_split_predictions_path = (
+    processed_folder / "best qml repeated split predictions.csv"
+)
 
 
 def make_markdown_output(markdown_text):
@@ -230,6 +236,12 @@ def main():
     )
     improved_qml_alignment_predictions_dataframe = pd.read_csv(
         improved_qml_alignment_predictions_path
+    )
+    best_qml_repeated_split_results_dataframe = pd.read_csv(
+        best_qml_repeated_split_results_path
+    )
+    best_qml_repeated_split_predictions_dataframe = pd.read_csv(
+        best_qml_repeated_split_predictions_path
     )
 
     improved_best_result = improved_qml_tuning_results_dataframe.sort_values(
@@ -586,6 +598,37 @@ def main():
         ]
     ].head(10)
 
+    repeated_split_summary_rows = []
+    repeated_split_metric_columns = [
+        "accuracy",
+        "stable_precision",
+        "stable_recall",
+        "stable_f1",
+    ]
+    for metric_name in repeated_split_metric_columns:
+        repeated_split_summary_rows.append(
+            {
+                "metric": metric_name,
+                "mean": round(
+                    best_qml_repeated_split_results_dataframe[metric_name].mean(),
+                    4,
+                ),
+                "standard_deviation": round(
+                    best_qml_repeated_split_results_dataframe[metric_name].std(ddof=1),
+                    4,
+                ),
+                "minimum": round(
+                    best_qml_repeated_split_results_dataframe[metric_name].min(),
+                    4,
+                ),
+                "maximum": round(
+                    best_qml_repeated_split_results_dataframe[metric_name].max(),
+                    4,
+                ),
+            }
+        )
+    repeated_split_summary_dataframe = pd.DataFrame(repeated_split_summary_rows)
+
     cells = []
     execution_count = 1
 
@@ -633,6 +676,8 @@ improved_qml_threshold_predictions_dataframe = pd.read_csv(processed_folder / "i
 improved_qml_alignment_scores_dataframe = pd.read_csv(processed_folder / "improved qml alignment scores.csv")
 improved_qml_alignment_results_dataframe = pd.read_csv(processed_folder / "improved qml alignment results.csv")
 improved_qml_alignment_predictions_dataframe = pd.read_csv(processed_folder / "improved qml alignment predictions.csv")
+best_qml_repeated_split_results_dataframe = pd.read_csv(processed_folder / "best qml repeated split results.csv")
+best_qml_repeated_split_predictions_dataframe = pd.read_csv(processed_folder / "best qml repeated split predictions.csv")
 
 dataset_summary = pd.DataFrame([
     {"dataset": "Lithium India scored", "rows": len(lithium_scored_dataframe), "columns": len(lithium_scored_dataframe.columns)},
@@ -648,6 +693,8 @@ dataset_summary = pd.DataFrame([
     {"dataset": "Improved QML alignment scores", "rows": len(improved_qml_alignment_scores_dataframe), "columns": len(improved_qml_alignment_scores_dataframe.columns)},
     {"dataset": "Improved QML alignment results", "rows": len(improved_qml_alignment_results_dataframe), "columns": len(improved_qml_alignment_results_dataframe.columns)},
     {"dataset": "Improved QML alignment predictions", "rows": len(improved_qml_alignment_predictions_dataframe), "columns": len(improved_qml_alignment_predictions_dataframe.columns)},
+    {"dataset": "Best QML repeated split results", "rows": len(best_qml_repeated_split_results_dataframe), "columns": len(best_qml_repeated_split_results_dataframe.columns)},
+    {"dataset": "Best QML repeated split predictions", "rows": len(best_qml_repeated_split_predictions_dataframe), "columns": len(best_qml_repeated_split_predictions_dataframe.columns)},
 ])
 display(dataset_summary)"""
     dataset_summary_dataframe = pd.DataFrame(
@@ -716,6 +763,16 @@ display(dataset_summary)"""
                 "dataset": "Improved QML alignment predictions",
                 "rows": len(improved_qml_alignment_predictions_dataframe),
                 "columns": len(improved_qml_alignment_predictions_dataframe.columns),
+            },
+            {
+                "dataset": "Best QML repeated split results",
+                "rows": len(best_qml_repeated_split_results_dataframe),
+                "columns": len(best_qml_repeated_split_results_dataframe.columns),
+            },
+            {
+                "dataset": "Best QML repeated split predictions",
+                "rows": len(best_qml_repeated_split_predictions_dataframe),
+                "columns": len(best_qml_repeated_split_predictions_dataframe.columns),
             },
         ]
     )
@@ -1329,6 +1386,36 @@ display(alignment_sample_predictions_dataframe)"""
     )
     execution_count += 1
 
+    repeated_split_source = """repeated_split_summary_rows = []
+repeated_split_metric_columns = [
+    "accuracy",
+    "stable_precision",
+    "stable_recall",
+    "stable_f1",
+]
+
+for metric_name in repeated_split_metric_columns:
+    repeated_split_summary_rows.append(
+        {
+            "metric": metric_name,
+            "mean": best_qml_repeated_split_results_dataframe[metric_name].mean(),
+            "standard_deviation": best_qml_repeated_split_results_dataframe[metric_name].std(ddof=1),
+            "minimum": best_qml_repeated_split_results_dataframe[metric_name].min(),
+            "maximum": best_qml_repeated_split_results_dataframe[metric_name].max(),
+        }
+    )
+
+repeated_split_summary_dataframe = pd.DataFrame(repeated_split_summary_rows).round(4)
+display(repeated_split_summary_dataframe)"""
+    cells.append(
+        make_code_cell(
+            repeated_split_source,
+            [make_table_output(repeated_split_summary_dataframe)],
+            execution_count,
+        )
+    )
+    execution_count += 1
+
     conclusion_markdown = """# Presentation Conclusion
 
 **What we achieved**
@@ -1343,6 +1430,7 @@ display(alignment_sample_predictions_dataframe)"""
   entangled-kernel search.
 - Added a threshold experiment for the improved-QML stable probability.
 - Added a kernel-alignment experiment for quantum-aware feature selection.
+- Validated the best QML setup across 10 random train/test splits.
 
 **Main model result**
 
@@ -1355,6 +1443,8 @@ display(alignment_sample_predictions_dataframe)"""
 - Improved QML threshold-tuned stable F1: **0.8269**
 - Improved QML kernel-alignment accuracy: **0.8200**
 - Improved QML kernel-alignment stable F1: **0.8302**
+- Repeated-split mean accuracy: **0.8550**
+- Repeated-split mean stable F1: **0.8583**
 - Same-data XGBoost accuracy: **0.8300**
 
 **Next step**
@@ -1377,6 +1467,7 @@ Write the final model-comparison interpretation and try a hardware-oriented QML 
   entangled-kernel search.
 - Added a threshold experiment for the improved-QML stable probability.
 - Added a kernel-alignment experiment for quantum-aware feature selection.
+- Validated the best QML setup across 10 random train/test splits.
 
 **Main model result**
 
@@ -1389,6 +1480,8 @@ Write the final model-comparison interpretation and try a hardware-oriented QML 
 - Improved QML threshold-tuned stable F1: **0.8269**
 - Improved QML kernel-alignment accuracy: **0.8200**
 - Improved QML kernel-alignment stable F1: **0.8302**
+- Repeated-split mean accuracy: **0.8550**
+- Repeated-split mean stable F1: **0.8583**
 - Same-data XGBoost accuracy: **0.8300**
 
 **Next step**

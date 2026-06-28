@@ -47,6 +47,7 @@ flowchart TD
     J --> K["Separate improved-QML section<br/>feature importance, PCA, entangled kernels"]
     K --> L["Threshold experiment<br/>probability cutoff tuning"]
     L --> M["Kernel alignment experiment<br/>quantum-aware feature selection"]
+    M --> N["Repeated split validation<br/>10 random train/test splits"]
 ```
 
 ## Artifact Map
@@ -64,6 +65,7 @@ flowchart TD
 | QML tuning | `qml_ready_lithium_india.csv` | `data/processed/qml tuning results.csv` | 72 experiments | `scripts/tune_qml_baseline.py` | `data/metadata/qml_tuning_results.md` |
 | Tuned QML best model | `qml_ready_lithium_india.csv` | `data/processed/qml tuned best predictions.csv` | 200 test predictions | `scripts/tune_qml_baseline.py` | `data/metadata/qml_best_model_summary.md` |
 | Improved QML separate section | `lithium india scored.csv` | `data/processed/improved qml feature pca.csv`, `data/processed/improved qml tuning results.csv`, `data/processed/improved qml best predictions.csv`, `data/processed/improved qml threshold results.csv`, `data/processed/improved qml threshold predictions.csv`, `data/processed/improved qml alignment scores.csv`, `data/processed/improved qml alignment results.csv`, and `data/processed/improved qml alignment predictions.csv` | 1,000 PCA rows; 162 experiments; 9 thresholds; 72 alignment scores; 48 alignment CV rows; 200 test predictions | `scripts/run_improved_qml_experiments.py` | `data/metadata/improved_qml_section_summary.md` |
+| Best QML repeated split validation | `lithium india scored.csv` | `data/processed/best qml repeated split results.csv` and `data/processed/best qml repeated split predictions.csv` | 10 splits; 2,000 total test predictions | `scripts/run_best_qml_repeated_splits.py` | `data/metadata/improved_qml_step_07_repeated_split_validation.md` |
 
 ## Dataset Sizes
 
@@ -87,6 +89,8 @@ flowchart TD
 | Improved QML alignment scores | 72 | 9 | Kernel-target alignment scores for candidate feature sets. |
 | Improved QML alignment results | 48 | 14 | Cross-validation results for the top alignment candidates. |
 | Improved QML alignment prediction file | 200 | 8 | Test-set predictions from the best alignment-selected QML model. |
+| Best QML repeated split results | 10 | 15 | Metrics for 10 random balanced train/test splits. |
+| Best QML repeated split predictions | 2,000 | 9 | Test predictions from all repeated splits. |
 
 ## Key Columns Used
 
@@ -123,6 +127,9 @@ flowchart TD
 | `kernel_target_alignment` | Score measuring how well a quantum kernel matches stable/unstable labels. |
 | `alignment_qml_predicted_label` | Predicted class from the best kernel-alignment QML model. |
 | `alignment_qml_stable_probability` | Stable-class probability from the best kernel-alignment QML model. |
+| `split_random_state` | Random seed used for a repeated validation split. |
+| `repeated_qml_predicted_label` | Predicted class from the repeated-split best QML model. |
+| `repeated_qml_stable_probability` | Stable-class probability from the repeated-split best QML model. |
 
 ## Methodology Decisions
 
@@ -415,6 +422,15 @@ Kernel-alignment experiment:
 | --- | ---: | ---: | ---: | ---: |
 | Improved QML kernel-alignment prediction | 0.8200 | 0.7857 | 0.8800 | 0.8302 |
 
+Repeated split validation:
+
+| Metric | Mean | Standard Deviation | Minimum | Maximum |
+| --- | ---: | ---: | ---: | ---: |
+| Accuracy | 0.8550 | 0.0220 | 0.8150 | 0.8900 |
+| Stable precision | 0.8389 | 0.0266 | 0.8053 | 0.8854 |
+| Stable recall | 0.8800 | 0.0394 | 0.8200 | 0.9600 |
+| Stable F1 | 0.8583 | 0.0223 | 0.8159 | 0.8972 |
+
 Interpretation:
 
 The improved-QML section found that the best cross-validation result used an
@@ -424,7 +440,9 @@ result from 0.8150 accuracy to 0.8200 accuracy and from 0.8230 stable F1 to
 selecting a smaller 4-qubit feature set that matches the stable/unstable labels
 better in the quantum-kernel space. This is the best QML stable-F1 result so far
 and is slightly higher than the same-data XGBoost stable F1, although XGBoost
-still has higher accuracy.
+still has higher accuracy. Repeated split validation is stronger evidence than
+one split: across 10 random balanced splits, the best QML setup reached mean
+accuracy 0.8550 and mean stable F1 0.8583.
 
 ## Final Shortlist Results
 
@@ -490,6 +508,8 @@ We have completed:
   selection.
 - Kernel alignment reached 0.8200 accuracy and 0.8302 stable F1, the best QML
   stable-F1 result so far.
+- Ran repeated split validation for the best QML setup across 10 random splits.
+- Repeated validation reached mean accuracy 0.8550 and mean stable F1 0.8583.
 
 ## What We Have Not Done Yet
 

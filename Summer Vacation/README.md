@@ -37,6 +37,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
     entangled-kernel testing.
 12. Test probability-threshold tuning for the improved-QML model.
 13. Test quantum-kernel alignment feature selection.
+14. Validate the best QML setup across repeated random train/test splits.
 
 ## Current Results
 
@@ -56,6 +57,8 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 - Improved QML threshold-tuned stable F1: 0.8269
 - Improved QML alignment-selected accuracy: 0.8200
 - Improved QML alignment-selected stable F1: 0.8302
+- Repeated-split best QML mean accuracy: 0.8550
+- Repeated-split best QML mean stable F1: 0.8583
 - Same-data XGBoost accuracy on QML-ready test split: 0.8300
 
 ## Important Files
@@ -83,6 +86,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | `data/metadata/improved_qml_section_summary.md` | Separate improved-QML section summary. |
 | `data/metadata/improved_qml_step_05_threshold_experiment.md` | Separate improved-QML threshold experiment. |
 | `data/metadata/improved_qml_step_06_kernel_alignment.md` | Separate quantum-kernel alignment experiment. |
+| `data/metadata/improved_qml_step_07_repeated_split_validation.md` | Repeated train/test split validation for the best QML setup. |
 
 ## Reproduce Locally
 
@@ -104,6 +108,7 @@ python3 scripts/create_qml_ready_dataset.py
 python3 scripts/train_qml_baseline.py
 python3 scripts/tune_qml_baseline.py
 python3 scripts/run_improved_qml_experiments.py
+python3 scripts/run_best_qml_repeated_splits.py
 ```
 
 ## Next Step
