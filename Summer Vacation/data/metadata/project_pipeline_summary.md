@@ -269,12 +269,13 @@ We have completed:
 - Created model prediction outputs.
 - Created a final India battery shortlist.
 - Saved rejected-row audit data for transparency.
+- Created a QML-ready balanced dataset with 1,000 rows and 27 columns.
+- Created step-by-step QML dataset markdown files for report writing.
 
 ## What We Have Not Done Yet
 
 The project is not finished yet. The next missing parts are:
 
-- Create a QML-ready dataset.
 - Build a simple QML model.
 - Compare QML results with the XGBoost baseline.
 - Add visual plots for report and presentation.
@@ -284,19 +285,19 @@ The project is not finished yet. The next missing parts are:
 
 The next best step is:
 
-> Create a QML-ready dataset from the current processed files.
+> Train a simple QML classifier using the QML-ready dataset.
 
 Why this should come next:
 
-- XGBoost is now our classical baseline.
-- QML should be compared against a clean, smaller, well-defined dataset.
-- Quantum models usually work better when the number of features is small.
-- The final report will be stronger if it compares classical ML and QML on the
-  same target.
+- XGBoost is already our classical baseline.
+- The QML-ready dataset is now clean, balanced, and scaled.
+- The next comparison should use the same target: `target_is_stable`.
+- The final report will be stronger if it compares classical ML and QML using
+  accuracy, precision, recall, and F1-score.
 
-## Proposed QML Dataset Plan
+## Completed QML Dataset Preparation
 
-Create:
+Created:
 
 `data/processed/qml_ready_lithium_india.csv`
 
@@ -314,11 +315,11 @@ Use a smaller feature set:
 | `has_c` | Important for carbon-family materials. |
 | `has_si` | Important for silicon-family materials. |
 | `has_s` | Important for sulfide and sulfur-family materials. |
-| `india_feasibility_score` | Used only for final comparison or ranking, not as the main scientific target. |
+| `india_feasibility_score` | Kept for final comparison or ranking, not used as the main scientific target. |
 
 First QML target:
 
-`is_stable`
+`target_is_stable`
 
 Reason:
 
@@ -330,14 +331,13 @@ Classification is easier to compare clearly:
 
 ## Clean Execution Plan For The Next Step
 
-1. Create `scripts/create_qml_ready_dataset.py`.
-2. Read `data/processed/lithium india scored.csv`.
-3. Keep only rows with complete numeric values.
-4. Select a small number of useful features.
-5. Scale numeric columns.
-6. Save `data/processed/qml_ready_lithium_india.csv`.
-7. Save a summary in `data/metadata/qml_ready_dataset_summary.md`.
-8. Then train a simple QML classifier and compare it with XGBoost.
+1. Create `scripts/train_qml_baseline.py`.
+2. Read `data/processed/qml_ready_lithium_india.csv`.
+3. Use the `scaled_` feature columns.
+4. Use `target_is_stable` as the target.
+5. Train a simple QML classifier.
+6. Save QML metrics in `data/metadata/qml_baseline_results.md`.
+7. Compare QML results with `data/metadata/xgboost_baseline_results.md`.
 
 ## One-Line Project Story
 

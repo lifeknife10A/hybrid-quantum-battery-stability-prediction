@@ -20,8 +20,6 @@ Main source:
 
 The raw parquet files are not committed to GitHub because they are large. The
 project keeps scripts and summaries so the dataset can be reproduced locally.
-The local PDF references in `Paper/` are also not uploaded because this
-repository is public.
 
 ## Current Pipeline
 
@@ -32,6 +30,7 @@ repository is public.
 5. Train XGBoost baseline models.
 6. Apply India and safety filters after prediction.
 7. Create the final India battery shortlist.
+8. Create the QML-ready balanced dataset.
 
 ## Current Results
 
@@ -39,6 +38,7 @@ repository is public.
 - Lithium-only dataset: 24,957 rows
 - India-scored lithium dataset: 24,957 rows and 37 columns
 - Final India battery shortlist: 629 rows
+- QML-ready balanced dataset: 1,000 rows and 27 columns
 - XGBoost classifier accuracy: 0.9091
 - XGBoost regressor MAE: 0.1005
 
@@ -54,6 +54,7 @@ repository is public.
 | `scripts/create_lithium_india_scored_eda.py` | Creates EDA summary. |
 | `scripts/train_xgboost_baseline.py` | Trains XGBoost baseline models. |
 | `scripts/create_final_india_battery_shortlist.py` | Creates the final India shortlist. |
+| `scripts/create_qml_ready_dataset.py` | Creates the balanced and scaled QML-ready dataset. |
 | `data/metadata/project_pipeline_summary.md` | Full current pipeline summary. |
 
 ## Reproduce Locally
@@ -72,9 +73,10 @@ python3 scripts/create_lithium_india_scored_dataset.py
 python3 scripts/create_lithium_india_scored_eda.py
 python3 scripts/train_xgboost_baseline.py
 python3 scripts/create_final_india_battery_shortlist.py
+python3 scripts/create_qml_ready_dataset.py
 ```
 
 ## Next Step
 
-Create a QML-ready dataset and compare a simple QML classifier against the
-current XGBoost baseline.
+Train a simple QML classifier and compare it against the current XGBoost
+baseline.
