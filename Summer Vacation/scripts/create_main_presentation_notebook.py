@@ -26,6 +26,12 @@ tuned_qml_predictions_path = processed_folder / "qml tuned best predictions.csv"
 improved_qml_dataset_path = processed_folder / "improved qml feature pca.csv"
 improved_qml_tuning_results_path = processed_folder / "improved qml tuning results.csv"
 improved_qml_predictions_path = processed_folder / "improved qml best predictions.csv"
+improved_qml_threshold_results_path = (
+    processed_folder / "improved qml threshold results.csv"
+)
+improved_qml_threshold_predictions_path = (
+    processed_folder / "improved qml threshold predictions.csv"
+)
 
 
 def make_markdown_output(markdown_text):
@@ -101,12 +107,12 @@ def create_bar_figure(dataframe, x_column, y_column, title, x_label, y_label, co
 
 def create_metric_figure(metric_dataframe):
     figure, axis = plt.subplots(figsize=(9, 5))
-    bar_width = 0.18
+    bar_width = 0.14
     metric_names = ["accuracy", "stable_precision", "stable_recall", "stable_f1"]
     model_names = metric_dataframe["model"].tolist()
     x_positions = list(range(len(metric_names)))
 
-    colors = ["#315f8c", "#4f86c6", "#d88c2d", "#5f8f45", "#7b5ea7"]
+    colors = ["#315f8c", "#4f86c6", "#d88c2d", "#5f8f45", "#7b5ea7", "#8c4f4f"]
     center_offset = (len(model_names) - 1) / 2
 
     for model_index, model_name in enumerate(model_names):
@@ -193,8 +199,18 @@ def main():
     improved_qml_dataset_dataframe = pd.read_csv(improved_qml_dataset_path)
     improved_qml_tuning_results_dataframe = pd.read_csv(improved_qml_tuning_results_path)
     improved_qml_predictions_dataframe = pd.read_csv(improved_qml_predictions_path)
+    improved_qml_threshold_results_dataframe = pd.read_csv(
+        improved_qml_threshold_results_path
+    )
+    improved_qml_threshold_predictions_dataframe = pd.read_csv(
+        improved_qml_threshold_predictions_path
+    )
 
     improved_best_result = improved_qml_tuning_results_dataframe.sort_values(
+        by=["cv_stable_f1", "cv_accuracy", "cv_stable_recall"],
+        ascending=[False, False, False],
+    ).iloc[0]
+    improved_best_threshold_result = improved_qml_threshold_results_dataframe.sort_values(
         by=["cv_stable_f1", "cv_accuracy", "cv_stable_recall"],
         ascending=[False, False, False],
     ).iloc[0]
@@ -291,6 +307,14 @@ def main():
                 "parameter": "Improved best SVM C value",
                 "value": str(improved_best_result["c_value"]),
             },
+            {
+                "parameter": "Threshold experiment",
+                "value": "Stable-probability cutoff tuned by cross-validation",
+            },
+            {
+                "parameter": "Best stable threshold",
+                "value": str(improved_best_threshold_result["stable_threshold"]),
+            },
             {"parameter": "Train/test split", "value": "80/20"},
             {"parameter": "Random state", "value": "42"},
         ]
@@ -309,6 +333,12 @@ def main():
     improved_qml_predicted_labels = improved_qml_predictions_dataframe[
         "improved_qml_predicted_label"
     ]
+    threshold_true_labels = improved_qml_threshold_predictions_dataframe[
+        "target_is_stable"
+    ]
+    threshold_qml_predicted_labels = improved_qml_threshold_predictions_dataframe[
+        "threshold_qml_predicted_label"
+    ]
 
     metric_dataframe = pd.DataFrame(
         [
@@ -322,6 +352,11 @@ def main():
                 "Improved QML separate section",
                 improved_true_labels,
                 improved_qml_predicted_labels,
+            ),
+            get_metric_row(
+                "Improved QML threshold tuning",
+                threshold_true_labels,
+                threshold_qml_predicted_labels,
             ),
             get_metric_row(
                 "XGBoost same QML data",
@@ -346,6 +381,11 @@ def main():
     improved_qml_confusion_matrix = confusion_matrix(
         improved_true_labels,
         improved_qml_predicted_labels,
+        labels=[0, 1],
+    )
+    threshold_qml_confusion_matrix = confusion_matrix(
+        threshold_true_labels,
+        threshold_qml_predicted_labels,
         labels=[0, 1],
     )
 
@@ -395,6 +435,49 @@ def main():
         ]
     ].head(10)
 
+    threshold_summary_dataframe = pd.DataFrame(
+        [
+            {
+                "section": "Threshold experiment",
+                "selected_threshold": improved_best_threshold_result[
+                    "stable_threshold"
+                ],
+                "cv_stable_f1": improved_best_threshold_result["cv_stable_f1"],
+                "test_accuracy": round(
+                    accuracy_score(
+                        threshold_true_labels,
+                        threshold_qml_predicted_labels,
+                    ),
+                    4,
+                ),
+                "test_stable_precision": round(
+                    precision_score(
+                        threshold_true_labels,
+                        threshold_qml_predicted_labels,
+                        zero_division=0,
+                    ),
+                    4,
+                ),
+                "test_stable_recall": round(
+                    recall_score(
+                        threshold_true_labels,
+                        threshold_qml_predicted_labels,
+                        zero_division=0,
+                    ),
+                    4,
+                ),
+                "test_stable_f1": round(
+                    f1_score(
+                        threshold_true_labels,
+                        threshold_qml_predicted_labels,
+                        zero_division=0,
+                    ),
+                    4,
+                ),
+            }
+        ]
+    )
+
     cells = []
     execution_count = 1
 
@@ -437,6 +520,8 @@ tuned_qml_predictions_dataframe = pd.read_csv(processed_folder / "qml tuned best
 improved_qml_dataset_dataframe = pd.read_csv(processed_folder / "improved qml feature pca.csv")
 improved_qml_tuning_results_dataframe = pd.read_csv(processed_folder / "improved qml tuning results.csv")
 improved_qml_predictions_dataframe = pd.read_csv(processed_folder / "improved qml best predictions.csv")
+improved_qml_threshold_results_dataframe = pd.read_csv(processed_folder / "improved qml threshold results.csv")
+improved_qml_threshold_predictions_dataframe = pd.read_csv(processed_folder / "improved qml threshold predictions.csv")
 
 dataset_summary = pd.DataFrame([
     {"dataset": "Lithium India scored", "rows": len(lithium_scored_dataframe), "columns": len(lithium_scored_dataframe.columns)},
@@ -447,6 +532,8 @@ dataset_summary = pd.DataFrame([
     {"dataset": "Improved QML PCA dataset", "rows": len(improved_qml_dataset_dataframe), "columns": len(improved_qml_dataset_dataframe.columns)},
     {"dataset": "Improved QML tuning results", "rows": len(improved_qml_tuning_results_dataframe), "columns": len(improved_qml_tuning_results_dataframe.columns)},
     {"dataset": "Improved QML test predictions", "rows": len(improved_qml_predictions_dataframe), "columns": len(improved_qml_predictions_dataframe.columns)},
+    {"dataset": "Improved QML threshold results", "rows": len(improved_qml_threshold_results_dataframe), "columns": len(improved_qml_threshold_results_dataframe.columns)},
+    {"dataset": "Improved QML threshold predictions", "rows": len(improved_qml_threshold_predictions_dataframe), "columns": len(improved_qml_threshold_predictions_dataframe.columns)},
 ])
 display(dataset_summary)"""
     dataset_summary_dataframe = pd.DataFrame(
@@ -490,6 +577,16 @@ display(dataset_summary)"""
                 "dataset": "Improved QML test predictions",
                 "rows": len(improved_qml_predictions_dataframe),
                 "columns": len(improved_qml_predictions_dataframe.columns),
+            },
+            {
+                "dataset": "Improved QML threshold results",
+                "rows": len(improved_qml_threshold_results_dataframe),
+                "columns": len(improved_qml_threshold_results_dataframe.columns),
+            },
+            {
+                "dataset": "Improved QML threshold predictions",
+                "rows": len(improved_qml_threshold_predictions_dataframe),
+                "columns": len(improved_qml_threshold_predictions_dataframe.columns),
             },
         ]
     )
@@ -683,6 +780,8 @@ display(top_candidates_dataframe)"""
     {"parameter": "Improved best kernel", "value": "entangled_pi"},
     {"parameter": "Improved best angle scale", "value": "pi"},
     {"parameter": "Improved best SVM C value", "value": "2.0"},
+    {"parameter": "Threshold experiment", "value": "Stable-probability cutoff tuned by cross-validation"},
+    {"parameter": "Best stable threshold", "value": "0.50"},
     {"parameter": "Train/test split", "value": "80/20"},
     {"parameter": "Random state", "value": "42"},
 ])
@@ -704,6 +803,8 @@ tuned_true_labels = tuned_qml_predictions_dataframe["target_is_stable"]
 tuned_qml_predicted_labels = tuned_qml_predictions_dataframe["tuned_qml_predicted_label"]
 improved_true_labels = improved_qml_predictions_dataframe["target_is_stable"]
 improved_qml_predicted_labels = improved_qml_predictions_dataframe["improved_qml_predicted_label"]
+threshold_true_labels = improved_qml_threshold_predictions_dataframe["target_is_stable"]
+threshold_qml_predicted_labels = improved_qml_threshold_predictions_dataframe["threshold_qml_predicted_label"]
 
 metric_dataframe = pd.DataFrame([
     {
@@ -726,6 +827,13 @@ metric_dataframe = pd.DataFrame([
         "stable_precision": precision_score(improved_true_labels, improved_qml_predicted_labels, zero_division=0),
         "stable_recall": recall_score(improved_true_labels, improved_qml_predicted_labels, zero_division=0),
         "stable_f1": f1_score(improved_true_labels, improved_qml_predicted_labels, zero_division=0),
+    },
+    {
+        "model": "Improved QML threshold tuning",
+        "accuracy": accuracy_score(threshold_true_labels, threshold_qml_predicted_labels),
+        "stable_precision": precision_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0),
+        "stable_recall": recall_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0),
+        "stable_f1": f1_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0),
     },
     {
         "model": "XGBoost same QML data",
@@ -910,6 +1018,79 @@ display(improved_sample_predictions_dataframe)"""
     )
     execution_count += 1
 
+    threshold_summary_source = """improved_best_threshold_result = improved_qml_threshold_results_dataframe.sort_values(
+    by=["cv_stable_f1", "cv_accuracy", "cv_stable_recall"],
+    ascending=[False, False, False],
+).iloc[0]
+
+threshold_true_labels = improved_qml_threshold_predictions_dataframe["target_is_stable"]
+threshold_qml_predicted_labels = improved_qml_threshold_predictions_dataframe["threshold_qml_predicted_label"]
+
+threshold_summary_dataframe = pd.DataFrame([
+    {
+        "section": "Threshold experiment",
+        "selected_threshold": improved_best_threshold_result["stable_threshold"],
+        "cv_stable_f1": improved_best_threshold_result["cv_stable_f1"],
+        "test_accuracy": accuracy_score(threshold_true_labels, threshold_qml_predicted_labels),
+        "test_stable_precision": precision_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0),
+        "test_stable_recall": recall_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0),
+        "test_stable_f1": f1_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0),
+    }
+]).round(4)
+
+display(threshold_summary_dataframe)"""
+    cells.append(
+        make_code_cell(
+            threshold_summary_source,
+            [make_table_output(threshold_summary_dataframe)],
+            execution_count,
+        )
+    )
+    execution_count += 1
+
+    threshold_confusion_figure = create_confusion_matrix_figure(
+        threshold_qml_confusion_matrix,
+        "Threshold-Tuned QML Confusion Matrix",
+    )
+    threshold_confusion_dataframe = pd.DataFrame(
+        threshold_qml_confusion_matrix,
+        index=["actual_unstable", "actual_stable"],
+        columns=["predicted_unstable", "predicted_stable"],
+    )
+    threshold_confusion_source = """threshold_qml_confusion_matrix = confusion_matrix(
+    threshold_true_labels,
+    threshold_qml_predicted_labels,
+    labels=[0, 1],
+)
+threshold_confusion_dataframe = pd.DataFrame(
+    threshold_qml_confusion_matrix,
+    index=["actual_unstable", "actual_stable"],
+    columns=["predicted_unstable", "predicted_stable"],
+)
+display(threshold_confusion_dataframe)
+
+plt.figure(figsize=(5.8, 4.8))
+plt.imshow(threshold_qml_confusion_matrix, cmap="Blues")
+plt.title("Threshold-Tuned QML Confusion Matrix")
+plt.xticks([0, 1], ["Predicted unstable", "Predicted stable"])
+plt.yticks([0, 1], ["Actual unstable", "Actual stable"])
+for row_index in range(2):
+    for column_index in range(2):
+        plt.text(column_index, row_index, threshold_qml_confusion_matrix[row_index, column_index], ha="center", va="center")
+plt.colorbar()
+plt.show()"""
+    cells.append(
+        make_code_cell(
+            threshold_confusion_source,
+            [
+                make_table_output(threshold_confusion_dataframe),
+                make_figure_output(threshold_confusion_figure),
+            ],
+            execution_count,
+        )
+    )
+    execution_count += 1
+
     conclusion_markdown = """# Presentation Conclusion
 
 **What we achieved**
@@ -922,6 +1103,7 @@ display(improved_sample_predictions_dataframe)"""
 - Tuned QML hyperparameters using 4-fold cross-validation.
 - Added a separate improved-QML section using feature importance, PCA, and an
   entangled-kernel search.
+- Added a threshold experiment for the improved-QML stable probability.
 
 **Main model result**
 
@@ -930,6 +1112,8 @@ display(improved_sample_predictions_dataframe)"""
 - Tuned QML stable F1 on QML-ready test split: **0.8269**
 - Improved QML separate-section accuracy: **0.8150**
 - Improved QML separate-section stable F1: **0.8230**
+- Improved QML threshold-tuned accuracy: **0.8200**
+- Improved QML threshold-tuned stable F1: **0.8269**
 - Same-data XGBoost accuracy: **0.8300**
 
 **Next step**
@@ -950,6 +1134,7 @@ Create final report visuals and try a hardware-oriented QML circuit.
 - Tuned QML hyperparameters using 4-fold cross-validation.
 - Added a separate improved-QML section using feature importance, PCA, and an
   entangled-kernel search.
+- Added a threshold experiment for the improved-QML stable probability.
 
 **Main model result**
 
@@ -958,6 +1143,8 @@ Create final report visuals and try a hardware-oriented QML circuit.
 - Tuned QML stable F1 on QML-ready test split: **0.8269**
 - Improved QML separate-section accuracy: **0.8150**
 - Improved QML separate-section stable F1: **0.8230**
+- Improved QML threshold-tuned accuracy: **0.8200**
+- Improved QML threshold-tuned stable F1: **0.8269**
 - Same-data XGBoost accuracy: **0.8300**
 
 **Next step**

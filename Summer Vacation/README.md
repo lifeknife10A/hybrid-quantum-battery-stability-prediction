@@ -35,6 +35,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 10. Tune QML feature count, angle scale, and SVM `C`.
 11. Run a separate improved-QML section using feature importance, PCA, and
     entangled-kernel testing.
+12. Test probability-threshold tuning for the improved-QML model.
 
 ## Current Results
 
@@ -50,6 +51,8 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 - Tuned QML stable F1 on QML-ready test split: 0.8269
 - Improved QML separate-section accuracy: 0.8150
 - Improved QML separate-section stable F1: 0.8230
+- Improved QML threshold-tuned accuracy: 0.8200
+- Improved QML threshold-tuned stable F1: 0.8269
 - Same-data XGBoost accuracy on QML-ready test split: 0.8300
 
 ## Important Files
@@ -75,6 +78,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | `data/metadata/qml_tuning_results.md` | QML hyperparameter tuning results. |
 | `data/metadata/qml_best_model_summary.md` | Best tuned QML model summary. |
 | `data/metadata/improved_qml_section_summary.md` | Separate improved-QML section summary. |
+| `data/metadata/improved_qml_step_05_threshold_experiment.md` | Separate improved-QML threshold experiment. |
 
 ## Reproduce Locally
 

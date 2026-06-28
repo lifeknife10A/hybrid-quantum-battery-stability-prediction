@@ -13,16 +13,25 @@ optional entangled quantum-kernel simulation.
 - `data/processed/improved qml feature pca.csv`
 - `data/processed/improved qml tuning results.csv`
 - `data/processed/improved qml best predictions.csv`
+- `data/processed/improved qml threshold results.csv`
+- `data/processed/improved qml threshold predictions.csv`
 - `data/metadata/improved_qml_step_01_feature_importance.md`
 - `data/metadata/improved_qml_step_02_pca_dataset.md`
 - `data/metadata/improved_qml_step_03_tuning_results.md`
 - `data/metadata/improved_qml_step_04_best_model.md`
+- `data/metadata/improved_qml_step_05_threshold_experiment.md`
 
 ## Best Improved QML Result
 
 | pca_component_count | kernel_name | angle_scale | c_value | quantum_state_size | test_accuracy | test_stable_precision | test_stable_recall | test_stable_f1 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 6 | entangled_pi | pi | 2 | 64 | 0.8150 | 0.7890 | 0.8600 | 0.8230 |
+
+## Threshold Experiment Result
+
+| selected_stable_threshold | test_accuracy | test_stable_precision | test_stable_recall | test_stable_f1 |
+| --- | --- | --- | --- | --- |
+| 0.5000 | 0.8200 | 0.7963 | 0.8600 | 0.8269 |
 
 ## Comparison Against Existing Results
 
@@ -31,6 +40,7 @@ optional entangled quantum-kernel simulation.
 | Original QML baseline | 0.8100 | 0.8173 |
 | Tuned QML baseline | 0.8200 | 0.8269 |
 | Improved QML separate experiment | 0.8150 | 0.8230 |
+| Improved QML with threshold tuning | 0.8200 | 0.8269 |
 | Same-data XGBoost baseline | 0.8300 | 0.8283 |
 
 ## Interpretation

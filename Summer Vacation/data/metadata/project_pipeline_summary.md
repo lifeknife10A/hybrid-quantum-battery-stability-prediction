@@ -45,6 +45,7 @@ flowchart TD
     H --> I["QML baseline comparison<br/>QML 0.81, same-data XGBoost 0.83"]
     I --> J["QML tuning<br/>best QML accuracy 0.82"]
     J --> K["Separate improved-QML section<br/>feature importance, PCA, entangled kernels"]
+    K --> L["Threshold experiment<br/>probability cutoff tuning"]
 ```
 
 ## Artifact Map
@@ -61,7 +62,7 @@ flowchart TD
 | QML baseline | `qml_ready_lithium_india.csv` | `data/processed/qml baseline predictions.csv` | 200 test predictions | `scripts/train_qml_baseline.py` | `data/metadata/qml_baseline_results.md` |
 | QML tuning | `qml_ready_lithium_india.csv` | `data/processed/qml tuning results.csv` | 72 experiments | `scripts/tune_qml_baseline.py` | `data/metadata/qml_tuning_results.md` |
 | Tuned QML best model | `qml_ready_lithium_india.csv` | `data/processed/qml tuned best predictions.csv` | 200 test predictions | `scripts/tune_qml_baseline.py` | `data/metadata/qml_best_model_summary.md` |
-| Improved QML separate section | `lithium india scored.csv` | `data/processed/improved qml feature pca.csv`, `data/processed/improved qml tuning results.csv`, and `data/processed/improved qml best predictions.csv` | 1,000 PCA rows; 162 experiments; 200 test predictions | `scripts/run_improved_qml_experiments.py` | `data/metadata/improved_qml_section_summary.md` |
+| Improved QML separate section | `lithium india scored.csv` | `data/processed/improved qml feature pca.csv`, `data/processed/improved qml tuning results.csv`, `data/processed/improved qml best predictions.csv`, `data/processed/improved qml threshold results.csv`, and `data/processed/improved qml threshold predictions.csv` | 1,000 PCA rows; 162 experiments; 9 thresholds; 200 test predictions | `scripts/run_improved_qml_experiments.py` | `data/metadata/improved_qml_section_summary.md` |
 
 ## Dataset Sizes
 
@@ -80,6 +81,8 @@ flowchart TD
 | Improved QML PCA dataset | 1,000 | 14 | Separate feature-importance and PCA dataset. |
 | Improved QML tuning results | 162 | 13 | Product and entangled kernel hyperparameter search results. |
 | Improved QML prediction file | 200 | 8 | Test-set predictions from the best improved-QML model. |
+| Improved QML threshold results | 9 | 5 | Cross-validation results for stable-probability cutoffs. |
+| Improved QML threshold prediction file | 200 | 9 | Test-set predictions after threshold-based probability prediction. |
 
 ## Key Columns Used
 
@@ -110,6 +113,9 @@ flowchart TD
 | `improved_pca_1` to `improved_pca_8` | PCA features created for the separate improved-QML experiment. |
 | `improved_qml_predicted_label` | Predicted stable or unstable class from the best improved-QML model. |
 | `improved_qml_stable_probability` | Stable-class probability from the best improved-QML model. |
+| `threshold_qml_predicted_label` | Predicted stable or unstable class after probability-threshold tuning. |
+| `threshold_qml_stable_probability` | Stable-class probability used for threshold-based prediction. |
+| `selected_stable_threshold` | Stable-probability cutoff selected by cross-validation. |
 
 ## Methodology Decisions
 
@@ -326,6 +332,7 @@ Method:
 - Compress those features into 8 PCA components.
 - Test product and entangled quantum-kernel simulations.
 - Tune PCA component count, angle scale, kernel type, and SVM `C`.
+- Tune the stable-probability threshold as a separate post-model experiment.
 
 Leakage control:
 
@@ -342,6 +349,14 @@ Search space:
 | Angle scale | pi/2, pi, 2pi |
 | SVM C | 0.1, 0.5, 1, 2, 5, 10 |
 | Total experiments | 162 |
+
+Threshold search:
+
+| Parameter | Values Tested |
+| --- | --- |
+| Stable-probability threshold | 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70 |
+| Selection method | 4-fold cross-validation on the train-validation split |
+| Best threshold | 0.50 |
 
 Best improved-QML setup:
 
@@ -360,15 +375,23 @@ Test comparison:
 | Original QML baseline | 0.8100 | 0.8173 |
 | Tuned QML best model | 0.8200 | 0.8269 |
 | Improved QML separate section | 0.8150 | 0.8230 |
+| Improved QML with threshold tuning | 0.8200 | 0.8269 |
 | Same-data XGBoost baseline | 0.8300 | 0.8283 |
+
+Threshold experiment:
+
+| Model | Test Accuracy | Test Stable Precision | Test Stable Recall | Test Stable F1 |
+| --- | ---: | ---: | ---: | ---: |
+| Improved QML default prediction | 0.8150 | 0.7890 | 0.8600 | 0.8230 |
+| Improved QML threshold prediction | 0.8200 | 0.7963 | 0.8600 | 0.8269 |
 
 Interpretation:
 
 The improved-QML section found that the best cross-validation result used an
-entangled kernel, but the final test result did not beat the tuned-QML baseline.
-This is still useful for the project because it shows that smarter feature
-preparation and entanglement can be tested scientifically without overwriting
-the original baseline.
+entangled kernel. Threshold-based prediction improved the improved-QML test
+result from 0.8150 accuracy to 0.8200 accuracy and from 0.8230 stable F1 to
+0.8269 stable F1. This matches the tuned-QML baseline on stable F1, but XGBoost
+still remains slightly ahead overall.
 
 ## Final Shortlist Results
 
@@ -427,6 +450,9 @@ We have completed:
   entangled-kernel testing.
 - Ran 162 improved-QML experiments.
 - Best improved-QML test result reached 0.8150 accuracy and 0.8230 stable F1.
+- Added a separate threshold experiment for the improved-QML model.
+- Threshold-based prediction improved the improved-QML test result to 0.8200
+  accuracy and 0.8269 stable F1.
 
 ## What We Have Not Done Yet
 
