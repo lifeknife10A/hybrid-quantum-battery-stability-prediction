@@ -41,7 +41,8 @@ flowchart TD
     C --> E["XGBoost baseline<br/>classification and regression"]
     E --> F["India + safety filtering<br/>model output is filtered after prediction"]
     F --> G["Final India battery shortlist<br/>629 rows"]
-    G --> H["Next step<br/>QML-ready dataset and QML comparison"]
+    G --> H["QML-ready dataset<br/>1,000 balanced rows"]
+    H --> I["QML baseline comparison<br/>QML 0.81, same-data XGBoost 0.83"]
 ```
 
 ## Artifact Map
@@ -54,6 +55,8 @@ flowchart TD
 | EDA | `lithium india scored.csv` | Analysis report | 24,957 | `scripts/create_lithium_india_scored_eda.py` | `data/metadata/lithium_india_scored_eda.md` |
 | XGBoost baseline | `lithium india scored.csv` | Predictions and saved models | 24,957 classification rows; 24,068 regression rows | `scripts/train_xgboost_baseline.py` | `data/metadata/xgboost_baseline_results.md` |
 | Final shortlist | `xgboost predictions with india scores.csv` | `data/processed/final india battery shortlist.csv` | 629 | `scripts/create_final_india_battery_shortlist.py` | `data/metadata/final_shortlist_summary.md` |
+| QML-ready dataset | `lithium india scored.csv` | `data/processed/qml_ready_lithium_india.csv` | 1,000 | `scripts/create_qml_ready_dataset.py` | `data/metadata/qml_ready_dataset_summary.md` |
+| QML baseline | `qml_ready_lithium_india.csv` | `data/processed/qml baseline predictions.csv` | 200 test predictions | `scripts/train_qml_baseline.py` | `data/metadata/qml_baseline_results.md` |
 
 ## Dataset Sizes
 
@@ -65,6 +68,8 @@ flowchart TD
 | XGBoost classification dataset | 24,957 | 42 encoded features | Target is `is_stable`. |
 | XGBoost regression dataset | 24,068 | 42 encoded features | Target is `energy_above_hull`; rows with missing target are removed. |
 | Final India battery shortlist | 629 | Shortlist columns | Used for human review and candidate selection. |
+| QML-ready balanced dataset | 1,000 | 27 | Balanced 500 stable and 500 unstable rows. |
+| QML baseline prediction file | 200 | 11 | Test-set QML and same-data XGBoost predictions. |
 
 ## Key Columns Used
 
@@ -88,6 +93,10 @@ flowchart TD
 | `predicted_energy_above_hull` | XGBoost predicted energy above hull. |
 | `predicted_energy_above_hull_clipped` | Non-negative version used in final filtering. |
 | `shortlist_rule_type` | Explains whether the row passed strict model rules or benchmark-family exception rules. |
+| `target_is_stable` | QML target column: 1 means stable and 0 means unstable. |
+| `qml_predicted_label` | QML model predicted class for the test row. |
+| `qml_stable_probability` | QML model probability score for stable class. |
+| `xgboost_same_data_predicted_label` | Same-split XGBoost predicted class for comparison. |
 
 ## Methodology Decisions
 
@@ -223,6 +232,35 @@ Interpretation:
 The classifier is a useful baseline. The regression model is acceptable for a
 first project baseline, but it should be improved later with better features.
 
+## QML Baseline Results
+
+From `data/metadata/qml_baseline_results.md`:
+
+Model: simulated quantum kernel classifier
+
+Input: `data/processed/qml_ready_lithium_india.csv`
+
+Prediction output: `data/processed/qml baseline predictions.csv`
+
+| Model | Dataset | Accuracy | Stable Precision | Stable Recall | Stable F1 |
+| --- | --- | ---: | ---: | ---: | ---: |
+| QML quantum kernel | QML-ready balanced dataset | 0.8100 | 0.7870 | 0.8500 | 0.8173 |
+| XGBoost same QML-ready data | QML-ready balanced dataset | 0.8300 | 0.8367 | 0.8200 | 0.8283 |
+| XGBoost full project baseline | Full lithium India-scored dataset | 0.9091 | 0.7300 | 0.7000 | 0.7100 |
+
+QML confusion matrix:
+
+| Actual Class | Predicted Unstable | Predicted Stable |
+| --- | ---: | ---: |
+| Unstable | 77 | 23 |
+| Stable | 15 | 85 |
+
+Interpretation:
+
+The first QML classifier is working. On the same QML-ready test split, XGBoost
+is still slightly stronger, but the QML result is close enough to use as a real
+baseline for project comparison.
+
 ## Final Shortlist Results
 
 From `data/metadata/final_shortlist_summary.md`:
@@ -271,29 +309,31 @@ We have completed:
 - Saved rejected-row audit data for transparency.
 - Created a QML-ready balanced dataset with 1,000 rows and 27 columns.
 - Created step-by-step QML dataset markdown files for report writing.
+- Trained the first simple QML classifier.
+- Compared QML with XGBoost on the same QML-ready data.
+- Created QML model step markdown files for report writing.
 
 ## What We Have Not Done Yet
 
 The project is not finished yet. The next missing parts are:
 
-- Build a simple QML model.
-- Compare QML results with the XGBoost baseline.
 - Add visual plots for report and presentation.
 - Write final academic interpretation of the top materials.
+- Try improved QML feature maps or smaller feature sets.
 
 ## Recommended Next Step
 
 The next best step is:
 
-> Train a simple QML classifier using the QML-ready dataset.
+> Create visual plots and a report-ready comparison section.
 
 Why this should come next:
 
 - XGBoost is already our classical baseline.
-- The QML-ready dataset is now clean, balanced, and scaled.
-- The next comparison should use the same target: `target_is_stable`.
-- The final report will be stronger if it compares classical ML and QML using
-  accuracy, precision, recall, and F1-score.
+- The QML baseline is now trained and measured.
+- We now have enough metrics to create comparison charts.
+- The final report needs clear visuals for dataset sizes, model metrics, and
+  final shortlisted material families.
 
 ## Completed QML Dataset Preparation
 
@@ -329,19 +369,33 @@ Classification is easier to compare clearly:
 - QML predicts stable or unstable.
 - We can compare accuracy, precision, recall, and F1-score.
 
+## Completed QML Model Training
+
+Created:
+
+`data/processed/qml baseline predictions.csv`
+
+Created model reports:
+
+- `data/metadata/qml_baseline_results.md`
+- `data/metadata/qml_model_step_01_training_data.md`
+- `data/metadata/qml_model_step_02_quantum_kernel.md`
+- `data/metadata/qml_model_step_03_qml_results.md`
+- `data/metadata/qml_model_step_04_xgboost_comparison.md`
+- `data/metadata/qml_model_step_05_interpretation.md`
+
 ## Clean Execution Plan For The Next Step
 
-1. Create `scripts/train_qml_baseline.py`.
-2. Read `data/processed/qml_ready_lithium_india.csv`.
-3. Use the `scaled_` feature columns.
-4. Use `target_is_stable` as the target.
-5. Train a simple QML classifier.
-6. Save QML metrics in `data/metadata/qml_baseline_results.md`.
-7. Compare QML results with `data/metadata/xgboost_baseline_results.md`.
+1. Create plots from the existing markdown and CSV outputs.
+2. Plot dataset row counts across the pipeline.
+3. Plot XGBoost vs QML metrics.
+4. Plot final shortlist battery-family counts.
+5. Save plots in `data/plots/`.
+6. Create a report-ready markdown section using the plot files.
 
 ## One-Line Project Story
 
 We are building a pipeline that starts with a large lithium materials database,
 learns stability patterns using XGBoost, then filters and ranks the predicted
-materials for India-first battery research, before comparing the classical
-baseline with a future QML model.
+materials for India-first battery research, then compares the classical
+baseline with a simple QML classifier.

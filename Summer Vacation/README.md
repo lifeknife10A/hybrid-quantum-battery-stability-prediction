@@ -10,7 +10,7 @@ The main goal is to find lithium battery material candidates that are:
 - scientifically promising,
 - useful for battery research,
 - compatible with India-focused supply-chain and safety priorities,
-- suitable for comparison between classical ML and future QML models.
+- suitable for comparison between classical ML and QML models.
 
 ## Main Dataset
 
@@ -31,6 +31,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 6. Apply India and safety filters after prediction.
 7. Create the final India battery shortlist.
 8. Create the QML-ready balanced dataset.
+9. Train and compare the first simple QML classifier.
 
 ## Current Results
 
@@ -41,6 +42,8 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 - QML-ready balanced dataset: 1,000 rows and 27 columns
 - XGBoost classifier accuracy: 0.9091
 - XGBoost regressor MAE: 0.1005
+- QML quantum-kernel accuracy on QML-ready test split: 0.8100
+- Same-data XGBoost accuracy on QML-ready test split: 0.8300
 
 ## Important Files
 
@@ -55,7 +58,9 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | `scripts/train_xgboost_baseline.py` | Trains XGBoost baseline models. |
 | `scripts/create_final_india_battery_shortlist.py` | Creates the final India shortlist. |
 | `scripts/create_qml_ready_dataset.py` | Creates the balanced and scaled QML-ready dataset. |
+| `scripts/train_qml_baseline.py` | Trains the first simple QML classifier and compares it with XGBoost. |
 | `data/metadata/project_pipeline_summary.md` | Full current pipeline summary. |
+| `data/metadata/qml_baseline_results.md` | QML classifier results and XGBoost comparison. |
 
 ## Reproduce Locally
 
@@ -74,9 +79,10 @@ python3 scripts/create_lithium_india_scored_eda.py
 python3 scripts/train_xgboost_baseline.py
 python3 scripts/create_final_india_battery_shortlist.py
 python3 scripts/create_qml_ready_dataset.py
+python3 scripts/train_qml_baseline.py
 ```
 
 ## Next Step
 
-Train a simple QML classifier and compare it against the current XGBoost
-baseline.
+Create visual plots and a final report section comparing XGBoost, the QML
+baseline, and the India-focused material shortlist.
