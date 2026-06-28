@@ -39,6 +39,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 13. Test quantum-kernel alignment feature selection.
 14. Validate the best QML setup across repeated random train/test splits.
 15. Compare best QML with Logistic Regression as a simpler classical baseline.
+16. Add a gate-level visual diagram for the best 4-qubit QML feature map.
 
 ## Current Results
 
@@ -82,6 +83,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | `scripts/tune_qml_baseline.py` | Tunes QML feature count, angle scale, and SVM `C`. |
 | `scripts/run_improved_qml_experiments.py` | Runs the separate improved-QML section with feature importance, PCA, and entangled kernels. |
 | `scripts/compare_qml_with_logistic_baseline.py` | Compares best QML with Logistic Regression on repeated balanced splits. |
+| `scripts/create_qml_circuit_diagram.py` | Creates the gate-level QML circuit diagram and explanation. |
 | `scripts/create_main_presentation_notebook.py` | Regenerates the presentation notebook. |
 | `data/metadata/project_pipeline_summary.md` | Full current pipeline summary. |
 | `data/metadata/qml_baseline_results.md` | QML classifier results and XGBoost comparison. |
@@ -92,6 +94,8 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | `data/metadata/improved_qml_step_06_kernel_alignment.md` | Separate quantum-kernel alignment experiment. |
 | `data/metadata/improved_qml_step_07_repeated_split_validation.md` | Repeated train/test split validation for the best QML setup. |
 | `data/metadata/improved_qml_step_08_qml_vs_logistic.md` | Repeated-split QML vs Logistic Regression comparison. |
+| `data/metadata/qml_circuit_diagram_summary.md` | Gate-level explanation of the best QML feature map. |
+| `data/processed/qml circuit diagram.png` | Visual QML circuit diagram for presentation. |
 
 ## Reproduce Locally
 
@@ -115,10 +119,13 @@ python3 scripts/tune_qml_baseline.py
 python3 scripts/run_improved_qml_experiments.py
 python3 scripts/run_best_qml_repeated_splits.py
 python3 scripts/compare_qml_with_logistic_baseline.py
+python3 scripts/create_qml_circuit_diagram.py
+python3 scripts/create_main_presentation_notebook.py
 ```
 
 ## Next Step
 
 Create the final report section comparing XGBoost, the original QML baseline,
 tuned QML, threshold QML, kernel-alignment QML, QML vs Logistic Regression, and
-the India-focused material shortlist.
+the India-focused material shortlist, using the QML circuit diagram as the
+visual explanation of the quantum part.

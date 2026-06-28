@@ -4,6 +4,7 @@ import io
 import json
 import sys
 
+import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.metrics import accuracy_score
@@ -125,6 +126,171 @@ def create_bar_figure(dataframe, x_column, y_column, title, x_label, y_label, co
 
     for index, value in enumerate(dataframe[y_column]):
         axis.text(index, value, f"{int(value):,}", ha="center", va="bottom", fontsize=8)
+
+    return figure
+
+
+def add_gate(axis, x_position, y_position, label, width=0.9, height=0.42):
+    rectangle = patches.FancyBboxPatch(
+        (x_position - width / 2, y_position - height / 2),
+        width,
+        height,
+        boxstyle="round,pad=0.03,rounding_size=0.04",
+        linewidth=1.4,
+        edgecolor="#233142",
+        facecolor="#edf4fb",
+        zorder=3,
+    )
+    axis.add_patch(rectangle)
+    axis.text(
+        x_position,
+        y_position,
+        label,
+        ha="center",
+        va="center",
+        fontsize=8,
+        color="#111111",
+        zorder=4,
+    )
+
+
+def add_controlled_phase(axis, x_position, upper_y_position, lower_y_position, label):
+    axis.plot(
+        [x_position, x_position],
+        [upper_y_position, lower_y_position],
+        color="#233142",
+        linewidth=1.5,
+        zorder=3,
+    )
+    for y_position in [upper_y_position, lower_y_position]:
+        circle = patches.Circle(
+            (x_position, y_position),
+            radius=0.08,
+            facecolor="#233142",
+            edgecolor="#233142",
+            zorder=4,
+        )
+        axis.add_patch(circle)
+    axis.text(
+        x_position,
+        (upper_y_position + lower_y_position) / 2,
+        label,
+        ha="left",
+        va="center",
+        fontsize=7,
+        color="#233142",
+        bbox={"boxstyle": "round,pad=0.15", "facecolor": "#ffffff", "edgecolor": "none"},
+        zorder=5,
+    )
+
+
+def create_qml_circuit_figure():
+    feature_names = [
+        "formation_energy_per_atom",
+        "has_o",
+        "space_group_number",
+        "theoretical",
+    ]
+    y_positions = [3.5, 2.5, 1.5, 0.5]
+
+    figure, axis = plt.subplots(figsize=(12, 5.2))
+    axis.set_xlim(-0.2, 10.4)
+    axis.set_ylim(-0.8, 4.6)
+    axis.axis("off")
+
+    axis.text(
+        5.1,
+        4.35,
+        "Best QML Feature Map: 4-Qubit Entangled Quantum Kernel",
+        ha="center",
+        va="center",
+        fontsize=14,
+        fontweight="bold",
+        color="#111111",
+    )
+
+    for row_index, y_position in enumerate(y_positions):
+        axis.plot(
+            [1.2, 9.6],
+            [y_position, y_position],
+            color="#233142",
+            linewidth=1.4,
+            zorder=1,
+        )
+        axis.text(
+            0.0,
+            y_position,
+            f"q{row_index}: |0>",
+            ha="left",
+            va="center",
+            fontsize=9,
+            color="#111111",
+        )
+        axis.text(
+            0.95,
+            y_position + 0.28,
+            feature_names[row_index],
+            ha="right",
+            va="center",
+            fontsize=7,
+            color="#444444",
+        )
+        add_gate(axis, 2.2, y_position, f"RY(theta_{row_index})")
+
+    add_controlled_phase(axis, 4.0, y_positions[0], y_positions[1], "CP(phi_01)")
+    add_controlled_phase(axis, 5.3, y_positions[1], y_positions[2], "CP(phi_12)")
+    add_controlled_phase(axis, 6.6, y_positions[2], y_positions[3], "CP(phi_23)")
+
+    kernel_box = patches.FancyBboxPatch(
+        (7.55, 0.0),
+        1.75,
+        4.0,
+        boxstyle="round,pad=0.08,rounding_size=0.08",
+        linewidth=1.5,
+        edgecolor="#315f8c",
+        facecolor="#f2f7fc",
+    )
+    axis.add_patch(kernel_box)
+    axis.text(
+        8.425,
+        2.25,
+        "Kernel overlap",
+        ha="center",
+        va="center",
+        fontsize=10,
+        fontweight="bold",
+        color="#111111",
+    )
+    axis.text(
+        8.425,
+        1.75,
+        "K(x, y) =\n|<phi(x)|phi(y)>|^2",
+        ha="center",
+        va="center",
+        fontsize=8,
+        color="#111111",
+    )
+
+    add_gate(axis, 9.95, 2.0, "SVC", width=0.65, height=0.5)
+
+    axis.text(
+        5.1,
+        -0.25,
+        "theta_i = pi * scaled_feature_i      phi_ij = pi * scaled_feature_i * scaled_feature_j",
+        ha="center",
+        va="center",
+        fontsize=9,
+        color="#111111",
+    )
+    axis.text(
+        5.1,
+        -0.58,
+        "This diagram represents our simulated quantum-kernel feature map, not a real quantum-hardware run.",
+        ha="center",
+        va="center",
+        fontsize=8,
+        color="#555555",
+    )
 
     return figure
 
@@ -391,6 +557,35 @@ def main():
             },
             {"parameter": "Train/test split", "value": "80/20"},
             {"parameter": "Random state", "value": "42"},
+        ]
+    )
+
+    qml_circuit_dataframe = pd.DataFrame(
+        [
+            {
+                "qubit": "q0",
+                "feature": "formation_energy_per_atom",
+                "gate": "RY(theta_0)",
+                "angle": "theta_0 = pi * scaled formation_energy_per_atom",
+            },
+            {
+                "qubit": "q1",
+                "feature": "has_o",
+                "gate": "RY(theta_1)",
+                "angle": "theta_1 = pi * scaled has_o",
+            },
+            {
+                "qubit": "q2",
+                "feature": "space_group_number",
+                "gate": "RY(theta_2)",
+                "angle": "theta_2 = pi * scaled space_group_number",
+            },
+            {
+                "qubit": "q3",
+                "feature": "theoretical",
+                "gate": "RY(theta_3)",
+                "angle": "theta_3 = pi * scaled theoretical",
+            },
         ]
     )
 
@@ -706,6 +901,7 @@ data, XGBoost, India-focused screening, and a first QML baseline.
     data_loading_source = """from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
 project_folder = Path.cwd()
@@ -1050,6 +1246,52 @@ display(quantum_parameters_dataframe)"""
         make_code_cell(
             quantum_parameters_source,
             [make_table_output(quantum_parameters_dataframe)],
+            execution_count,
+        )
+    )
+    execution_count += 1
+
+    qml_circuit_figure = create_qml_circuit_figure()
+    qml_circuit_source = """qml_circuit_dataframe = pd.DataFrame([
+    {
+        "qubit": "q0",
+        "feature": "formation_energy_per_atom",
+        "gate": "RY(theta_0)",
+        "angle": "theta_0 = pi * scaled formation_energy_per_atom",
+    },
+    {
+        "qubit": "q1",
+        "feature": "has_o",
+        "gate": "RY(theta_1)",
+        "angle": "theta_1 = pi * scaled has_o",
+    },
+    {
+        "qubit": "q2",
+        "feature": "space_group_number",
+        "gate": "RY(theta_2)",
+        "angle": "theta_2 = pi * scaled space_group_number",
+    },
+    {
+        "qubit": "q3",
+        "feature": "theoretical",
+        "gate": "RY(theta_3)",
+        "angle": "theta_3 = pi * scaled theoretical",
+    },
+])
+display(qml_circuit_dataframe)
+
+qml_circuit_image = plt.imread(processed_folder / "qml circuit diagram.png")
+plt.figure(figsize=(12, 5.2))
+plt.imshow(qml_circuit_image)
+plt.axis("off")
+plt.show()"""
+    cells.append(
+        make_code_cell(
+            qml_circuit_source,
+            [
+                make_table_output(qml_circuit_dataframe),
+                make_figure_output(qml_circuit_figure),
+            ],
             execution_count,
         )
     )
@@ -1542,6 +1784,7 @@ display(qml_vs_logistic_comparison_dataframe)"""
 - Added a kernel-alignment experiment for quantum-aware feature selection.
 - Validated the best QML setup across 10 random train/test splits.
 - Compared best QML with Logistic Regression on the same repeated splits.
+- Added a gate-level visual diagram for the best 4-qubit QML feature map.
 
 **Main model result**
 
@@ -1582,6 +1825,7 @@ Write the final model-comparison interpretation and try a hardware-oriented QML 
 - Added a kernel-alignment experiment for quantum-aware feature selection.
 - Validated the best QML setup across 10 random train/test splits.
 - Compared best QML with Logistic Regression on the same repeated splits.
+- Added a gate-level visual diagram for the best 4-qubit QML feature map.
 
 **Main model result**
 

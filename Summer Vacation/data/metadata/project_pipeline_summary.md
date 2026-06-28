@@ -49,6 +49,7 @@ flowchart TD
     L --> M["Kernel alignment experiment<br/>quantum-aware feature selection"]
     M --> N["Repeated split validation<br/>10 random train/test splits"]
     N --> O["QML vs Logistic Regression<br/>same splits and features"]
+    O --> P["QML circuit diagram<br/>4-qubit feature-map explanation"]
 ```
 
 ## Artifact Map
@@ -68,6 +69,7 @@ flowchart TD
 | Improved QML separate section | `lithium india scored.csv` | `data/processed/improved qml feature pca.csv`, `data/processed/improved qml tuning results.csv`, `data/processed/improved qml best predictions.csv`, `data/processed/improved qml threshold results.csv`, `data/processed/improved qml threshold predictions.csv`, `data/processed/improved qml alignment scores.csv`, `data/processed/improved qml alignment results.csv`, and `data/processed/improved qml alignment predictions.csv` | 1,000 PCA rows; 162 experiments; 9 thresholds; 72 alignment scores; 48 alignment CV rows; 200 test predictions | `scripts/run_improved_qml_experiments.py` | `data/metadata/improved_qml_section_summary.md` |
 | Best QML repeated split validation | `lithium india scored.csv` | `data/processed/best qml repeated split results.csv` and `data/processed/best qml repeated split predictions.csv` | 10 splits; 2,000 total test predictions | `scripts/run_best_qml_repeated_splits.py` | `data/metadata/improved_qml_step_07_repeated_split_validation.md` |
 | QML vs Logistic Regression | `lithium india scored.csv` | `data/processed/qml vs logistic repeated split results.csv`, `data/processed/qml vs logistic repeated split summary.csv`, and `data/processed/qml vs logistic repeated split predictions.csv` | 10 splits; 20 model result rows; 2,000 total test predictions | `scripts/compare_qml_with_logistic_baseline.py` | `data/metadata/improved_qml_step_08_qml_vs_logistic.md` |
+| QML circuit diagram | Best QML setup | `data/processed/qml circuit diagram.png` | 1 PNG diagram | `scripts/create_qml_circuit_diagram.py` | `data/metadata/qml_circuit_diagram_summary.md` |
 
 ## Dataset Sizes
 
@@ -533,13 +535,15 @@ We have completed:
 - Repeated validation reached mean accuracy 0.8550 and mean stable F1 0.8583.
 - Compared best QML with Logistic Regression across the same 10 repeated splits.
 - QML beat Logistic Regression on mean accuracy, stable precision, and stable F1.
+- Created a gate-level visual diagram for the best 4-qubit QML feature map.
 
 ## What We Have Not Done Yet
 
 The project is not finished yet. The next missing parts are:
 
 - Write final academic interpretation of the top materials.
-- Try a hardware-oriented QML circuit after the simulated kernel experiments.
+- Try a real Qiskit or PennyLane hardware-oriented circuit after the simulated
+  kernel experiments.
 
 ## Recommended Next Step
 
@@ -553,6 +557,7 @@ Why this should come next:
 - The QML baseline is now trained, tuned, and measured.
 - The separate improved-QML section is also complete and documented.
 - We now also have a fair QML-higher comparison against Logistic Regression.
+- The QML circuit diagram is ready for presentation explanation.
 - We now have enough metrics to create comparison charts.
 - The final report needs clear visuals for dataset sizes, model metrics, and
   final shortlisted material families.
