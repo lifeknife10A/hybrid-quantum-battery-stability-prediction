@@ -23,6 +23,9 @@ final_shortlist_path = processed_folder / "final india battery shortlist.csv"
 qml_ready_path = processed_folder / "qml_ready_lithium_india.csv"
 qml_predictions_path = processed_folder / "qml baseline predictions.csv"
 tuned_qml_predictions_path = processed_folder / "qml tuned best predictions.csv"
+improved_qml_dataset_path = processed_folder / "improved qml feature pca.csv"
+improved_qml_tuning_results_path = processed_folder / "improved qml tuning results.csv"
+improved_qml_predictions_path = processed_folder / "improved qml best predictions.csv"
 
 
 def make_markdown_output(markdown_text):
@@ -103,7 +106,7 @@ def create_metric_figure(metric_dataframe):
     model_names = metric_dataframe["model"].tolist()
     x_positions = list(range(len(metric_names)))
 
-    colors = ["#315f8c", "#4f86c6", "#d88c2d", "#5f8f45"]
+    colors = ["#315f8c", "#4f86c6", "#d88c2d", "#5f8f45", "#7b5ea7"]
     center_offset = (len(model_names) - 1) / 2
 
     for model_index, model_name in enumerate(model_names):
@@ -137,10 +140,10 @@ def create_metric_figure(metric_dataframe):
     return figure
 
 
-def create_confusion_matrix_figure(confusion_table):
+def create_confusion_matrix_figure(confusion_table, title):
     figure, axis = plt.subplots(figsize=(5.8, 4.8))
     image = axis.imshow(confusion_table, cmap="Blues")
-    axis.set_title("Tuned QML Confusion Matrix")
+    axis.set_title(title)
     axis.set_xticks([0, 1])
     axis.set_xticklabels(["Predicted unstable", "Predicted stable"])
     axis.set_yticks([0, 1])
@@ -187,6 +190,14 @@ def main():
     qml_ready_dataframe = pd.read_csv(qml_ready_path)
     qml_predictions_dataframe = pd.read_csv(qml_predictions_path)
     tuned_qml_predictions_dataframe = pd.read_csv(tuned_qml_predictions_path)
+    improved_qml_dataset_dataframe = pd.read_csv(improved_qml_dataset_path)
+    improved_qml_tuning_results_dataframe = pd.read_csv(improved_qml_tuning_results_path)
+    improved_qml_predictions_dataframe = pd.read_csv(improved_qml_predictions_path)
+
+    improved_best_result = improved_qml_tuning_results_dataframe.sort_values(
+        by=["cv_stable_f1", "cv_accuracy", "cv_stable_recall"],
+        ascending=[False, False, False],
+    ).iloc[0]
 
     pipeline_counts_dataframe = pd.DataFrame(
         [
@@ -260,6 +271,26 @@ def main():
             {"parameter": "Classifier", "value": "SVC with precomputed kernel"},
             {"parameter": "Tuned SVM C value", "value": "1.0"},
             {"parameter": "Tuning method", "value": "4-fold cross-validation"},
+            {
+                "parameter": "Improved separate section",
+                "value": "Random Forest feature importance + PCA + kernel tuning",
+            },
+            {
+                "parameter": "Improved best qubits",
+                "value": str(int(improved_best_result["pca_component_count"])),
+            },
+            {
+                "parameter": "Improved best kernel",
+                "value": str(improved_best_result["kernel_name"]),
+            },
+            {
+                "parameter": "Improved best angle scale",
+                "value": str(improved_best_result["angle_scale"]),
+            },
+            {
+                "parameter": "Improved best SVM C value",
+                "value": str(improved_best_result["c_value"]),
+            },
             {"parameter": "Train/test split", "value": "80/20"},
             {"parameter": "Random state", "value": "42"},
         ]
@@ -274,6 +305,10 @@ def main():
     tuned_qml_predicted_labels = tuned_qml_predictions_dataframe[
         "tuned_qml_predicted_label"
     ]
+    improved_true_labels = improved_qml_predictions_dataframe["target_is_stable"]
+    improved_qml_predicted_labels = improved_qml_predictions_dataframe[
+        "improved_qml_predicted_label"
+    ]
 
     metric_dataframe = pd.DataFrame(
         [
@@ -282,6 +317,11 @@ def main():
                 "Tuned QML quantum kernel",
                 tuned_true_labels,
                 tuned_qml_predicted_labels,
+            ),
+            get_metric_row(
+                "Improved QML separate section",
+                improved_true_labels,
+                improved_qml_predicted_labels,
             ),
             get_metric_row(
                 "XGBoost same QML data",
@@ -303,6 +343,11 @@ def main():
         tuned_qml_predicted_labels,
         labels=[0, 1],
     )
+    improved_qml_confusion_matrix = confusion_matrix(
+        improved_true_labels,
+        improved_qml_predicted_labels,
+        labels=[0, 1],
+    )
 
     sample_predictions_dataframe = tuned_qml_predictions_dataframe[
         [
@@ -311,6 +356,42 @@ def main():
             "target_is_stable",
             "tuned_qml_predicted_label",
             "tuned_qml_stable_probability",
+        ]
+    ].head(10)
+
+    improved_summary_dataframe = pd.DataFrame(
+        [
+            {
+                "section": "Improved QML separate section",
+                "feature_preparation": "feature importance + PCA",
+                "best_kernel": improved_best_result["kernel_name"],
+                "best_qubits": int(improved_best_result["pca_component_count"]),
+                "angle_scale": improved_best_result["angle_scale"],
+                "svm_c": improved_best_result["c_value"],
+                "cv_stable_f1": improved_best_result["cv_stable_f1"],
+                "test_accuracy": round(
+                    accuracy_score(improved_true_labels, improved_qml_predicted_labels),
+                    4,
+                ),
+                "test_stable_f1": round(
+                    f1_score(
+                        improved_true_labels,
+                        improved_qml_predicted_labels,
+                        zero_division=0,
+                    ),
+                    4,
+                ),
+            }
+        ]
+    )
+
+    improved_sample_predictions_dataframe = improved_qml_predictions_dataframe[
+        [
+            "material_id",
+            "formula",
+            "target_is_stable",
+            "improved_qml_predicted_label",
+            "improved_qml_stable_probability",
         ]
     ].head(10)
 
@@ -353,6 +434,9 @@ final_shortlist_dataframe = pd.read_csv(processed_folder / "final india battery 
 qml_ready_dataframe = pd.read_csv(processed_folder / "qml_ready_lithium_india.csv")
 qml_predictions_dataframe = pd.read_csv(processed_folder / "qml baseline predictions.csv")
 tuned_qml_predictions_dataframe = pd.read_csv(processed_folder / "qml tuned best predictions.csv")
+improved_qml_dataset_dataframe = pd.read_csv(processed_folder / "improved qml feature pca.csv")
+improved_qml_tuning_results_dataframe = pd.read_csv(processed_folder / "improved qml tuning results.csv")
+improved_qml_predictions_dataframe = pd.read_csv(processed_folder / "improved qml best predictions.csv")
 
 dataset_summary = pd.DataFrame([
     {"dataset": "Lithium India scored", "rows": len(lithium_scored_dataframe), "columns": len(lithium_scored_dataframe.columns)},
@@ -360,6 +444,9 @@ dataset_summary = pd.DataFrame([
     {"dataset": "QML-ready dataset", "rows": len(qml_ready_dataframe), "columns": len(qml_ready_dataframe.columns)},
     {"dataset": "QML test predictions", "rows": len(qml_predictions_dataframe), "columns": len(qml_predictions_dataframe.columns)},
     {"dataset": "Tuned QML test predictions", "rows": len(tuned_qml_predictions_dataframe), "columns": len(tuned_qml_predictions_dataframe.columns)},
+    {"dataset": "Improved QML PCA dataset", "rows": len(improved_qml_dataset_dataframe), "columns": len(improved_qml_dataset_dataframe.columns)},
+    {"dataset": "Improved QML tuning results", "rows": len(improved_qml_tuning_results_dataframe), "columns": len(improved_qml_tuning_results_dataframe.columns)},
+    {"dataset": "Improved QML test predictions", "rows": len(improved_qml_predictions_dataframe), "columns": len(improved_qml_predictions_dataframe.columns)},
 ])
 display(dataset_summary)"""
     dataset_summary_dataframe = pd.DataFrame(
@@ -388,6 +475,21 @@ display(dataset_summary)"""
                 "dataset": "Tuned QML test predictions",
                 "rows": len(tuned_qml_predictions_dataframe),
                 "columns": len(tuned_qml_predictions_dataframe.columns),
+            },
+            {
+                "dataset": "Improved QML PCA dataset",
+                "rows": len(improved_qml_dataset_dataframe),
+                "columns": len(improved_qml_dataset_dataframe.columns),
+            },
+            {
+                "dataset": "Improved QML tuning results",
+                "rows": len(improved_qml_tuning_results_dataframe),
+                "columns": len(improved_qml_tuning_results_dataframe.columns),
+            },
+            {
+                "dataset": "Improved QML test predictions",
+                "rows": len(improved_qml_predictions_dataframe),
+                "columns": len(improved_qml_predictions_dataframe.columns),
             },
         ]
     )
@@ -576,6 +678,11 @@ display(top_candidates_dataframe)"""
     {"parameter": "Classifier", "value": "SVC with precomputed kernel"},
     {"parameter": "Tuned SVM C value", "value": "1.0"},
     {"parameter": "Tuning method", "value": "4-fold cross-validation"},
+    {"parameter": "Improved separate section", "value": "Random Forest feature importance + PCA + kernel tuning"},
+    {"parameter": "Improved best qubits", "value": "6"},
+    {"parameter": "Improved best kernel", "value": "entangled_pi"},
+    {"parameter": "Improved best angle scale", "value": "pi"},
+    {"parameter": "Improved best SVM C value", "value": "2.0"},
     {"parameter": "Train/test split", "value": "80/20"},
     {"parameter": "Random state", "value": "42"},
 ])
@@ -595,6 +702,8 @@ qml_predicted_labels = qml_predictions_dataframe["qml_predicted_label"]
 xgboost_predicted_labels = qml_predictions_dataframe["xgboost_same_data_predicted_label"]
 tuned_true_labels = tuned_qml_predictions_dataframe["target_is_stable"]
 tuned_qml_predicted_labels = tuned_qml_predictions_dataframe["tuned_qml_predicted_label"]
+improved_true_labels = improved_qml_predictions_dataframe["target_is_stable"]
+improved_qml_predicted_labels = improved_qml_predictions_dataframe["improved_qml_predicted_label"]
 
 metric_dataframe = pd.DataFrame([
     {
@@ -610,6 +719,13 @@ metric_dataframe = pd.DataFrame([
         "stable_precision": precision_score(tuned_true_labels, tuned_qml_predicted_labels, zero_division=0),
         "stable_recall": recall_score(tuned_true_labels, tuned_qml_predicted_labels, zero_division=0),
         "stable_f1": f1_score(tuned_true_labels, tuned_qml_predicted_labels, zero_division=0),
+    },
+    {
+        "model": "Improved QML separate section",
+        "accuracy": accuracy_score(improved_true_labels, improved_qml_predicted_labels),
+        "stable_precision": precision_score(improved_true_labels, improved_qml_predicted_labels, zero_division=0),
+        "stable_recall": recall_score(improved_true_labels, improved_qml_predicted_labels, zero_division=0),
+        "stable_f1": f1_score(improved_true_labels, improved_qml_predicted_labels, zero_division=0),
     },
     {
         "model": "XGBoost same QML data",
@@ -645,7 +761,10 @@ plt.show()"""
     )
     execution_count += 1
 
-    confusion_figure = create_confusion_matrix_figure(qml_confusion_matrix)
+    confusion_figure = create_confusion_matrix_figure(
+        qml_confusion_matrix,
+        "Tuned QML Confusion Matrix",
+    )
     confusion_dataframe = pd.DataFrame(
         qml_confusion_matrix,
         index=["actual_unstable", "actual_stable"],
@@ -697,6 +816,100 @@ display(sample_predictions_dataframe)"""
     )
     execution_count += 1
 
+    improved_summary_source = """improved_best_result = improved_qml_tuning_results_dataframe.sort_values(
+    by=["cv_stable_f1", "cv_accuracy", "cv_stable_recall"],
+    ascending=[False, False, False],
+).iloc[0]
+
+improved_true_labels = improved_qml_predictions_dataframe["target_is_stable"]
+improved_qml_predicted_labels = improved_qml_predictions_dataframe["improved_qml_predicted_label"]
+
+improved_summary_dataframe = pd.DataFrame([
+    {
+        "section": "Improved QML separate section",
+        "feature_preparation": "feature importance + PCA",
+        "best_kernel": improved_best_result["kernel_name"],
+        "best_qubits": int(improved_best_result["pca_component_count"]),
+        "angle_scale": improved_best_result["angle_scale"],
+        "svm_c": improved_best_result["c_value"],
+        "cv_stable_f1": improved_best_result["cv_stable_f1"],
+        "test_accuracy": accuracy_score(improved_true_labels, improved_qml_predicted_labels),
+        "test_stable_f1": f1_score(improved_true_labels, improved_qml_predicted_labels, zero_division=0),
+    }
+]).round(4)
+
+display(improved_summary_dataframe)"""
+    cells.append(
+        make_code_cell(
+            improved_summary_source,
+            [make_table_output(improved_summary_dataframe)],
+            execution_count,
+        )
+    )
+    execution_count += 1
+
+    improved_confusion_figure = create_confusion_matrix_figure(
+        improved_qml_confusion_matrix,
+        "Improved QML Confusion Matrix",
+    )
+    improved_confusion_dataframe = pd.DataFrame(
+        improved_qml_confusion_matrix,
+        index=["actual_unstable", "actual_stable"],
+        columns=["predicted_unstable", "predicted_stable"],
+    )
+    improved_confusion_source = """improved_qml_confusion_matrix = confusion_matrix(
+    improved_true_labels,
+    improved_qml_predicted_labels,
+    labels=[0, 1],
+)
+improved_confusion_dataframe = pd.DataFrame(
+    improved_qml_confusion_matrix,
+    index=["actual_unstable", "actual_stable"],
+    columns=["predicted_unstable", "predicted_stable"],
+)
+display(improved_confusion_dataframe)
+
+plt.figure(figsize=(5.8, 4.8))
+plt.imshow(improved_qml_confusion_matrix, cmap="Blues")
+plt.title("Improved QML Confusion Matrix")
+plt.xticks([0, 1], ["Predicted unstable", "Predicted stable"])
+plt.yticks([0, 1], ["Actual unstable", "Actual stable"])
+for row_index in range(2):
+    for column_index in range(2):
+        plt.text(column_index, row_index, improved_qml_confusion_matrix[row_index, column_index], ha="center", va="center")
+plt.colorbar()
+plt.show()"""
+    cells.append(
+        make_code_cell(
+            improved_confusion_source,
+            [
+                make_table_output(improved_confusion_dataframe),
+                make_figure_output(improved_confusion_figure),
+            ],
+            execution_count,
+        )
+    )
+    execution_count += 1
+
+    improved_predictions_source = """improved_sample_predictions_dataframe = improved_qml_predictions_dataframe[
+    [
+        "material_id",
+        "formula",
+        "target_is_stable",
+        "improved_qml_predicted_label",
+        "improved_qml_stable_probability",
+    ]
+].head(10)
+display(improved_sample_predictions_dataframe)"""
+    cells.append(
+        make_code_cell(
+            improved_predictions_source,
+            [make_table_output(improved_sample_predictions_dataframe)],
+            execution_count,
+        )
+    )
+    execution_count += 1
+
     conclusion_markdown = """# Presentation Conclusion
 
 **What we achieved**
@@ -707,18 +920,21 @@ display(sample_predictions_dataframe)"""
 - Prepared a balanced QML-ready dataset.
 - Trained a first simulated quantum-kernel classifier.
 - Tuned QML hyperparameters using 4-fold cross-validation.
+- Added a separate improved-QML section using feature importance, PCA, and an
+  entangled-kernel search.
 
 **Main model result**
 
 - QML accuracy on QML-ready test split: **0.8100**
 - Tuned QML accuracy on QML-ready test split: **0.8200**
 - Tuned QML stable F1 on QML-ready test split: **0.8269**
+- Improved QML separate-section accuracy: **0.8150**
+- Improved QML separate-section stable F1: **0.8230**
 - Same-data XGBoost accuracy: **0.8300**
 
 **Next step**
 
-Create final report visuals and try entangled QML feature maps or
-hardware-oriented circuits.
+Create final report visuals and try a hardware-oriented QML circuit.
 """
     cells.append(
         make_code_cell(
@@ -732,18 +948,21 @@ hardware-oriented circuits.
 - Prepared a balanced QML-ready dataset.
 - Trained a first simulated quantum-kernel classifier.
 - Tuned QML hyperparameters using 4-fold cross-validation.
+- Added a separate improved-QML section using feature importance, PCA, and an
+  entangled-kernel search.
 
 **Main model result**
 
 - QML accuracy on QML-ready test split: **0.8100**
 - Tuned QML accuracy on QML-ready test split: **0.8200**
 - Tuned QML stable F1 on QML-ready test split: **0.8269**
+- Improved QML separate-section accuracy: **0.8150**
+- Improved QML separate-section stable F1: **0.8230**
 - Same-data XGBoost accuracy: **0.8300**
 
 **Next step**
 
-Create final report visuals and try entangled QML feature maps or
-hardware-oriented circuits.
+Create final report visuals and try a hardware-oriented QML circuit.
 \"\"\"))""",
             [make_markdown_output(conclusion_markdown)],
             execution_count,

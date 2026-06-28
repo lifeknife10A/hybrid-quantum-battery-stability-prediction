@@ -33,6 +33,8 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 8. Create the QML-ready balanced dataset.
 9. Train and compare the first simple QML classifier.
 10. Tune QML feature count, angle scale, and SVM `C`.
+11. Run a separate improved-QML section using feature importance, PCA, and
+    entangled-kernel testing.
 
 ## Current Results
 
@@ -46,6 +48,8 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 - QML quantum-kernel accuracy on QML-ready test split: 0.8100
 - Tuned QML quantum-kernel accuracy on QML-ready test split: 0.8200
 - Tuned QML stable F1 on QML-ready test split: 0.8269
+- Improved QML separate-section accuracy: 0.8150
+- Improved QML separate-section stable F1: 0.8230
 - Same-data XGBoost accuracy on QML-ready test split: 0.8300
 
 ## Important Files
@@ -64,11 +68,13 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | `scripts/create_qml_ready_dataset.py` | Creates the balanced and scaled QML-ready dataset. |
 | `scripts/train_qml_baseline.py` | Trains the first simple QML classifier and compares it with XGBoost. |
 | `scripts/tune_qml_baseline.py` | Tunes QML feature count, angle scale, and SVM `C`. |
+| `scripts/run_improved_qml_experiments.py` | Runs the separate improved-QML section with feature importance, PCA, and entangled kernels. |
 | `scripts/create_main_presentation_notebook.py` | Regenerates the presentation notebook. |
 | `data/metadata/project_pipeline_summary.md` | Full current pipeline summary. |
 | `data/metadata/qml_baseline_results.md` | QML classifier results and XGBoost comparison. |
 | `data/metadata/qml_tuning_results.md` | QML hyperparameter tuning results. |
 | `data/metadata/qml_best_model_summary.md` | Best tuned QML model summary. |
+| `data/metadata/improved_qml_section_summary.md` | Separate improved-QML section summary. |
 
 ## Reproduce Locally
 
@@ -89,9 +95,11 @@ python3 scripts/create_final_india_battery_shortlist.py
 python3 scripts/create_qml_ready_dataset.py
 python3 scripts/train_qml_baseline.py
 python3 scripts/tune_qml_baseline.py
+python3 scripts/run_improved_qml_experiments.py
 ```
 
 ## Next Step
 
-Create visual plots and a final report section comparing XGBoost, the QML
-baseline, and the India-focused material shortlist.
+Create visual plots and a final report section comparing XGBoost, the original
+QML baseline, tuned QML, the separate improved-QML section, and the
+India-focused material shortlist.

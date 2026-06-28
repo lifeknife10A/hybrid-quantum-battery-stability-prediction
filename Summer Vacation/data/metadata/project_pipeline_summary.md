@@ -44,6 +44,7 @@ flowchart TD
     G --> H["QML-ready dataset<br/>1,000 balanced rows"]
     H --> I["QML baseline comparison<br/>QML 0.81, same-data XGBoost 0.83"]
     I --> J["QML tuning<br/>best QML accuracy 0.82"]
+    J --> K["Separate improved-QML section<br/>feature importance, PCA, entangled kernels"]
 ```
 
 ## Artifact Map
@@ -60,6 +61,7 @@ flowchart TD
 | QML baseline | `qml_ready_lithium_india.csv` | `data/processed/qml baseline predictions.csv` | 200 test predictions | `scripts/train_qml_baseline.py` | `data/metadata/qml_baseline_results.md` |
 | QML tuning | `qml_ready_lithium_india.csv` | `data/processed/qml tuning results.csv` | 72 experiments | `scripts/tune_qml_baseline.py` | `data/metadata/qml_tuning_results.md` |
 | Tuned QML best model | `qml_ready_lithium_india.csv` | `data/processed/qml tuned best predictions.csv` | 200 test predictions | `scripts/tune_qml_baseline.py` | `data/metadata/qml_best_model_summary.md` |
+| Improved QML separate section | `lithium india scored.csv` | `data/processed/improved qml feature pca.csv`, `data/processed/improved qml tuning results.csv`, and `data/processed/improved qml best predictions.csv` | 1,000 PCA rows; 162 experiments; 200 test predictions | `scripts/run_improved_qml_experiments.py` | `data/metadata/improved_qml_section_summary.md` |
 
 ## Dataset Sizes
 
@@ -75,6 +77,9 @@ flowchart TD
 | QML baseline prediction file | 200 | 11 | Test-set QML and same-data XGBoost predictions. |
 | QML tuning results | 72 | 12 | Hyperparameter search results. |
 | Tuned QML prediction file | 200 | 8 | Test-set predictions from the best tuned QML model. |
+| Improved QML PCA dataset | 1,000 | 14 | Separate feature-importance and PCA dataset. |
+| Improved QML tuning results | 162 | 13 | Product and entangled kernel hyperparameter search results. |
+| Improved QML prediction file | 200 | 8 | Test-set predictions from the best improved-QML model. |
 
 ## Key Columns Used
 
@@ -102,6 +107,9 @@ flowchart TD
 | `qml_predicted_label` | QML model predicted class for the test row. |
 | `qml_stable_probability` | QML model probability score for stable class. |
 | `xgboost_same_data_predicted_label` | Same-split XGBoost predicted class for comparison. |
+| `improved_pca_1` to `improved_pca_8` | PCA features created for the separate improved-QML experiment. |
+| `improved_qml_predicted_label` | Predicted stable or unstable class from the best improved-QML model. |
+| `improved_qml_stable_probability` | Stable-class probability from the best improved-QML model. |
 
 ## Methodology Decisions
 
@@ -302,6 +310,66 @@ QML tuning improved the QML result, especially stable-class F1. XGBoost remains
 slightly ahead on accuracy, but the tuned QML model is now very close on stable
 F1.
 
+## Improved QML Separate Section
+
+From `data/metadata/improved_qml_section_summary.md`:
+
+This section is separate from the original QML baseline and the tuned-QML
+baseline. It was created to test whether a more advanced preparation route can
+improve quantum-kernel behavior.
+
+Method:
+
+- Start again from `data/processed/lithium india scored.csv`.
+- Use Random Forest feature importance on the train-validation split only.
+- Select the top 16 safe non-leakage features.
+- Compress those features into 8 PCA components.
+- Test product and entangled quantum-kernel simulations.
+- Tune PCA component count, angle scale, kernel type, and SVM `C`.
+
+Leakage control:
+
+- `energy_above_hull` was not used as a classifier feature.
+- `india_feasibility_score` was not used as a classifier feature.
+- `india_decision_label` was not used as a classifier feature.
+
+Search space:
+
+| Parameter | Values Tested |
+| --- | --- |
+| PCA component count | 4, 6, 8 |
+| Kernel type | product, entangled_pi_over_2, entangled_pi |
+| Angle scale | pi/2, pi, 2pi |
+| SVM C | 0.1, 0.5, 1, 2, 5, 10 |
+| Total experiments | 162 |
+
+Best improved-QML setup:
+
+| Parameter | Value |
+| --- | --- |
+| PCA components / qubits | 6 |
+| Kernel type | entangled_pi |
+| Angle scale | pi |
+| SVM C | 2.0 |
+| Quantum state size | 64 |
+
+Test comparison:
+
+| Model | Test Accuracy | Test Stable F1 |
+| --- | ---: | ---: |
+| Original QML baseline | 0.8100 | 0.8173 |
+| Tuned QML best model | 0.8200 | 0.8269 |
+| Improved QML separate section | 0.8150 | 0.8230 |
+| Same-data XGBoost baseline | 0.8300 | 0.8283 |
+
+Interpretation:
+
+The improved-QML section found that the best cross-validation result used an
+entangled kernel, but the final test result did not beat the tuned-QML baseline.
+This is still useful for the project because it shows that smarter feature
+preparation and entanglement can be tested scientifically without overwriting
+the original baseline.
+
 ## Final Shortlist Results
 
 From `data/metadata/final_shortlist_summary.md`:
@@ -355,6 +423,10 @@ We have completed:
 - Created QML model step markdown files for report writing.
 - Tuned QML hyperparameters across 72 combinations.
 - Improved QML accuracy from 0.8100 to 0.8200 and stable F1 from 0.8173 to 0.8269.
+- Created a separate improved-QML section using feature importance, PCA, and
+  entangled-kernel testing.
+- Ran 162 improved-QML experiments.
+- Best improved-QML test result reached 0.8150 accuracy and 0.8230 stable F1.
 
 ## What We Have Not Done Yet
 
@@ -362,7 +434,7 @@ The project is not finished yet. The next missing parts are:
 
 - Add visual plots for report and presentation.
 - Write final academic interpretation of the top materials.
-- Try entangled QML feature maps or hardware-oriented circuits.
+- Try a hardware-oriented QML circuit after the simulated kernel experiments.
 
 ## Recommended Next Step
 
@@ -374,6 +446,7 @@ Why this should come next:
 
 - XGBoost is already our classical baseline.
 - The QML baseline is now trained, tuned, and measured.
+- The separate improved-QML section is also complete and documented.
 - We now have enough metrics to create comparison charts.
 - The final report needs clear visuals for dataset sizes, model metrics, and
   final shortlisted material families.
