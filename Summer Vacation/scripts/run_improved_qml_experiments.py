@@ -30,6 +30,11 @@ threshold_results_csv_path = processed_folder / "improved qml threshold results.
 threshold_predictions_csv_path = (
     processed_folder / "improved qml threshold predictions.csv"
 )
+alignment_scores_csv_path = processed_folder / "improved qml alignment scores.csv"
+alignment_results_csv_path = processed_folder / "improved qml alignment results.csv"
+alignment_predictions_csv_path = (
+    processed_folder / "improved qml alignment predictions.csv"
+)
 
 section_summary_markdown_path = metadata_folder / "improved_qml_section_summary.md"
 step_01_markdown_path = metadata_folder / "improved_qml_step_01_feature_importance.md"
@@ -37,6 +42,7 @@ step_02_markdown_path = metadata_folder / "improved_qml_step_02_pca_dataset.md"
 step_03_markdown_path = metadata_folder / "improved_qml_step_03_tuning_results.md"
 step_04_markdown_path = metadata_folder / "improved_qml_step_04_best_model.md"
 step_05_markdown_path = metadata_folder / "improved_qml_step_05_threshold_experiment.md"
+step_06_markdown_path = metadata_folder / "improved_qml_step_06_kernel_alignment.md"
 
 random_state = 42
 maximum_rows_per_class = 500
@@ -62,6 +68,8 @@ angle_scale_options = [
 ]
 c_value_options = [0.1, 0.5, 1.0, 2.0, 5.0, 10.0]
 threshold_options = [0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70]
+alignment_top_model_count = 12
+alignment_c_value_options = [0.5, 1.0, 2.0, 5.0]
 kernel_options = [
     {
         "kernel_name": "product",
@@ -476,6 +484,213 @@ def get_confusion_table(true_labels, predicted_labels):
     return pd.DataFrame(rows)
 
 
+def get_existing_feature_names(feature_dataframe, feature_names):
+    existing_feature_names = []
+
+    for feature_name in feature_names:
+        if feature_name in feature_dataframe.columns:
+            existing_feature_names.append(feature_name)
+
+    return existing_feature_names
+
+
+def get_feature_names_starting_with(feature_dataframe, prefix):
+    matching_feature_names = []
+
+    for feature_name in feature_dataframe.columns:
+        if feature_name.startswith(prefix):
+            matching_feature_names.append(feature_name)
+
+    return matching_feature_names
+
+
+def add_alignment_feature_set(feature_sets, name, feature_names, reason):
+    clean_feature_names = unique_column_list(feature_names)
+
+    if len(clean_feature_names) < 2:
+        return
+
+    clean_feature_names = clean_feature_names[:8]
+    feature_key = tuple(clean_feature_names)
+
+    for feature_set in feature_sets:
+        if tuple(feature_set["feature_names"]) == feature_key:
+            return
+
+    feature_sets.append(
+        {
+            "feature_set_name": name,
+            "feature_names": clean_feature_names,
+            "feature_count": len(clean_feature_names),
+            "reason": reason,
+        }
+    )
+
+
+def build_alignment_feature_sets(feature_dataframe, importance_dataframe):
+    ranked_feature_names = importance_dataframe["feature"].tolist()
+    feature_sets = []
+
+    add_alignment_feature_set(
+        feature_sets,
+        "rf_top_4",
+        ranked_feature_names[:4],
+        "Top 4 features from Random Forest importance.",
+    )
+    add_alignment_feature_set(
+        feature_sets,
+        "rf_top_6",
+        ranked_feature_names[:6],
+        "Top 6 features from Random Forest importance.",
+    )
+    add_alignment_feature_set(
+        feature_sets,
+        "rf_top_8",
+        ranked_feature_names[:8],
+        "Top 8 features from Random Forest importance.",
+    )
+
+    physics_feature_names = get_existing_feature_names(
+        feature_dataframe,
+        [
+            "space_group_number",
+            "band_gap",
+            "formation_energy_per_atom",
+            "number_of_elements",
+            "is_metal",
+            "theoretical",
+        ],
+    )
+    add_alignment_feature_set(
+        feature_sets,
+        "physics_core",
+        physics_feature_names,
+        "Crystal and electronic-property features.",
+    )
+
+    chemistry_feature_names = get_existing_feature_names(
+        feature_dataframe,
+        [
+            "has_o",
+            "has_fe",
+            "has_p",
+            "has_mn",
+            "has_co",
+            "has_ni",
+            "has_ti",
+            "has_s",
+        ],
+    )
+    add_alignment_feature_set(
+        feature_sets,
+        "chemistry_core",
+        chemistry_feature_names,
+        "Common cathode and sulfide chemistry indicators.",
+    )
+
+    mixed_feature_names = get_existing_feature_names(
+        feature_dataframe,
+        [
+            "space_group_number",
+            "band_gap",
+            "formation_energy_per_atom",
+            "number_of_elements",
+            "has_fe",
+            "has_p",
+            "has_mn",
+            "has_s",
+        ],
+    )
+    add_alignment_feature_set(
+        feature_sets,
+        "mixed_physics_chemistry",
+        mixed_feature_names,
+        "Small mixed set of physics and chemistry features.",
+    )
+
+    crystal_feature_names = get_feature_names_starting_with(
+        feature_dataframe,
+        "crystal_system_",
+    )
+    add_alignment_feature_set(
+        feature_sets,
+        "crystal_system_only",
+        crystal_feature_names,
+        "One-hot crystal-system features.",
+    )
+
+    battery_family_feature_names = get_existing_feature_names(
+        feature_dataframe,
+        [
+            "battery_family_LFP-family",
+            "battery_family_LMFP-family",
+            "battery_family_LMO-family",
+            "battery_family_LTO-family",
+            "battery_family_Li-S or sulfide-family",
+            "battery_family_Silicon-family",
+            "battery_family_Carbon-family",
+            "battery_family_Other lithium material",
+        ],
+    )
+    add_alignment_feature_set(
+        feature_sets,
+        "battery_family_only",
+        battery_family_feature_names,
+        "One-hot battery-family features.",
+    )
+
+    rows = []
+    for feature_set in feature_sets:
+        rows.append(
+            {
+                "feature_set_name": feature_set["feature_set_name"],
+                "feature_count": feature_set["feature_count"],
+                "feature_names": ";".join(feature_set["feature_names"]),
+                "reason": feature_set["reason"],
+            }
+        )
+
+    return feature_sets, pd.DataFrame(rows)
+
+
+def scale_alignment_features(
+    feature_dataframe,
+    feature_names,
+    train_validation_indices,
+):
+    selected_feature_dataframe = feature_dataframe[feature_names].copy()
+    scaler = MinMaxScaler()
+    train_validation_scaled = scaler.fit_transform(
+        selected_feature_dataframe.iloc[train_validation_indices]
+    )
+    all_scaled = scaler.transform(selected_feature_dataframe)
+    return all_scaled, train_validation_scaled
+
+
+def center_kernel_matrix(kernel_matrix):
+    row_means = kernel_matrix.mean(axis=1, keepdims=True)
+    column_means = kernel_matrix.mean(axis=0, keepdims=True)
+    overall_mean = kernel_matrix.mean()
+    return kernel_matrix - row_means - column_means + overall_mean
+
+
+def calculate_kernel_target_alignment(kernel_matrix, target):
+    signed_target = (2 * target) - 1
+    target_kernel = np.outer(signed_target, signed_target)
+
+    centered_kernel = center_kernel_matrix(kernel_matrix)
+    centered_target_kernel = center_kernel_matrix(target_kernel)
+
+    denominator = np.linalg.norm(centered_kernel) * np.linalg.norm(
+        centered_target_kernel
+    )
+    if denominator == 0:
+        return 0.0
+
+    alignment_score = np.sum(centered_kernel * centered_target_kernel) / denominator
+    return float(alignment_score)
+
+
 def run_cross_validation_group(
     pca_component_count,
     kernel_name,
@@ -824,6 +1039,264 @@ def write_threshold_predictions(output_dataframe, test_indices, threshold_test_r
     return prediction_dataframe
 
 
+def score_alignment_candidates(
+    balanced_feature_dataframe,
+    importance_dataframe,
+    target,
+    train_validation_indices,
+):
+    feature_sets, feature_sets_dataframe = build_alignment_feature_sets(
+        balanced_feature_dataframe,
+        importance_dataframe,
+    )
+    train_validation_target = target[train_validation_indices]
+    alignment_rows = []
+
+    for feature_set in feature_sets:
+        _, train_validation_features = scale_alignment_features(
+            balanced_feature_dataframe,
+            feature_set["feature_names"],
+            train_validation_indices,
+        )
+
+        for angle_option in angle_scale_options:
+            for kernel_option in kernel_options:
+                train_validation_states = create_quantum_state_table(
+                    train_validation_features,
+                    angle_option["angle_scale_value"],
+                    kernel_option["entanglement_strength"],
+                )
+                kernel_matrix = create_kernel_matrix(
+                    train_validation_states,
+                    train_validation_states,
+                )
+                alignment_score = calculate_kernel_target_alignment(
+                    kernel_matrix,
+                    train_validation_target,
+                )
+                alignment_rows.append(
+                    {
+                        "feature_set_name": feature_set["feature_set_name"],
+                        "feature_count": feature_set["feature_count"],
+                        "feature_names": ";".join(feature_set["feature_names"]),
+                        "kernel_name": kernel_option["kernel_name"],
+                        "entanglement_strength": round(
+                            kernel_option["entanglement_strength"],
+                            6,
+                        ),
+                        "angle_scale": angle_option["angle_scale_name"],
+                        "angle_scale_value": round(
+                            angle_option["angle_scale_value"],
+                            6,
+                        ),
+                        "quantum_state_size": 2 ** feature_set["feature_count"],
+                        "kernel_target_alignment": round(alignment_score, 6),
+                    }
+                )
+
+    alignment_scores_dataframe = pd.DataFrame(alignment_rows)
+    return alignment_scores_dataframe, feature_sets_dataframe
+
+
+def run_alignment_cross_validation(
+    balanced_feature_dataframe,
+    alignment_scores_dataframe,
+    target,
+    train_validation_indices,
+):
+    train_validation_target = target[train_validation_indices]
+    top_alignment_dataframe = alignment_scores_dataframe.sort_values(
+        by=["kernel_target_alignment", "feature_count"],
+        ascending=[False, True],
+    ).head(alignment_top_model_count)
+    result_rows = []
+    cross_validator = StratifiedKFold(
+        n_splits=cross_validation_splits,
+        shuffle=True,
+        random_state=random_state,
+    )
+
+    for _, alignment_row in top_alignment_dataframe.iterrows():
+        feature_names = str(alignment_row["feature_names"]).split(";")
+        _, train_validation_features = scale_alignment_features(
+            balanced_feature_dataframe,
+            feature_names,
+            train_validation_indices,
+        )
+        train_validation_states = create_quantum_state_table(
+            train_validation_features,
+            float(alignment_row["angle_scale_value"]),
+            float(alignment_row["entanglement_strength"]),
+        )
+        full_kernel_matrix = create_kernel_matrix(
+            train_validation_states,
+            train_validation_states,
+        )
+
+        for c_value in alignment_c_value_options:
+            fold_metric_rows = []
+
+            for train_positions, validation_positions in cross_validator.split(
+                full_kernel_matrix,
+                train_validation_target,
+            ):
+                train_kernel_matrix = full_kernel_matrix[
+                    np.ix_(train_positions, train_positions)
+                ]
+                validation_kernel_matrix = full_kernel_matrix[
+                    np.ix_(validation_positions, train_positions)
+                ]
+                classifier = SVC(
+                    kernel="precomputed",
+                    C=c_value,
+                    probability=False,
+                    random_state=random_state,
+                )
+                classifier.fit(
+                    train_kernel_matrix,
+                    train_validation_target[train_positions],
+                )
+                predicted_labels = classifier.predict(validation_kernel_matrix)
+                fold_metric_rows.append(
+                    get_metrics(
+                        train_validation_target[validation_positions],
+                        predicted_labels,
+                    )
+                )
+
+            fold_metrics_dataframe = pd.DataFrame(fold_metric_rows)
+            result_rows.append(
+                {
+                    "feature_set_name": alignment_row["feature_set_name"],
+                    "feature_count": int(alignment_row["feature_count"]),
+                    "feature_names": alignment_row["feature_names"],
+                    "kernel_name": alignment_row["kernel_name"],
+                    "entanglement_strength": alignment_row["entanglement_strength"],
+                    "angle_scale": alignment_row["angle_scale"],
+                    "angle_scale_value": alignment_row["angle_scale_value"],
+                    "quantum_state_size": int(alignment_row["quantum_state_size"]),
+                    "kernel_target_alignment": alignment_row[
+                        "kernel_target_alignment"
+                    ],
+                    "c_value": c_value,
+                    "cv_accuracy": round(
+                        fold_metrics_dataframe["accuracy"].mean(),
+                        4,
+                    ),
+                    "cv_stable_precision": round(
+                        fold_metrics_dataframe["stable_precision"].mean(),
+                        4,
+                    ),
+                    "cv_stable_recall": round(
+                        fold_metrics_dataframe["stable_recall"].mean(),
+                        4,
+                    ),
+                    "cv_stable_f1": round(
+                        fold_metrics_dataframe["stable_f1"].mean(),
+                        4,
+                    ),
+                }
+            )
+
+    return pd.DataFrame(result_rows)
+
+
+def choose_best_alignment_result(alignment_results_dataframe):
+    sorted_dataframe = alignment_results_dataframe.sort_values(
+        by=[
+            "cv_stable_f1",
+            "cv_accuracy",
+            "kernel_target_alignment",
+            "cv_stable_recall",
+            "feature_count",
+            "c_value",
+        ],
+        ascending=[False, False, False, False, True, True],
+    )
+    return sorted_dataframe.iloc[0].to_dict()
+
+
+def train_best_alignment_model(
+    output_dataframe,
+    balanced_feature_dataframe,
+    target,
+    train_validation_indices,
+    test_indices,
+    best_alignment_result,
+):
+    feature_names = str(best_alignment_result["feature_names"]).split(";")
+    all_scaled_features, _ = scale_alignment_features(
+        balanced_feature_dataframe,
+        feature_names,
+        train_validation_indices,
+    )
+
+    x_train_validation = all_scaled_features[train_validation_indices]
+    x_test = all_scaled_features[test_indices]
+    y_train_validation = target[train_validation_indices]
+    y_test = target[test_indices]
+
+    train_validation_states = create_quantum_state_table(
+        x_train_validation,
+        float(best_alignment_result["angle_scale_value"]),
+        float(best_alignment_result["entanglement_strength"]),
+    )
+    test_states = create_quantum_state_table(
+        x_test,
+        float(best_alignment_result["angle_scale_value"]),
+        float(best_alignment_result["entanglement_strength"]),
+    )
+    train_validation_kernel_matrix = create_kernel_matrix(
+        train_validation_states,
+        train_validation_states,
+    )
+    test_kernel_matrix = create_kernel_matrix(test_states, train_validation_states)
+
+    classifier = SVC(
+        kernel="precomputed",
+        C=float(best_alignment_result["c_value"]),
+        probability=True,
+        random_state=random_state,
+    )
+    classifier.fit(train_validation_kernel_matrix, y_train_validation)
+
+    predicted_labels = classifier.predict(test_kernel_matrix)
+    predicted_probabilities = classifier.predict_proba(test_kernel_matrix)[:, 1]
+    test_metrics = get_metrics(y_test, predicted_labels)
+    report_text = classification_report(
+        y_test,
+        predicted_labels,
+        target_names=["unstable", "stable"],
+        zero_division=0,
+    )
+    confusion_table = get_confusion_table(y_test, predicted_labels)
+
+    return {
+        "feature_names": feature_names,
+        "y_test": y_test,
+        "predicted_labels": predicted_labels,
+        "predicted_probabilities": predicted_probabilities,
+        "test_metrics": test_metrics,
+        "report_text": report_text,
+        "confusion_table": confusion_table,
+        "quantum_state_size": int(train_validation_states.shape[1]),
+    }
+
+
+def write_alignment_predictions(output_dataframe, test_indices, alignment_model_result):
+    prediction_dataframe = output_dataframe.iloc[test_indices][metadata_columns].copy()
+    prediction_dataframe["target_is_stable"] = alignment_model_result["y_test"]
+    prediction_dataframe["alignment_qml_predicted_label"] = alignment_model_result[
+        "predicted_labels"
+    ]
+    prediction_dataframe["alignment_qml_stable_probability"] = np.round(
+        alignment_model_result["predicted_probabilities"],
+        6,
+    )
+    prediction_dataframe.to_csv(alignment_predictions_csv_path, index=False)
+    return prediction_dataframe
+
+
 def write_reports(
     rows_before_cleaning,
     rows_removed,
@@ -840,6 +1313,12 @@ def write_reports(
     best_threshold_result,
     threshold_test_result,
     threshold_prediction_rows,
+    feature_sets_dataframe,
+    alignment_scores_dataframe,
+    alignment_results_dataframe,
+    best_alignment_result,
+    alignment_model_result,
+    alignment_prediction_rows,
 ):
     top_importance_dataframe = importance_dataframe.head(20).copy()
     selected_feature_dataframe = pd.DataFrame(
@@ -889,6 +1368,40 @@ def write_reports(
             }
         ]
     )
+    best_alignment_table = pd.DataFrame([best_alignment_result])
+    alignment_test_table = pd.DataFrame(
+        [
+            {
+                "feature_set_name": best_alignment_result["feature_set_name"],
+                "feature_count": int(best_alignment_result["feature_count"]),
+                "kernel_name": best_alignment_result["kernel_name"],
+                "angle_scale": best_alignment_result["angle_scale"],
+                "c_value": best_alignment_result["c_value"],
+                "kernel_target_alignment": best_alignment_result[
+                    "kernel_target_alignment"
+                ],
+                "quantum_state_size": alignment_model_result["quantum_state_size"],
+                "test_accuracy": alignment_model_result["test_metrics"]["accuracy"],
+                "test_stable_precision": alignment_model_result["test_metrics"][
+                    "stable_precision"
+                ],
+                "test_stable_recall": alignment_model_result["test_metrics"][
+                    "stable_recall"
+                ],
+                "test_stable_f1": alignment_model_result["test_metrics"][
+                    "stable_f1"
+                ],
+            }
+        ]
+    )
+    top_alignment_scores = alignment_scores_dataframe.sort_values(
+        by=["kernel_target_alignment", "feature_count"],
+        ascending=[False, True],
+    ).head(15)
+    top_alignment_results = alignment_results_dataframe.sort_values(
+        by=["cv_stable_f1", "cv_accuracy", "kernel_target_alignment"],
+        ascending=[False, False, False],
+    ).head(15)
 
     comparison_dataframe = pd.DataFrame(
         [
@@ -911,6 +1424,13 @@ def write_reports(
                 "model": "Improved QML with threshold tuning",
                 "test_accuracy": threshold_test_result["test_metrics"]["accuracy"],
                 "test_stable_f1": threshold_test_result["test_metrics"]["stable_f1"],
+            },
+            {
+                "model": "Improved QML with kernel alignment",
+                "test_accuracy": alignment_model_result["test_metrics"]["accuracy"],
+                "test_stable_f1": alignment_model_result["test_metrics"][
+                    "stable_f1"
+                ],
             },
             {
                 "model": "Same-data XGBoost baseline",
@@ -1082,6 +1602,76 @@ selected.
 Rows saved: {format_count(threshold_prediction_rows)}
 """
 
+    step_06_text = f"""# Improved QML Step 06: Quantum Kernel Alignment
+
+Generated on: {date.today().isoformat()}
+
+## Purpose
+
+The earlier improved-QML section used Random Forest feature importance and PCA.
+That is useful, but PCA is not quantum-aware. This step tests feature groups by
+measuring how well each quantum kernel aligns with the stable/unstable target.
+
+In simple terms:
+
+- A good kernel should give similar values to materials with the same label.
+- A good kernel should give different values to materials with different labels.
+- Kernel-target alignment gives a score for that behavior before final testing.
+
+## Leakage Control
+
+- Alignment was calculated only on the train-validation split.
+- The test split was used only once after the best alignment candidate was
+  selected.
+- `energy_above_hull`, `india_feasibility_score`, and `india_decision_label`
+  were not used as classifier features.
+
+## Feature Sets Tested
+
+{dataframe_to_markdown(feature_sets_dataframe)}
+
+## Alignment Search
+
+- Feature sets tested: {format_count(len(feature_sets_dataframe))}
+- Angle scales tested: pi/2, pi, 2pi
+- Kernel types tested: product, entangled_pi_over_2, entangled_pi
+- Alignment candidates scored: {format_count(len(alignment_scores_dataframe))}
+- Top alignment candidates cross-validated: {format_count(alignment_top_model_count)}
+- SVM C values cross-validated: {alignment_c_value_options}
+
+## Top Kernel-Target Alignment Scores
+
+{dataframe_to_markdown(top_alignment_scores)}
+
+## Best Cross-Validated Alignment Model
+
+{dataframe_to_markdown(best_alignment_table)}
+
+## Top Cross-Validation Results
+
+{dataframe_to_markdown(top_alignment_results)}
+
+## Test Result
+
+{dataframe_to_markdown(alignment_test_table)}
+
+## Confusion Matrix
+
+{dataframe_to_markdown(alignment_model_result["confusion_table"])}
+
+## Classification Report
+
+```text
+{alignment_model_result["report_text"]}
+```
+
+## Prediction Output
+
+`data/processed/improved qml alignment predictions.csv`
+
+Rows saved: {format_count(alignment_prediction_rows)}
+"""
+
     section_summary_text = f"""# Improved QML Separate Section Summary
 
 Generated on: {date.today().isoformat()}
@@ -1099,11 +1689,15 @@ optional entangled quantum-kernel simulation.
 - `data/processed/improved qml best predictions.csv`
 - `data/processed/improved qml threshold results.csv`
 - `data/processed/improved qml threshold predictions.csv`
+- `data/processed/improved qml alignment scores.csv`
+- `data/processed/improved qml alignment results.csv`
+- `data/processed/improved qml alignment predictions.csv`
 - `data/metadata/improved_qml_step_01_feature_importance.md`
 - `data/metadata/improved_qml_step_02_pca_dataset.md`
 - `data/metadata/improved_qml_step_03_tuning_results.md`
 - `data/metadata/improved_qml_step_04_best_model.md`
 - `data/metadata/improved_qml_step_05_threshold_experiment.md`
+- `data/metadata/improved_qml_step_06_kernel_alignment.md`
 
 ## Best Improved QML Result
 
@@ -1112,6 +1706,10 @@ optional entangled quantum-kernel simulation.
 ## Threshold Experiment Result
 
 {dataframe_to_markdown(threshold_test_table)}
+
+## Kernel Alignment Experiment Result
+
+{dataframe_to_markdown(alignment_test_table)}
 
 ## Comparison Against Existing Results
 
@@ -1129,6 +1727,7 @@ replacement for the original baseline.
     step_03_markdown_path.write_text(step_03_text)
     step_04_markdown_path.write_text(step_04_text)
     step_05_markdown_path.write_text(step_05_text)
+    step_06_markdown_path.write_text(step_06_text)
     section_summary_markdown_path.write_text(section_summary_text)
 
 
@@ -1202,6 +1801,37 @@ def main():
         test_indices,
         threshold_test_result,
     )
+    (
+        alignment_scores_dataframe,
+        feature_sets_dataframe,
+    ) = score_alignment_candidates(
+        balanced_feature_dataframe,
+        importance_dataframe,
+        target,
+        train_validation_indices,
+    )
+    alignment_scores_dataframe.to_csv(alignment_scores_csv_path, index=False)
+    alignment_results_dataframe = run_alignment_cross_validation(
+        balanced_feature_dataframe,
+        alignment_scores_dataframe,
+        target,
+        train_validation_indices,
+    )
+    alignment_results_dataframe.to_csv(alignment_results_csv_path, index=False)
+    best_alignment_result = choose_best_alignment_result(alignment_results_dataframe)
+    alignment_model_result = train_best_alignment_model(
+        output_dataframe,
+        balanced_feature_dataframe,
+        target,
+        train_validation_indices,
+        test_indices,
+        best_alignment_result,
+    )
+    alignment_prediction_dataframe = write_alignment_predictions(
+        output_dataframe,
+        test_indices,
+        alignment_model_result,
+    )
 
     write_reports(
         rows_before_cleaning,
@@ -1219,6 +1849,12 @@ def main():
         best_threshold_result,
         threshold_test_result,
         len(threshold_prediction_dataframe),
+        feature_sets_dataframe,
+        alignment_scores_dataframe,
+        alignment_results_dataframe,
+        best_alignment_result,
+        alignment_model_result,
+        len(alignment_prediction_dataframe),
     )
 
     print(f"Created: {improved_dataset_csv_path}")
@@ -1226,6 +1862,9 @@ def main():
     print(f"Created: {best_predictions_csv_path}")
     print(f"Created: {threshold_results_csv_path}")
     print(f"Created: {threshold_predictions_csv_path}")
+    print(f"Created: {alignment_scores_csv_path}")
+    print(f"Created: {alignment_results_csv_path}")
+    print(f"Created: {alignment_predictions_csv_path}")
     print(f"Best CV stable F1: {best_result['cv_stable_f1']}")
     print(f"Best PCA components: {int(best_result['pca_component_count'])}")
     print(f"Best kernel: {best_result['kernel_name']}")
@@ -1241,6 +1880,22 @@ def main():
     print(
         "Threshold test stable F1: "
         f"{threshold_test_result['test_metrics']['stable_f1']}"
+    )
+    print(
+        "Best alignment feature set: "
+        f"{best_alignment_result['feature_set_name']}"
+    )
+    print(
+        "Best alignment score: "
+        f"{best_alignment_result['kernel_target_alignment']}"
+    )
+    print(
+        "Alignment test accuracy: "
+        f"{alignment_model_result['test_metrics']['accuracy']}"
+    )
+    print(
+        "Alignment test stable F1: "
+        f"{alignment_model_result['test_metrics']['stable_f1']}"
     )
 
 

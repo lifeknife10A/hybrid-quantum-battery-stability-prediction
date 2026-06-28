@@ -46,6 +46,7 @@ flowchart TD
     I --> J["QML tuning<br/>best QML accuracy 0.82"]
     J --> K["Separate improved-QML section<br/>feature importance, PCA, entangled kernels"]
     K --> L["Threshold experiment<br/>probability cutoff tuning"]
+    L --> M["Kernel alignment experiment<br/>quantum-aware feature selection"]
 ```
 
 ## Artifact Map
@@ -62,7 +63,7 @@ flowchart TD
 | QML baseline | `qml_ready_lithium_india.csv` | `data/processed/qml baseline predictions.csv` | 200 test predictions | `scripts/train_qml_baseline.py` | `data/metadata/qml_baseline_results.md` |
 | QML tuning | `qml_ready_lithium_india.csv` | `data/processed/qml tuning results.csv` | 72 experiments | `scripts/tune_qml_baseline.py` | `data/metadata/qml_tuning_results.md` |
 | Tuned QML best model | `qml_ready_lithium_india.csv` | `data/processed/qml tuned best predictions.csv` | 200 test predictions | `scripts/tune_qml_baseline.py` | `data/metadata/qml_best_model_summary.md` |
-| Improved QML separate section | `lithium india scored.csv` | `data/processed/improved qml feature pca.csv`, `data/processed/improved qml tuning results.csv`, `data/processed/improved qml best predictions.csv`, `data/processed/improved qml threshold results.csv`, and `data/processed/improved qml threshold predictions.csv` | 1,000 PCA rows; 162 experiments; 9 thresholds; 200 test predictions | `scripts/run_improved_qml_experiments.py` | `data/metadata/improved_qml_section_summary.md` |
+| Improved QML separate section | `lithium india scored.csv` | `data/processed/improved qml feature pca.csv`, `data/processed/improved qml tuning results.csv`, `data/processed/improved qml best predictions.csv`, `data/processed/improved qml threshold results.csv`, `data/processed/improved qml threshold predictions.csv`, `data/processed/improved qml alignment scores.csv`, `data/processed/improved qml alignment results.csv`, and `data/processed/improved qml alignment predictions.csv` | 1,000 PCA rows; 162 experiments; 9 thresholds; 72 alignment scores; 48 alignment CV rows; 200 test predictions | `scripts/run_improved_qml_experiments.py` | `data/metadata/improved_qml_section_summary.md` |
 
 ## Dataset Sizes
 
@@ -83,6 +84,9 @@ flowchart TD
 | Improved QML prediction file | 200 | 8 | Test-set predictions from the best improved-QML model. |
 | Improved QML threshold results | 9 | 5 | Cross-validation results for stable-probability cutoffs. |
 | Improved QML threshold prediction file | 200 | 9 | Test-set predictions after threshold-based probability prediction. |
+| Improved QML alignment scores | 72 | 9 | Kernel-target alignment scores for candidate feature sets. |
+| Improved QML alignment results | 48 | 14 | Cross-validation results for the top alignment candidates. |
+| Improved QML alignment prediction file | 200 | 8 | Test-set predictions from the best alignment-selected QML model. |
 
 ## Key Columns Used
 
@@ -116,6 +120,9 @@ flowchart TD
 | `threshold_qml_predicted_label` | Predicted stable or unstable class after probability-threshold tuning. |
 | `threshold_qml_stable_probability` | Stable-class probability used for threshold-based prediction. |
 | `selected_stable_threshold` | Stable-probability cutoff selected by cross-validation. |
+| `kernel_target_alignment` | Score measuring how well a quantum kernel matches stable/unstable labels. |
+| `alignment_qml_predicted_label` | Predicted class from the best kernel-alignment QML model. |
+| `alignment_qml_stable_probability` | Stable-class probability from the best kernel-alignment QML model. |
 
 ## Methodology Decisions
 
@@ -333,6 +340,7 @@ Method:
 - Test product and entangled quantum-kernel simulations.
 - Tune PCA component count, angle scale, kernel type, and SVM `C`.
 - Tune the stable-probability threshold as a separate post-model experiment.
+- Test quantum-kernel alignment for quantum-aware feature selection.
 
 Leakage control:
 
@@ -358,6 +366,21 @@ Threshold search:
 | Selection method | 4-fold cross-validation on the train-validation split |
 | Best threshold | 0.50 |
 
+Kernel-alignment search:
+
+| Parameter | Value |
+| --- | --- |
+| Feature sets tested | 8 |
+| Alignment candidates scored | 72 |
+| Top alignment candidates cross-validated | 12 |
+| Cross-validation rows | 48 |
+| Best feature set | rf_top_4 |
+| Best selected features | `formation_energy_per_atom`, `has_o`, `space_group_number`, `theoretical` |
+| Best kernel | entangled_pi |
+| Best angle scale | pi |
+| Best SVM C | 5.0 |
+| Quantum state size | 16 |
+
 Best improved-QML setup:
 
 | Parameter | Value |
@@ -376,6 +399,7 @@ Test comparison:
 | Tuned QML best model | 0.8200 | 0.8269 |
 | Improved QML separate section | 0.8150 | 0.8230 |
 | Improved QML with threshold tuning | 0.8200 | 0.8269 |
+| Improved QML with kernel alignment | 0.8200 | 0.8302 |
 | Same-data XGBoost baseline | 0.8300 | 0.8283 |
 
 Threshold experiment:
@@ -385,13 +409,22 @@ Threshold experiment:
 | Improved QML default prediction | 0.8150 | 0.7890 | 0.8600 | 0.8230 |
 | Improved QML threshold prediction | 0.8200 | 0.7963 | 0.8600 | 0.8269 |
 
+Kernel-alignment experiment:
+
+| Model | Test Accuracy | Test Stable Precision | Test Stable Recall | Test Stable F1 |
+| --- | ---: | ---: | ---: | ---: |
+| Improved QML kernel-alignment prediction | 0.8200 | 0.7857 | 0.8800 | 0.8302 |
+
 Interpretation:
 
 The improved-QML section found that the best cross-validation result used an
 entangled kernel. Threshold-based prediction improved the improved-QML test
 result from 0.8150 accuracy to 0.8200 accuracy and from 0.8230 stable F1 to
-0.8269 stable F1. This matches the tuned-QML baseline on stable F1, but XGBoost
-still remains slightly ahead overall.
+0.8269 stable F1. Kernel alignment then improved stable F1 to 0.8302 by
+selecting a smaller 4-qubit feature set that matches the stable/unstable labels
+better in the quantum-kernel space. This is the best QML stable-F1 result so far
+and is slightly higher than the same-data XGBoost stable F1, although XGBoost
+still has higher accuracy.
 
 ## Final Shortlist Results
 
@@ -453,12 +486,15 @@ We have completed:
 - Added a separate threshold experiment for the improved-QML model.
 - Threshold-based prediction improved the improved-QML test result to 0.8200
   accuracy and 0.8269 stable F1.
+- Added a quantum-kernel alignment experiment for quantum-aware feature
+  selection.
+- Kernel alignment reached 0.8200 accuracy and 0.8302 stable F1, the best QML
+  stable-F1 result so far.
 
 ## What We Have Not Done Yet
 
 The project is not finished yet. The next missing parts are:
 
-- Add visual plots for report and presentation.
 - Write final academic interpretation of the top materials.
 - Try a hardware-oriented QML circuit after the simulated kernel experiments.
 
@@ -466,7 +502,7 @@ The project is not finished yet. The next missing parts are:
 
 The next best step is:
 
-> Create visual plots and a report-ready comparison section.
+> Write the final report-ready model comparison and interpretation section.
 
 Why this should come next:
 

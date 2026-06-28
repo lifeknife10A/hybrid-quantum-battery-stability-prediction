@@ -1,0 +1,73 @@
+feature_set_name,feature_count,feature_names,kernel_name,entanglement_strength,angle_scale,angle_scale_value,quantum_state_size,kernel_target_alignment
+rf_top_4,4,formation_energy_per_atom;has_o;space_group_number;theoretical,product,0.0,pi_over_2,1.570796,16,0.394905
+rf_top_4,4,formation_energy_per_atom;has_o;space_group_number;theoretical,entangled_pi_over_2,1.570796,pi_over_2,1.570796,16,0.395558
+rf_top_4,4,formation_energy_per_atom;has_o;space_group_number;theoretical,entangled_pi,3.141593,pi_over_2,1.570796,16,0.395916
+rf_top_4,4,formation_energy_per_atom;has_o;space_group_number;theoretical,product,0.0,pi,3.141593,16,0.385753
+rf_top_4,4,formation_energy_per_atom;has_o;space_group_number;theoretical,entangled_pi_over_2,1.570796,pi,3.141593,16,0.382946
+rf_top_4,4,formation_energy_per_atom;has_o;space_group_number;theoretical,entangled_pi,3.141593,pi,3.141593,16,0.378537
+rf_top_4,4,formation_energy_per_atom;has_o;space_group_number;theoretical,product,0.0,two_pi,6.283185,16,0.17947
+rf_top_4,4,formation_energy_per_atom;has_o;space_group_number;theoretical,entangled_pi_over_2,1.570796,two_pi,6.283185,16,0.17947
+rf_top_4,4,formation_energy_per_atom;has_o;space_group_number;theoretical,entangled_pi,3.141593,two_pi,6.283185,16,0.17947
+rf_top_6,6,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material,product,0.0,pi_over_2,1.570796,64,0.353387
+rf_top_6,6,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material,entangled_pi_over_2,1.570796,pi_over_2,1.570796,64,0.354203
+rf_top_6,6,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material,entangled_pi,3.141593,pi_over_2,1.570796,64,0.354852
+rf_top_6,6,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material,product,0.0,pi,3.141593,64,0.274696
+rf_top_6,6,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material,entangled_pi_over_2,1.570796,pi,3.141593,64,0.273799
+rf_top_6,6,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material,entangled_pi,3.141593,pi,3.141593,64,0.270657
+rf_top_6,6,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material,product,0.0,two_pi,6.283185,64,0.148181
+rf_top_6,6,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material,entangled_pi_over_2,1.570796,two_pi,6.283185,64,0.148181
+rf_top_6,6,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material,entangled_pi,3.141593,two_pi,6.283185,64,0.148181
+rf_top_8,8,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material;crystal_system_Triclinic;has_mn,product,0.0,pi_over_2,1.570796,256,0.312278
+rf_top_8,8,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material;crystal_system_Triclinic;has_mn,entangled_pi_over_2,1.570796,pi_over_2,1.570796,256,0.313009
+rf_top_8,8,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material;crystal_system_Triclinic;has_mn,entangled_pi,3.141593,pi_over_2,1.570796,256,0.313241
+rf_top_8,8,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material;crystal_system_Triclinic;has_mn,product,0.0,pi,3.141593,256,0.203611
+rf_top_8,8,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material;crystal_system_Triclinic;has_mn,entangled_pi_over_2,1.570796,pi,3.141593,256,0.202282
+rf_top_8,8,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material;crystal_system_Triclinic;has_mn,entangled_pi,3.141593,pi,3.141593,256,0.198015
+rf_top_8,8,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material;crystal_system_Triclinic;has_mn,product,0.0,two_pi,6.283185,256,0.148181
+rf_top_8,8,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material;crystal_system_Triclinic;has_mn,entangled_pi_over_2,1.570796,two_pi,6.283185,256,0.148181
+rf_top_8,8,formation_energy_per_atom;has_o;space_group_number;theoretical;band_gap;battery_family_Other lithium material;crystal_system_Triclinic;has_mn,entangled_pi,3.141593,two_pi,6.283185,256,0.148181
+physics_core,6,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;is_metal;theoretical,product,0.0,pi_over_2,1.570796,64,0.180815
+physics_core,6,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;is_metal;theoretical,entangled_pi_over_2,1.570796,pi_over_2,1.570796,64,0.181253
+physics_core,6,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;is_metal;theoretical,entangled_pi,3.141593,pi_over_2,1.570796,64,0.182363
+physics_core,6,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;is_metal;theoretical,product,0.0,pi,3.141593,64,0.184882
+physics_core,6,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;is_metal;theoretical,entangled_pi_over_2,1.570796,pi,3.141593,64,0.185521
+physics_core,6,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;is_metal;theoretical,entangled_pi,3.141593,pi,3.141593,64,0.18706
+physics_core,6,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;is_metal;theoretical,product,0.0,two_pi,6.283185,64,0.141922
+physics_core,6,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;is_metal;theoretical,entangled_pi_over_2,1.570796,two_pi,6.283185,64,0.142543
+physics_core,6,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;is_metal;theoretical,entangled_pi,3.141593,two_pi,6.283185,64,0.144321
+chemistry_core,8,has_o;has_fe;has_p;has_mn;has_co;has_ni;has_ti;has_s,product,0.0,pi_over_2,1.570796,256,0.288613
+chemistry_core,8,has_o;has_fe;has_p;has_mn;has_co;has_ni;has_ti;has_s,entangled_pi_over_2,1.570796,pi_over_2,1.570796,256,0.288613
+chemistry_core,8,has_o;has_fe;has_p;has_mn;has_co;has_ni;has_ti;has_s,entangled_pi,3.141593,pi_over_2,1.570796,256,0.288613
+chemistry_core,8,has_o;has_fe;has_p;has_mn;has_co;has_ni;has_ti;has_s,product,0.0,pi,3.141593,256,0.196302
+chemistry_core,8,has_o;has_fe;has_p;has_mn;has_co;has_ni;has_ti;has_s,entangled_pi_over_2,1.570796,pi,3.141593,256,0.196302
+chemistry_core,8,has_o;has_fe;has_p;has_mn;has_co;has_ni;has_ti;has_s,entangled_pi,3.141593,pi,3.141593,256,0.196302
+chemistry_core,8,has_o;has_fe;has_p;has_mn;has_co;has_ni;has_ti;has_s,product,0.0,two_pi,6.283185,256,0.0
+chemistry_core,8,has_o;has_fe;has_p;has_mn;has_co;has_ni;has_ti;has_s,entangled_pi_over_2,1.570796,two_pi,6.283185,256,0.0
+chemistry_core,8,has_o;has_fe;has_p;has_mn;has_co;has_ni;has_ti;has_s,entangled_pi,3.141593,two_pi,6.283185,256,0.0
+mixed_physics_chemistry,8,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;has_fe;has_p;has_mn;has_s,product,0.0,pi_over_2,1.570796,256,0.195831
+mixed_physics_chemistry,8,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;has_fe;has_p;has_mn;has_s,entangled_pi_over_2,1.570796,pi_over_2,1.570796,256,0.195885
+mixed_physics_chemistry,8,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;has_fe;has_p;has_mn;has_s,entangled_pi,3.141593,pi_over_2,1.570796,256,0.196002
+mixed_physics_chemistry,8,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;has_fe;has_p;has_mn;has_s,product,0.0,pi,3.141593,256,0.1542
+mixed_physics_chemistry,8,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;has_fe;has_p;has_mn;has_s,entangled_pi_over_2,1.570796,pi,3.141593,256,0.154222
+mixed_physics_chemistry,8,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;has_fe;has_p;has_mn;has_s,entangled_pi,3.141593,pi,3.141593,256,0.154261
+mixed_physics_chemistry,8,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;has_fe;has_p;has_mn;has_s,product,0.0,two_pi,6.283185,256,0.141922
+mixed_physics_chemistry,8,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;has_fe;has_p;has_mn;has_s,entangled_pi_over_2,1.570796,two_pi,6.283185,256,0.142543
+mixed_physics_chemistry,8,space_group_number;band_gap;formation_energy_per_atom;number_of_elements;has_fe;has_p;has_mn;has_s,entangled_pi,3.141593,two_pi,6.283185,256,0.144321
+crystal_system_only,7,crystal_system_Cubic;crystal_system_Hexagonal;crystal_system_Monoclinic;crystal_system_Orthorhombic;crystal_system_Tetragonal;crystal_system_Triclinic;crystal_system_Trigonal,product,0.0,pi_over_2,1.570796,128,0.099655
+crystal_system_only,7,crystal_system_Cubic;crystal_system_Hexagonal;crystal_system_Monoclinic;crystal_system_Orthorhombic;crystal_system_Tetragonal;crystal_system_Triclinic;crystal_system_Trigonal,entangled_pi_over_2,1.570796,pi_over_2,1.570796,128,0.099655
+crystal_system_only,7,crystal_system_Cubic;crystal_system_Hexagonal;crystal_system_Monoclinic;crystal_system_Orthorhombic;crystal_system_Tetragonal;crystal_system_Triclinic;crystal_system_Trigonal,entangled_pi,3.141593,pi_over_2,1.570796,128,0.099655
+crystal_system_only,7,crystal_system_Cubic;crystal_system_Hexagonal;crystal_system_Monoclinic;crystal_system_Orthorhombic;crystal_system_Tetragonal;crystal_system_Triclinic;crystal_system_Trigonal,product,0.0,pi,3.141593,128,0.099655
+crystal_system_only,7,crystal_system_Cubic;crystal_system_Hexagonal;crystal_system_Monoclinic;crystal_system_Orthorhombic;crystal_system_Tetragonal;crystal_system_Triclinic;crystal_system_Trigonal,entangled_pi_over_2,1.570796,pi,3.141593,128,0.099655
+crystal_system_only,7,crystal_system_Cubic;crystal_system_Hexagonal;crystal_system_Monoclinic;crystal_system_Orthorhombic;crystal_system_Tetragonal;crystal_system_Triclinic;crystal_system_Trigonal,entangled_pi,3.141593,pi,3.141593,128,0.099655
+crystal_system_only,7,crystal_system_Cubic;crystal_system_Hexagonal;crystal_system_Monoclinic;crystal_system_Orthorhombic;crystal_system_Tetragonal;crystal_system_Triclinic;crystal_system_Trigonal,product,0.0,two_pi,6.283185,128,0.0
+crystal_system_only,7,crystal_system_Cubic;crystal_system_Hexagonal;crystal_system_Monoclinic;crystal_system_Orthorhombic;crystal_system_Tetragonal;crystal_system_Triclinic;crystal_system_Trigonal,entangled_pi_over_2,1.570796,two_pi,6.283185,128,0.0
+crystal_system_only,7,crystal_system_Cubic;crystal_system_Hexagonal;crystal_system_Monoclinic;crystal_system_Orthorhombic;crystal_system_Tetragonal;crystal_system_Triclinic;crystal_system_Trigonal,entangled_pi,3.141593,two_pi,6.283185,128,0.0
+battery_family_only,8,battery_family_LFP-family;battery_family_LMFP-family;battery_family_LMO-family;battery_family_LTO-family;battery_family_Li-S or sulfide-family;battery_family_Silicon-family;battery_family_Carbon-family;battery_family_Other lithium material,product,0.0,pi_over_2,1.570796,256,0.153734
+battery_family_only,8,battery_family_LFP-family;battery_family_LMFP-family;battery_family_LMO-family;battery_family_LTO-family;battery_family_Li-S or sulfide-family;battery_family_Silicon-family;battery_family_Carbon-family;battery_family_Other lithium material,entangled_pi_over_2,1.570796,pi_over_2,1.570796,256,0.153734
+battery_family_only,8,battery_family_LFP-family;battery_family_LMFP-family;battery_family_LMO-family;battery_family_LTO-family;battery_family_Li-S or sulfide-family;battery_family_Silicon-family;battery_family_Carbon-family;battery_family_Other lithium material,entangled_pi,3.141593,pi_over_2,1.570796,256,0.153734
+battery_family_only,8,battery_family_LFP-family;battery_family_LMFP-family;battery_family_LMO-family;battery_family_LTO-family;battery_family_Li-S or sulfide-family;battery_family_Silicon-family;battery_family_Carbon-family;battery_family_Other lithium material,product,0.0,pi,3.141593,256,0.158988
+battery_family_only,8,battery_family_LFP-family;battery_family_LMFP-family;battery_family_LMO-family;battery_family_LTO-family;battery_family_Li-S or sulfide-family;battery_family_Silicon-family;battery_family_Carbon-family;battery_family_Other lithium material,entangled_pi_over_2,1.570796,pi,3.141593,256,0.158988
+battery_family_only,8,battery_family_LFP-family;battery_family_LMFP-family;battery_family_LMO-family;battery_family_LTO-family;battery_family_Li-S or sulfide-family;battery_family_Silicon-family;battery_family_Carbon-family;battery_family_Other lithium material,entangled_pi,3.141593,pi,3.141593,256,0.158988
+battery_family_only,8,battery_family_LFP-family;battery_family_LMFP-family;battery_family_LMO-family;battery_family_LTO-family;battery_family_Li-S or sulfide-family;battery_family_Silicon-family;battery_family_Carbon-family;battery_family_Other lithium material,product,0.0,two_pi,6.283185,256,0.0
+battery_family_only,8,battery_family_LFP-family;battery_family_LMFP-family;battery_family_LMO-family;battery_family_LTO-family;battery_family_Li-S or sulfide-family;battery_family_Silicon-family;battery_family_Carbon-family;battery_family_Other lithium material,entangled_pi_over_2,1.570796,two_pi,6.283185,256,0.0
+battery_family_only,8,battery_family_LFP-family;battery_family_LMFP-family;battery_family_LMO-family;battery_family_LTO-family;battery_family_Li-S or sulfide-family;battery_family_Silicon-family;battery_family_Carbon-family;battery_family_Other lithium material,entangled_pi,3.141593,two_pi,6.283185,256,0.0

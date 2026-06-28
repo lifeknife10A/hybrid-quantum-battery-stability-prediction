@@ -32,6 +32,15 @@ improved_qml_threshold_results_path = (
 improved_qml_threshold_predictions_path = (
     processed_folder / "improved qml threshold predictions.csv"
 )
+improved_qml_alignment_scores_path = (
+    processed_folder / "improved qml alignment scores.csv"
+)
+improved_qml_alignment_results_path = (
+    processed_folder / "improved qml alignment results.csv"
+)
+improved_qml_alignment_predictions_path = (
+    processed_folder / "improved qml alignment predictions.csv"
+)
 
 
 def make_markdown_output(markdown_text):
@@ -107,12 +116,20 @@ def create_bar_figure(dataframe, x_column, y_column, title, x_label, y_label, co
 
 def create_metric_figure(metric_dataframe):
     figure, axis = plt.subplots(figsize=(9, 5))
-    bar_width = 0.14
+    bar_width = 0.12
     metric_names = ["accuracy", "stable_precision", "stable_recall", "stable_f1"]
     model_names = metric_dataframe["model"].tolist()
     x_positions = list(range(len(metric_names)))
 
-    colors = ["#315f8c", "#4f86c6", "#d88c2d", "#5f8f45", "#7b5ea7", "#8c4f4f"]
+    colors = [
+        "#315f8c",
+        "#4f86c6",
+        "#d88c2d",
+        "#5f8f45",
+        "#7b5ea7",
+        "#8c4f4f",
+        "#2f766d",
+    ]
     center_offset = (len(model_names) - 1) / 2
 
     for model_index, model_name in enumerate(model_names):
@@ -205,6 +222,15 @@ def main():
     improved_qml_threshold_predictions_dataframe = pd.read_csv(
         improved_qml_threshold_predictions_path
     )
+    improved_qml_alignment_scores_dataframe = pd.read_csv(
+        improved_qml_alignment_scores_path
+    )
+    improved_qml_alignment_results_dataframe = pd.read_csv(
+        improved_qml_alignment_results_path
+    )
+    improved_qml_alignment_predictions_dataframe = pd.read_csv(
+        improved_qml_alignment_predictions_path
+    )
 
     improved_best_result = improved_qml_tuning_results_dataframe.sort_values(
         by=["cv_stable_f1", "cv_accuracy", "cv_stable_recall"],
@@ -212,6 +238,10 @@ def main():
     ).iloc[0]
     improved_best_threshold_result = improved_qml_threshold_results_dataframe.sort_values(
         by=["cv_stable_f1", "cv_accuracy", "cv_stable_recall"],
+        ascending=[False, False, False],
+    ).iloc[0]
+    improved_best_alignment_result = improved_qml_alignment_results_dataframe.sort_values(
+        by=["cv_stable_f1", "cv_accuracy", "kernel_target_alignment"],
         ascending=[False, False, False],
     ).iloc[0]
 
@@ -315,6 +345,26 @@ def main():
                 "parameter": "Best stable threshold",
                 "value": str(improved_best_threshold_result["stable_threshold"]),
             },
+            {
+                "parameter": "Kernel alignment experiment",
+                "value": "Feature set selected by quantum kernel-target alignment",
+            },
+            {
+                "parameter": "Alignment best feature set",
+                "value": str(improved_best_alignment_result["feature_set_name"]),
+            },
+            {
+                "parameter": "Alignment best qubits",
+                "value": str(int(improved_best_alignment_result["feature_count"])),
+            },
+            {
+                "parameter": "Alignment best kernel",
+                "value": str(improved_best_alignment_result["kernel_name"]),
+            },
+            {
+                "parameter": "Alignment best SVM C value",
+                "value": str(improved_best_alignment_result["c_value"]),
+            },
             {"parameter": "Train/test split", "value": "80/20"},
             {"parameter": "Random state", "value": "42"},
         ]
@@ -339,6 +389,12 @@ def main():
     threshold_qml_predicted_labels = improved_qml_threshold_predictions_dataframe[
         "threshold_qml_predicted_label"
     ]
+    alignment_true_labels = improved_qml_alignment_predictions_dataframe[
+        "target_is_stable"
+    ]
+    alignment_qml_predicted_labels = improved_qml_alignment_predictions_dataframe[
+        "alignment_qml_predicted_label"
+    ]
 
     metric_dataframe = pd.DataFrame(
         [
@@ -357,6 +413,11 @@ def main():
                 "Improved QML threshold tuning",
                 threshold_true_labels,
                 threshold_qml_predicted_labels,
+            ),
+            get_metric_row(
+                "Improved QML kernel alignment",
+                alignment_true_labels,
+                alignment_qml_predicted_labels,
             ),
             get_metric_row(
                 "XGBoost same QML data",
@@ -386,6 +447,11 @@ def main():
     threshold_qml_confusion_matrix = confusion_matrix(
         threshold_true_labels,
         threshold_qml_predicted_labels,
+        labels=[0, 1],
+    )
+    alignment_qml_confusion_matrix = confusion_matrix(
+        alignment_true_labels,
+        alignment_qml_predicted_labels,
         labels=[0, 1],
     )
 
@@ -478,6 +544,48 @@ def main():
         ]
     )
 
+    alignment_summary_dataframe = pd.DataFrame(
+        [
+            {
+                "section": "Kernel alignment experiment",
+                "feature_set": improved_best_alignment_result["feature_set_name"],
+                "feature_count": int(improved_best_alignment_result["feature_count"]),
+                "kernel": improved_best_alignment_result["kernel_name"],
+                "angle_scale": improved_best_alignment_result["angle_scale"],
+                "svm_c": improved_best_alignment_result["c_value"],
+                "kernel_target_alignment": improved_best_alignment_result[
+                    "kernel_target_alignment"
+                ],
+                "cv_stable_f1": improved_best_alignment_result["cv_stable_f1"],
+                "test_accuracy": round(
+                    accuracy_score(
+                        alignment_true_labels,
+                        alignment_qml_predicted_labels,
+                    ),
+                    4,
+                ),
+                "test_stable_f1": round(
+                    f1_score(
+                        alignment_true_labels,
+                        alignment_qml_predicted_labels,
+                        zero_division=0,
+                    ),
+                    4,
+                ),
+            }
+        ]
+    )
+
+    alignment_sample_predictions_dataframe = improved_qml_alignment_predictions_dataframe[
+        [
+            "material_id",
+            "formula",
+            "target_is_stable",
+            "alignment_qml_predicted_label",
+            "alignment_qml_stable_probability",
+        ]
+    ].head(10)
+
     cells = []
     execution_count = 1
 
@@ -522,6 +630,9 @@ improved_qml_tuning_results_dataframe = pd.read_csv(processed_folder / "improved
 improved_qml_predictions_dataframe = pd.read_csv(processed_folder / "improved qml best predictions.csv")
 improved_qml_threshold_results_dataframe = pd.read_csv(processed_folder / "improved qml threshold results.csv")
 improved_qml_threshold_predictions_dataframe = pd.read_csv(processed_folder / "improved qml threshold predictions.csv")
+improved_qml_alignment_scores_dataframe = pd.read_csv(processed_folder / "improved qml alignment scores.csv")
+improved_qml_alignment_results_dataframe = pd.read_csv(processed_folder / "improved qml alignment results.csv")
+improved_qml_alignment_predictions_dataframe = pd.read_csv(processed_folder / "improved qml alignment predictions.csv")
 
 dataset_summary = pd.DataFrame([
     {"dataset": "Lithium India scored", "rows": len(lithium_scored_dataframe), "columns": len(lithium_scored_dataframe.columns)},
@@ -534,6 +645,9 @@ dataset_summary = pd.DataFrame([
     {"dataset": "Improved QML test predictions", "rows": len(improved_qml_predictions_dataframe), "columns": len(improved_qml_predictions_dataframe.columns)},
     {"dataset": "Improved QML threshold results", "rows": len(improved_qml_threshold_results_dataframe), "columns": len(improved_qml_threshold_results_dataframe.columns)},
     {"dataset": "Improved QML threshold predictions", "rows": len(improved_qml_threshold_predictions_dataframe), "columns": len(improved_qml_threshold_predictions_dataframe.columns)},
+    {"dataset": "Improved QML alignment scores", "rows": len(improved_qml_alignment_scores_dataframe), "columns": len(improved_qml_alignment_scores_dataframe.columns)},
+    {"dataset": "Improved QML alignment results", "rows": len(improved_qml_alignment_results_dataframe), "columns": len(improved_qml_alignment_results_dataframe.columns)},
+    {"dataset": "Improved QML alignment predictions", "rows": len(improved_qml_alignment_predictions_dataframe), "columns": len(improved_qml_alignment_predictions_dataframe.columns)},
 ])
 display(dataset_summary)"""
     dataset_summary_dataframe = pd.DataFrame(
@@ -587,6 +701,21 @@ display(dataset_summary)"""
                 "dataset": "Improved QML threshold predictions",
                 "rows": len(improved_qml_threshold_predictions_dataframe),
                 "columns": len(improved_qml_threshold_predictions_dataframe.columns),
+            },
+            {
+                "dataset": "Improved QML alignment scores",
+                "rows": len(improved_qml_alignment_scores_dataframe),
+                "columns": len(improved_qml_alignment_scores_dataframe.columns),
+            },
+            {
+                "dataset": "Improved QML alignment results",
+                "rows": len(improved_qml_alignment_results_dataframe),
+                "columns": len(improved_qml_alignment_results_dataframe.columns),
+            },
+            {
+                "dataset": "Improved QML alignment predictions",
+                "rows": len(improved_qml_alignment_predictions_dataframe),
+                "columns": len(improved_qml_alignment_predictions_dataframe.columns),
             },
         ]
     )
@@ -782,6 +911,11 @@ display(top_candidates_dataframe)"""
     {"parameter": "Improved best SVM C value", "value": "2.0"},
     {"parameter": "Threshold experiment", "value": "Stable-probability cutoff tuned by cross-validation"},
     {"parameter": "Best stable threshold", "value": "0.50"},
+    {"parameter": "Kernel alignment experiment", "value": "Feature set selected by quantum kernel-target alignment"},
+    {"parameter": "Alignment best feature set", "value": "rf_top_4"},
+    {"parameter": "Alignment best qubits", "value": "4"},
+    {"parameter": "Alignment best kernel", "value": "entangled_pi"},
+    {"parameter": "Alignment best SVM C value", "value": "5.0"},
     {"parameter": "Train/test split", "value": "80/20"},
     {"parameter": "Random state", "value": "42"},
 ])
@@ -805,6 +939,8 @@ improved_true_labels = improved_qml_predictions_dataframe["target_is_stable"]
 improved_qml_predicted_labels = improved_qml_predictions_dataframe["improved_qml_predicted_label"]
 threshold_true_labels = improved_qml_threshold_predictions_dataframe["target_is_stable"]
 threshold_qml_predicted_labels = improved_qml_threshold_predictions_dataframe["threshold_qml_predicted_label"]
+alignment_true_labels = improved_qml_alignment_predictions_dataframe["target_is_stable"]
+alignment_qml_predicted_labels = improved_qml_alignment_predictions_dataframe["alignment_qml_predicted_label"]
 
 metric_dataframe = pd.DataFrame([
     {
@@ -834,6 +970,13 @@ metric_dataframe = pd.DataFrame([
         "stable_precision": precision_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0),
         "stable_recall": recall_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0),
         "stable_f1": f1_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0),
+    },
+    {
+        "model": "Improved QML kernel alignment",
+        "accuracy": accuracy_score(alignment_true_labels, alignment_qml_predicted_labels),
+        "stable_precision": precision_score(alignment_true_labels, alignment_qml_predicted_labels, zero_division=0),
+        "stable_recall": recall_score(alignment_true_labels, alignment_qml_predicted_labels, zero_division=0),
+        "stable_f1": f1_score(alignment_true_labels, alignment_qml_predicted_labels, zero_division=0),
     },
     {
         "model": "XGBoost same QML data",
@@ -1091,6 +1234,101 @@ plt.show()"""
     )
     execution_count += 1
 
+    alignment_summary_source = """improved_best_alignment_result = improved_qml_alignment_results_dataframe.sort_values(
+    by=["cv_stable_f1", "cv_accuracy", "kernel_target_alignment"],
+    ascending=[False, False, False],
+).iloc[0]
+
+alignment_true_labels = improved_qml_alignment_predictions_dataframe["target_is_stable"]
+alignment_qml_predicted_labels = improved_qml_alignment_predictions_dataframe["alignment_qml_predicted_label"]
+
+alignment_summary_dataframe = pd.DataFrame([
+    {
+        "section": "Kernel alignment experiment",
+        "feature_set": improved_best_alignment_result["feature_set_name"],
+        "feature_count": int(improved_best_alignment_result["feature_count"]),
+        "kernel": improved_best_alignment_result["kernel_name"],
+        "angle_scale": improved_best_alignment_result["angle_scale"],
+        "svm_c": improved_best_alignment_result["c_value"],
+        "kernel_target_alignment": improved_best_alignment_result["kernel_target_alignment"],
+        "cv_stable_f1": improved_best_alignment_result["cv_stable_f1"],
+        "test_accuracy": accuracy_score(alignment_true_labels, alignment_qml_predicted_labels),
+        "test_stable_f1": f1_score(alignment_true_labels, alignment_qml_predicted_labels, zero_division=0),
+    }
+]).round(4)
+
+display(alignment_summary_dataframe)"""
+    cells.append(
+        make_code_cell(
+            alignment_summary_source,
+            [make_table_output(alignment_summary_dataframe)],
+            execution_count,
+        )
+    )
+    execution_count += 1
+
+    alignment_confusion_figure = create_confusion_matrix_figure(
+        alignment_qml_confusion_matrix,
+        "Kernel-Alignment QML Confusion Matrix",
+    )
+    alignment_confusion_dataframe = pd.DataFrame(
+        alignment_qml_confusion_matrix,
+        index=["actual_unstable", "actual_stable"],
+        columns=["predicted_unstable", "predicted_stable"],
+    )
+    alignment_confusion_source = """alignment_qml_confusion_matrix = confusion_matrix(
+    alignment_true_labels,
+    alignment_qml_predicted_labels,
+    labels=[0, 1],
+)
+alignment_confusion_dataframe = pd.DataFrame(
+    alignment_qml_confusion_matrix,
+    index=["actual_unstable", "actual_stable"],
+    columns=["predicted_unstable", "predicted_stable"],
+)
+display(alignment_confusion_dataframe)
+
+plt.figure(figsize=(5.8, 4.8))
+plt.imshow(alignment_qml_confusion_matrix, cmap="Blues")
+plt.title("Kernel-Alignment QML Confusion Matrix")
+plt.xticks([0, 1], ["Predicted unstable", "Predicted stable"])
+plt.yticks([0, 1], ["Actual unstable", "Actual stable"])
+for row_index in range(2):
+    for column_index in range(2):
+        plt.text(column_index, row_index, alignment_qml_confusion_matrix[row_index, column_index], ha="center", va="center")
+plt.colorbar()
+plt.show()"""
+    cells.append(
+        make_code_cell(
+            alignment_confusion_source,
+            [
+                make_table_output(alignment_confusion_dataframe),
+                make_figure_output(alignment_confusion_figure),
+            ],
+            execution_count,
+        )
+    )
+    execution_count += 1
+
+    alignment_predictions_source = """alignment_sample_predictions_dataframe = improved_qml_alignment_predictions_dataframe[
+    [
+        "material_id",
+        "formula",
+        "target_is_stable",
+        "alignment_qml_predicted_label",
+        "alignment_qml_stable_probability",
+    ]
+].head(10)
+display(alignment_sample_predictions_dataframe)"""
+    cells.append(
+        make_code_cell(
+            alignment_predictions_source,
+            [make_table_output(alignment_sample_predictions_dataframe)],
+            execution_count,
+        )
+    )
+    execution_count += 1
+
     conclusion_markdown = """# Presentation Conclusion
 
 **What we achieved**
@@ -1104,6 +1342,7 @@ plt.show()"""
 - Added a separate improved-QML section using feature importance, PCA, and an
   entangled-kernel search.
 - Added a threshold experiment for the improved-QML stable probability.
+- Added a kernel-alignment experiment for quantum-aware feature selection.
 
 **Main model result**
 
@@ -1114,11 +1353,13 @@ plt.show()"""
 - Improved QML separate-section stable F1: **0.8230**
 - Improved QML threshold-tuned accuracy: **0.8200**
 - Improved QML threshold-tuned stable F1: **0.8269**
+- Improved QML kernel-alignment accuracy: **0.8200**
+- Improved QML kernel-alignment stable F1: **0.8302**
 - Same-data XGBoost accuracy: **0.8300**
 
 **Next step**
 
-Create final report visuals and try a hardware-oriented QML circuit.
+Write the final model-comparison interpretation and try a hardware-oriented QML circuit.
 """
     cells.append(
         make_code_cell(
@@ -1135,6 +1376,7 @@ Create final report visuals and try a hardware-oriented QML circuit.
 - Added a separate improved-QML section using feature importance, PCA, and an
   entangled-kernel search.
 - Added a threshold experiment for the improved-QML stable probability.
+- Added a kernel-alignment experiment for quantum-aware feature selection.
 
 **Main model result**
 
@@ -1145,11 +1387,13 @@ Create final report visuals and try a hardware-oriented QML circuit.
 - Improved QML separate-section stable F1: **0.8230**
 - Improved QML threshold-tuned accuracy: **0.8200**
 - Improved QML threshold-tuned stable F1: **0.8269**
+- Improved QML kernel-alignment accuracy: **0.8200**
+- Improved QML kernel-alignment stable F1: **0.8302**
 - Same-data XGBoost accuracy: **0.8300**
 
 **Next step**
 
-Create final report visuals and try a hardware-oriented QML circuit.
+Write the final model-comparison interpretation and try a hardware-oriented QML circuit.
 \"\"\"))""",
             [make_markdown_output(conclusion_markdown)],
             execution_count,

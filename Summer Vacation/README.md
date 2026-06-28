@@ -36,6 +36,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 11. Run a separate improved-QML section using feature importance, PCA, and
     entangled-kernel testing.
 12. Test probability-threshold tuning for the improved-QML model.
+13. Test quantum-kernel alignment feature selection.
 
 ## Current Results
 
@@ -53,6 +54,8 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 - Improved QML separate-section stable F1: 0.8230
 - Improved QML threshold-tuned accuracy: 0.8200
 - Improved QML threshold-tuned stable F1: 0.8269
+- Improved QML alignment-selected accuracy: 0.8200
+- Improved QML alignment-selected stable F1: 0.8302
 - Same-data XGBoost accuracy on QML-ready test split: 0.8300
 
 ## Important Files
@@ -79,6 +82,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | `data/metadata/qml_best_model_summary.md` | Best tuned QML model summary. |
 | `data/metadata/improved_qml_section_summary.md` | Separate improved-QML section summary. |
 | `data/metadata/improved_qml_step_05_threshold_experiment.md` | Separate improved-QML threshold experiment. |
+| `data/metadata/improved_qml_step_06_kernel_alignment.md` | Separate quantum-kernel alignment experiment. |
 
 ## Reproduce Locally
 
@@ -104,6 +108,6 @@ python3 scripts/run_improved_qml_experiments.py
 
 ## Next Step
 
-Create visual plots and a final report section comparing XGBoost, the original
-QML baseline, tuned QML, the separate improved-QML section, and the
-India-focused material shortlist.
+Create the final report section comparing XGBoost, the original QML baseline,
+tuned QML, threshold QML, kernel-alignment QML, and the India-focused material
+shortlist.
