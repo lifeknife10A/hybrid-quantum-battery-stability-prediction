@@ -50,6 +50,7 @@ flowchart TD
     M --> N["Repeated split validation<br/>10 random train/test splits"]
     N --> O["QML vs Logistic Regression<br/>same splits and features"]
     O --> P["QML circuit diagram<br/>4-qubit feature-map explanation"]
+    P --> Q["DSS recommendation ranking<br/>business decision-support output"]
 ```
 
 ## Artifact Map
@@ -70,6 +71,7 @@ flowchart TD
 | Best QML repeated split validation | `lithium india scored.csv` | `data/processed/best qml repeated split results.csv` and `data/processed/best qml repeated split predictions.csv` | 10 splits; 2,000 total test predictions | `scripts/run_best_qml_repeated_splits.py` | `data/metadata/improved_qml_step_07_repeated_split_validation.md` |
 | QML vs Logistic Regression | `lithium india scored.csv` | `data/processed/qml vs logistic repeated split results.csv`, `data/processed/qml vs logistic repeated split summary.csv`, and `data/processed/qml vs logistic repeated split predictions.csv` | 10 splits; 20 model result rows; 2,000 total test predictions | `scripts/compare_qml_with_logistic_baseline.py` | `data/metadata/improved_qml_step_08_qml_vs_logistic.md` |
 | QML circuit diagram | Best QML setup | `data/processed/qml circuit diagram.png` | 1 PNG diagram | `scripts/create_qml_circuit_diagram.py` | `data/metadata/qml_circuit_diagram_summary.md` |
+| DSS recommendation ranking | `final india battery shortlist.csv` | `data/processed/dss battery family recommendation ranking.csv` and `data/processed/dss material recommendation ranking.csv` | 6 family rows; 629 material rows | `scripts/create_dss_recommendation_ranking.py` | `data/metadata/dss_recommendation_summary.md` |
 
 ## Dataset Sizes
 
@@ -98,6 +100,8 @@ flowchart TD
 | QML vs Logistic repeated split results | 20 | 11 | Per-split metrics for both QML and Logistic Regression. |
 | QML vs Logistic repeated split summary | 8 | 6 | Mean, standard deviation, minimum, and maximum metrics for both models. |
 | QML vs Logistic repeated split predictions | 2,000 | 11 | Test predictions from all repeated splits. |
+| DSS battery family ranking | 6 | 12 | Business-facing ranking of battery-material families. |
+| DSS material recommendation ranking | 629 | 13 | Ranked DSS table for final material candidates. |
 
 ## Key Columns Used
 
@@ -127,6 +131,9 @@ flowchart TD
 | `xgboost_same_data_predicted_label` | Same-split XGBoost predicted class for comparison. |
 | `logistic_predicted_label` | Logistic Regression predicted class for the test row. |
 | `logistic_stable_probability` | Logistic Regression probability score for stable class. |
+| `dss_rank` | Final DSS rank for family or material recommendation output. |
+| `dss_decision` | Business-facing decision label such as near-term purchase, pilot option, or R&D option. |
+| `short_conceptual_reason` | Short conceptual reason explaining why a material appears in the DSS ranking. |
 | `improved_pca_1` to `improved_pca_8` | PCA features created for the separate improved-QML experiment. |
 | `improved_qml_predicted_label` | Predicted stable or unstable class from the best improved-QML model. |
 | `improved_qml_stable_probability` | Stable-class probability from the best improved-QML model. |
@@ -536,12 +543,14 @@ We have completed:
 - Compared best QML with Logistic Regression across the same 10 repeated splits.
 - QML beat Logistic Regression on mean accuracy, stable precision, and stable F1.
 - Created a gate-level visual diagram for the best 4-qubit QML feature map.
+- Created DSS recommendation rankings for battery families and material candidates.
 
 ## What We Have Not Done Yet
 
 The project is not finished yet. The next missing parts are:
 
 - Write final academic interpretation of the top materials.
+- Write final DSS-style interpretation of the ranked battery families.
 - Try a real Qiskit or PennyLane hardware-oriented circuit after the simulated
   kernel experiments.
 
@@ -553,14 +562,12 @@ The next best step is:
 
 Why this should come next:
 
+- The DSS recommendation ranking is now ready.
 - XGBoost is already our classical baseline.
 - The QML baseline is now trained, tuned, and measured.
-- The separate improved-QML section is also complete and documented.
 - We now also have a fair QML-higher comparison against Logistic Regression.
 - The QML circuit diagram is ready for presentation explanation.
-- We now have enough metrics to create comparison charts.
-- The final report needs clear visuals for dataset sizes, model metrics, and
-  final shortlisted material families.
+- We now have enough metrics and DSS tables to create the final report.
 
 ## Completed QML Dataset Preparation
 

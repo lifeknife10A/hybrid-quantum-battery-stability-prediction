@@ -21,6 +21,10 @@ notebook_path = project_folder / "Summer Vacation Main Presentation.ipynb"
 
 lithium_scored_path = processed_folder / "lithium india scored.csv"
 final_shortlist_path = processed_folder / "final india battery shortlist.csv"
+dss_family_ranking_path = (
+    processed_folder / "dss battery family recommendation ranking.csv"
+)
+dss_material_ranking_path = processed_folder / "dss material recommendation ranking.csv"
 qml_ready_path = processed_folder / "qml_ready_lithium_india.csv"
 qml_predictions_path = processed_folder / "qml baseline predictions.csv"
 tuned_qml_predictions_path = processed_folder / "qml tuned best predictions.csv"
@@ -391,6 +395,8 @@ def get_metric_row(model_name, true_labels, predicted_labels):
 def main():
     lithium_scored_dataframe = pd.read_csv(lithium_scored_path)
     final_shortlist_dataframe = pd.read_csv(final_shortlist_path)
+    dss_family_ranking_dataframe = pd.read_csv(dss_family_ranking_path)
+    dss_material_ranking_dataframe = pd.read_csv(dss_material_ranking_path)
     qml_ready_dataframe = pd.read_csv(qml_ready_path)
     qml_predictions_dataframe = pd.read_csv(qml_predictions_path)
     tuned_qml_predictions_dataframe = pd.read_csv(tuned_qml_predictions_path)
@@ -478,6 +484,36 @@ def main():
         "india_feasibility_score",
     ]
     top_candidates_dataframe = final_shortlist_dataframe[top_candidate_columns].head(10)
+
+    dss_family_display_columns = [
+        "dss_rank",
+        "battery_family",
+        "dss_decision",
+        "shortlist_rows",
+        "average_india_feasibility_score",
+        "average_predicted_stable_probability",
+        "median_predicted_energy_above_hull",
+        "top_formula",
+        "short_reason",
+    ]
+    dss_family_display_dataframe = dss_family_ranking_dataframe[
+        dss_family_display_columns
+    ]
+    dss_material_display_columns = [
+        "dss_rank",
+        "material_id",
+        "formula",
+        "battery_family",
+        "dss_decision",
+        "shortlist_score",
+        "india_feasibility_score",
+        "predicted_stable_probability",
+        "predicted_energy_above_hull_clipped",
+        "short_conceptual_reason",
+    ]
+    dss_material_display_dataframe = dss_material_ranking_dataframe[
+        dss_material_display_columns
+    ].head(10)
 
     quantum_parameters_dataframe = pd.DataFrame(
         [
@@ -909,6 +945,8 @@ processed_folder = project_folder / "data" / "processed"
 
 lithium_scored_dataframe = pd.read_csv(processed_folder / "lithium india scored.csv")
 final_shortlist_dataframe = pd.read_csv(processed_folder / "final india battery shortlist.csv")
+dss_family_ranking_dataframe = pd.read_csv(processed_folder / "dss battery family recommendation ranking.csv")
+dss_material_ranking_dataframe = pd.read_csv(processed_folder / "dss material recommendation ranking.csv")
 qml_ready_dataframe = pd.read_csv(processed_folder / "qml_ready_lithium_india.csv")
 qml_predictions_dataframe = pd.read_csv(processed_folder / "qml baseline predictions.csv")
 tuned_qml_predictions_dataframe = pd.read_csv(processed_folder / "qml tuned best predictions.csv")
@@ -929,6 +967,8 @@ qml_vs_logistic_predictions_dataframe = pd.read_csv(processed_folder / "qml vs l
 dataset_summary = pd.DataFrame([
     {"dataset": "Lithium India scored", "rows": len(lithium_scored_dataframe), "columns": len(lithium_scored_dataframe.columns)},
     {"dataset": "Final India shortlist", "rows": len(final_shortlist_dataframe), "columns": len(final_shortlist_dataframe.columns)},
+    {"dataset": "DSS family ranking", "rows": len(dss_family_ranking_dataframe), "columns": len(dss_family_ranking_dataframe.columns)},
+    {"dataset": "DSS material ranking", "rows": len(dss_material_ranking_dataframe), "columns": len(dss_material_ranking_dataframe.columns)},
     {"dataset": "QML-ready dataset", "rows": len(qml_ready_dataframe), "columns": len(qml_ready_dataframe.columns)},
     {"dataset": "QML test predictions", "rows": len(qml_predictions_dataframe), "columns": len(qml_predictions_dataframe.columns)},
     {"dataset": "Tuned QML test predictions", "rows": len(tuned_qml_predictions_dataframe), "columns": len(tuned_qml_predictions_dataframe.columns)},
@@ -958,6 +998,16 @@ display(dataset_summary)"""
                 "dataset": "Final India shortlist",
                 "rows": len(final_shortlist_dataframe),
                 "columns": len(final_shortlist_dataframe.columns),
+            },
+            {
+                "dataset": "DSS family ranking",
+                "rows": len(dss_family_ranking_dataframe),
+                "columns": len(dss_family_ranking_dataframe.columns),
+            },
+            {
+                "dataset": "DSS material ranking",
+                "rows": len(dss_material_ranking_dataframe),
+                "columns": len(dss_material_ranking_dataframe.columns),
             },
             {
                 "dataset": "QML-ready dataset",
@@ -1209,6 +1259,62 @@ display(top_candidates_dataframe)"""
         make_code_cell(
             top_candidates_source,
             [make_table_output(top_candidates_dataframe)],
+            execution_count,
+        )
+    )
+    execution_count += 1
+
+    dss_markdown = """## DSS Recommendation Ranking
+
+The project is used as a Decision Support System here. The first table ranks
+battery-material families for business decisions. The second table shows the
+top material candidates and the parameters behind each rank.
+"""
+    dss_source = """display(Markdown(\"\"\"## DSS Recommendation Ranking
+
+The project is used as a Decision Support System here. The first table ranks
+battery-material families for business decisions. The second table shows the
+top material candidates and the parameters behind each rank.
+\"\"\"))
+
+dss_family_display_columns = [
+    "dss_rank",
+    "battery_family",
+    "dss_decision",
+    "shortlist_rows",
+    "average_india_feasibility_score",
+    "average_predicted_stable_probability",
+    "median_predicted_energy_above_hull",
+    "top_formula",
+    "short_reason",
+]
+dss_family_display_dataframe = dss_family_ranking_dataframe[dss_family_display_columns]
+display(dss_family_display_dataframe)
+
+dss_material_display_columns = [
+    "dss_rank",
+    "material_id",
+    "formula",
+    "battery_family",
+    "dss_decision",
+    "shortlist_score",
+    "india_feasibility_score",
+    "predicted_stable_probability",
+    "predicted_energy_above_hull_clipped",
+    "short_conceptual_reason",
+]
+dss_material_display_dataframe = dss_material_ranking_dataframe[
+    dss_material_display_columns
+].head(10)
+display(dss_material_display_dataframe)"""
+    cells.append(
+        make_code_cell(
+            dss_source,
+            [
+                make_markdown_output(dss_markdown),
+                make_table_output(dss_family_display_dataframe),
+                make_table_output(dss_material_display_dataframe),
+            ],
             execution_count,
         )
     )
@@ -1774,6 +1880,7 @@ display(qml_vs_logistic_comparison_dataframe)"""
 
 - Built a complete lithium battery material pipeline.
 - Created India-focused material scoring and final shortlist.
+- Added DSS recommendation rankings for battery families and material candidates.
 - Trained XGBoost as the classical baseline.
 - Prepared a balanced QML-ready dataset.
 - Trained a first simulated quantum-kernel classifier.
@@ -1805,7 +1912,8 @@ display(qml_vs_logistic_comparison_dataframe)"""
 
 **Next step**
 
-Write the final model-comparison interpretation and try a hardware-oriented QML circuit.
+Write the final DSS-style interpretation for the top ranked battery families
+and material candidates.
 """
     cells.append(
         make_code_cell(
@@ -1815,6 +1923,7 @@ Write the final model-comparison interpretation and try a hardware-oriented QML 
 
 - Built a complete lithium battery material pipeline.
 - Created India-focused material scoring and final shortlist.
+- Added DSS recommendation rankings for battery families and material candidates.
 - Trained XGBoost as the classical baseline.
 - Prepared a balanced QML-ready dataset.
 - Trained a first simulated quantum-kernel classifier.
@@ -1846,7 +1955,8 @@ Write the final model-comparison interpretation and try a hardware-oriented QML 
 
 **Next step**
 
-Write the final model-comparison interpretation and try a hardware-oriented QML circuit.
+Write the final DSS-style interpretation for the top ranked battery families
+and material candidates.
 \"\"\"))""",
             [make_markdown_output(conclusion_markdown)],
             execution_count,

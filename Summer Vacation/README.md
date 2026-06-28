@@ -40,6 +40,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 14. Validate the best QML setup across repeated random train/test splits.
 15. Compare best QML with Logistic Regression as a simpler classical baseline.
 16. Add a gate-level visual diagram for the best 4-qubit QML feature map.
+17. Create DSS recommendation rankings for battery families and material candidates.
 
 ## Current Results
 
@@ -47,6 +48,8 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 - Lithium-only dataset: 24,957 rows
 - India-scored lithium dataset: 24,957 rows and 37 columns
 - Final India battery shortlist: 629 rows
+- DSS battery-family ranking: 6 rows
+- DSS material recommendation ranking: 629 rows
 - QML-ready balanced dataset: 1,000 rows and 27 columns
 - XGBoost classifier accuracy: 0.9091
 - XGBoost regressor MAE: 0.1005
@@ -84,6 +87,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | `scripts/run_improved_qml_experiments.py` | Runs the separate improved-QML section with feature importance, PCA, and entangled kernels. |
 | `scripts/compare_qml_with_logistic_baseline.py` | Compares best QML with Logistic Regression on repeated balanced splits. |
 | `scripts/create_qml_circuit_diagram.py` | Creates the gate-level QML circuit diagram and explanation. |
+| `scripts/create_dss_recommendation_ranking.py` | Creates DSS family and material recommendation rankings. |
 | `scripts/create_main_presentation_notebook.py` | Regenerates the presentation notebook. |
 | `data/metadata/project_pipeline_summary.md` | Full current pipeline summary. |
 | `data/metadata/qml_baseline_results.md` | QML classifier results and XGBoost comparison. |
@@ -95,7 +99,10 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | `data/metadata/improved_qml_step_07_repeated_split_validation.md` | Repeated train/test split validation for the best QML setup. |
 | `data/metadata/improved_qml_step_08_qml_vs_logistic.md` | Repeated-split QML vs Logistic Regression comparison. |
 | `data/metadata/qml_circuit_diagram_summary.md` | Gate-level explanation of the best QML feature map. |
+| `data/metadata/dss_recommendation_summary.md` | DSS explanation and recommendation ranking summary. |
 | `data/processed/qml circuit diagram.png` | Visual QML circuit diagram for presentation. |
+| `data/processed/dss battery family recommendation ranking.csv` | Family-level DSS recommendation table. |
+| `data/processed/dss material recommendation ranking.csv` | Material-level DSS recommendation table. |
 
 ## Reproduce Locally
 
@@ -120,6 +127,7 @@ python3 scripts/run_improved_qml_experiments.py
 python3 scripts/run_best_qml_repeated_splits.py
 python3 scripts/compare_qml_with_logistic_baseline.py
 python3 scripts/create_qml_circuit_diagram.py
+python3 scripts/create_dss_recommendation_ranking.py
 python3 scripts/create_main_presentation_notebook.py
 ```
 
@@ -127,5 +135,5 @@ python3 scripts/create_main_presentation_notebook.py
 
 Create the final report section comparing XGBoost, the original QML baseline,
 tuned QML, threshold QML, kernel-alignment QML, QML vs Logistic Regression, and
-the India-focused material shortlist, using the QML circuit diagram as the
-visual explanation of the quantum part.
+the DSS recommendation ranking, using the QML circuit diagram as the visual
+explanation of the quantum part.
