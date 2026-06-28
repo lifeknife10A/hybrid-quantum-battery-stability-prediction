@@ -43,6 +43,7 @@ flowchart TD
     F --> G["Final India battery shortlist<br/>629 rows"]
     G --> H["QML-ready dataset<br/>1,000 balanced rows"]
     H --> I["QML baseline comparison<br/>QML 0.81, same-data XGBoost 0.83"]
+    I --> J["QML tuning<br/>best QML accuracy 0.82"]
 ```
 
 ## Artifact Map
@@ -57,6 +58,8 @@ flowchart TD
 | Final shortlist | `xgboost predictions with india scores.csv` | `data/processed/final india battery shortlist.csv` | 629 | `scripts/create_final_india_battery_shortlist.py` | `data/metadata/final_shortlist_summary.md` |
 | QML-ready dataset | `lithium india scored.csv` | `data/processed/qml_ready_lithium_india.csv` | 1,000 | `scripts/create_qml_ready_dataset.py` | `data/metadata/qml_ready_dataset_summary.md` |
 | QML baseline | `qml_ready_lithium_india.csv` | `data/processed/qml baseline predictions.csv` | 200 test predictions | `scripts/train_qml_baseline.py` | `data/metadata/qml_baseline_results.md` |
+| QML tuning | `qml_ready_lithium_india.csv` | `data/processed/qml tuning results.csv` | 72 experiments | `scripts/tune_qml_baseline.py` | `data/metadata/qml_tuning_results.md` |
+| Tuned QML best model | `qml_ready_lithium_india.csv` | `data/processed/qml tuned best predictions.csv` | 200 test predictions | `scripts/tune_qml_baseline.py` | `data/metadata/qml_best_model_summary.md` |
 
 ## Dataset Sizes
 
@@ -70,6 +73,8 @@ flowchart TD
 | Final India battery shortlist | 629 | Shortlist columns | Used for human review and candidate selection. |
 | QML-ready balanced dataset | 1,000 | 27 | Balanced 500 stable and 500 unstable rows. |
 | QML baseline prediction file | 200 | 11 | Test-set QML and same-data XGBoost predictions. |
+| QML tuning results | 72 | 12 | Hyperparameter search results. |
+| Tuned QML prediction file | 200 | 8 | Test-set predictions from the best tuned QML model. |
 
 ## Key Columns Used
 
@@ -261,6 +266,42 @@ The first QML classifier is working. On the same QML-ready test split, XGBoost
 is still slightly stronger, but the QML result is close enough to use as a real
 baseline for project comparison.
 
+## Tuned QML Results
+
+From `data/metadata/qml_tuning_results.md` and
+`data/metadata/qml_best_model_summary.md`:
+
+Search space:
+
+- Feature counts tested: 4, 6, 8, 10
+- Angle scales tested: pi/2, pi, 2pi
+- SVM `C` values tested: 0.1, 0.5, 1, 2, 5, 10
+- Total experiments: 72
+- Selection method: 4-fold cross-validation on the train-validation split
+
+Best tuned QML setup:
+
+| Parameter | Value |
+| --- | --- |
+| Feature count / qubits | 8 |
+| Angle scale | pi/2 |
+| SVM C | 1.0 |
+| Quantum state size | 256 |
+
+Test comparison:
+
+| Model | Test Accuracy | Test Stable F1 |
+| --- | ---: | ---: |
+| Original QML baseline | 0.8100 | 0.8173 |
+| Tuned QML best model | 0.8200 | 0.8269 |
+| Same-data XGBoost baseline | 0.8300 | 0.8283 |
+
+Interpretation:
+
+QML tuning improved the QML result, especially stable-class F1. XGBoost remains
+slightly ahead on accuracy, but the tuned QML model is now very close on stable
+F1.
+
 ## Final Shortlist Results
 
 From `data/metadata/final_shortlist_summary.md`:
@@ -312,6 +353,8 @@ We have completed:
 - Trained the first simple QML classifier.
 - Compared QML with XGBoost on the same QML-ready data.
 - Created QML model step markdown files for report writing.
+- Tuned QML hyperparameters across 72 combinations.
+- Improved QML accuracy from 0.8100 to 0.8200 and stable F1 from 0.8173 to 0.8269.
 
 ## What We Have Not Done Yet
 
@@ -319,7 +362,7 @@ The project is not finished yet. The next missing parts are:
 
 - Add visual plots for report and presentation.
 - Write final academic interpretation of the top materials.
-- Try improved QML feature maps or smaller feature sets.
+- Try entangled QML feature maps or hardware-oriented circuits.
 
 ## Recommended Next Step
 
@@ -330,7 +373,7 @@ The next best step is:
 Why this should come next:
 
 - XGBoost is already our classical baseline.
-- The QML baseline is now trained and measured.
+- The QML baseline is now trained, tuned, and measured.
 - We now have enough metrics to create comparison charts.
 - The final report needs clear visuals for dataset sizes, model metrics, and
   final shortlisted material families.

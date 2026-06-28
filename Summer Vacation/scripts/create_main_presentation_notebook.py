@@ -22,6 +22,7 @@ lithium_scored_path = processed_folder / "lithium india scored.csv"
 final_shortlist_path = processed_folder / "final india battery shortlist.csv"
 qml_ready_path = processed_folder / "qml_ready_lithium_india.csv"
 qml_predictions_path = processed_folder / "qml baseline predictions.csv"
+tuned_qml_predictions_path = processed_folder / "qml tuned best predictions.csv"
 
 
 def make_markdown_output(markdown_text):
@@ -97,12 +98,13 @@ def create_bar_figure(dataframe, x_column, y_column, title, x_label, y_label, co
 
 def create_metric_figure(metric_dataframe):
     figure, axis = plt.subplots(figsize=(9, 5))
-    bar_width = 0.22
+    bar_width = 0.18
     metric_names = ["accuracy", "stable_precision", "stable_recall", "stable_f1"]
     model_names = metric_dataframe["model"].tolist()
     x_positions = list(range(len(metric_names)))
 
-    colors = ["#315f8c", "#d88c2d", "#5f8f45"]
+    colors = ["#315f8c", "#4f86c6", "#d88c2d", "#5f8f45"]
+    center_offset = (len(model_names) - 1) / 2
 
     for model_index, model_name in enumerate(model_names):
         values = metric_dataframe.loc[
@@ -110,7 +112,8 @@ def create_metric_figure(metric_dataframe):
             metric_names,
         ].iloc[0]
         shifted_positions = [
-            position + (model_index - 1) * bar_width for position in x_positions
+            position + (model_index - center_offset) * bar_width
+            for position in x_positions
         ]
         axis.bar(
             shifted_positions,
@@ -137,7 +140,7 @@ def create_metric_figure(metric_dataframe):
 def create_confusion_matrix_figure(confusion_table):
     figure, axis = plt.subplots(figsize=(5.8, 4.8))
     image = axis.imshow(confusion_table, cmap="Blues")
-    axis.set_title("QML Confusion Matrix")
+    axis.set_title("Tuned QML Confusion Matrix")
     axis.set_xticks([0, 1])
     axis.set_xticklabels(["Predicted unstable", "Predicted stable"])
     axis.set_yticks([0, 1])
@@ -183,6 +186,7 @@ def main():
     final_shortlist_dataframe = pd.read_csv(final_shortlist_path)
     qml_ready_dataframe = pd.read_csv(qml_ready_path)
     qml_predictions_dataframe = pd.read_csv(qml_predictions_path)
+    tuned_qml_predictions_dataframe = pd.read_csv(tuned_qml_predictions_path)
 
     pipeline_counts_dataframe = pd.DataFrame(
         [
@@ -234,11 +238,16 @@ def main():
                 "parameter": "QML model type",
                 "value": "Simulated quantum kernel classifier",
             },
-            {"parameter": "Number of qubits", "value": "10"},
-            {"parameter": "Quantum state size", "value": "1024"},
+            {"parameter": "Original number of qubits", "value": "10"},
+            {"parameter": "Tuned number of qubits", "value": "8"},
+            {"parameter": "Tuned quantum state size", "value": "256"},
             {
-                "parameter": "Feature encoding",
+                "parameter": "Original feature encoding",
                 "value": "angle = pi * scaled_feature_value",
+            },
+            {
+                "parameter": "Tuned feature encoding",
+                "value": "angle = (pi / 2) * scaled_feature_value",
             },
             {
                 "parameter": "Single-qubit state",
@@ -249,7 +258,8 @@ def main():
                 "value": "K(x, y) = |<phi(x), phi(y)>|^2",
             },
             {"parameter": "Classifier", "value": "SVC with precomputed kernel"},
-            {"parameter": "SVM C value", "value": "1.0"},
+            {"parameter": "Tuned SVM C value", "value": "1.0"},
+            {"parameter": "Tuning method", "value": "4-fold cross-validation"},
             {"parameter": "Train/test split", "value": "80/20"},
             {"parameter": "Random state", "value": "42"},
         ]
@@ -260,10 +270,19 @@ def main():
     xgboost_predicted_labels = qml_predictions_dataframe[
         "xgboost_same_data_predicted_label"
     ]
+    tuned_true_labels = tuned_qml_predictions_dataframe["target_is_stable"]
+    tuned_qml_predicted_labels = tuned_qml_predictions_dataframe[
+        "tuned_qml_predicted_label"
+    ]
 
     metric_dataframe = pd.DataFrame(
         [
             get_metric_row("QML quantum kernel", true_labels, qml_predicted_labels),
+            get_metric_row(
+                "Tuned QML quantum kernel",
+                tuned_true_labels,
+                tuned_qml_predicted_labels,
+            ),
             get_metric_row(
                 "XGBoost same QML data",
                 true_labels,
@@ -280,20 +299,18 @@ def main():
     )
 
     qml_confusion_matrix = confusion_matrix(
-        true_labels,
-        qml_predicted_labels,
+        tuned_true_labels,
+        tuned_qml_predicted_labels,
         labels=[0, 1],
     )
 
-    sample_predictions_dataframe = qml_predictions_dataframe[
+    sample_predictions_dataframe = tuned_qml_predictions_dataframe[
         [
             "material_id",
             "formula",
             "target_is_stable",
-            "qml_predicted_label",
-            "qml_stable_probability",
-            "xgboost_same_data_predicted_label",
-            "prediction_agreement",
+            "tuned_qml_predicted_label",
+            "tuned_qml_stable_probability",
         ]
     ].head(10)
 
@@ -335,12 +352,14 @@ lithium_scored_dataframe = pd.read_csv(processed_folder / "lithium india scored.
 final_shortlist_dataframe = pd.read_csv(processed_folder / "final india battery shortlist.csv")
 qml_ready_dataframe = pd.read_csv(processed_folder / "qml_ready_lithium_india.csv")
 qml_predictions_dataframe = pd.read_csv(processed_folder / "qml baseline predictions.csv")
+tuned_qml_predictions_dataframe = pd.read_csv(processed_folder / "qml tuned best predictions.csv")
 
 dataset_summary = pd.DataFrame([
     {"dataset": "Lithium India scored", "rows": len(lithium_scored_dataframe), "columns": len(lithium_scored_dataframe.columns)},
     {"dataset": "Final India shortlist", "rows": len(final_shortlist_dataframe), "columns": len(final_shortlist_dataframe.columns)},
     {"dataset": "QML-ready dataset", "rows": len(qml_ready_dataframe), "columns": len(qml_ready_dataframe.columns)},
     {"dataset": "QML test predictions", "rows": len(qml_predictions_dataframe), "columns": len(qml_predictions_dataframe.columns)},
+    {"dataset": "Tuned QML test predictions", "rows": len(tuned_qml_predictions_dataframe), "columns": len(tuned_qml_predictions_dataframe.columns)},
 ])
 display(dataset_summary)"""
     dataset_summary_dataframe = pd.DataFrame(
@@ -364,6 +383,11 @@ display(dataset_summary)"""
                 "dataset": "QML test predictions",
                 "rows": len(qml_predictions_dataframe),
                 "columns": len(qml_predictions_dataframe.columns),
+            },
+            {
+                "dataset": "Tuned QML test predictions",
+                "rows": len(tuned_qml_predictions_dataframe),
+                "columns": len(tuned_qml_predictions_dataframe.columns),
             },
         ]
     )
@@ -542,13 +566,16 @@ display(top_candidates_dataframe)"""
 
     quantum_parameters_source = """quantum_parameters_dataframe = pd.DataFrame([
     {"parameter": "QML model type", "value": "Simulated quantum kernel classifier"},
-    {"parameter": "Number of qubits", "value": "10"},
-    {"parameter": "Quantum state size", "value": "1024"},
-    {"parameter": "Feature encoding", "value": "angle = pi * scaled_feature_value"},
+    {"parameter": "Original number of qubits", "value": "10"},
+    {"parameter": "Tuned number of qubits", "value": "8"},
+    {"parameter": "Tuned quantum state size", "value": "256"},
+    {"parameter": "Original feature encoding", "value": "angle = pi * scaled_feature_value"},
+    {"parameter": "Tuned feature encoding", "value": "angle = (pi / 2) * scaled_feature_value"},
     {"parameter": "Single-qubit state", "value": "[cos(angle / 2), sin(angle / 2)]"},
     {"parameter": "Kernel formula", "value": "K(x, y) = |<phi(x), phi(y)>|^2"},
     {"parameter": "Classifier", "value": "SVC with precomputed kernel"},
-    {"parameter": "SVM C value", "value": "1.0"},
+    {"parameter": "Tuned SVM C value", "value": "1.0"},
+    {"parameter": "Tuning method", "value": "4-fold cross-validation"},
     {"parameter": "Train/test split", "value": "80/20"},
     {"parameter": "Random state", "value": "42"},
 ])
@@ -566,6 +593,8 @@ display(quantum_parameters_dataframe)"""
     metric_source = """true_labels = qml_predictions_dataframe["target_is_stable"]
 qml_predicted_labels = qml_predictions_dataframe["qml_predicted_label"]
 xgboost_predicted_labels = qml_predictions_dataframe["xgboost_same_data_predicted_label"]
+tuned_true_labels = tuned_qml_predictions_dataframe["target_is_stable"]
+tuned_qml_predicted_labels = tuned_qml_predictions_dataframe["tuned_qml_predicted_label"]
 
 metric_dataframe = pd.DataFrame([
     {
@@ -574,6 +603,13 @@ metric_dataframe = pd.DataFrame([
         "stable_precision": precision_score(true_labels, qml_predicted_labels, zero_division=0),
         "stable_recall": recall_score(true_labels, qml_predicted_labels, zero_division=0),
         "stable_f1": f1_score(true_labels, qml_predicted_labels, zero_division=0),
+    },
+    {
+        "model": "Tuned QML quantum kernel",
+        "accuracy": accuracy_score(tuned_true_labels, tuned_qml_predicted_labels),
+        "stable_precision": precision_score(tuned_true_labels, tuned_qml_predicted_labels, zero_division=0),
+        "stable_recall": recall_score(tuned_true_labels, tuned_qml_predicted_labels, zero_division=0),
+        "stable_f1": f1_score(tuned_true_labels, tuned_qml_predicted_labels, zero_division=0),
     },
     {
         "model": "XGBoost same QML data",
@@ -615,7 +651,7 @@ plt.show()"""
         index=["actual_unstable", "actual_stable"],
         columns=["predicted_unstable", "predicted_stable"],
     )
-    confusion_source = """qml_confusion_matrix = confusion_matrix(true_labels, qml_predicted_labels, labels=[0, 1])
+    confusion_source = """qml_confusion_matrix = confusion_matrix(tuned_true_labels, tuned_qml_predicted_labels, labels=[0, 1])
 confusion_dataframe = pd.DataFrame(
     qml_confusion_matrix,
     index=["actual_unstable", "actual_stable"],
@@ -625,7 +661,7 @@ display(confusion_dataframe)
 
 plt.figure(figsize=(5.8, 4.8))
 plt.imshow(qml_confusion_matrix, cmap="Blues")
-plt.title("QML Confusion Matrix")
+plt.title("Tuned QML Confusion Matrix")
 plt.xticks([0, 1], ["Predicted unstable", "Predicted stable"])
 plt.yticks([0, 1], ["Actual unstable", "Actual stable"])
 for row_index in range(2):
@@ -642,15 +678,13 @@ plt.show()"""
     )
     execution_count += 1
 
-    predictions_source = """sample_predictions_dataframe = qml_predictions_dataframe[
+    predictions_source = """sample_predictions_dataframe = tuned_qml_predictions_dataframe[
     [
         "material_id",
         "formula",
         "target_is_stable",
-        "qml_predicted_label",
-        "qml_stable_probability",
-        "xgboost_same_data_predicted_label",
-        "prediction_agreement",
+        "tuned_qml_predicted_label",
+        "tuned_qml_stable_probability",
     ]
 ].head(10)
 display(sample_predictions_dataframe)"""
@@ -672,16 +706,19 @@ display(sample_predictions_dataframe)"""
 - Trained XGBoost as the classical baseline.
 - Prepared a balanced QML-ready dataset.
 - Trained a first simulated quantum-kernel classifier.
+- Tuned QML hyperparameters using 4-fold cross-validation.
 
 **Main model result**
 
 - QML accuracy on QML-ready test split: **0.8100**
+- Tuned QML accuracy on QML-ready test split: **0.8200**
+- Tuned QML stable F1 on QML-ready test split: **0.8269**
 - Same-data XGBoost accuracy: **0.8300**
 
 **Next step**
 
-Create final report visuals and try improved QML feature maps or smaller
-feature sets.
+Create final report visuals and try entangled QML feature maps or
+hardware-oriented circuits.
 """
     cells.append(
         make_code_cell(
@@ -694,16 +731,19 @@ feature sets.
 - Trained XGBoost as the classical baseline.
 - Prepared a balanced QML-ready dataset.
 - Trained a first simulated quantum-kernel classifier.
+- Tuned QML hyperparameters using 4-fold cross-validation.
 
 **Main model result**
 
 - QML accuracy on QML-ready test split: **0.8100**
+- Tuned QML accuracy on QML-ready test split: **0.8200**
+- Tuned QML stable F1 on QML-ready test split: **0.8269**
 - Same-data XGBoost accuracy: **0.8300**
 
 **Next step**
 
-Create final report visuals and try improved QML feature maps or smaller
-feature sets.
+Create final report visuals and try entangled QML feature maps or
+hardware-oriented circuits.
 \"\"\"))""",
             [make_markdown_output(conclusion_markdown)],
             execution_count,
