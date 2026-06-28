@@ -42,4 +42,5 @@ Rows saved: 200
 | Original QML baseline | 0.8100 | 0.8173 |
 | Tuned QML baseline | 0.8200 | 0.8269 |
 | Improved QML separate experiment | 0.8150 | 0.8230 |
+| Improved QML with threshold tuning | 0.8200 | 0.8269 |
 | Same-data XGBoost baseline | 0.8300 | 0.8283 |
