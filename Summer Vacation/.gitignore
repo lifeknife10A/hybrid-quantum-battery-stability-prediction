@@ -1,0 +1,28 @@
+# macOS and editor files
+.DS_Store
+**/.DS_Store
+~$*
+
+# Python cache and local package folders
+__pycache__/
+*.py[cod]
+.python_packages/
+.venv/
+venv/
+env/
+
+# Local generated previews
+.rendered_indian_battery_materials_report/
+
+# Large reproducible raw dataset files
+data/raw/materials_project_hf/*.parquet
+
+# Large compressed reference archives
+Paper/*.zip
+
+# Optional large processed binary data
+data/processed/*.parquet
+
+# Temporary or local logs
+*.log
+*.tmp
