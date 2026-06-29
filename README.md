@@ -191,6 +191,3 @@ The notebook includes a sample quantum circuit drawing. A saved image extracted 
 
 ## AI Assistance Disclosure
 This project was developed as part of academic coursework. AI tools (such as ChatGPT) were used for assistance in structuring, debugging, and documentation. The implementation, logic, and understanding were developed and verified independently.
-
-## My Contribution / What I Learned
-This project helped me understand how a hybrid quantum-classical workflow can be built in a practical notebook. I worked through data preprocessing, dimensionality reduction, quantum feature encoding with Qiskit, and model comparison against a classical baseline. It also helped me explain quantum computing in a grounded way as a simulator-based feature engineering approach rather than as a claim of quantum advantage.
