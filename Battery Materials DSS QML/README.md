@@ -1,4 +1,4 @@
-# Summer Vacation Battery Materials Project
+# Battery Materials DSS QML
 
 This project builds a simple, student-friendly pipeline for lithium-ion battery
 material discovery with an India-first screening layer.
@@ -73,7 +73,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | File | Purpose |
 | --- | --- |
 | `Project understanding.md` | Main project understanding document. |
-| `Summer Vacation Main Presentation.ipynb` | Presentation-ready notebook with outputs in every cell. |
+| `Battery Materials DSS QML Main Presentation.ipynb` | Presentation-ready notebook with outputs in every cell. |
 | `Indian Battery Materials Report.docx` | Report on India-relevant battery materials. |
 | `Literature Review.xlsx` | Literature review workbook. |
 | `scripts/process_materials_project_dataset.py` | Creates the lithium-filtered dataset. |

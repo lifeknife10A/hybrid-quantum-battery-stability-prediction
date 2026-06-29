@@ -2,7 +2,7 @@
 
 Generated on: 2026-06-28
 
-Project folder: `Summer Vacation`
+Project folder: `Battery Materials DSS QML`
 
 ## Main Problem
 

@@ -1,7 +1,7 @@
-numpy
 pandas
+pyarrow
+numpy
 scikit-learn
 xgboost
-qiskit
 matplotlib
 notebook

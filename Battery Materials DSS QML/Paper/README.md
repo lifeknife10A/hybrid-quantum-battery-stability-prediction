@@ -9,7 +9,7 @@ they are useful for local study.
 
 Keep the local PDFs in:
 
-`/Users/krish/Desktop/Quantum Computing/Summer Vacation/Paper/`
+`/Users/krish/Quantum Computing/Battery Materials DSS QML/Paper/`
 
 Main reference types used in the project:
 

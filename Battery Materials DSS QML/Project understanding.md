@@ -4,7 +4,7 @@ Created: 2026-06-14
 
 Folder studied:
 
-- `Summer Vacation/Paper/`
+- `Battery Materials DSS QML/Paper/`
 - Pasted project reset text
 - Existing prototype files in the main project folder
 

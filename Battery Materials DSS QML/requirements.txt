@@ -3,3 +3,5 @@ pyarrow
 numpy
 scikit-learn
 xgboost
+matplotlib
+notebook
