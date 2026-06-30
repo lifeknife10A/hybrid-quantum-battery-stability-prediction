@@ -118,6 +118,7 @@ def make_stream_output(text):
 
 def make_code_cell(source_text, outputs, execution_count):
     return {
+        "id": f"cell-{execution_count:02d}",
         "cell_type": "code",
         "execution_count": execution_count,
         "metadata": {},
@@ -1032,7 +1033,6 @@ materials discovery.
     data_loading_source = """from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib.patches as patches
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
 project_folder = Path.cwd()
@@ -1046,6 +1046,9 @@ dss_material_ranking_dataframe = dss_compound_ranking_dataframe.copy()
 qml_ready_dataframe = pd.read_csv(processed_folder / "qml_ready_lithium_india.csv")
 qml_predictions_dataframe = pd.read_csv(processed_folder / "qml baseline predictions.csv")
 tuned_qml_predictions_dataframe = pd.read_csv(processed_folder / "qml tuned best predictions.csv")
+qml_exhaustive_results_dataframe = pd.read_csv(processed_folder / "qml exhaustive feature combination results.csv")
+qml_exhaustive_top_results_dataframe = pd.read_csv(processed_folder / "qml exhaustive feature combination top results.csv")
+qml_exhaustive_best_result = qml_exhaustive_top_results_dataframe.iloc[0]
 improved_qml_dataset_dataframe = pd.read_csv(processed_folder / "improved qml feature pca.csv")
 improved_qml_tuning_results_dataframe = pd.read_csv(processed_folder / "improved qml tuning results.csv")
 improved_qml_predictions_dataframe = pd.read_csv(processed_folder / "improved qml best predictions.csv")
@@ -1068,6 +1071,8 @@ dataset_summary = pd.DataFrame([
     {"dataset": "QML-ready dataset", "rows": len(qml_ready_dataframe), "columns": len(qml_ready_dataframe.columns)},
     {"dataset": "QML test predictions", "rows": len(qml_predictions_dataframe), "columns": len(qml_predictions_dataframe.columns)},
     {"dataset": "Tuned QML test predictions", "rows": len(tuned_qml_predictions_dataframe), "columns": len(tuned_qml_predictions_dataframe.columns)},
+    {"dataset": "Exhaustive QML tuning results", "rows": len(qml_exhaustive_results_dataframe), "columns": len(qml_exhaustive_results_dataframe.columns)},
+    {"dataset": "Exhaustive QML top results", "rows": len(qml_exhaustive_top_results_dataframe), "columns": len(qml_exhaustive_top_results_dataframe.columns)},
     {"dataset": "Improved QML PCA dataset", "rows": len(improved_qml_dataset_dataframe), "columns": len(improved_qml_dataset_dataframe.columns)},
     {"dataset": "Improved QML tuning results", "rows": len(improved_qml_tuning_results_dataframe), "columns": len(improved_qml_tuning_results_dataframe.columns)},
     {"dataset": "Improved QML test predictions", "rows": len(improved_qml_predictions_dataframe), "columns": len(improved_qml_predictions_dataframe.columns)},
@@ -1119,6 +1124,16 @@ display(dataset_summary)"""
                 "dataset": "Tuned QML test predictions",
                 "rows": len(tuned_qml_predictions_dataframe),
                 "columns": len(tuned_qml_predictions_dataframe.columns),
+            },
+            {
+                "dataset": "Exhaustive QML tuning results",
+                "rows": len(qml_exhaustive_results_dataframe),
+                "columns": len(qml_exhaustive_results_dataframe.columns),
+            },
+            {
+                "dataset": "Exhaustive QML top results",
+                "rows": len(qml_exhaustive_top_results_dataframe),
+                "columns": len(qml_exhaustive_top_results_dataframe.columns),
             },
             {
                 "dataset": "Improved QML PCA dataset",
