@@ -174,7 +174,9 @@ Final repeated-split QML setup:
 
 ## How QML Hyperparameters Were Found
 
-The project tested combinations instead of guessing manually:
+The project used two tuning passes instead of guessing manually.
+
+First, the original grid search tested ordered top-N feature groups:
 
 - feature counts: `4`, `6`, `8`, `10`
 - angle scales: `pi/2`, `pi`, `2pi`
@@ -182,7 +184,30 @@ The project tested combinations instead of guessing manually:
 - total initial tuning experiments: `72`
 - validation method: 4-fold cross-validation
 
-The best improved QML setup was then checked across 10 random balanced splits.
+Then an exhaustive feature-combination search was added:
+
+- feature counts tested: `4`, `6`, `8`, `10`
+- available scaled features: `10`
+- feature combinations tested: `466`
+- angle scales tested: `pi/2`, `pi`, `2pi`
+- SVM `C` values tested: `0.1`, `0.5`, `1.0`, `2.0`, `5.0`, `10.0`
+- total saved configurations: `8,388`
+- validation method: 4-fold cross-validation
+
+Best exhaustive simple-kernel result:
+
+| Feature Count | Angle Scale | SVM `C` | CV Accuracy | CV Stable F1 |
+| ---: | --- | ---: | ---: | ---: |
+| 8 | `pi` | 10.0 | 0.8138 | 0.8162 |
+
+Best exhaustive feature group:
+
+`scaled_space_group_number`, `scaled_band_gap`,
+`scaled_formation_energy_per_atom`, `scaled_number_of_elements`,
+`scaled_has_fe`, `scaled_has_p`, `scaled_has_c`, `scaled_has_s`
+
+The final improved QML setup was separately checked across 10 random balanced
+splits.
 
 ## Important Files
 
@@ -190,8 +215,12 @@ The best improved QML setup was then checked across 10 random balanced splits.
 | --- | --- |
 | `Battery Materials DSS QML/Battery Materials DSS QML Main Presentation.ipynb` | Main presentation notebook with outputs in every cell. |
 | `Battery Materials DSS QML/scripts/create_dss_recommendation_ranking.py` | Builds the QML-primary hybrid DSS table. |
+| `Battery Materials DSS QML/scripts/tune_qml_feature_combinations.py` | Runs exhaustive QML feature-combination tuning. |
 | `Battery Materials DSS QML/data/processed/hybrid qml xgboost compound ranking.csv` | Main hybrid recommendation table. |
+| `Battery Materials DSS QML/data/processed/qml exhaustive feature combination results.csv` | Full 8,388-row exhaustive QML tuning result table. |
+| `Battery Materials DSS QML/data/processed/qml exhaustive feature combination top results.csv` | Top 20 exhaustive QML tuning results. |
 | `Battery Materials DSS QML/data/metadata/dss_recommendation_summary.md` | Explanation of DSS ranking logic. |
+| `Battery Materials DSS QML/data/metadata/qml_exhaustive_feature_tuning_summary.md` | Summary of exhaustive feature-combination tuning. |
 | `Battery Materials DSS QML/data/processed/qml circuit diagram.png` | QML circuit diagram for presentation. |
 
 ## How To Run
@@ -199,6 +228,7 @@ The best improved QML setup was then checked across 10 random balanced splits.
 ```bash
 python3 -m pip install -r requirements.txt
 cd "Battery Materials DSS QML"
+python3 scripts/tune_qml_feature_combinations.py
 python3 scripts/create_dss_recommendation_ranking.py
 python3 scripts/create_main_presentation_notebook.py
 ```

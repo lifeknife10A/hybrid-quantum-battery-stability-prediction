@@ -29,6 +29,12 @@ dss_compound_ranking_path = processed_folder / "dss compound recommendation rank
 qml_ready_path = processed_folder / "qml_ready_lithium_india.csv"
 qml_predictions_path = processed_folder / "qml baseline predictions.csv"
 tuned_qml_predictions_path = processed_folder / "qml tuned best predictions.csv"
+qml_exhaustive_results_path = (
+    processed_folder / "qml exhaustive feature combination results.csv"
+)
+qml_exhaustive_top_results_path = (
+    processed_folder / "qml exhaustive feature combination top results.csv"
+)
 improved_qml_dataset_path = processed_folder / "improved qml feature pca.csv"
 improved_qml_tuning_results_path = processed_folder / "improved qml tuning results.csv"
 improved_qml_predictions_path = processed_folder / "improved qml best predictions.csv"
@@ -402,6 +408,10 @@ def main():
     qml_ready_dataframe = pd.read_csv(qml_ready_path)
     qml_predictions_dataframe = pd.read_csv(qml_predictions_path)
     tuned_qml_predictions_dataframe = pd.read_csv(tuned_qml_predictions_path)
+    qml_exhaustive_results_dataframe = pd.read_csv(qml_exhaustive_results_path)
+    qml_exhaustive_top_results_dataframe = pd.read_csv(
+        qml_exhaustive_top_results_path
+    )
     improved_qml_dataset_dataframe = pd.read_csv(improved_qml_dataset_path)
     improved_qml_tuning_results_dataframe = pd.read_csv(improved_qml_tuning_results_path)
     improved_qml_predictions_dataframe = pd.read_csv(improved_qml_predictions_path)
@@ -442,6 +452,7 @@ def main():
         by=["cv_stable_f1", "cv_accuracy", "kernel_target_alignment"],
         ascending=[False, False, False],
     ).iloc[0]
+    qml_exhaustive_best_result = qml_exhaustive_top_results_dataframe.iloc[0]
 
     pipeline_counts_dataframe = pd.DataFrame(
         [
@@ -635,6 +646,31 @@ def main():
             },
         ]
     )
+
+    qml_exhaustive_summary_dataframe = pd.DataFrame(
+        [
+            {
+                "total_configurations": len(qml_exhaustive_results_dataframe),
+                "feature_combinations": 466,
+                "feature_count": int(qml_exhaustive_best_result["feature_count"]),
+                "angle_scale": qml_exhaustive_best_result["angle_scale"],
+                "svm_c": qml_exhaustive_best_result["c_value"],
+                "cv_accuracy": qml_exhaustive_best_result["cv_accuracy"],
+                "cv_stable_f1": qml_exhaustive_best_result["cv_stable_f1"],
+            }
+        ]
+    )
+    qml_exhaustive_top_display_dataframe = qml_exhaustive_top_results_dataframe[
+        [
+            "feature_count",
+            "feature_names",
+            "angle_scale",
+            "c_value",
+            "cv_accuracy",
+            "cv_stable_recall",
+            "cv_stable_f1",
+        ]
+    ].head(10)
 
     true_labels = qml_predictions_dataframe["target_is_stable"]
     qml_predicted_labels = qml_predictions_dataframe["qml_predicted_label"]
@@ -1520,6 +1556,57 @@ plt.show()"""
     )
     execution_count += 1
 
+    qml_exhaustive_markdown = """## Exhaustive QML Feature-Combination Tuning
+
+This step tests the stronger tuning approach: all selected feature-count
+combinations are compared with all angle scales and all SVM `C` values. The
+full result table has 8,388 rows.
+"""
+    qml_exhaustive_source = """display(Markdown(\"\"\"## Exhaustive QML Feature-Combination Tuning
+
+This step tests the stronger tuning approach: all selected feature-count
+combinations are compared with all angle scales and all SVM `C` values. The
+full result table has 8,388 rows.
+\"\"\"))
+
+qml_exhaustive_summary_dataframe = pd.DataFrame([
+    {
+        "total_configurations": len(qml_exhaustive_results_dataframe),
+        "feature_combinations": 466,
+        "feature_count": int(qml_exhaustive_best_result["feature_count"]),
+        "angle_scale": qml_exhaustive_best_result["angle_scale"],
+        "svm_c": qml_exhaustive_best_result["c_value"],
+        "cv_accuracy": qml_exhaustive_best_result["cv_accuracy"],
+        "cv_stable_f1": qml_exhaustive_best_result["cv_stable_f1"],
+    }
+])
+display(qml_exhaustive_summary_dataframe)
+
+qml_exhaustive_top_display_dataframe = qml_exhaustive_top_results_dataframe[
+    [
+        "feature_count",
+        "feature_names",
+        "angle_scale",
+        "c_value",
+        "cv_accuracy",
+        "cv_stable_recall",
+        "cv_stable_f1",
+    ]
+].head(10)
+display(qml_exhaustive_top_display_dataframe)"""
+    cells.append(
+        make_code_cell(
+            qml_exhaustive_source,
+            [
+                make_markdown_output(qml_exhaustive_markdown),
+                make_table_output(qml_exhaustive_summary_dataframe),
+                make_table_output(qml_exhaustive_top_display_dataframe),
+            ],
+            execution_count,
+        )
+    )
+    execution_count += 1
+
     metric_figure = create_metric_figure(metric_dataframe)
     metric_source = """true_labels = qml_predictions_dataframe["target_is_stable"]
 qml_predicted_labels = qml_predictions_dataframe["qml_predicted_label"]
@@ -2003,6 +2090,8 @@ display(qml_vs_logistic_comparison_dataframe)"""
 - Trained a first simulated quantum-kernel classifier as the quantum-future
   experiment.
 - Tuned QML hyperparameters using 4-fold cross-validation.
+- Added exhaustive QML feature-combination tuning with 8,388 saved
+  configurations.
 - Added a separate improved-QML section using feature importance, PCA, and an
   entangled-kernel search.
 - Added a threshold experiment for the improved-QML stable probability.
@@ -2053,6 +2142,8 @@ check today.
 - Trained a first simulated quantum-kernel classifier as the quantum-future
   experiment.
 - Tuned QML hyperparameters using 4-fold cross-validation.
+- Added exhaustive QML feature-combination tuning with 8,388 saved
+  configurations.
 - Added a separate improved-QML section using feature importance, PCA, and an
   entangled-kernel search.
 - Added a threshold experiment for the improved-QML stable probability.

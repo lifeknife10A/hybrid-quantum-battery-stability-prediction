@@ -55,7 +55,8 @@ flowchart TD
     G --> H["QML-ready dataset<br/>1,000 balanced rows"]
     H --> I["QML baseline comparison<br/>QML 0.81, same-data XGBoost 0.83"]
     I --> J["QML tuning<br/>best QML accuracy 0.82"]
-    J --> K["Separate improved-QML section<br/>feature importance, PCA, entangled kernels"]
+    J --> J2["Exhaustive feature-combination tuning<br/>8,388 saved configurations"]
+    J2 --> K["Separate improved-QML section<br/>feature importance, PCA, entangled kernels"]
     K --> L["Threshold experiment<br/>probability cutoff tuning"]
     L --> M["Kernel alignment experiment<br/>quantum-aware feature selection"]
     M --> N["Repeated split validation<br/>10 random train/test splits"]
@@ -78,6 +79,7 @@ flowchart TD
 | QML baseline | `qml_ready_lithium_india.csv` | `data/processed/qml baseline predictions.csv` | 200 test predictions | `scripts/train_qml_baseline.py` | `data/metadata/qml_baseline_results.md` |
 | QML tuning | `qml_ready_lithium_india.csv` | `data/processed/qml tuning results.csv` | 72 experiments | `scripts/tune_qml_baseline.py` | `data/metadata/qml_tuning_results.md` |
 | Tuned QML best model | `qml_ready_lithium_india.csv` | `data/processed/qml tuned best predictions.csv` | 200 test predictions | `scripts/tune_qml_baseline.py` | `data/metadata/qml_best_model_summary.md` |
+| Exhaustive QML feature-combination tuning | `qml_ready_lithium_india.csv` | `data/processed/qml exhaustive feature combination results.csv` and `data/processed/qml exhaustive feature combination top results.csv` | 8,388 configurations | `scripts/tune_qml_feature_combinations.py` | `data/metadata/qml_exhaustive_feature_tuning_summary.md` |
 | Improved QML separate section | `lithium india scored.csv` | `data/processed/improved qml feature pca.csv`, `data/processed/improved qml tuning results.csv`, `data/processed/improved qml best predictions.csv`, `data/processed/improved qml threshold results.csv`, `data/processed/improved qml threshold predictions.csv`, `data/processed/improved qml alignment scores.csv`, `data/processed/improved qml alignment results.csv`, and `data/processed/improved qml alignment predictions.csv` | 1,000 PCA rows; 162 experiments; 9 thresholds; 72 alignment scores; 48 alignment CV rows; 200 test predictions | `scripts/run_improved_qml_experiments.py` | `data/metadata/improved_qml_section_summary.md` |
 | Best QML repeated split validation | `lithium india scored.csv` | `data/processed/best qml repeated split results.csv` and `data/processed/best qml repeated split predictions.csv` | 10 splits; 2,000 total test predictions | `scripts/run_best_qml_repeated_splits.py` | `data/metadata/improved_qml_step_07_repeated_split_validation.md` |
 | QML vs Logistic Regression | `lithium india scored.csv` | `data/processed/qml vs logistic repeated split results.csv`, `data/processed/qml vs logistic repeated split summary.csv`, and `data/processed/qml vs logistic repeated split predictions.csv` | 10 splits; 20 model result rows; 2,000 total test predictions | `scripts/compare_qml_with_logistic_baseline.py` | `data/metadata/improved_qml_step_08_qml_vs_logistic.md` |
@@ -98,6 +100,8 @@ flowchart TD
 | QML baseline prediction file | 200 | 11 | Test-set QML and same-data XGBoost predictions. |
 | QML tuning results | 72 | 12 | Hyperparameter search results. |
 | Tuned QML prediction file | 200 | 8 | Test-set predictions from the best tuned QML model. |
+| Exhaustive QML feature-combination results | 8,388 | 12 | All selected feature-count combinations tested against all angle scales and SVM C values. |
+| Exhaustive QML top results | 20 | 12 | Top exhaustive QML feature-combination results sorted by stable F1. |
 | Improved QML PCA dataset | 1,000 | 14 | Separate feature-importance and PCA dataset. |
 | Improved QML tuning results | 162 | 13 | Product and entangled kernel hyperparameter search results. |
 | Improved QML prediction file | 200 | 8 | Test-set predictions from the best improved-QML model. |
@@ -206,6 +210,17 @@ This keeps the project quantum-led for presentation while staying safe. If QML
 is confident, the QML probability has more influence. If QML is uncertain,
 XGBoost has more corrective influence. Strong model disagreement is flagged for
 research review.
+
+### 2B. Exhaustive QML Feature-Combination Tuning
+
+The original QML tuning tested ordered top-N feature groups. A stronger
+follow-up tuning step now tests every feature combination for feature counts 4,
+6, 8, and 10. Each feature group is tested with angle scales `pi/2`, `pi`, and
+`2pi`, and SVM C values `0.1`, `0.5`, `1.0`, `2.0`, `5.0`, and `10.0`.
+
+This creates 8,388 saved configurations. The best simple-kernel cross-validation
+row used 8 features, angle scale `pi`, SVM C `10.0`, CV accuracy `0.8138`, and
+CV stable F1 `0.8162`.
 
 ### 3. India Columns Are Not Used For Training
 

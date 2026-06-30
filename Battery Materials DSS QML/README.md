@@ -84,11 +84,12 @@ instructions.
 7. Create the final India battery shortlist.
 8. Create the QML-ready balanced dataset.
 9. Train and tune simulated QML kernel classifiers.
-10. Validate best QML across repeated random train/test splits.
-11. Compare best QML with Logistic Regression and same-data XGBoost.
-12. Create a QML circuit diagram.
-13. Create QML-primary hybrid DSS recommendation rankings.
-14. Regenerate the presentation notebook with saved outputs.
+10. Run exhaustive feature-combination tuning for the simple QML kernel.
+11. Validate best QML across repeated random train/test splits.
+12. Compare best QML with Logistic Regression and same-data XGBoost.
+13. Create a QML circuit diagram.
+14. Create QML-primary hybrid DSS recommendation rankings.
+15. Regenerate the presentation notebook with saved outputs.
 
 ## Important Files
 
@@ -100,11 +101,15 @@ instructions.
 | `scripts/create_dss_recommendation_ranking.py` | Creates the QML-primary hybrid recommendation table. |
 | `scripts/create_main_presentation_notebook.py` | Regenerates the presentation notebook. |
 | `scripts/train_xgboost_baseline.py` | Trains XGBoost baseline models. |
+| `scripts/tune_qml_feature_combinations.py` | Tests all selected feature-count combinations with all angle scales and SVM C values. |
 | `scripts/run_best_qml_repeated_splits.py` | Runs repeated-split validation for best QML. |
 | `scripts/create_qml_circuit_diagram.py` | Creates the QML circuit diagram. |
 | `data/processed/hybrid qml xgboost compound ranking.csv` | Main hybrid compound ranking table. |
+| `data/processed/qml exhaustive feature combination results.csv` | Full 8,388-row exhaustive QML tuning table. |
+| `data/processed/qml exhaustive feature combination top results.csv` | Top 20 exhaustive QML tuning results. |
 | `data/processed/dss compound recommendation ranking.csv` | Same compound ranking table for DSS naming. |
 | `data/metadata/dss_recommendation_summary.md` | Summary of final DSS ranking logic. |
+| `data/metadata/qml_exhaustive_feature_tuning_summary.md` | Summary of exhaustive feature-combination tuning. |
 | `data/processed/qml circuit diagram.png` | Circuit visual for presentation. |
 
 ## Why XGBoost
@@ -148,6 +153,33 @@ Final QML setup:
 | Rows per class | 500 stable + 500 unstable |
 | Validation | 10 random train/test splits |
 
+## Exhaustive QML Feature Tuning
+
+The earlier tuning tested ordered top-N features. A separate exhaustive tuning
+script now tests all feature combinations for the selected feature counts.
+
+| Item | Value |
+| --- | ---: |
+| Feature counts | `4`, `6`, `8`, `10` |
+| Available scaled features | 10 |
+| Feature combinations | 466 |
+| Angle scales | `pi/2`, `pi`, `2pi` |
+| SVM C values | `0.1`, `0.5`, `1.0`, `2.0`, `5.0`, `10.0` |
+| Total saved configurations | 8,388 |
+| Cross-validation folds | 4 |
+
+Best exhaustive simple-kernel result:
+
+| Feature Count | Angle Scale | SVM `C` | CV Accuracy | CV Stable F1 |
+| ---: | --- | ---: | ---: | ---: |
+| 8 | `pi` | 10.0 | 0.8138 | 0.8162 |
+
+Best exhaustive feature group:
+
+`scaled_space_group_number`, `scaled_band_gap`,
+`scaled_formation_energy_per_atom`, `scaled_number_of_elements`,
+`scaled_has_fe`, `scaled_has_p`, `scaled_has_c`, `scaled_has_s`
+
 ## Reproduce Locally
 
 Install dependencies:
@@ -174,6 +206,7 @@ python3 scripts/create_final_india_battery_shortlist.py
 python3 scripts/create_qml_ready_dataset.py
 python3 scripts/train_qml_baseline.py
 python3 scripts/tune_qml_baseline.py
+python3 scripts/tune_qml_feature_combinations.py
 python3 scripts/run_improved_qml_experiments.py
 python3 scripts/run_best_qml_repeated_splits.py
 python3 scripts/compare_qml_with_logistic_baseline.py
