@@ -492,8 +492,11 @@ def main():
         "battery_family",
         "dss_decision",
         "shortlist_rows",
+        "average_hybrid_recommendation_score",
+        "average_hybrid_stable_probability",
+        "average_qml_stable_probability",
+        "average_xgboost_stable_probability",
         "average_india_feasibility_score",
-        "average_predicted_stable_probability",
         "median_predicted_energy_above_hull",
         "top_formula",
         "short_reason",
@@ -507,9 +510,15 @@ def main():
         "formula",
         "battery_family",
         "dss_decision",
+        "hybrid_recommendation_score",
+        "hybrid_stable_probability",
+        "qml_stable_probability",
+        "xgboost_stable_probability",
+        "qml_confidence_band",
+        "hybrid_decision_role",
+        "model_disagreement",
         "shortlist_score",
         "india_feasibility_score",
-        "predicted_stable_probability",
         "predicted_energy_above_hull_clipped",
         "short_conceptual_reason",
     ]
@@ -1321,9 +1330,10 @@ The project is used as a Decision Support System here. The main output is a
 ranked list of exact lithium compound formulas. Battery family is shown only as
 supporting context.
 
-In this flow, XGBoost gives the practical present-day prediction signal. The
-QML section is kept as a quantum research comparison, not as the only source of
-the recommendation.
+In this flow, QML gives the first stability signal. XGBoost is used as a
+corrective backup when the QML probability is uncertain or when both models
+disagree. This keeps the DSS quantum-led without ignoring the stronger
+classical benchmark.
 """
     dss_source = """display(Markdown(\"\"\"## DSS Compound Recommendation Ranking
 
@@ -1331,9 +1341,10 @@ The project is used as a Decision Support System here. The main output is a
 ranked list of exact lithium compound formulas. Battery family is shown only as
 supporting context.
 
-In this flow, XGBoost gives the practical present-day prediction signal. The
-QML section is kept as a quantum research comparison, not as the only source of
-the recommendation.
+In this flow, QML gives the first stability signal. XGBoost is used as a
+corrective backup when the QML probability is uncertain or when both models
+disagree. This keeps the DSS quantum-led without ignoring the stronger
+classical benchmark.
 \"\"\"))
 
 dss_compound_display_columns = [
@@ -1342,9 +1353,15 @@ dss_compound_display_columns = [
     "material_id",
     "battery_family",
     "dss_decision",
+    "hybrid_recommendation_score",
+    "hybrid_stable_probability",
+    "qml_stable_probability",
+    "xgboost_stable_probability",
+    "qml_confidence_band",
+    "hybrid_decision_role",
+    "model_disagreement",
     "shortlist_score",
     "india_feasibility_score",
-    "predicted_stable_probability",
     "predicted_energy_above_hull_clipped",
     "band_gap",
     "short_conceptual_reason",
@@ -1365,8 +1382,11 @@ dss_family_display_columns = [
     "battery_family",
     "dss_decision",
     "shortlist_rows",
+    "average_hybrid_recommendation_score",
+    "average_hybrid_stable_probability",
+    "average_qml_stable_probability",
+    "average_xgboost_stable_probability",
     "average_india_feasibility_score",
-    "average_predicted_stable_probability",
     "median_predicted_energy_above_hull",
     "top_formula",
     "short_reason",
@@ -1386,9 +1406,15 @@ display(dss_family_display_dataframe)"""
                             "material_id",
                             "battery_family",
                             "dss_decision",
+                            "hybrid_recommendation_score",
+                            "hybrid_stable_probability",
+                            "qml_stable_probability",
+                            "xgboost_stable_probability",
+                            "qml_confidence_band",
+                            "hybrid_decision_role",
+                            "model_disagreement",
                             "shortlist_score",
                             "india_feasibility_score",
-                            "predicted_stable_probability",
                             "predicted_energy_above_hull_clipped",
                             "band_gap",
                             "short_conceptual_reason",
@@ -1971,7 +1997,7 @@ display(qml_vs_logistic_comparison_dataframe)"""
 
 - Built a complete lithium battery material pipeline.
 - Created India-focused material scoring and final shortlist.
-- Added DSS recommendation rankings for exact compound formulas.
+- Added QML-primary DSS recommendation rankings for exact compound formulas.
 - Trained XGBoost as the strong present-day classical benchmark.
 - Prepared a balanced QML-ready dataset.
 - Trained a first simulated quantum-kernel classifier as the quantum-future
@@ -2006,11 +2032,12 @@ display(qml_vs_logistic_comparison_dataframe)"""
 
 **Safe interpretation**
 
-XGBoost is stronger for the current full tabular DSS pipeline. QML is included
-because battery materials are quantum systems and quantum feature spaces are a
-future direction for materials discovery. The project therefore proves a safe
-student-level point: use classical ML for today's reliable DSS, and use
-simulated QML as a controlled experiment toward the quantum future.
+XGBoost is stronger on the full tabular benchmark, but the final DSS is
+quantum-led. QML gives the first recommendation signal and XGBoost is used as a
+corrective backup when QML is uncertain or when the models disagree. The safe
+student-level point is that quantum feature spaces are future-facing for
+materials discovery, while classical ML can still act as a practical safety
+check today.
 """
     cells.append(
         make_code_cell(
@@ -2020,7 +2047,7 @@ simulated QML as a controlled experiment toward the quantum future.
 
 - Built a complete lithium battery material pipeline.
 - Created India-focused material scoring and final shortlist.
-- Added DSS recommendation rankings for exact compound formulas.
+- Added QML-primary DSS recommendation rankings for exact compound formulas.
 - Trained XGBoost as the strong present-day classical benchmark.
 - Prepared a balanced QML-ready dataset.
 - Trained a first simulated quantum-kernel classifier as the quantum-future
@@ -2055,11 +2082,12 @@ simulated QML as a controlled experiment toward the quantum future.
 
 **Safe interpretation**
 
-XGBoost is stronger for the current full tabular DSS pipeline. QML is included
-because battery materials are quantum systems and quantum feature spaces are a
-future direction for materials discovery. The project therefore proves a safe
-student-level point: use classical ML for today's reliable DSS, and use
-simulated QML as a controlled experiment toward the quantum future.
+XGBoost is stronger on the full tabular benchmark, but the final DSS is
+quantum-led. QML gives the first recommendation signal and XGBoost is used as a
+corrective backup when QML is uncertain or when the models disagree. The safe
+student-level point is that quantum feature spaces are future-facing for
+materials discovery, while classical ML can still act as a practical safety
+check today.
 \"\"\"))""",
             [make_markdown_output(conclusion_markdown)],
             execution_count,

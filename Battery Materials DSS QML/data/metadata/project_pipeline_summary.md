@@ -1,6 +1,6 @@
 # Project Pipeline Summary
 
-Generated on: 2026-06-28
+Generated on: 2026-06-30
 
 Project folder: `Battery Materials DSS QML`
 
@@ -21,16 +21,14 @@ The project does not only ask, "Which material is stable?" It also asks:
 
 ## Student-Level Flow Update
 
-The project should be explained as a DSS first and a QML exploration second.
-XGBoost is the strong present-day classical benchmark for the full tabular
-pipeline. Simulated QML is included because battery materials are quantum
-systems at the atomic level, so quantum feature spaces are a future direction
-for materials discovery.
+The project should be explained as a DSS first, with QML as the primary
+research signal in the final recommendation table. XGBoost remains the strong
+present-day classical benchmark and correction layer.
 
-The safe claim is not that QML already beats XGBoost on the full dataset. The
-safe claim is that the project builds a practical DSS with XGBoost today, while
-using simulated QML as a controlled first step toward quantum-assisted material
-screening.
+The safe claim is not that QML already beats XGBoost on every full-dataset
+metric. The safe claim is that the project builds a QML-primary hybrid DSS:
+QML gives the first stability signal, and XGBoost is used when QML is uncertain
+or when both models disagree.
 
 ## Main Data Source
 
@@ -63,7 +61,7 @@ flowchart TD
     M --> N["Repeated split validation<br/>10 random train/test splits"]
     N --> O["QML vs Logistic Regression<br/>same splits and features"]
     O --> P["QML circuit diagram<br/>4-qubit feature-map explanation"]
-    P --> Q["DSS recommendation ranking<br/>business decision-support output"]
+    P --> Q["QML-primary hybrid DSS ranking<br/>compound decision-support output"]
 ```
 
 ## Artifact Map
@@ -84,7 +82,7 @@ flowchart TD
 | Best QML repeated split validation | `lithium india scored.csv` | `data/processed/best qml repeated split results.csv` and `data/processed/best qml repeated split predictions.csv` | 10 splits; 2,000 total test predictions | `scripts/run_best_qml_repeated_splits.py` | `data/metadata/improved_qml_step_07_repeated_split_validation.md` |
 | QML vs Logistic Regression | `lithium india scored.csv` | `data/processed/qml vs logistic repeated split results.csv`, `data/processed/qml vs logistic repeated split summary.csv`, and `data/processed/qml vs logistic repeated split predictions.csv` | 10 splits; 20 model result rows; 2,000 total test predictions | `scripts/compare_qml_with_logistic_baseline.py` | `data/metadata/improved_qml_step_08_qml_vs_logistic.md` |
 | QML circuit diagram | Best QML setup | `data/processed/qml circuit diagram.png` | 1 PNG diagram | `scripts/create_qml_circuit_diagram.py` | `data/metadata/qml_circuit_diagram_summary.md` |
-| DSS compound recommendation ranking | `final india battery shortlist.csv` | `data/processed/dss compound recommendation ranking.csv`, `data/processed/dss material recommendation ranking.csv`, and `data/processed/dss battery family recommendation ranking.csv` | 629 compound rows; 6 family-context rows | `scripts/create_dss_recommendation_ranking.py` | `data/metadata/dss_recommendation_summary.md` |
+| QML-primary hybrid DSS ranking | `final india battery shortlist.csv` and `lithium india scored.csv` | `data/processed/hybrid qml xgboost compound ranking.csv`, `data/processed/dss compound recommendation ranking.csv`, `data/processed/dss material recommendation ranking.csv`, and `data/processed/dss battery family recommendation ranking.csv` | 629 compound rows; 6 family-context rows | `scripts/create_dss_recommendation_ranking.py` | `data/metadata/dss_recommendation_summary.md` |
 
 ## Dataset Sizes
 
@@ -113,8 +111,8 @@ flowchart TD
 | QML vs Logistic repeated split results | 20 | 11 | Per-split metrics for both QML and Logistic Regression. |
 | QML vs Logistic repeated split summary | 8 | 6 | Mean, standard deviation, minimum, and maximum metrics for both models. |
 | QML vs Logistic repeated split predictions | 2,000 | 11 | Test predictions from all repeated splits. |
-| DSS compound recommendation ranking | 629 | 13 | Main ranked DSS table for exact compound formulas. |
-| DSS battery family context | 6 | 12 | Supporting chemistry-family context for the compound recommendations. |
+| Hybrid DSS compound recommendation ranking | 629 | 22 | Main QML-primary ranked DSS table for exact compound formulas. |
+| DSS battery family context | 6 | 16 | Supporting chemistry-family context for the compound recommendations. |
 
 ## Key Columns Used
 
@@ -147,6 +145,14 @@ flowchart TD
 | `dss_rank` | Final DSS rank for exact compound recommendation output. |
 | `dss_decision` | Business-facing decision label such as near-term purchase, pilot option, or R&D option. |
 | `short_conceptual_reason` | Short conceptual reason explaining why a material appears in the DSS ranking. |
+| `hybrid_recommendation_score` | Final DSS score combining QML probability, XGBoost correction, India feasibility, hull score, and shortlist score. |
+| `hybrid_stable_probability` | Weighted stable probability used in the final DSS ranking. |
+| `xgboost_stable_probability` | XGBoost stable probability copied into the hybrid DSS table for comparison and correction. |
+| `qml_weight` | Weight given to QML in the hybrid stable probability. |
+| `xgboost_correction_weight` | Weight given to XGBoost as the correction signal. |
+| `qml_confidence_band` | Human-readable label showing whether QML is confident or uncertain. |
+| `hybrid_decision_role` | Explains whether the row is QML-led, XGBoost-corrected, or marked for review. |
+| `model_disagreement` | Marks cases where QML and XGBoost probabilities are far apart. |
 | `improved_pca_1` to `improved_pca_8` | PCA features created for the separate improved-QML experiment. |
 | `improved_qml_predicted_label` | Predicted stable or unstable class from the best improved-QML model. |
 | `improved_qml_stable_probability` | Stable-class probability from the best improved-QML model. |
@@ -186,6 +192,20 @@ We selected XGBoost because the project data is tabular:
 
 XGBoost is a strong baseline for this type of data and is easier to explain
 than a very complex deep learning model.
+
+### 2A. QML-Primary Hybrid DSS
+
+The final recommendation table now gives QML the first role. The best QML
+kernel setup is trained as an ensemble across repeated balanced samples, then it
+scores the final shortlisted compounds. XGBoost is still shown in the same table
+as a correction signal.
+
+Reason:
+
+This keeps the project quantum-led for presentation while staying safe. If QML
+is confident, the QML probability has more influence. If QML is uncertain,
+XGBoost has more corrective influence. Strong model disagreement is flagged for
+research review.
 
 ### 3. India Columns Are Not Used For Training
 

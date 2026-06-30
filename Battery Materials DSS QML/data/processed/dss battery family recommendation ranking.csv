@@ -1,7 +1,7 @@
-dss_rank,dss_family_rank,battery_family,dss_decision,shortlist_rows,average_shortlist_score,average_india_feasibility_score,average_predicted_stable_probability,median_predicted_energy_above_hull,top_material_id,top_formula,short_reason
-1,1,LFP-family,Best near-term purchase direction,464,45.2782,96.0259,0.0148,0.0487,mp-19430,Li3Fe2(PO4)3,India-friendly iron phosphate chemistry; avoids nickel and cobalt.
-2,2,LMFP-family,Good pilot and next-generation option,48,45.14,94.2083,0.0094,0.0398,mp-1221200,Na4Li4MnFe3P4(O4F)4,LFP-like family with manganese; useful for improving performance.
-3,3,LMO-family,Selective low-cost option,4,74.95,89.25,0.6783,0.0288,mp-581301,Li2MgMn3O8,"Manganese-based family; useful when cost matters, but needs checks."
-4,4,Carbon-family,Useful anode/support material,5,72.958,94.8,0.7261,0.0647,mp-3247282,LiEr4MnC8,"Practical supporting material, but not a complete battery-cell choice."
-5,5,Silicon-family,R&D anode improvement option,17,80.6224,87.0,0.7376,0.0151,mp-1191141,SrLi2SiO4,High-potential anode direction; better for blended or future designs.
-6,6,Li-S or sulfide-family,Long-term R&D option,91,81.3991,78.022,0.7928,0.0034,mp-3268644,Li2MnGeS4,"High-potential chemistry, but less direct for immediate purchase."
+dss_rank,dss_family_rank,battery_family,dss_decision,shortlist_rows,average_hybrid_recommendation_score,average_hybrid_stable_probability,average_qml_stable_probability,average_xgboost_stable_probability,average_shortlist_score,average_india_feasibility_score,average_predicted_stable_probability,median_predicted_energy_above_hull,top_material_id,top_formula,short_reason
+1,5,Silicon-family,R&D anode improvement option,17,83.1593,0.8004,0.8436,0.7376,80.6224,87.0,0.7376,0.0151,mp-1191141,SrLi2SiO4,High-potential anode direction; better for blended or future designs.
+2,6,Li-S or sulfide-family,Long-term R&D option,91,81.8842,0.8022,0.8037,0.7928,81.3991,78.022,0.7928,0.0034,mp-3268644,Li2MnGeS4,"High-potential chemistry, but less direct for immediate purchase."
+3,3,LMO-family,Selective low-cost option,4,77.7268,0.7567,0.8153,0.6783,74.95,89.25,0.6783,0.0288,mp-581301,Li2MgMn3O8,"Manganese-based family; useful when cost matters, but needs checks."
+4,4,Carbon-family,Useful anode/support material,5,70.6455,0.7201,0.7128,0.7261,72.958,94.8,0.7261,0.0647,mp-3247282,LiEr4MnC8,"Practical supporting material, but not a complete battery-cell choice."
+5,1,LFP-family,Best near-term purchase direction,464,48.332,0.1033,0.1626,0.0148,45.2782,96.0259,0.0148,0.0487,mp-554093,Li9Fe3P8O29,India-friendly iron phosphate chemistry; avoids nickel and cobalt.
+6,2,LMFP-family,Good pilot and next-generation option,48,48.0997,0.0894,0.1428,0.0094,45.14,94.2083,0.0094,0.0398,mp-1221200,Na4Li4MnFe3P4(O4F)4,LFP-like family with manganese; useful for improving performance.
