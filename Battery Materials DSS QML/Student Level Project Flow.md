@@ -23,8 +23,8 @@ availability, and suitability for Indian manufacturing.
 
 Our problem is:
 
-> Which lithium battery material families and material candidates should be
-> recommended first for India-focused battery research and business decisions?
+> Which exact lithium compound formulas should be recommended first for
+> India-focused battery research and business decisions?
 
 ## Why We Use XGBoost
 
@@ -83,7 +83,7 @@ future direction.
 6. Run simulated QML experiments on the QML-ready data.
 7. Compare QML with Logistic Regression and XGBoost.
 8. Build a DSS ranking table using material stability, India feasibility, and
-   battery-family rules.
+   battery-family context.
 9. Present the final output as a decision-support recommendation, not as a
    final manufacturing certificate.
 
@@ -116,10 +116,10 @@ future-facing layer that can compete with simpler classical ML on the balanced
 task.
 
 The final DSS ranking uses the reliable classical prediction, India feasibility
-score, and battery-family logic to recommend material families such as LFP
-first. The quantum part shows the future direction: as quantum hardware and QML
-methods improve, this type of material discovery problem is a natural place
-where quantum computing can become more useful.
+score, and battery-family context to recommend exact compound formulas first.
+The quantum part shows the future direction: as quantum hardware and QML methods
+improve, this type of material discovery problem is a natural place where
+quantum computing can become more useful.
 
 ## Judge Question: Why Quantum If XGBoost Is Stronger?
 

@@ -17,6 +17,10 @@ The main goal is to find lithium battery material candidates that are:
 - compatible with India-focused supply-chain and safety priorities,
 - suitable for comparison between classical ML and QML models.
 
+The final recommendation is compound-level. The DSS should recommend exact
+formulas such as `LiFePO4` or `Li3Fe2(PO4)3`, not only element names or broad
+families like LFP.
+
 ## Why Quantum Is Included
 
 Battery materials are controlled by atomic and electronic behavior. That
@@ -38,7 +42,7 @@ future direction. The safe claim is:
 4. Train XGBoost as the strong classical benchmark.
 5. Train simple classical and simulated QML models on a balanced QML-ready task.
 6. Compare QML with Logistic Regression and XGBoost.
-7. Use DSS ranking tables to recommend material families and candidates.
+7. Use DSS ranking tables to recommend exact compound formulas.
 8. Explain the quantum part as future-facing evidence, not as unsupported
    quantum superiority.
 
@@ -70,7 +74,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 14. Validate the best QML setup across repeated random train/test splits.
 15. Compare best QML with Logistic Regression as a simpler classical baseline.
 16. Add a gate-level visual diagram for the best 4-qubit QML feature map.
-17. Create DSS recommendation rankings for battery families and material candidates.
+17. Create DSS recommendation rankings for exact compound formulas.
 
 ## Current Results
 
@@ -78,8 +82,8 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 - Lithium-only dataset: 24,957 rows
 - India-scored lithium dataset: 24,957 rows and 37 columns
 - Final India battery shortlist: 629 rows
-- DSS battery-family ranking: 6 rows
-- DSS material recommendation ranking: 629 rows
+- DSS compound recommendation ranking: 629 rows
+- Supporting battery-family context: 6 rows
 - QML-ready balanced dataset: 1,000 rows and 27 columns
 - XGBoost classifier accuracy: 0.9091
 - XGBoost regressor MAE: 0.1005
@@ -118,7 +122,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | `scripts/run_improved_qml_experiments.py` | Runs the separate improved-QML section with feature importance, PCA, and entangled kernels. |
 | `scripts/compare_qml_with_logistic_baseline.py` | Compares best QML with Logistic Regression on repeated balanced splits. |
 | `scripts/create_qml_circuit_diagram.py` | Creates the gate-level QML circuit diagram and explanation. |
-| `scripts/create_dss_recommendation_ranking.py` | Creates DSS family and material recommendation rankings. |
+| `scripts/create_dss_recommendation_ranking.py` | Creates DSS compound recommendation rankings. |
 | `scripts/create_main_presentation_notebook.py` | Regenerates the presentation notebook. |
 | `data/metadata/project_pipeline_summary.md` | Full current pipeline summary. |
 | `data/metadata/qml_baseline_results.md` | QML classifier results and XGBoost comparison. |
@@ -132,8 +136,9 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 | `data/metadata/qml_circuit_diagram_summary.md` | Gate-level explanation of the best QML feature map. |
 | `data/metadata/dss_recommendation_summary.md` | DSS explanation and recommendation ranking summary. |
 | `data/processed/qml circuit diagram.png` | Visual QML circuit diagram for presentation. |
-| `data/processed/dss battery family recommendation ranking.csv` | Family-level DSS recommendation table. |
-| `data/processed/dss material recommendation ranking.csv` | Material-level DSS recommendation table. |
+| `data/processed/dss compound recommendation ranking.csv` | Main compound-level DSS recommendation table. |
+| `data/processed/dss material recommendation ranking.csv` | Backward-compatible copy of the compound recommendation table. |
+| `data/processed/dss battery family recommendation ranking.csv` | Supporting family context table. |
 
 ## Reproduce Locally
 

@@ -10,9 +10,9 @@ This project is a DSS for lithium battery material decision support, using
 classical ML and simulated QML comparison.
 
 It is not commercial purchase advice for a specific branded battery product.
-It ranks material candidates and battery-material families using available
-materials data, ML predictions, India feasibility scoring, and simple
-explainable decision rules.
+It ranks exact lithium compound candidates using available materials data, ML
+predictions, India feasibility scoring, and simple explainable decision rules.
+Battery family is kept as supporting chemistry context.
 
 The project does not claim that QML already beats XGBoost on the full dataset.
 XGBoost is treated as the strong present-day classical benchmark. The simulated
@@ -42,8 +42,7 @@ _legacy/initial_notebook_project/
 4. Trains XGBoost as the strong classical ML benchmark.
 5. Builds simulated QML classifiers as the quantum-future experiment.
 6. Compares QML with simple and strong classical baselines.
-7. Creates DSS recommendation rankings for battery families and individual
-   material candidates.
+7. Creates DSS recommendation rankings for exact lithium compound candidates.
 8. Provides a presentation-ready Jupyter notebook with outputs in each cell.
 
 ## Student-Level Project Flow
@@ -73,8 +72,8 @@ Short explanation:
 | India-scored lithium dataset | 24,957 rows x 37 columns |
 | Final India battery shortlist | 629 rows |
 | QML-ready balanced dataset | 1,000 rows x 27 columns |
-| DSS battery-family ranking | 6 rows |
-| DSS material recommendation ranking | 629 rows |
+| DSS compound recommendation ranking | 629 rows |
+| Supporting battery-family context | 6 rows |
 
 ## Current Model Results
 
@@ -96,8 +95,9 @@ Short explanation:
 | `Battery Materials DSS QML/Student Level Project Flow.md` | Safe student-level story and judge explanation. |
 | `Battery Materials DSS QML/Project understanding.md` | Ground-up project understanding document. |
 | `Battery Materials DSS QML/Indian Battery Materials Report.docx` | India-relevant battery materials report. |
-| `Battery Materials DSS QML/data/processed/dss battery family recommendation ranking.csv` | Battery-family DSS ranking. |
+| `Battery Materials DSS QML/data/processed/dss compound recommendation ranking.csv` | Main compound-level DSS ranking. |
 | `Battery Materials DSS QML/data/processed/dss material recommendation ranking.csv` | Material-level DSS ranking. |
+| `Battery Materials DSS QML/data/processed/dss battery family recommendation ranking.csv` | Supporting family context. |
 | `Battery Materials DSS QML/data/processed/qml circuit diagram.png` | Visual circuit diagram for the simulated QML feature map. |
 | `Battery Materials DSS QML/data/metadata/project_pipeline_summary.md` | Full pipeline summary. |
 | `Battery Materials DSS QML/data/metadata/dss_recommendation_summary.md` | DSS recommendation explanation. |

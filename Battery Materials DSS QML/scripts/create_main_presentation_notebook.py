@@ -25,6 +25,7 @@ dss_family_ranking_path = (
     processed_folder / "dss battery family recommendation ranking.csv"
 )
 dss_material_ranking_path = processed_folder / "dss material recommendation ranking.csv"
+dss_compound_ranking_path = processed_folder / "dss compound recommendation ranking.csv"
 qml_ready_path = processed_folder / "qml_ready_lithium_india.csv"
 qml_predictions_path = processed_folder / "qml baseline predictions.csv"
 tuned_qml_predictions_path = processed_folder / "qml tuned best predictions.csv"
@@ -397,6 +398,7 @@ def main():
     final_shortlist_dataframe = pd.read_csv(final_shortlist_path)
     dss_family_ranking_dataframe = pd.read_csv(dss_family_ranking_path)
     dss_material_ranking_dataframe = pd.read_csv(dss_material_ranking_path)
+    dss_compound_ranking_dataframe = pd.read_csv(dss_compound_ranking_path)
     qml_ready_dataframe = pd.read_csv(qml_ready_path)
     qml_predictions_dataframe = pd.read_csv(qml_predictions_path)
     tuned_qml_predictions_dataframe = pd.read_csv(tuned_qml_predictions_path)
@@ -994,7 +996,8 @@ processed_folder = project_folder / "data" / "processed"
 lithium_scored_dataframe = pd.read_csv(processed_folder / "lithium india scored.csv")
 final_shortlist_dataframe = pd.read_csv(processed_folder / "final india battery shortlist.csv")
 dss_family_ranking_dataframe = pd.read_csv(processed_folder / "dss battery family recommendation ranking.csv")
-dss_material_ranking_dataframe = pd.read_csv(processed_folder / "dss material recommendation ranking.csv")
+dss_compound_ranking_dataframe = pd.read_csv(processed_folder / "dss compound recommendation ranking.csv")
+dss_material_ranking_dataframe = dss_compound_ranking_dataframe.copy()
 qml_ready_dataframe = pd.read_csv(processed_folder / "qml_ready_lithium_india.csv")
 qml_predictions_dataframe = pd.read_csv(processed_folder / "qml baseline predictions.csv")
 tuned_qml_predictions_dataframe = pd.read_csv(processed_folder / "qml tuned best predictions.csv")
@@ -1015,8 +1018,8 @@ qml_vs_logistic_predictions_dataframe = pd.read_csv(processed_folder / "qml vs l
 dataset_summary = pd.DataFrame([
     {"dataset": "Lithium India scored", "rows": len(lithium_scored_dataframe), "columns": len(lithium_scored_dataframe.columns)},
     {"dataset": "Final India shortlist", "rows": len(final_shortlist_dataframe), "columns": len(final_shortlist_dataframe.columns)},
-    {"dataset": "DSS family ranking", "rows": len(dss_family_ranking_dataframe), "columns": len(dss_family_ranking_dataframe.columns)},
-    {"dataset": "DSS material ranking", "rows": len(dss_material_ranking_dataframe), "columns": len(dss_material_ranking_dataframe.columns)},
+    {"dataset": "DSS compound ranking", "rows": len(dss_compound_ranking_dataframe), "columns": len(dss_compound_ranking_dataframe.columns)},
+    {"dataset": "DSS family context", "rows": len(dss_family_ranking_dataframe), "columns": len(dss_family_ranking_dataframe.columns)},
     {"dataset": "QML-ready dataset", "rows": len(qml_ready_dataframe), "columns": len(qml_ready_dataframe.columns)},
     {"dataset": "QML test predictions", "rows": len(qml_predictions_dataframe), "columns": len(qml_predictions_dataframe.columns)},
     {"dataset": "Tuned QML test predictions", "rows": len(tuned_qml_predictions_dataframe), "columns": len(tuned_qml_predictions_dataframe.columns)},
@@ -1048,14 +1051,14 @@ display(dataset_summary)"""
                 "columns": len(final_shortlist_dataframe.columns),
             },
             {
-                "dataset": "DSS family ranking",
-                "rows": len(dss_family_ranking_dataframe),
-                "columns": len(dss_family_ranking_dataframe.columns),
+                "dataset": "DSS compound ranking",
+                "rows": len(dss_compound_ranking_dataframe),
+                "columns": len(dss_compound_ranking_dataframe.columns),
             },
             {
-                "dataset": "DSS material ranking",
-                "rows": len(dss_material_ranking_dataframe),
-                "columns": len(dss_material_ranking_dataframe.columns),
+                "dataset": "DSS family context",
+                "rows": len(dss_family_ranking_dataframe),
+                "columns": len(dss_family_ranking_dataframe.columns),
             },
             {
                 "dataset": "QML-ready dataset",
@@ -1312,25 +1315,49 @@ display(top_candidates_dataframe)"""
     )
     execution_count += 1
 
-    dss_markdown = """## DSS Recommendation Ranking
+    dss_markdown = """## DSS Compound Recommendation Ranking
 
-The project is used as a Decision Support System here. The first table ranks
-battery-material families for business decisions. The second table shows the
-top material candidates and the parameters behind each rank.
+The project is used as a Decision Support System here. The main output is a
+ranked list of exact lithium compound formulas. Battery family is shown only as
+supporting context.
 
 In this flow, XGBoost gives the practical present-day prediction signal. The
 QML section is kept as a quantum research comparison, not as the only source of
 the recommendation.
 """
-    dss_source = """display(Markdown(\"\"\"## DSS Recommendation Ranking
+    dss_source = """display(Markdown(\"\"\"## DSS Compound Recommendation Ranking
 
-The project is used as a Decision Support System here. The first table ranks
-battery-material families for business decisions. The second table shows the
-top material candidates and the parameters behind each rank.
+The project is used as a Decision Support System here. The main output is a
+ranked list of exact lithium compound formulas. Battery family is shown only as
+supporting context.
 
 In this flow, XGBoost gives the practical present-day prediction signal. The
 QML section is kept as a quantum research comparison, not as the only source of
 the recommendation.
+\"\"\"))
+
+dss_compound_display_columns = [
+    "dss_rank",
+    "formula",
+    "material_id",
+    "battery_family",
+    "dss_decision",
+    "shortlist_score",
+    "india_feasibility_score",
+    "predicted_stable_probability",
+    "predicted_energy_above_hull_clipped",
+    "band_gap",
+    "short_conceptual_reason",
+]
+dss_compound_display_dataframe = dss_compound_ranking_dataframe[
+    dss_compound_display_columns
+].head(10)
+display(dss_compound_display_dataframe)
+
+display(Markdown(\"\"\"### Supporting Battery Family Context
+
+This table is not the final recommendation. It only explains the chemistry
+group behind the compound recommendations.
 \"\"\"))
 
 dss_family_display_columns = [
@@ -1345,31 +1372,37 @@ dss_family_display_columns = [
     "short_reason",
 ]
 dss_family_display_dataframe = dss_family_ranking_dataframe[dss_family_display_columns]
-display(dss_family_display_dataframe)
-
-dss_material_display_columns = [
-    "dss_rank",
-    "material_id",
-    "formula",
-    "battery_family",
-    "dss_decision",
-    "shortlist_score",
-    "india_feasibility_score",
-    "predicted_stable_probability",
-    "predicted_energy_above_hull_clipped",
-    "short_conceptual_reason",
-]
-dss_material_display_dataframe = dss_material_ranking_dataframe[
-    dss_material_display_columns
-].head(10)
-display(dss_material_display_dataframe)"""
+display(dss_family_display_dataframe)"""
     cells.append(
         make_code_cell(
             dss_source,
             [
                 make_markdown_output(dss_markdown),
+                make_table_output(
+                    dss_compound_ranking_dataframe[
+                        [
+                            "dss_rank",
+                            "formula",
+                            "material_id",
+                            "battery_family",
+                            "dss_decision",
+                            "shortlist_score",
+                            "india_feasibility_score",
+                            "predicted_stable_probability",
+                            "predicted_energy_above_hull_clipped",
+                            "band_gap",
+                            "short_conceptual_reason",
+                        ]
+                    ].head(10)
+                ),
+                make_markdown_output(
+                    """### Supporting Battery Family Context
+
+This table is not the final recommendation. It only explains the chemistry
+group behind the compound recommendations.
+"""
+                ),
                 make_table_output(dss_family_display_dataframe),
-                make_table_output(dss_material_display_dataframe),
             ],
             execution_count,
         )
@@ -1938,7 +1971,7 @@ display(qml_vs_logistic_comparison_dataframe)"""
 
 - Built a complete lithium battery material pipeline.
 - Created India-focused material scoring and final shortlist.
-- Added DSS recommendation rankings for battery families and material candidates.
+- Added DSS recommendation rankings for exact compound formulas.
 - Trained XGBoost as the strong present-day classical benchmark.
 - Prepared a balanced QML-ready dataset.
 - Trained a first simulated quantum-kernel classifier as the quantum-future
@@ -1987,7 +2020,7 @@ simulated QML as a controlled experiment toward the quantum future.
 
 - Built a complete lithium battery material pipeline.
 - Created India-focused material scoring and final shortlist.
-- Added DSS recommendation rankings for battery families and material candidates.
+- Added DSS recommendation rankings for exact compound formulas.
 - Trained XGBoost as the strong present-day classical benchmark.
 - Prepared a balanced QML-ready dataset.
 - Trained a first simulated quantum-kernel classifier as the quantum-future

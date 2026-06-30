@@ -10,6 +10,7 @@ metadata_folder = project_folder / "data" / "metadata"
 
 input_shortlist_path = processed_folder / "final india battery shortlist.csv"
 material_output_path = processed_folder / "dss material recommendation ranking.csv"
+compound_output_path = processed_folder / "dss compound recommendation ranking.csv"
 family_output_path = processed_folder / "dss battery family recommendation ranking.csv"
 summary_path = metadata_folder / "dss_recommendation_summary.md"
 
@@ -119,8 +120,8 @@ def create_material_ranking(shortlist_dataframe):
 
     output_columns = [
         "dss_rank",
-        "material_id",
         "formula",
+        "material_id",
         "battery_family",
         "dss_decision",
         "shortlist_score",
@@ -199,18 +200,21 @@ Generated on: {date.today().isoformat()}
 ## Purpose
 
 This step frames the project as a Decision Support System. The goal is to help a
-business user, EV owner, or battery decision-maker compare material families and
-material candidates using clear ranking parameters.
+business user, EV owner, or battery decision-maker compare specific lithium
+compound candidates using clear ranking parameters. Battery family is included
+only as supporting context.
 
 ## Important Clarification
 
 This is not direct commercial purchase advice for a branded battery product.
-The dataset ranks lithium material candidates and battery-material families.
+The dataset ranks lithium compound candidates. Battery family labels are used
+as supporting context, not as the final recommendation by themselves.
 The DSS output should support human decision-making, not replace testing,
 safety certification, supplier checks, or cost analysis.
 
 ## DSS Output Files
 
+- `data/processed/dss compound recommendation ranking.csv`
 - `data/processed/dss battery family recommendation ranking.csv`
 - `data/processed/dss material recommendation ranking.csv`
 
@@ -226,27 +230,25 @@ safety certification, supplier checks, or cost analysis.
 
 ## Ranking Logic Note
 
-The family ranking is a decision-support ranking, not only a raw ML-score
-ranking. For example, LFP is ranked first because it is the most practical
-near-term business direction for Indian EV and battery use, even when some
-individual material rows have conservative model probabilities. Li-S and
-Silicon remain important, but they are marked more as R&D directions than
-immediate purchase choices.
+The main recommendation is compound-level. The DSS ranks exact formulas such as
+`LiFePO4`, `Li3Fe2(PO4)3`, or `Li2MgMn3O8`. The family label is used only to
+give business context, because a formula belongs to a broader battery chemistry
+group.
 
-## Battery Family Ranking
-
-{dataframe_to_markdown(family_ranking_dataframe)}
-
-## Top Material Recommendations
+## Top Compound Recommendations
 
 {dataframe_to_markdown(top_materials)}
+
+## Supporting Battery Family Context
+
+{dataframe_to_markdown(family_ranking_dataframe)}
 
 ## How To Explain In Presentation
 
 This project is a DSS because it does not only train a model. It converts model
-outputs and India-focused rules into a ranked decision table. A user can see
-which family is more practical, which material is ranked higher, and which
-parameters caused the rank.
+outputs and India-focused rules into a ranked compound decision table. A user
+can see which exact compound formula is ranked higher, which family it belongs
+to, and which parameters caused the rank.
 """
 
     metadata_folder.mkdir(parents=True, exist_ok=True)
@@ -263,12 +265,14 @@ def main():
 
     processed_folder.mkdir(parents=True, exist_ok=True)
     material_ranking_dataframe.to_csv(material_output_path, index=False)
+    material_ranking_dataframe.to_csv(compound_output_path, index=False)
     family_ranking_dataframe.to_csv(family_output_path, index=False)
 
     write_summary(material_ranking_dataframe, family_ranking_dataframe)
 
     print(f"Created: {family_output_path}")
     print(f"Created: {material_output_path}")
+    print(f"Created: {compound_output_path}")
     print(f"Created: {summary_path}")
     print(f"Family rows: {len(family_ranking_dataframe)}")
     print(f"Material rows: {len(material_ranking_dataframe)}")
