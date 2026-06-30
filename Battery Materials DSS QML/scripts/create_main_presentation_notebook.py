@@ -993,59 +993,37 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from IPython.display import display
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
+from scripts.notebook_data_loader import load_presentation_data
 
-project_folder = Path.cwd()
-processed_folder = project_folder / "data" / "processed"
+(
+    lithium_scored_dataframe,
+    final_shortlist_dataframe,
+    dss_family_ranking_dataframe,
+    dss_compound_ranking_dataframe,
+    dss_material_ranking_dataframe,
+    qml_ready_dataframe,
+    qml_predictions_dataframe,
+    tuned_qml_predictions_dataframe,
+    qml_exhaustive_results_dataframe,
+    qml_exhaustive_top_results_dataframe,
+    qml_exhaustive_best_result,
+    improved_qml_dataset_dataframe,
+    improved_qml_tuning_results_dataframe,
+    improved_qml_predictions_dataframe,
+    improved_qml_threshold_results_dataframe,
+    improved_qml_threshold_predictions_dataframe,
+    improved_qml_alignment_scores_dataframe,
+    improved_qml_alignment_results_dataframe,
+    improved_qml_alignment_predictions_dataframe,
+    best_qml_repeated_split_results_dataframe,
+    best_qml_repeated_split_predictions_dataframe,
+    qml_vs_logistic_results_dataframe,
+    qml_vs_logistic_summary_dataframe,
+    qml_vs_logistic_predictions_dataframe,
+    dataset_summary,
+) = load_presentation_data(Path.cwd())
 
-lithium_scored_dataframe = pd.read_csv(processed_folder / "lithium india scored.csv")
-final_shortlist_dataframe = pd.read_csv(processed_folder / "final india battery shortlist.csv")
-dss_family_ranking_dataframe = pd.read_csv(processed_folder / "dss battery family recommendation ranking.csv")
-dss_compound_ranking_dataframe = pd.read_csv(processed_folder / "dss compound recommendation ranking.csv")
-dss_material_ranking_dataframe = dss_compound_ranking_dataframe.copy()
-qml_ready_dataframe = pd.read_csv(processed_folder / "qml_ready_lithium_india.csv")
-qml_predictions_dataframe = pd.read_csv(processed_folder / "qml baseline predictions.csv")
-tuned_qml_predictions_dataframe = pd.read_csv(processed_folder / "qml tuned best predictions.csv")
-qml_exhaustive_results_dataframe = pd.read_csv(processed_folder / "qml exhaustive feature combination results.csv")
-qml_exhaustive_top_results_dataframe = pd.read_csv(processed_folder / "qml exhaustive feature combination top results.csv")
-qml_exhaustive_best_result = qml_exhaustive_top_results_dataframe.iloc[0]
-improved_qml_dataset_dataframe = pd.read_csv(processed_folder / "improved qml feature pca.csv")
-improved_qml_tuning_results_dataframe = pd.read_csv(processed_folder / "improved qml tuning results.csv")
-improved_qml_predictions_dataframe = pd.read_csv(processed_folder / "improved qml best predictions.csv")
-improved_qml_threshold_results_dataframe = pd.read_csv(processed_folder / "improved qml threshold results.csv")
-improved_qml_threshold_predictions_dataframe = pd.read_csv(processed_folder / "improved qml threshold predictions.csv")
-improved_qml_alignment_scores_dataframe = pd.read_csv(processed_folder / "improved qml alignment scores.csv")
-improved_qml_alignment_results_dataframe = pd.read_csv(processed_folder / "improved qml alignment results.csv")
-improved_qml_alignment_predictions_dataframe = pd.read_csv(processed_folder / "improved qml alignment predictions.csv")
-best_qml_repeated_split_results_dataframe = pd.read_csv(processed_folder / "best qml repeated split results.csv")
-best_qml_repeated_split_predictions_dataframe = pd.read_csv(processed_folder / "best qml repeated split predictions.csv")
-qml_vs_logistic_results_dataframe = pd.read_csv(processed_folder / "qml vs logistic repeated split results.csv")
-qml_vs_logistic_summary_dataframe = pd.read_csv(processed_folder / "qml vs logistic repeated split summary.csv")
-qml_vs_logistic_predictions_dataframe = pd.read_csv(processed_folder / "qml vs logistic repeated split predictions.csv")
-
-dataset_summary = pd.DataFrame([
-    {"dataset": "Lithium India scored", "rows": len(lithium_scored_dataframe), "columns": len(lithium_scored_dataframe.columns)},
-    {"dataset": "Final India shortlist", "rows": len(final_shortlist_dataframe), "columns": len(final_shortlist_dataframe.columns)},
-    {"dataset": "DSS compound ranking", "rows": len(dss_compound_ranking_dataframe), "columns": len(dss_compound_ranking_dataframe.columns)},
-    {"dataset": "DSS family context", "rows": len(dss_family_ranking_dataframe), "columns": len(dss_family_ranking_dataframe.columns)},
-    {"dataset": "QML-ready dataset", "rows": len(qml_ready_dataframe), "columns": len(qml_ready_dataframe.columns)},
-    {"dataset": "QML test predictions", "rows": len(qml_predictions_dataframe), "columns": len(qml_predictions_dataframe.columns)},
-    {"dataset": "Tuned QML test predictions", "rows": len(tuned_qml_predictions_dataframe), "columns": len(tuned_qml_predictions_dataframe.columns)},
-    {"dataset": "Exhaustive QML tuning results", "rows": len(qml_exhaustive_results_dataframe), "columns": len(qml_exhaustive_results_dataframe.columns)},
-    {"dataset": "Exhaustive QML top results", "rows": len(qml_exhaustive_top_results_dataframe), "columns": len(qml_exhaustive_top_results_dataframe.columns)},
-    {"dataset": "Improved QML PCA dataset", "rows": len(improved_qml_dataset_dataframe), "columns": len(improved_qml_dataset_dataframe.columns)},
-    {"dataset": "Improved QML tuning results", "rows": len(improved_qml_tuning_results_dataframe), "columns": len(improved_qml_tuning_results_dataframe.columns)},
-    {"dataset": "Improved QML test predictions", "rows": len(improved_qml_predictions_dataframe), "columns": len(improved_qml_predictions_dataframe.columns)},
-    {"dataset": "Improved QML threshold results", "rows": len(improved_qml_threshold_results_dataframe), "columns": len(improved_qml_threshold_results_dataframe.columns)},
-    {"dataset": "Improved QML threshold predictions", "rows": len(improved_qml_threshold_predictions_dataframe), "columns": len(improved_qml_threshold_predictions_dataframe.columns)},
-    {"dataset": "Improved QML alignment scores", "rows": len(improved_qml_alignment_scores_dataframe), "columns": len(improved_qml_alignment_scores_dataframe.columns)},
-    {"dataset": "Improved QML alignment results", "rows": len(improved_qml_alignment_results_dataframe), "columns": len(improved_qml_alignment_results_dataframe.columns)},
-    {"dataset": "Improved QML alignment predictions", "rows": len(improved_qml_alignment_predictions_dataframe), "columns": len(improved_qml_alignment_predictions_dataframe.columns)},
-    {"dataset": "Best QML repeated split results", "rows": len(best_qml_repeated_split_results_dataframe), "columns": len(best_qml_repeated_split_results_dataframe.columns)},
-    {"dataset": "Best QML repeated split predictions", "rows": len(best_qml_repeated_split_predictions_dataframe), "columns": len(best_qml_repeated_split_predictions_dataframe.columns)},
-    {"dataset": "QML vs Logistic results", "rows": len(qml_vs_logistic_results_dataframe), "columns": len(qml_vs_logistic_results_dataframe.columns)},
-    {"dataset": "QML vs Logistic summary", "rows": len(qml_vs_logistic_summary_dataframe), "columns": len(qml_vs_logistic_summary_dataframe.columns)},
-    {"dataset": "QML vs Logistic predictions", "rows": len(qml_vs_logistic_predictions_dataframe), "columns": len(qml_vs_logistic_predictions_dataframe.columns)},
-])
+processed_folder = Path.cwd() / "data" / "processed"
 display(dataset_summary)"""
     dataset_summary_dataframe = pd.DataFrame(
         [
