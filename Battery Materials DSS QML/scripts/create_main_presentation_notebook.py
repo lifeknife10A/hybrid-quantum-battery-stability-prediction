@@ -70,17 +70,6 @@ qml_vs_logistic_predictions_path = (
 )
 
 
-def make_markdown_output(markdown_text):
-    return {
-        "output_type": "display_data",
-        "data": {
-            "text/markdown": markdown_text,
-            "text/plain": markdown_text,
-        },
-        "metadata": {},
-    }
-
-
 def make_table_output(dataframe):
     return {
         "output_type": "display_data",
@@ -124,6 +113,15 @@ def make_code_cell(source_text, outputs, execution_count):
         "metadata": {},
         "outputs": outputs,
         "source": source_text.splitlines(keepends=True),
+    }
+
+
+def make_markdown_cell(markdown_text, cell_id):
+    return {
+        "id": cell_id,
+        "cell_type": "markdown",
+        "metadata": {},
+        "source": markdown_text.splitlines(keepends=True),
     }
 
 
@@ -967,22 +965,7 @@ Goal: build a student-level Decision Support System for lithium-ion battery
 material recommendation using Materials Project data, India-focused screening,
 XGBoost, and simulated QML comparison.
 """
-    cells.append(
-        make_code_cell(
-            """from IPython.display import Markdown, display
-display(Markdown(\"\"\"# Battery Materials DSS QML
-
-**Presentation notebook**
-
-Goal: build a student-level Decision Support System for lithium-ion battery
-material recommendation using Materials Project data, India-focused screening,
-XGBoost, and simulated QML comparison.
-\"\"\"))""",
-            [make_markdown_output(title_markdown)],
-            execution_count,
-        )
-    )
-    execution_count += 1
+    cells.append(make_markdown_cell(title_markdown, "markdown-title"))
 
     student_flow_markdown = """## Student-Level Project Flow
 
@@ -1003,36 +986,12 @@ quantum models may represent material interactions more naturally. This project
 therefore uses simulated QML as a safe first step toward quantum-assisted
 materials discovery.
 """
-    cells.append(
-        make_code_cell(
-            """display(Markdown(\"\"\"## Student-Level Project Flow
-
-This project is presented as a DSS first and a QML exploration second.
-
-1. XGBoost is the strong current classical benchmark for structured materials
-   data.
-2. Logistic Regression is the simple classical baseline.
-3. Simulated QML is the quantum-future experiment.
-4. The final recommendation is made through DSS ranking tables, not through an
-   unsupported claim of quantum advantage.
-
-**Why quantum is included**
-
-Battery materials are controlled by atomic and electronic behavior. That
-behavior is quantum mechanical. Classical ML is useful today, but future
-quantum models may represent material interactions more naturally. This project
-therefore uses simulated QML as a safe first step toward quantum-assisted
-materials discovery.
-\"\"\"))""",
-            [make_markdown_output(student_flow_markdown)],
-            execution_count,
-        )
-    )
-    execution_count += 1
+    cells.append(make_markdown_cell(student_flow_markdown, "markdown-student-flow"))
 
     data_loading_source = """from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
+from IPython.display import display
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
 project_folder = Path.cwd()
@@ -1386,19 +1345,7 @@ corrective backup when the QML probability is uncertain or when both models
 disagree. This keeps the DSS quantum-led without ignoring the stronger
 classical benchmark.
 """
-    dss_source = """display(Markdown(\"\"\"## DSS Compound Recommendation Ranking
-
-The project is used as a Decision Support System here. The main output is a
-ranked list of exact lithium compound formulas. Battery family is shown only as
-supporting context.
-
-In this flow, QML gives the first stability signal. XGBoost is used as a
-corrective backup when the QML probability is uncertain or when both models
-disagree. This keeps the DSS quantum-led without ignoring the stronger
-classical benchmark.
-\"\"\"))
-
-dss_compound_display_columns = [
+    dss_source = """dss_compound_display_columns = [
     "dss_rank",
     "formula",
     "material_id",
@@ -1422,12 +1369,6 @@ dss_compound_display_dataframe = dss_compound_ranking_dataframe[
 ].head(10)
 display(dss_compound_display_dataframe)
 
-display(Markdown(\"\"\"### Supporting Battery Family Context
-
-This table is not the final recommendation. It only explains the chemistry
-group behind the compound recommendations.
-\"\"\"))
-
 dss_family_display_columns = [
     "dss_rank",
     "battery_family",
@@ -1444,11 +1385,11 @@ dss_family_display_columns = [
 ]
 dss_family_display_dataframe = dss_family_ranking_dataframe[dss_family_display_columns]
 display(dss_family_display_dataframe)"""
+    cells.append(make_markdown_cell(dss_markdown, "markdown-dss-ranking"))
     cells.append(
         make_code_cell(
             dss_source,
             [
-                make_markdown_output(dss_markdown),
                 make_table_output(
                     dss_compound_ranking_dataframe[
                         [
@@ -1471,13 +1412,6 @@ display(dss_family_display_dataframe)"""
                             "short_conceptual_reason",
                         ]
                     ].head(10)
-                ),
-                make_markdown_output(
-                    """### Supporting Battery Family Context
-
-This table is not the final recommendation. It only explains the chemistry
-group behind the compound recommendations.
-"""
                 ),
                 make_table_output(dss_family_display_dataframe),
             ],
@@ -1577,14 +1511,7 @@ This step tests the stronger tuning approach: all selected feature-count
 combinations are compared with all angle scales and all SVM `C` values. The
 full result table has 8,388 rows.
 """
-    qml_exhaustive_source = """display(Markdown(\"\"\"## Exhaustive QML Feature-Combination Tuning
-
-This step tests the stronger tuning approach: all selected feature-count
-combinations are compared with all angle scales and all SVM `C` values. The
-full result table has 8,388 rows.
-\"\"\"))
-
-qml_exhaustive_summary_dataframe = pd.DataFrame([
+    qml_exhaustive_source = """qml_exhaustive_summary_dataframe = pd.DataFrame([
     {
         "total_configurations": len(qml_exhaustive_results_dataframe),
         "feature_combinations": 466,
@@ -1610,10 +1537,12 @@ qml_exhaustive_top_display_dataframe = qml_exhaustive_top_results_dataframe[
 ].head(10)
 display(qml_exhaustive_top_display_dataframe)"""
     cells.append(
+        make_markdown_cell(qml_exhaustive_markdown, "markdown-exhaustive-tuning")
+    )
+    cells.append(
         make_code_cell(
             qml_exhaustive_source,
             [
-                make_markdown_output(qml_exhaustive_markdown),
                 make_table_output(qml_exhaustive_summary_dataframe),
                 make_table_output(qml_exhaustive_top_display_dataframe),
             ],
@@ -2143,62 +2072,7 @@ student-level point is that quantum feature spaces are future-facing for
 materials discovery, while classical ML can still act as a practical safety
 check today.
 """
-    cells.append(
-        make_code_cell(
-            """display(Markdown(\"\"\"# Presentation Conclusion
-
-**What we achieved**
-
-- Built a complete lithium battery material pipeline.
-- Created India-focused material scoring and final shortlist.
-- Added QML-primary DSS recommendation rankings for exact compound formulas.
-- Trained XGBoost as the strong present-day classical benchmark.
-- Prepared a balanced QML-ready dataset.
-- Trained a first simulated quantum-kernel classifier as the quantum-future
-  experiment.
-- Tuned QML hyperparameters using 4-fold cross-validation.
-- Added exhaustive QML feature-combination tuning with 8,388 saved
-  configurations.
-- Added a separate improved-QML section using feature importance, PCA, and an
-  entangled-kernel search.
-- Added a threshold experiment for the improved-QML stable probability.
-- Added a kernel-alignment experiment for quantum-aware feature selection.
-- Validated the best QML setup across 10 random train/test splits.
-- Compared best QML with Logistic Regression on the same repeated splits.
-- Added a gate-level visual diagram for the best 4-qubit QML feature map.
-
-**Main model result**
-
-- XGBoost full-project accuracy: **0.9091**
-- XGBoost regressor MAE: **0.1005**
-- QML accuracy on QML-ready test split: **0.8100**
-- Tuned QML accuracy on QML-ready test split: **0.8200**
-- Tuned QML stable F1 on QML-ready test split: **0.8269**
-- Improved QML separate-section accuracy: **0.8150**
-- Improved QML separate-section stable F1: **0.8230**
-- Improved QML threshold-tuned accuracy: **0.8200**
-- Improved QML threshold-tuned stable F1: **0.8269**
-- Improved QML kernel-alignment accuracy: **0.8200**
-- Improved QML kernel-alignment stable F1: **0.8302**
-- Repeated-split mean accuracy: **0.8550**
-- Repeated-split mean stable F1: **0.8583**
-- QML vs Logistic mean accuracy: **0.8550 vs 0.8410**
-- QML vs Logistic mean stable F1: **0.8583 vs 0.8473**
-- Same-data XGBoost accuracy: **0.8300**
-
-**Safe interpretation**
-
-XGBoost is stronger on the full tabular benchmark, but the final DSS is
-quantum-led. QML gives the first recommendation signal and XGBoost is used as a
-corrective backup when QML is uncertain or when the models disagree. The safe
-student-level point is that quantum feature spaces are future-facing for
-materials discovery, while classical ML can still act as a practical safety
-check today.
-\"\"\"))""",
-            [make_markdown_output(conclusion_markdown)],
-            execution_count,
-        )
-    )
+    cells.append(make_markdown_cell(conclusion_markdown, "markdown-conclusion"))
 
     notebook = {
         "cells": cells,
