@@ -3,6 +3,11 @@
 This project builds a simple, student-friendly pipeline for lithium-ion battery
 material discovery with an India-first screening layer.
 
+The main product is a Decision Support System. XGBoost is used as the strong
+current classical ML benchmark. Simulated QML is used as a quantum-future
+experiment, not as an unsupported claim that quantum already beats every
+classical model.
+
 ## Problem
 
 The main goal is to find lithium battery material candidates that are:
@@ -11,6 +16,31 @@ The main goal is to find lithium battery material candidates that are:
 - useful for battery research,
 - compatible with India-focused supply-chain and safety priorities,
 - suitable for comparison between classical ML and QML models.
+
+## Why Quantum Is Included
+
+Battery materials are controlled by atomic and electronic behavior. That
+behavior is quantum mechanical. Classical ML is useful today, but future
+quantum computers may be able to represent material interactions more naturally.
+
+For this student-level project, the quantum section is used to explore that
+future direction. The safe claim is:
+
+> XGBoost is our strong present-day benchmark. Simulated QML is our
+> future-facing experiment. QML is not presented as a full replacement for
+> XGBoost, but as a first step toward quantum-assisted materials discovery.
+
+## Student-Level Flow
+
+1. Start with a large public Materials Project dataset.
+2. Filter lithium-containing materials.
+3. Add India-focused feasibility and battery-family rules.
+4. Train XGBoost as the strong classical benchmark.
+5. Train simple classical and simulated QML models on a balanced QML-ready task.
+6. Compare QML with Logistic Regression and XGBoost.
+7. Use DSS ranking tables to recommend material families and candidates.
+8. Explain the quantum part as future-facing evidence, not as unsupported
+   quantum superiority.
 
 ## Main Dataset
 
@@ -27,11 +57,11 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 2. Filter materials that contain lithium.
 3. Add India feasibility scores and battery-family labels.
 4. Run EDA.
-5. Train XGBoost baseline models.
+5. Train XGBoost baseline models as the strong classical benchmark.
 6. Apply India and safety filters after prediction.
 7. Create the final India battery shortlist.
 8. Create the QML-ready balanced dataset.
-9. Train and compare the first simple QML classifier.
+9. Train and compare the first simple simulated QML classifier.
 10. Tune QML feature count, angle scale, and SVM `C`.
 11. Run a separate improved-QML section using feature importance, PCA, and
     entangled-kernel testing.
@@ -72,6 +102,7 @@ project keeps scripts and summaries so the dataset can be reproduced locally.
 
 | File | Purpose |
 | --- | --- |
+| `Student Level Project Flow.md` | Safe student-level explanation of the full project story. |
 | `Project understanding.md` | Main project understanding document. |
 | `Battery Materials DSS QML Main Presentation.ipynb` | Presentation-ready notebook with outputs in every cell. |
 | `Indian Battery Materials Report.docx` | Report on India-relevant battery materials. |
@@ -133,7 +164,6 @@ python3 scripts/create_main_presentation_notebook.py
 
 ## Next Step
 
-Create the final report section comparing XGBoost, the original QML baseline,
-tuned QML, threshold QML, kernel-alignment QML, QML vs Logistic Regression, and
-the DSS recommendation ranking, using the QML circuit diagram as the visual
-explanation of the quantum part.
+Convert the final presentation into a student-defensible story: DSS first,
+XGBoost as the strong current benchmark, and simulated QML as the future-facing
+quantum experiment.

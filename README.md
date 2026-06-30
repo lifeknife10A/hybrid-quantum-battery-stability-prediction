@@ -14,6 +14,12 @@ It ranks material candidates and battery-material families using available
 materials data, ML predictions, India feasibility scoring, and simple
 explainable decision rules.
 
+The project does not claim that QML already beats XGBoost on the full dataset.
+XGBoost is treated as the strong present-day classical benchmark. The simulated
+QML section is included as a future-facing quantum experiment because battery
+materials are quantum systems at the atomic level, and quantum feature spaces
+may become useful for this type of materials discovery as QML methods improve.
+
 ## Active Project Folder
 
 The active project is here:
@@ -33,11 +39,30 @@ _legacy/initial_notebook_project/
 1. Uses a large Materials Project snapshot as the main source dataset.
 2. Filters the dataset to lithium-containing materials.
 3. Adds India-focused feasibility and battery-family scoring.
-4. Trains classical ML models for stability prediction.
-5. Builds simulated QML classifiers for comparison.
-6. Creates DSS recommendation rankings for battery families and individual
+4. Trains XGBoost as the strong classical ML benchmark.
+5. Builds simulated QML classifiers as the quantum-future experiment.
+6. Compares QML with simple and strong classical baselines.
+7. Creates DSS recommendation rankings for battery families and individual
    material candidates.
-7. Provides a presentation-ready Jupyter notebook with outputs in each cell.
+8. Provides a presentation-ready Jupyter notebook with outputs in each cell.
+
+## Student-Level Project Flow
+
+The safe presentation flow is:
+
+1. DSS is the main product.
+2. XGBoost is the current reliable ML benchmark.
+3. Logistic Regression is the simple classical baseline.
+4. Simulated QML is the quantum exploration layer.
+5. The final recommendation is based on DSS ranking, not on an unsupported
+   claim of quantum advantage.
+
+Short explanation:
+
+> XGBoost is strong for today's tabular materials data. QML is included because
+> materials are quantum systems, and future quantum computers may represent
+> material behavior more naturally. Our project shows a student-level bridge
+> from classical DSS to quantum-assisted materials discovery.
 
 ## Current Data Size
 
@@ -68,6 +93,7 @@ _legacy/initial_notebook_project/
 | File | Purpose |
 | --- | --- |
 | `Battery Materials DSS QML/Battery Materials DSS QML Main Presentation.ipynb` | Main presentation notebook with saved outputs. |
+| `Battery Materials DSS QML/Student Level Project Flow.md` | Safe student-level story and judge explanation. |
 | `Battery Materials DSS QML/Project understanding.md` | Ground-up project understanding document. |
 | `Battery Materials DSS QML/Indian Battery Materials Report.docx` | India-relevant battery materials report. |
 | `Battery Materials DSS QML/data/processed/dss battery family recommendation ranking.csv` | Battery-family DSS ranking. |

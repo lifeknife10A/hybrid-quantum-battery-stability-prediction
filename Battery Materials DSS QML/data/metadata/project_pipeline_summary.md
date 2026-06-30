@@ -19,6 +19,19 @@ The project does not only ask, "Which material is stable?" It also asks:
 - Does it avoid major supply-chain, toxicity, or availability problems?
 - Can it be ranked after machine learning prediction for India-focused use?
 
+## Student-Level Flow Update
+
+The project should be explained as a DSS first and a QML exploration second.
+XGBoost is the strong present-day classical benchmark for the full tabular
+pipeline. Simulated QML is included because battery materials are quantum
+systems at the atomic level, so quantum feature spaces are a future direction
+for materials discovery.
+
+The safe claim is not that QML already beats XGBoost on the full dataset. The
+safe claim is that the project builds a practical DSS with XGBoost today, while
+using simulated QML as a controlled first step toward quantum-assisted material
+screening.
+
 ## Main Data Source
 
 Main dataset:

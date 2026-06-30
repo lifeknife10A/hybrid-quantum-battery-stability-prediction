@@ -15,6 +15,18 @@ The dataset ranks lithium material candidates and battery-material families.
 The DSS output should support human decision-making, not replace testing,
 safety certification, supplier checks, or cost analysis.
 
+## Student-Level Model Position
+
+The project uses XGBoost as the strong present-day classical benchmark because
+it works well on structured table data. The simulated QML section is included
+as a future-facing quantum experiment because battery materials are quantum
+systems at the atomic level.
+
+The safe conclusion is not that QML already beats XGBoost on the full project.
+The safe conclusion is that QML gives a useful research direction and performs
+competitively against a simpler classical baseline on the balanced QML task,
+while XGBoost remains the practical benchmark for the current DSS.
+
 ## DSS Output Files
 
 - `data/processed/dss battery family recommendation ranking.csv`

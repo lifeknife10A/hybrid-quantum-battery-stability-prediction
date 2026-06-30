@@ -911,24 +911,72 @@ def main():
     cells = []
     execution_count = 1
 
-    title_markdown = """# Quantum Machine Learning for Lithium-Ion Battery Materials Discovery
+    title_markdown = """# Battery Materials DSS QML
 
 **Presentation notebook**
 
-Goal: identify lithium-ion battery material candidates using Materials Project
-data, XGBoost, India-focused screening, and a first QML baseline.
+Goal: build a student-level Decision Support System for lithium-ion battery
+material recommendation using Materials Project data, India-focused screening,
+XGBoost, and simulated QML comparison.
 """
     cells.append(
         make_code_cell(
             """from IPython.display import Markdown, display
-display(Markdown(\"\"\"# Quantum Machine Learning for Lithium-Ion Battery Materials Discovery
+display(Markdown(\"\"\"# Battery Materials DSS QML
 
 **Presentation notebook**
 
-Goal: identify lithium-ion battery material candidates using Materials Project
-data, XGBoost, India-focused screening, and a first QML baseline.
+Goal: build a student-level Decision Support System for lithium-ion battery
+material recommendation using Materials Project data, India-focused screening,
+XGBoost, and simulated QML comparison.
 \"\"\"))""",
             [make_markdown_output(title_markdown)],
+            execution_count,
+        )
+    )
+    execution_count += 1
+
+    student_flow_markdown = """## Student-Level Project Flow
+
+This project is presented as a DSS first and a QML exploration second.
+
+1. XGBoost is the strong current classical benchmark for structured materials
+   data.
+2. Logistic Regression is the simple classical baseline.
+3. Simulated QML is the quantum-future experiment.
+4. The final recommendation is made through DSS ranking tables, not through an
+   unsupported claim of quantum advantage.
+
+**Why quantum is included**
+
+Battery materials are controlled by atomic and electronic behavior. That
+behavior is quantum mechanical. Classical ML is useful today, but future
+quantum models may represent material interactions more naturally. This project
+therefore uses simulated QML as a safe first step toward quantum-assisted
+materials discovery.
+"""
+    cells.append(
+        make_code_cell(
+            """display(Markdown(\"\"\"## Student-Level Project Flow
+
+This project is presented as a DSS first and a QML exploration second.
+
+1. XGBoost is the strong current classical benchmark for structured materials
+   data.
+2. Logistic Regression is the simple classical baseline.
+3. Simulated QML is the quantum-future experiment.
+4. The final recommendation is made through DSS ranking tables, not through an
+   unsupported claim of quantum advantage.
+
+**Why quantum is included**
+
+Battery materials are controlled by atomic and electronic behavior. That
+behavior is quantum mechanical. Classical ML is useful today, but future
+quantum models may represent material interactions more naturally. This project
+therefore uses simulated QML as a safe first step toward quantum-assisted
+materials discovery.
+\"\"\"))""",
+            [make_markdown_output(student_flow_markdown)],
             execution_count,
         )
     )
@@ -1269,12 +1317,20 @@ display(top_candidates_dataframe)"""
 The project is used as a Decision Support System here. The first table ranks
 battery-material families for business decisions. The second table shows the
 top material candidates and the parameters behind each rank.
+
+In this flow, XGBoost gives the practical present-day prediction signal. The
+QML section is kept as a quantum research comparison, not as the only source of
+the recommendation.
 """
     dss_source = """display(Markdown(\"\"\"## DSS Recommendation Ranking
 
 The project is used as a Decision Support System here. The first table ranks
 battery-material families for business decisions. The second table shows the
 top material candidates and the parameters behind each rank.
+
+In this flow, XGBoost gives the practical present-day prediction signal. The
+QML section is kept as a quantum research comparison, not as the only source of
+the recommendation.
 \"\"\"))
 
 dss_family_display_columns = [
@@ -1322,6 +1378,8 @@ display(dss_material_display_dataframe)"""
 
     quantum_parameters_source = """quantum_parameters_dataframe = pd.DataFrame([
     {"parameter": "QML model type", "value": "Simulated quantum kernel classifier"},
+    {"parameter": "Student-level role", "value": "Quantum-future experiment, not a full replacement for XGBoost"},
+    {"parameter": "Why quantum is relevant", "value": "Battery materials are quantum systems at atomic scale"},
     {"parameter": "Original number of qubits", "value": "10"},
     {"parameter": "Tuned number of qubits", "value": "8"},
     {"parameter": "Tuned quantum state size", "value": "256"},
@@ -1881,9 +1939,10 @@ display(qml_vs_logistic_comparison_dataframe)"""
 - Built a complete lithium battery material pipeline.
 - Created India-focused material scoring and final shortlist.
 - Added DSS recommendation rankings for battery families and material candidates.
-- Trained XGBoost as the classical baseline.
+- Trained XGBoost as the strong present-day classical benchmark.
 - Prepared a balanced QML-ready dataset.
-- Trained a first simulated quantum-kernel classifier.
+- Trained a first simulated quantum-kernel classifier as the quantum-future
+  experiment.
 - Tuned QML hyperparameters using 4-fold cross-validation.
 - Added a separate improved-QML section using feature importance, PCA, and an
   entangled-kernel search.
@@ -1895,6 +1954,8 @@ display(qml_vs_logistic_comparison_dataframe)"""
 
 **Main model result**
 
+- XGBoost full-project accuracy: **0.9091**
+- XGBoost regressor MAE: **0.1005**
 - QML accuracy on QML-ready test split: **0.8100**
 - Tuned QML accuracy on QML-ready test split: **0.8200**
 - Tuned QML stable F1 on QML-ready test split: **0.8269**
@@ -1910,10 +1971,13 @@ display(qml_vs_logistic_comparison_dataframe)"""
 - QML vs Logistic mean stable F1: **0.8583 vs 0.8473**
 - Same-data XGBoost accuracy: **0.8300**
 
-**Next step**
+**Safe interpretation**
 
-Write the final DSS-style interpretation for the top ranked battery families
-and material candidates.
+XGBoost is stronger for the current full tabular DSS pipeline. QML is included
+because battery materials are quantum systems and quantum feature spaces are a
+future direction for materials discovery. The project therefore proves a safe
+student-level point: use classical ML for today's reliable DSS, and use
+simulated QML as a controlled experiment toward the quantum future.
 """
     cells.append(
         make_code_cell(
@@ -1924,9 +1988,10 @@ and material candidates.
 - Built a complete lithium battery material pipeline.
 - Created India-focused material scoring and final shortlist.
 - Added DSS recommendation rankings for battery families and material candidates.
-- Trained XGBoost as the classical baseline.
+- Trained XGBoost as the strong present-day classical benchmark.
 - Prepared a balanced QML-ready dataset.
-- Trained a first simulated quantum-kernel classifier.
+- Trained a first simulated quantum-kernel classifier as the quantum-future
+  experiment.
 - Tuned QML hyperparameters using 4-fold cross-validation.
 - Added a separate improved-QML section using feature importance, PCA, and an
   entangled-kernel search.
@@ -1938,6 +2003,8 @@ and material candidates.
 
 **Main model result**
 
+- XGBoost full-project accuracy: **0.9091**
+- XGBoost regressor MAE: **0.1005**
 - QML accuracy on QML-ready test split: **0.8100**
 - Tuned QML accuracy on QML-ready test split: **0.8200**
 - Tuned QML stable F1 on QML-ready test split: **0.8269**
@@ -1953,10 +2020,13 @@ and material candidates.
 - QML vs Logistic mean stable F1: **0.8583 vs 0.8473**
 - Same-data XGBoost accuracy: **0.8300**
 
-**Next step**
+**Safe interpretation**
 
-Write the final DSS-style interpretation for the top ranked battery families
-and material candidates.
+XGBoost is stronger for the current full tabular DSS pipeline. QML is included
+because battery materials are quantum systems and quantum feature spaces are a
+future direction for materials discovery. The project therefore proves a safe
+student-level point: use classical ML for today's reliable DSS, and use
+simulated QML as a controlled experiment toward the quantum future.
 \"\"\"))""",
             [make_markdown_output(conclusion_markdown)],
             execution_count,
