@@ -97,7 +97,7 @@ instructions.
 | --- | --- |
 | `Student Level Project Flow.md` | Safe student-level explanation of the project story. |
 | `Project understanding.md` | Main project understanding document. |
-| `Battery Materials DSS QML Main Presentation.ipynb` | Presentation notebook with outputs in every cell. |
+| `Main.ipynb` | Presentation notebook with outputs in every cell. |
 | `scripts/create_dss_recommendation_ranking.py` | Creates the QML-primary hybrid recommendation table. |
 | `scripts/create_main_presentation_notebook.py` | Regenerates the presentation notebook. |
 | `scripts/train_xgboost_baseline.py` | Trains XGBoost baseline models. |

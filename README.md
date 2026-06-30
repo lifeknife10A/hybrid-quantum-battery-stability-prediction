@@ -213,7 +213,7 @@ splits.
 
 | File | Purpose |
 | --- | --- |
-| `Battery Materials DSS QML/Battery Materials DSS QML Main Presentation.ipynb` | Main presentation notebook with outputs in every cell. |
+| `Battery Materials DSS QML/Main.ipynb` | Main presentation notebook with outputs in every cell. |
 | `Battery Materials DSS QML/scripts/create_dss_recommendation_ranking.py` | Builds the QML-primary hybrid DSS table. |
 | `Battery Materials DSS QML/scripts/tune_qml_feature_combinations.py` | Runs exhaustive QML feature-combination tuning. |
 | `Battery Materials DSS QML/data/processed/hybrid qml xgboost compound ranking.csv` | Main hybrid recommendation table. |

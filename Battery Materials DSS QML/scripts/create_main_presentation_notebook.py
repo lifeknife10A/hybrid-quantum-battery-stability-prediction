@@ -17,7 +17,7 @@ from sklearn.metrics import recall_score
 project_folder = Path(__file__).resolve().parents[1]
 processed_folder = project_folder / "data" / "processed"
 metadata_folder = project_folder / "data" / "metadata"
-notebook_path = project_folder / "Battery Materials DSS QML Main Presentation.ipynb"
+notebook_path = project_folder / "Main.ipynb"
 
 lithium_scored_path = processed_folder / "lithium india scored.csv"
 final_shortlist_path = processed_folder / "final india battery shortlist.csv"
