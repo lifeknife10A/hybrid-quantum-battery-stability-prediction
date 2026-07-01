@@ -126,33 +126,35 @@ def load_presentation_data(project_folder):
         ]
     )
 
-    return (
-        lithium_scored_dataframe,
-        final_shortlist_dataframe,
-        dss_family_ranking_dataframe,
-        dss_compound_ranking_dataframe,
-        dss_material_ranking_dataframe,
-        qml_ready_dataframe,
-        qml_predictions_dataframe,
-        tuned_qml_predictions_dataframe,
-        qml_exhaustive_results_dataframe,
-        qml_exhaustive_top_results_dataframe,
-        qml_exhaustive_best_result,
-        improved_qml_dataset_dataframe,
-        improved_qml_tuning_results_dataframe,
-        improved_qml_predictions_dataframe,
-        improved_qml_threshold_results_dataframe,
-        improved_qml_threshold_predictions_dataframe,
-        improved_qml_alignment_scores_dataframe,
-        improved_qml_alignment_results_dataframe,
-        improved_qml_alignment_predictions_dataframe,
-        best_qml_repeated_split_results_dataframe,
-        best_qml_repeated_split_predictions_dataframe,
-        qml_vs_logistic_results_dataframe,
-        qml_vs_logistic_summary_dataframe,
-        qml_vs_logistic_predictions_dataframe,
-        dataset_summary,
-    )
+    presentation_data = {
+        "lithium_scored_dataframe": lithium_scored_dataframe,
+        "final_shortlist_dataframe": final_shortlist_dataframe,
+        "dss_family_ranking_dataframe": dss_family_ranking_dataframe,
+        "dss_compound_ranking_dataframe": dss_compound_ranking_dataframe,
+        "dss_material_ranking_dataframe": dss_material_ranking_dataframe,
+        "qml_ready_dataframe": qml_ready_dataframe,
+        "qml_predictions_dataframe": qml_predictions_dataframe,
+        "tuned_qml_predictions_dataframe": tuned_qml_predictions_dataframe,
+        "qml_exhaustive_results_dataframe": qml_exhaustive_results_dataframe,
+        "qml_exhaustive_top_results_dataframe": qml_exhaustive_top_results_dataframe,
+        "qml_exhaustive_best_result": qml_exhaustive_best_result,
+        "improved_qml_dataset_dataframe": improved_qml_dataset_dataframe,
+        "improved_qml_tuning_results_dataframe": improved_qml_tuning_results_dataframe,
+        "improved_qml_predictions_dataframe": improved_qml_predictions_dataframe,
+        "improved_qml_threshold_results_dataframe": improved_qml_threshold_results_dataframe,
+        "improved_qml_threshold_predictions_dataframe": improved_qml_threshold_predictions_dataframe,
+        "improved_qml_alignment_scores_dataframe": improved_qml_alignment_scores_dataframe,
+        "improved_qml_alignment_results_dataframe": improved_qml_alignment_results_dataframe,
+        "improved_qml_alignment_predictions_dataframe": improved_qml_alignment_predictions_dataframe,
+        "best_qml_repeated_split_results_dataframe": best_qml_repeated_split_results_dataframe,
+        "best_qml_repeated_split_predictions_dataframe": best_qml_repeated_split_predictions_dataframe,
+        "qml_vs_logistic_results_dataframe": qml_vs_logistic_results_dataframe,
+        "qml_vs_logistic_summary_dataframe": qml_vs_logistic_summary_dataframe,
+        "qml_vs_logistic_predictions_dataframe": qml_vs_logistic_predictions_dataframe,
+        "dataset_summary": dataset_summary,
+    }
+
+    return presentation_data
 
 
 def get_summary_row(dataset_name, dataframe):

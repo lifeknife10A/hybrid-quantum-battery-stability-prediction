@@ -462,26 +462,17 @@ def main():
         ]
     )
 
-    family_counts_dataframe = (
-        lithium_scored_dataframe["battery_family"]
-        .value_counts()
-        .head(8)
-        .reset_index()
-    )
+    family_count_series = lithium_scored_dataframe["battery_family"].value_counts()
+    top_family_count_series = family_count_series.head(8)
+    family_counts_dataframe = top_family_count_series.reset_index()
     family_counts_dataframe.columns = ["battery_family", "rows"]
 
-    final_family_counts_dataframe = (
-        final_shortlist_dataframe["battery_family"]
-        .value_counts()
-        .reset_index()
-    )
+    final_family_count_series = final_shortlist_dataframe["battery_family"].value_counts()
+    final_family_counts_dataframe = final_family_count_series.reset_index()
     final_family_counts_dataframe.columns = ["battery_family", "rows"]
 
-    decision_counts_dataframe = (
-        lithium_scored_dataframe["india_decision_label"]
-        .value_counts()
-        .reset_index()
-    )
+    decision_count_series = lithium_scored_dataframe["india_decision_label"].value_counts()
+    decision_counts_dataframe = decision_count_series.reset_index()
     decision_counts_dataframe.columns = ["india_decision_label", "rows"]
 
     top_candidate_columns = [
@@ -992,38 +983,44 @@ materials discovery.
 import pandas as pd
 import matplotlib.pyplot as plt
 from IPython.display import display
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import f1_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
 from scripts.notebook_data_loader import load_presentation_data
 
-(
-    lithium_scored_dataframe,
-    final_shortlist_dataframe,
-    dss_family_ranking_dataframe,
-    dss_compound_ranking_dataframe,
-    dss_material_ranking_dataframe,
-    qml_ready_dataframe,
-    qml_predictions_dataframe,
-    tuned_qml_predictions_dataframe,
-    qml_exhaustive_results_dataframe,
-    qml_exhaustive_top_results_dataframe,
-    qml_exhaustive_best_result,
-    improved_qml_dataset_dataframe,
-    improved_qml_tuning_results_dataframe,
-    improved_qml_predictions_dataframe,
-    improved_qml_threshold_results_dataframe,
-    improved_qml_threshold_predictions_dataframe,
-    improved_qml_alignment_scores_dataframe,
-    improved_qml_alignment_results_dataframe,
-    improved_qml_alignment_predictions_dataframe,
-    best_qml_repeated_split_results_dataframe,
-    best_qml_repeated_split_predictions_dataframe,
-    qml_vs_logistic_results_dataframe,
-    qml_vs_logistic_summary_dataframe,
-    qml_vs_logistic_predictions_dataframe,
-    dataset_summary,
-) = load_presentation_data(Path.cwd())
+project_folder = Path.cwd()
+processed_folder = project_folder / "data" / "processed"
 
-processed_folder = Path.cwd() / "data" / "processed"
+project_data = load_presentation_data(project_folder)
+
+lithium_scored_dataframe = project_data["lithium_scored_dataframe"]
+final_shortlist_dataframe = project_data["final_shortlist_dataframe"]
+dss_family_ranking_dataframe = project_data["dss_family_ranking_dataframe"]
+dss_compound_ranking_dataframe = project_data["dss_compound_ranking_dataframe"]
+dss_material_ranking_dataframe = project_data["dss_material_ranking_dataframe"]
+qml_ready_dataframe = project_data["qml_ready_dataframe"]
+qml_predictions_dataframe = project_data["qml_predictions_dataframe"]
+tuned_qml_predictions_dataframe = project_data["tuned_qml_predictions_dataframe"]
+qml_exhaustive_results_dataframe = project_data["qml_exhaustive_results_dataframe"]
+qml_exhaustive_top_results_dataframe = project_data["qml_exhaustive_top_results_dataframe"]
+qml_exhaustive_best_result = project_data["qml_exhaustive_best_result"]
+improved_qml_dataset_dataframe = project_data["improved_qml_dataset_dataframe"]
+improved_qml_tuning_results_dataframe = project_data["improved_qml_tuning_results_dataframe"]
+improved_qml_predictions_dataframe = project_data["improved_qml_predictions_dataframe"]
+improved_qml_threshold_results_dataframe = project_data["improved_qml_threshold_results_dataframe"]
+improved_qml_threshold_predictions_dataframe = project_data["improved_qml_threshold_predictions_dataframe"]
+improved_qml_alignment_scores_dataframe = project_data["improved_qml_alignment_scores_dataframe"]
+improved_qml_alignment_results_dataframe = project_data["improved_qml_alignment_results_dataframe"]
+improved_qml_alignment_predictions_dataframe = project_data["improved_qml_alignment_predictions_dataframe"]
+best_qml_repeated_split_results_dataframe = project_data["best_qml_repeated_split_results_dataframe"]
+best_qml_repeated_split_predictions_dataframe = project_data["best_qml_repeated_split_predictions_dataframe"]
+qml_vs_logistic_results_dataframe = project_data["qml_vs_logistic_results_dataframe"]
+qml_vs_logistic_summary_dataframe = project_data["qml_vs_logistic_summary_dataframe"]
+qml_vs_logistic_predictions_dataframe = project_data["qml_vs_logistic_predictions_dataframe"]
+dataset_summary = project_data["dataset_summary"]
+
 display(dataset_summary)"""
     dataset_summary_dataframe = pd.DataFrame(
         [
@@ -1190,12 +1187,9 @@ plt.show()"""
         "Rows",
         "#5f8f45",
     )
-    family_source = """family_counts_dataframe = (
-    lithium_scored_dataframe["battery_family"]
-    .value_counts()
-    .head(8)
-    .reset_index()
-)
+    family_source = """family_count_series = lithium_scored_dataframe["battery_family"].value_counts()
+top_family_count_series = family_count_series.head(8)
+family_counts_dataframe = top_family_count_series.reset_index()
 family_counts_dataframe.columns = ["battery_family", "rows"]
 
 display(family_counts_dataframe)
@@ -1226,11 +1220,8 @@ plt.show()"""
         "Rows",
         "#d88c2d",
     )
-    decision_source = """decision_counts_dataframe = (
-    lithium_scored_dataframe["india_decision_label"]
-    .value_counts()
-    .reset_index()
-)
+    decision_source = """decision_count_series = lithium_scored_dataframe["india_decision_label"].value_counts()
+decision_counts_dataframe = decision_count_series.reset_index()
 decision_counts_dataframe.columns = ["india_decision_label", "rows"]
 
 display(decision_counts_dataframe)
@@ -1261,11 +1252,8 @@ plt.show()"""
         "Rows",
         "#7b5ea7",
     )
-    final_family_source = """final_family_counts_dataframe = (
-    final_shortlist_dataframe["battery_family"]
-    .value_counts()
-    .reset_index()
-)
+    final_family_source = """final_family_count_series = final_shortlist_dataframe["battery_family"].value_counts()
+final_family_counts_dataframe = final_family_count_series.reset_index()
 final_family_counts_dataframe.columns = ["battery_family", "rows"]
 
 display(final_family_counts_dataframe)
@@ -1533,70 +1521,94 @@ display(qml_exhaustive_top_display_dataframe)"""
     metric_source = """true_labels = qml_predictions_dataframe["target_is_stable"]
 qml_predicted_labels = qml_predictions_dataframe["qml_predicted_label"]
 xgboost_predicted_labels = qml_predictions_dataframe["xgboost_same_data_predicted_label"]
+
 tuned_true_labels = tuned_qml_predictions_dataframe["target_is_stable"]
 tuned_qml_predicted_labels = tuned_qml_predictions_dataframe["tuned_qml_predicted_label"]
+
 improved_true_labels = improved_qml_predictions_dataframe["target_is_stable"]
 improved_qml_predicted_labels = improved_qml_predictions_dataframe["improved_qml_predicted_label"]
+
 threshold_true_labels = improved_qml_threshold_predictions_dataframe["target_is_stable"]
 threshold_qml_predicted_labels = improved_qml_threshold_predictions_dataframe["threshold_qml_predicted_label"]
+
 alignment_true_labels = improved_qml_alignment_predictions_dataframe["target_is_stable"]
 alignment_qml_predicted_labels = improved_qml_alignment_predictions_dataframe["alignment_qml_predicted_label"]
 
-metric_dataframe = pd.DataFrame([
-    {
-        "model": "QML quantum kernel",
-        "accuracy": accuracy_score(true_labels, qml_predicted_labels),
-        "stable_precision": precision_score(true_labels, qml_predicted_labels, zero_division=0),
-        "stable_recall": recall_score(true_labels, qml_predicted_labels, zero_division=0),
-        "stable_f1": f1_score(true_labels, qml_predicted_labels, zero_division=0),
-    },
-    {
-        "model": "Tuned QML quantum kernel",
-        "accuracy": accuracy_score(tuned_true_labels, tuned_qml_predicted_labels),
-        "stable_precision": precision_score(tuned_true_labels, tuned_qml_predicted_labels, zero_division=0),
-        "stable_recall": recall_score(tuned_true_labels, tuned_qml_predicted_labels, zero_division=0),
-        "stable_f1": f1_score(tuned_true_labels, tuned_qml_predicted_labels, zero_division=0),
-    },
-    {
-        "model": "Improved QML separate section",
-        "accuracy": accuracy_score(improved_true_labels, improved_qml_predicted_labels),
-        "stable_precision": precision_score(improved_true_labels, improved_qml_predicted_labels, zero_division=0),
-        "stable_recall": recall_score(improved_true_labels, improved_qml_predicted_labels, zero_division=0),
-        "stable_f1": f1_score(improved_true_labels, improved_qml_predicted_labels, zero_division=0),
-    },
-    {
-        "model": "Improved QML threshold tuning",
-        "accuracy": accuracy_score(threshold_true_labels, threshold_qml_predicted_labels),
-        "stable_precision": precision_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0),
-        "stable_recall": recall_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0),
-        "stable_f1": f1_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0),
-    },
-    {
-        "model": "Improved QML kernel alignment",
-        "accuracy": accuracy_score(alignment_true_labels, alignment_qml_predicted_labels),
-        "stable_precision": precision_score(alignment_true_labels, alignment_qml_predicted_labels, zero_division=0),
-        "stable_recall": recall_score(alignment_true_labels, alignment_qml_predicted_labels, zero_division=0),
-        "stable_f1": f1_score(alignment_true_labels, alignment_qml_predicted_labels, zero_division=0),
-    },
-    {
-        "model": "XGBoost same QML data",
-        "accuracy": accuracy_score(true_labels, xgboost_predicted_labels),
-        "stable_precision": precision_score(true_labels, xgboost_predicted_labels, zero_division=0),
-        "stable_recall": recall_score(true_labels, xgboost_predicted_labels, zero_division=0),
-        "stable_f1": f1_score(true_labels, xgboost_predicted_labels, zero_division=0),
-    },
-    {
-        "model": "XGBoost full project",
-        "accuracy": 0.9091,
-        "stable_precision": 0.7300,
-        "stable_recall": 0.7000,
-        "stable_f1": 0.7100,
-    },
-]).round(4)
+def make_metric_row(model_name, actual_labels, predicted_labels):
+    model_accuracy = accuracy_score(actual_labels, predicted_labels)
+    model_precision = precision_score(actual_labels, predicted_labels, zero_division=0)
+    model_recall = recall_score(actual_labels, predicted_labels, zero_division=0)
+    model_f1_score = f1_score(actual_labels, predicted_labels, zero_division=0)
+
+    metric_row = {
+        "model": model_name,
+        "accuracy": model_accuracy,
+        "stable_precision": model_precision,
+        "stable_recall": model_recall,
+        "stable_f1": model_f1_score,
+    }
+
+    return metric_row
+
+metric_rows = []
+
+qml_metric_row = make_metric_row("QML quantum kernel", true_labels, qml_predicted_labels)
+metric_rows.append(qml_metric_row)
+
+tuned_qml_metric_row = make_metric_row(
+    "Tuned QML quantum kernel",
+    tuned_true_labels,
+    tuned_qml_predicted_labels,
+)
+metric_rows.append(tuned_qml_metric_row)
+
+improved_qml_metric_row = make_metric_row(
+    "Improved QML separate section",
+    improved_true_labels,
+    improved_qml_predicted_labels,
+)
+metric_rows.append(improved_qml_metric_row)
+
+threshold_qml_metric_row = make_metric_row(
+    "Improved QML threshold tuning",
+    threshold_true_labels,
+    threshold_qml_predicted_labels,
+)
+metric_rows.append(threshold_qml_metric_row)
+
+alignment_qml_metric_row = make_metric_row(
+    "Improved QML kernel alignment",
+    alignment_true_labels,
+    alignment_qml_predicted_labels,
+)
+metric_rows.append(alignment_qml_metric_row)
+
+xgboost_same_data_metric_row = make_metric_row(
+    "XGBoost same QML data",
+    true_labels,
+    xgboost_predicted_labels,
+)
+metric_rows.append(xgboost_same_data_metric_row)
+
+xgboost_full_project_row = {
+    "model": "XGBoost full project",
+    "accuracy": 0.9091,
+    "stable_precision": 0.7300,
+    "stable_recall": 0.7000,
+    "stable_f1": 0.7100,
+}
+metric_rows.append(xgboost_full_project_row)
+
+metric_dataframe = pd.DataFrame(metric_rows)
+metric_dataframe = metric_dataframe.round(4)
 
 display(metric_dataframe)
 
-metric_dataframe.set_index("model")[["accuracy", "stable_precision", "stable_recall", "stable_f1"]].plot(kind="bar", figsize=(9, 5))
+metric_plot_dataframe = metric_dataframe.set_index("model")
+metric_plot_dataframe = metric_plot_dataframe[
+    ["accuracy", "stable_precision", "stable_recall", "stable_f1"]
+]
+metric_plot_dataframe.plot(kind="bar", figsize=(9, 5))
 plt.title("Model Performance Comparison")
 plt.ylabel("Score")
 plt.ylim(0, 1.05)
@@ -1636,7 +1648,8 @@ plt.xticks([0, 1], ["Predicted unstable", "Predicted stable"])
 plt.yticks([0, 1], ["Actual unstable", "Actual stable"])
 for row_index in range(2):
     for column_index in range(2):
-        plt.text(column_index, row_index, qml_confusion_matrix[row_index, column_index], ha="center", va="center")
+        cell_value = qml_confusion_matrix[row_index, column_index]
+        plt.text(column_index, row_index, cell_value, ha="center", va="center")
 plt.colorbar()
 plt.show()"""
     cells.append(
@@ -1667,27 +1680,32 @@ display(sample_predictions_dataframe)"""
     )
     execution_count += 1
 
-    improved_summary_source = """improved_best_result = improved_qml_tuning_results_dataframe.sort_values(
+    improved_summary_source = """sorted_improved_results_dataframe = improved_qml_tuning_results_dataframe.sort_values(
     by=["cv_stable_f1", "cv_accuracy", "cv_stable_recall"],
     ascending=[False, False, False],
-).iloc[0]
+)
+improved_best_result = sorted_improved_results_dataframe.iloc[0]
 
 improved_true_labels = improved_qml_predictions_dataframe["target_is_stable"]
 improved_qml_predicted_labels = improved_qml_predictions_dataframe["improved_qml_predicted_label"]
 
-improved_summary_dataframe = pd.DataFrame([
-    {
-        "section": "Improved QML separate section",
-        "feature_preparation": "feature importance + PCA",
-        "best_kernel": improved_best_result["kernel_name"],
-        "best_qubits": int(improved_best_result["pca_component_count"]),
-        "angle_scale": improved_best_result["angle_scale"],
-        "svm_c": improved_best_result["c_value"],
-        "cv_stable_f1": improved_best_result["cv_stable_f1"],
-        "test_accuracy": accuracy_score(improved_true_labels, improved_qml_predicted_labels),
-        "test_stable_f1": f1_score(improved_true_labels, improved_qml_predicted_labels, zero_division=0),
-    }
-]).round(4)
+improved_test_accuracy = accuracy_score(improved_true_labels, improved_qml_predicted_labels)
+improved_test_f1 = f1_score(improved_true_labels, improved_qml_predicted_labels, zero_division=0)
+
+improved_summary_row = {
+    "section": "Improved QML separate section",
+    "feature_preparation": "feature importance + PCA",
+    "best_kernel": improved_best_result["kernel_name"],
+    "best_qubits": int(improved_best_result["pca_component_count"]),
+    "angle_scale": improved_best_result["angle_scale"],
+    "svm_c": improved_best_result["c_value"],
+    "cv_stable_f1": improved_best_result["cv_stable_f1"],
+    "test_accuracy": improved_test_accuracy,
+    "test_stable_f1": improved_test_f1,
+}
+
+improved_summary_dataframe = pd.DataFrame([improved_summary_row])
+improved_summary_dataframe = improved_summary_dataframe.round(4)
 
 display(improved_summary_dataframe)"""
     cells.append(
@@ -1727,7 +1745,8 @@ plt.xticks([0, 1], ["Predicted unstable", "Predicted stable"])
 plt.yticks([0, 1], ["Actual unstable", "Actual stable"])
 for row_index in range(2):
     for column_index in range(2):
-        plt.text(column_index, row_index, improved_qml_confusion_matrix[row_index, column_index], ha="center", va="center")
+        cell_value = improved_qml_confusion_matrix[row_index, column_index]
+        plt.text(column_index, row_index, cell_value, ha="center", va="center")
 plt.colorbar()
 plt.show()"""
     cells.append(
@@ -1761,25 +1780,32 @@ display(improved_sample_predictions_dataframe)"""
     )
     execution_count += 1
 
-    threshold_summary_source = """improved_best_threshold_result = improved_qml_threshold_results_dataframe.sort_values(
+    threshold_summary_source = """sorted_threshold_results_dataframe = improved_qml_threshold_results_dataframe.sort_values(
     by=["cv_stable_f1", "cv_accuracy", "cv_stable_recall"],
     ascending=[False, False, False],
-).iloc[0]
+)
+improved_best_threshold_result = sorted_threshold_results_dataframe.iloc[0]
 
 threshold_true_labels = improved_qml_threshold_predictions_dataframe["target_is_stable"]
 threshold_qml_predicted_labels = improved_qml_threshold_predictions_dataframe["threshold_qml_predicted_label"]
 
-threshold_summary_dataframe = pd.DataFrame([
-    {
-        "section": "Threshold experiment",
-        "selected_threshold": improved_best_threshold_result["stable_threshold"],
-        "cv_stable_f1": improved_best_threshold_result["cv_stable_f1"],
-        "test_accuracy": accuracy_score(threshold_true_labels, threshold_qml_predicted_labels),
-        "test_stable_precision": precision_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0),
-        "test_stable_recall": recall_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0),
-        "test_stable_f1": f1_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0),
-    }
-]).round(4)
+threshold_test_accuracy = accuracy_score(threshold_true_labels, threshold_qml_predicted_labels)
+threshold_test_precision = precision_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0)
+threshold_test_recall = recall_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0)
+threshold_test_f1 = f1_score(threshold_true_labels, threshold_qml_predicted_labels, zero_division=0)
+
+threshold_summary_row = {
+    "section": "Threshold experiment",
+    "selected_threshold": improved_best_threshold_result["stable_threshold"],
+    "cv_stable_f1": improved_best_threshold_result["cv_stable_f1"],
+    "test_accuracy": threshold_test_accuracy,
+    "test_stable_precision": threshold_test_precision,
+    "test_stable_recall": threshold_test_recall,
+    "test_stable_f1": threshold_test_f1,
+}
+
+threshold_summary_dataframe = pd.DataFrame([threshold_summary_row])
+threshold_summary_dataframe = threshold_summary_dataframe.round(4)
 
 display(threshold_summary_dataframe)"""
     cells.append(
@@ -1819,7 +1845,8 @@ plt.xticks([0, 1], ["Predicted unstable", "Predicted stable"])
 plt.yticks([0, 1], ["Actual unstable", "Actual stable"])
 for row_index in range(2):
     for column_index in range(2):
-        plt.text(column_index, row_index, threshold_qml_confusion_matrix[row_index, column_index], ha="center", va="center")
+        cell_value = threshold_qml_confusion_matrix[row_index, column_index]
+        plt.text(column_index, row_index, cell_value, ha="center", va="center")
 plt.colorbar()
 plt.show()"""
     cells.append(
@@ -1834,28 +1861,33 @@ plt.show()"""
     )
     execution_count += 1
 
-    alignment_summary_source = """improved_best_alignment_result = improved_qml_alignment_results_dataframe.sort_values(
+    alignment_summary_source = """sorted_alignment_results_dataframe = improved_qml_alignment_results_dataframe.sort_values(
     by=["cv_stable_f1", "cv_accuracy", "kernel_target_alignment"],
     ascending=[False, False, False],
-).iloc[0]
+)
+improved_best_alignment_result = sorted_alignment_results_dataframe.iloc[0]
 
 alignment_true_labels = improved_qml_alignment_predictions_dataframe["target_is_stable"]
 alignment_qml_predicted_labels = improved_qml_alignment_predictions_dataframe["alignment_qml_predicted_label"]
 
-alignment_summary_dataframe = pd.DataFrame([
-    {
-        "section": "Kernel alignment experiment",
-        "feature_set": improved_best_alignment_result["feature_set_name"],
-        "feature_count": int(improved_best_alignment_result["feature_count"]),
-        "kernel": improved_best_alignment_result["kernel_name"],
-        "angle_scale": improved_best_alignment_result["angle_scale"],
-        "svm_c": improved_best_alignment_result["c_value"],
-        "kernel_target_alignment": improved_best_alignment_result["kernel_target_alignment"],
-        "cv_stable_f1": improved_best_alignment_result["cv_stable_f1"],
-        "test_accuracy": accuracy_score(alignment_true_labels, alignment_qml_predicted_labels),
-        "test_stable_f1": f1_score(alignment_true_labels, alignment_qml_predicted_labels, zero_division=0),
-    }
-]).round(4)
+alignment_test_accuracy = accuracy_score(alignment_true_labels, alignment_qml_predicted_labels)
+alignment_test_f1 = f1_score(alignment_true_labels, alignment_qml_predicted_labels, zero_division=0)
+
+alignment_summary_row = {
+    "section": "Kernel alignment experiment",
+    "feature_set": improved_best_alignment_result["feature_set_name"],
+    "feature_count": int(improved_best_alignment_result["feature_count"]),
+    "kernel": improved_best_alignment_result["kernel_name"],
+    "angle_scale": improved_best_alignment_result["angle_scale"],
+    "svm_c": improved_best_alignment_result["c_value"],
+    "kernel_target_alignment": improved_best_alignment_result["kernel_target_alignment"],
+    "cv_stable_f1": improved_best_alignment_result["cv_stable_f1"],
+    "test_accuracy": alignment_test_accuracy,
+    "test_stable_f1": alignment_test_f1,
+}
+
+alignment_summary_dataframe = pd.DataFrame([alignment_summary_row])
+alignment_summary_dataframe = alignment_summary_dataframe.round(4)
 
 display(alignment_summary_dataframe)"""
     cells.append(
@@ -1895,7 +1927,8 @@ plt.xticks([0, 1], ["Predicted unstable", "Predicted stable"])
 plt.yticks([0, 1], ["Actual unstable", "Actual stable"])
 for row_index in range(2):
     for column_index in range(2):
-        plt.text(column_index, row_index, alignment_qml_confusion_matrix[row_index, column_index], ha="center", va="center")
+        cell_value = alignment_qml_confusion_matrix[row_index, column_index]
+        plt.text(column_index, row_index, cell_value, ha="center", va="center")
 plt.colorbar()
 plt.show()"""
     cells.append(
@@ -1938,13 +1971,19 @@ repeated_split_metric_columns = [
 ]
 
 for metric_name in repeated_split_metric_columns:
+    metric_values = best_qml_repeated_split_results_dataframe[metric_name]
+    mean_value = metric_values.mean()
+    standard_deviation_value = metric_values.std(ddof=1)
+    minimum_value = metric_values.min()
+    maximum_value = metric_values.max()
+
     repeated_split_summary_rows.append(
         {
             "metric": metric_name,
-            "mean": best_qml_repeated_split_results_dataframe[metric_name].mean(),
-            "standard_deviation": best_qml_repeated_split_results_dataframe[metric_name].std(ddof=1),
-            "minimum": best_qml_repeated_split_results_dataframe[metric_name].min(),
-            "maximum": best_qml_repeated_split_results_dataframe[metric_name].max(),
+            "mean": mean_value,
+            "standard_deviation": standard_deviation_value,
+            "minimum": minimum_value,
+            "maximum": maximum_value,
         }
     )
 
@@ -1959,19 +1998,22 @@ display(repeated_split_summary_dataframe)"""
     )
     execution_count += 1
 
-    qml_vs_logistic_source = """qml_vs_logistic_comparison_rows = []
+    qml_vs_logistic_source = """def get_mean_score(model_name, metric_name):
+    model_rows = qml_vs_logistic_summary_dataframe[
+        qml_vs_logistic_summary_dataframe["model"] == model_name
+    ]
+    metric_rows = model_rows[model_rows["metric"] == metric_name]
+    mean_score = metric_rows["mean"].iloc[0]
+    return mean_score
+
+qml_vs_logistic_comparison_rows = []
 metric_names = ["accuracy", "stable_precision", "stable_recall", "stable_f1"]
 
 for metric_name in metric_names:
-    qml_mean = qml_vs_logistic_summary_dataframe[
-        (qml_vs_logistic_summary_dataframe["model"] == "QML kernel classifier")
-        & (qml_vs_logistic_summary_dataframe["metric"] == metric_name)
-    ]["mean"].iloc[0]
-    logistic_mean = qml_vs_logistic_summary_dataframe[
-        (qml_vs_logistic_summary_dataframe["model"] == "Logistic Regression")
-        & (qml_vs_logistic_summary_dataframe["metric"] == metric_name)
-    ]["mean"].iloc[0]
+    qml_mean = get_mean_score("QML kernel classifier", metric_name)
+    logistic_mean = get_mean_score("Logistic Regression", metric_name)
     difference = qml_mean - logistic_mean
+
     if difference > 0:
         winner = "QML"
     elif difference < 0:
