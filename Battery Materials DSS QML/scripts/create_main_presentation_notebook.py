@@ -7,6 +7,8 @@ import sys
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import pandas as pd
+from qiskit import QuantumCircuit
+from qiskit.quantum_info import Statevector
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import f1_score
@@ -1470,6 +1472,96 @@ plt.show()"""
             [
                 make_table_output(qml_circuit_dataframe),
                 make_figure_output(qml_circuit_figure),
+            ],
+            execution_count,
+        )
+    )
+    execution_count += 1
+
+    qiskit_example_feature_names = [
+        "formation_energy_per_atom",
+        "has_o",
+        "space_group_number",
+        "theoretical",
+    ]
+    qiskit_example_feature_values = [0.20, 1.00, 0.53, 1.00]
+    qiskit_example_dataframe = pd.DataFrame(
+        {
+            "feature": qiskit_example_feature_names,
+            "scaled_value_used_in_example": qiskit_example_feature_values,
+        }
+    )
+    qiskit_example_angle_scale = 3.141592653589793
+    qiskit_example_entanglement_strength = 3.141592653589793
+    qiskit_example_circuit = QuantumCircuit(4)
+
+    for feature_index in range(4):
+        feature_value = qiskit_example_feature_values[feature_index]
+        angle = qiskit_example_angle_scale * feature_value
+        qiskit_example_circuit.ry(angle, feature_index)
+
+    for feature_index in range(3):
+        first_value = qiskit_example_feature_values[feature_index]
+        second_value = qiskit_example_feature_values[feature_index + 1]
+        phase_angle = (
+            qiskit_example_entanglement_strength
+            * first_value
+            * second_value
+        )
+        qiskit_example_circuit.cp(phase_angle, feature_index, feature_index + 1)
+
+    qiskit_example_statevector = Statevector.from_instruction(qiskit_example_circuit)
+    qiskit_example_text = str(qiskit_example_circuit.draw(output="text"))
+    qiskit_example_text += "\nStatevector length: "
+    qiskit_example_text += str(len(qiskit_example_statevector.data))
+    qiskit_example_text += "\n"
+
+    qiskit_visible_source = """from qiskit import QuantumCircuit
+from qiskit.quantum_info import Statevector
+
+sample_feature_names = [
+    "formation_energy_per_atom",
+    "has_o",
+    "space_group_number",
+    "theoretical",
+]
+
+sample_feature_values = [0.20, 1.00, 0.53, 1.00]
+
+qiskit_example_dataframe = pd.DataFrame(
+    {
+        "feature": sample_feature_names,
+        "scaled_value_used_in_example": sample_feature_values,
+    }
+)
+display(qiskit_example_dataframe)
+
+angle_scale_value = 3.141592653589793
+entanglement_strength = 3.141592653589793
+
+qiskit_circuit = QuantumCircuit(4)
+
+for feature_index in range(4):
+    feature_value = sample_feature_values[feature_index]
+    angle = angle_scale_value * feature_value
+    qiskit_circuit.ry(angle, feature_index)
+
+for feature_index in range(3):
+    first_value = sample_feature_values[feature_index]
+    second_value = sample_feature_values[feature_index + 1]
+    phase_angle = entanglement_strength * first_value * second_value
+    qiskit_circuit.cp(phase_angle, feature_index, feature_index + 1)
+
+print(qiskit_circuit.draw(output="text"))
+
+qiskit_statevector = Statevector.from_instruction(qiskit_circuit)
+print("Statevector length:", len(qiskit_statevector.data))"""
+    cells.append(
+        make_code_cell(
+            qiskit_visible_source,
+            [
+                make_table_output(qiskit_example_dataframe),
+                make_stream_output(qiskit_example_text),
             ],
             execution_count,
         )
