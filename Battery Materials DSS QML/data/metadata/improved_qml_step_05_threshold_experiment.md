@@ -1,6 +1,6 @@
 # Improved QML Step 05: Threshold Experiment
 
-Generated on: 2026-06-28
+Generated on: 2026-07-04
 
 ## Purpose
 
@@ -23,46 +23,46 @@ selected.
 
 | stable_threshold | cv_accuracy | cv_stable_precision | cv_stable_recall | cv_stable_f1 |
 | --- | --- | --- | --- | --- |
-| 0.3000 | 0.8450 | 0.8245 | 0.8850 | 0.8520 |
-| 0.3500 | 0.8512 | 0.8381 | 0.8775 | 0.8559 |
-| 0.4000 | 0.8500 | 0.8406 | 0.8700 | 0.8537 |
-| 0.4500 | 0.8525 | 0.8464 | 0.8675 | 0.8554 |
-| 0.5000 | 0.8562 | 0.8542 | 0.8650 | 0.8581 |
-| 0.5500 | 0.8500 | 0.8524 | 0.8525 | 0.8511 |
-| 0.6000 | 0.8475 | 0.8577 | 0.8375 | 0.8466 |
-| 0.6500 | 0.8412 | 0.8562 | 0.8250 | 0.8391 |
-| 0.7000 | 0.8375 | 0.8552 | 0.8175 | 0.8346 |
+| 0.3000 | 0.8587 | 0.8466 | 0.8800 | 0.8622 |
+| 0.3500 | 0.8575 | 0.8462 | 0.8775 | 0.8608 |
+| 0.4000 | 0.8525 | 0.8446 | 0.8675 | 0.8552 |
+| 0.4500 | 0.8562 | 0.8510 | 0.8675 | 0.8583 |
+| 0.5000 | 0.8575 | 0.8531 | 0.8675 | 0.8594 |
+| 0.5500 | 0.8512 | 0.8531 | 0.8525 | 0.8518 |
+| 0.6000 | 0.8500 | 0.8529 | 0.8500 | 0.8504 |
+| 0.6500 | 0.8462 | 0.8574 | 0.8350 | 0.8448 |
+| 0.7000 | 0.8388 | 0.8614 | 0.8125 | 0.8346 |
 
 ## Best Cross-Validation Threshold
 
 | stable_threshold | cv_accuracy | cv_stable_precision | cv_stable_recall | cv_stable_f1 |
 | --- | --- | --- | --- | --- |
-| 0.5000 | 0.8562 | 0.8542 | 0.8650 | 0.8581 |
+| 0.3000 | 0.8587 | 0.8466 | 0.8800 | 0.8622 |
 
 ## Test Result With Selected Threshold
 
 | selected_stable_threshold | test_accuracy | test_stable_precision | test_stable_recall | test_stable_f1 |
 | --- | --- | --- | --- | --- |
-| 0.5000 | 0.8200 | 0.7963 | 0.8600 | 0.8269 |
+| 0.3000 | 0.8300 | 0.8000 | 0.8800 | 0.8381 |
 
 ## Confusion Matrix
 
 | actual_class | predicted_unstable_0 | predicted_stable_1 |
 | --- | --- | --- |
 | unstable_0 | 78 | 22 |
-| stable_1 | 14 | 86 |
+| stable_1 | 12 | 88 |
 
 ## Classification Report
 
 ```text
               precision    recall  f1-score   support
 
-    unstable       0.85      0.78      0.81       100
-      stable       0.80      0.86      0.83       100
+    unstable       0.87      0.78      0.82       100
+      stable       0.80      0.88      0.84       100
 
-    accuracy                           0.82       200
-   macro avg       0.82      0.82      0.82       200
-weighted avg       0.82      0.82      0.82       200
+    accuracy                           0.83       200
+   macro avg       0.83      0.83      0.83       200
+weighted avg       0.83      0.83      0.83       200
 
 ```
 

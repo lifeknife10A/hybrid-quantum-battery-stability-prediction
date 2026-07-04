@@ -295,7 +295,7 @@ def create_qml_circuit_figure():
     axis.text(
         5.1,
         -0.58,
-        "This diagram represents our simulated quantum-kernel feature map, not a real quantum-hardware run.",
+        "This diagram represents our Qiskit Statevector quantum-kernel feature map, not a real quantum-hardware run.",
         ha="center",
         va="center",
         fontsize=8,
@@ -531,7 +531,11 @@ def main():
         [
             {
                 "parameter": "QML model type",
-                "value": "Simulated quantum kernel classifier",
+                "value": "Qiskit Statevector quantum kernel classifier",
+            },
+            {
+                "parameter": "Qiskit objects used",
+                "value": "QuantumCircuit + Statevector.from_instruction",
             },
             {"parameter": "Original number of qubits", "value": "10"},
             {"parameter": "Tuned number of qubits", "value": "8"},
@@ -954,7 +958,7 @@ def main():
 
 Goal: build a student-level Decision Support System for lithium-ion battery
 material recommendation using Materials Project data, India-focused screening,
-XGBoost, and simulated QML comparison.
+XGBoost, and Qiskit Statevector QML comparison.
 """
     cells.append(make_markdown_cell(title_markdown, "markdown-title"))
 
@@ -965,7 +969,7 @@ This project is presented as a DSS first and a QML exploration second.
 1. XGBoost is the strong current classical benchmark for structured materials
    data.
 2. Logistic Regression is the simple classical baseline.
-3. Simulated QML is the quantum-future experiment.
+3. Qiskit Statevector QML is the quantum-future experiment.
 4. The final recommendation is made through DSS ranking tables, not through an
    unsupported claim of quantum advantage.
 
@@ -974,7 +978,7 @@ This project is presented as a DSS first and a QML exploration second.
 Battery materials are controlled by atomic and electronic behavior. That
 behavior is quantum mechanical. Classical ML is useful today, but future
 quantum models may represent material interactions more naturally. This project
-therefore uses simulated QML as a safe first step toward quantum-assisted
+therefore uses Qiskit Statevector QML as a safe first step toward quantum-assisted
 materials discovery.
 """
     cells.append(make_markdown_cell(student_flow_markdown, "markdown-student-flow"))
@@ -1387,7 +1391,8 @@ display(dss_family_display_dataframe)"""
     execution_count += 1
 
     quantum_parameters_source = """quantum_parameters_dataframe = pd.DataFrame([
-    {"parameter": "QML model type", "value": "Simulated quantum kernel classifier"},
+    {"parameter": "QML model type", "value": "Qiskit Statevector quantum kernel classifier"},
+    {"parameter": "Qiskit objects used", "value": "QuantumCircuit + Statevector.from_instruction"},
     {"parameter": "Student-level role", "value": "Quantum-future experiment, not a full replacement for XGBoost"},
     {"parameter": "Why quantum is relevant", "value": "Battery materials are quantum systems at atomic scale"},
     {"parameter": "Original number of qubits", "value": "10"},
@@ -1401,12 +1406,12 @@ display(dss_family_display_dataframe)"""
     {"parameter": "Tuned SVM C value", "value": "1.0"},
     {"parameter": "Tuning method", "value": "4-fold cross-validation"},
     {"parameter": "Improved separate section", "value": "Random Forest feature importance + PCA + kernel tuning"},
-    {"parameter": "Improved best qubits", "value": "6"},
+    {"parameter": "Improved best qubits", "value": "8"},
     {"parameter": "Improved best kernel", "value": "entangled_pi"},
     {"parameter": "Improved best angle scale", "value": "pi"},
-    {"parameter": "Improved best SVM C value", "value": "2.0"},
+    {"parameter": "Improved best SVM C value", "value": "1.0"},
     {"parameter": "Threshold experiment", "value": "Stable-probability cutoff tuned by cross-validation"},
-    {"parameter": "Best stable threshold", "value": "0.50"},
+    {"parameter": "Best stable threshold", "value": "0.30"},
     {"parameter": "Kernel alignment experiment", "value": "Feature set selected by quantum kernel-target alignment"},
     {"parameter": "Alignment best feature set", "value": "rf_top_4"},
     {"parameter": "Alignment best qubits", "value": "4"},
@@ -2051,7 +2056,7 @@ display(qml_vs_logistic_comparison_dataframe)"""
 - Added QML-primary DSS recommendation rankings for exact compound formulas.
 - Trained XGBoost as the strong present-day classical benchmark.
 - Prepared a balanced QML-ready dataset.
-- Trained a first simulated quantum-kernel classifier as the quantum-future
+- Trained a first Qiskit Statevector quantum-kernel classifier as the quantum-future
   experiment.
 - Tuned QML hyperparameters using 4-fold cross-validation.
 - Added exhaustive QML feature-combination tuning with 8,388 saved
@@ -2071,10 +2076,10 @@ display(qml_vs_logistic_comparison_dataframe)"""
 - QML accuracy on QML-ready test split: **0.8100**
 - Tuned QML accuracy on QML-ready test split: **0.8200**
 - Tuned QML stable F1 on QML-ready test split: **0.8269**
-- Improved QML separate-section accuracy: **0.8150**
-- Improved QML separate-section stable F1: **0.8230**
-- Improved QML threshold-tuned accuracy: **0.8200**
-- Improved QML threshold-tuned stable F1: **0.8269**
+- Improved QML separate-section accuracy: **0.8200**
+- Improved QML separate-section stable F1: **0.8235**
+- Improved QML threshold-tuned accuracy: **0.8300**
+- Improved QML threshold-tuned stable F1: **0.8381**
 - Improved QML kernel-alignment accuracy: **0.8200**
 - Improved QML kernel-alignment stable F1: **0.8302**
 - Repeated-split mean accuracy: **0.8550**

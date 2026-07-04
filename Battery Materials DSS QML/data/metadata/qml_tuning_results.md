@@ -1,6 +1,6 @@
 # QML Tuning Results
 
-Generated on: 2026-06-28
+Generated on: 2026-07-04
 
 ## Goal
 
@@ -25,8 +25,8 @@ the tested search space.
 | feature_count | feature_names | angle_scale | angle_scale_value | c_value | quantum_state_size | train_validation_rows | cross_validation_splits | cv_accuracy | cv_stable_precision | cv_stable_recall | cv_stable_f1 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 8 | scaled_space_group_number; scaled_band_gap; scaled_formation_energy_per_atom; scaled_number_of_elements; scaled_has_fe; scaled_has_p; scaled_has_mn; scaled_has_c | pi_over_2 | 1.5708 | 1 | 256 | 800 | 4 | 0.8038 | 0.7732 | 0.8600 | 0.8141 |
-| 10 | scaled_space_group_number; scaled_band_gap; scaled_formation_energy_per_atom; scaled_number_of_elements; scaled_has_fe; scaled_has_p; scaled_has_mn; scaled_has_c; scaled_has_si; scaled_has_s | pi_over_2 | 1.5708 | 10 | 1024 | 800 | 4 | 0.8050 | 0.7773 | 0.8550 | 0.8140 |
 | 8 | scaled_space_group_number; scaled_band_gap; scaled_formation_energy_per_atom; scaled_number_of_elements; scaled_has_fe; scaled_has_p; scaled_has_mn; scaled_has_c | pi_over_2 | 1.5708 | 10 | 256 | 800 | 4 | 0.8050 | 0.7796 | 0.8500 | 0.8131 |
+| 10 | scaled_space_group_number; scaled_band_gap; scaled_formation_energy_per_atom; scaled_number_of_elements; scaled_has_fe; scaled_has_p; scaled_has_mn; scaled_has_c; scaled_has_si; scaled_has_s | pi_over_2 | 1.5708 | 10 | 1024 | 800 | 4 | 0.8038 | 0.7768 | 0.8525 | 0.8126 |
 | 8 | scaled_space_group_number; scaled_band_gap; scaled_formation_energy_per_atom; scaled_number_of_elements; scaled_has_fe; scaled_has_p; scaled_has_mn; scaled_has_c | pi_over_2 | 1.5708 | 2 | 256 | 800 | 4 | 0.8025 | 0.7751 | 0.8525 | 0.8119 |
 | 8 | scaled_space_group_number; scaled_band_gap; scaled_formation_energy_per_atom; scaled_number_of_elements; scaled_has_fe; scaled_has_p; scaled_has_mn; scaled_has_c | pi_over_2 | 1.5708 | 5 | 256 | 800 | 4 | 0.8025 | 0.7762 | 0.8500 | 0.8114 |
 | 10 | scaled_space_group_number; scaled_band_gap; scaled_formation_energy_per_atom; scaled_number_of_elements; scaled_has_fe; scaled_has_p; scaled_has_mn; scaled_has_c; scaled_has_si; scaled_has_s | pi_over_2 | 1.5708 | 2 | 1024 | 800 | 4 | 0.8012 | 0.7747 | 0.8500 | 0.8105 |

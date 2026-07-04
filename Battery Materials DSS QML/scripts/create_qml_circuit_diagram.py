@@ -207,7 +207,7 @@ def create_circuit_figure():
     axis.text(
         5.1,
         -0.58,
-        "This diagram represents our simulated quantum-kernel feature map, not a real quantum-hardware run.",
+        "This diagram represents our Qiskit Statevector quantum-kernel feature map, not a real quantum-hardware run.",
         ha="center",
         va="center",
         fontsize=8,
@@ -255,9 +255,10 @@ the project. The diagram is for presentation and report writing.
 
 ## Important Clarification
 
-This is a simulated quantum-kernel feature map. It is written like a quantum
-circuit so the idea is easier to explain, but the current project still runs on
-classical simulation and does not execute on real quantum hardware.
+This is a Qiskit Statevector quantum-kernel feature map. Each material row is
+converted into a Qiskit circuit so the idea is easier to explain. The current
+project still runs locally on statevector simulation and does not execute on
+real quantum hardware.
 
 ## Best QML Setup Shown
 

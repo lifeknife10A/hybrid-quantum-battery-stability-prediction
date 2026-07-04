@@ -3,8 +3,8 @@
 This folder contains the main lithium battery material Decision Support System
 project.
 
-The project is student-level by design: the code is kept simple, the QML
-simulation is explained directly, and the final output is a clear compound
+The project is student-level by design: the code is kept simple, the Qiskit
+QML simulation is explained directly, and the final output is a clear compound
 ranking table.
 
 ## Problem
@@ -64,11 +64,11 @@ reproduce the project.
 
 | Rank | Formula | Material ID | Battery Context | QML Stable Prob. | XGBoost Stable Prob. | Hybrid Score |
 | ---: | --- | --- | --- | ---: | ---: | ---: |
-| 1 | `SrLi2SiO4` | `mp-1191141` | Silicon-family | 0.8502 | 0.8252 | 88.4616 |
-| 2 | `Li2MnGeS4` | `mp-3268644` | Li-S or sulfide-family | 0.8453 | 0.9033 | 87.7709 |
-| 3 | `LiGaSiO4` | `mp-18147` | Silicon-family | 0.8516 | 0.8054 | 87.5647 |
-| 4 | `SrLi2SnS4` | `mp-3210567` | Li-S or sulfide-family | 0.8670 | 0.8955 | 87.2890 |
-| 5 | `Rb2Li2SnS4` | `mp-3205208` | Li-S or sulfide-family | 0.8569 | 0.9042 | 87.2332 |
+| 1 | `SrLi2SiO4` | `mp-1191141` | Silicon-family | 0.8502 | 0.8252 | 88.4614 |
+| 2 | `Li2MnGeS4` | `mp-3268644` | Li-S or sulfide-family | 0.8454 | 0.9033 | 87.7711 |
+| 3 | `LiGaSiO4` | `mp-18147` | Silicon-family | 0.8516 | 0.8054 | 87.5648 |
+| 4 | `SrLi2SnS4` | `mp-3210567` | Li-S or sulfide-family | 0.8671 | 0.8955 | 87.2897 |
+| 5 | `Rb2Li2SnS4` | `mp-3205208` | Li-S or sulfide-family | 0.8570 | 0.9042 | 87.2338 |
 
 These are DSS research-screening candidates, not final commercial purchase
 instructions.
@@ -83,7 +83,7 @@ instructions.
 6. Apply India and safety filters after prediction.
 7. Create the final India battery shortlist.
 8. Create the QML-ready balanced dataset.
-9. Train and tune simulated QML kernel classifiers.
+9. Train and tune Qiskit Statevector QML kernel classifiers.
 10. Run exhaustive feature-combination tuning for the simple QML kernel.
 11. Validate best QML across repeated random train/test splits.
 12. Compare best QML with Logistic Regression and same-data XGBoost.
@@ -100,6 +100,7 @@ instructions.
 | `Main.ipynb` | Presentation notebook with outputs in every cell. |
 | `scripts/create_dss_recommendation_ranking.py` | Creates the QML-primary hybrid recommendation table. |
 | `scripts/create_main_presentation_notebook.py` | Regenerates the presentation notebook. |
+| `scripts/qiskit_quantum_kernel.py` | Builds the Qiskit `QuantumCircuit`, extracts `Statevector`, and creates the quantum kernel matrix. |
 | `scripts/train_xgboost_baseline.py` | Trains XGBoost baseline models. |
 | `scripts/tune_qml_feature_combinations.py` | Tests all selected feature-count combinations with all angle scales and SVM C values. |
 | `scripts/run_best_qml_repeated_splits.py` | Runs repeated-split validation for best QML. |
@@ -109,6 +110,7 @@ instructions.
 | `data/processed/qml exhaustive feature combination top results.csv` | Top 20 exhaustive QML tuning results. |
 | `data/processed/dss compound recommendation ranking.csv` | Same compound ranking table for DSS naming. |
 | `data/metadata/dss_recommendation_summary.md` | Summary of final DSS ranking logic. |
+| `data/metadata/qiskit_implementation_summary.md` | Simple explanation of the Qiskit circuit and statevector workflow. |
 | `data/metadata/qml_exhaustive_feature_tuning_summary.md` | Summary of exhaustive feature-combination tuning. |
 | `data/processed/qml circuit diagram.png` | Circuit visual for presentation. |
 
@@ -137,8 +139,13 @@ These are conservative, explainable settings suitable for a student project.
 Battery materials are quantum systems at atomic scale. QML is included because
 quantum feature spaces are a future direction for material discovery.
 
-The project does not use PennyLane. The QML kernel is simulated with NumPy and
-then used as a precomputed kernel for an SVM classifier.
+The project uses Qiskit, not PennyLane. Each material row is converted into a
+small Qiskit `QuantumCircuit`. The circuit uses `RY` rotation gates and
+controlled-phase gates. Qiskit `Statevector.from_instruction(...)` is then used
+to get the quantum state. The quantum kernel matrix is passed to an SVM
+classifier as a precomputed kernel.
+
+This is still a local simulator workflow, not an IBM hardware run.
 
 Final QML setup:
 
@@ -149,6 +156,8 @@ Final QML setup:
 | Kernel | `entangled_pi` |
 | Angle scale | `pi` |
 | Entanglement strength | `pi` |
+| Qiskit circuit | `QuantumCircuit` with `RY` and `CP` gates |
+| Qiskit simulator object | `Statevector` |
 | SVM `C` | 5.0 |
 | Rows per class | 500 stable + 500 unstable |
 | Validation | 10 random train/test splits |

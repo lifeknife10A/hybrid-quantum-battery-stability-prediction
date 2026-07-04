@@ -1,6 +1,6 @@
 # Improved QML Separate Section Summary
 
-Generated on: 2026-06-28
+Generated on: 2026-07-04
 
 ## Goal
 
@@ -29,13 +29,13 @@ optional entangled quantum-kernel simulation.
 
 | pca_component_count | kernel_name | angle_scale | c_value | quantum_state_size | test_accuracy | test_stable_precision | test_stable_recall | test_stable_f1 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 6 | entangled_pi | pi | 2 | 64 | 0.8150 | 0.7890 | 0.8600 | 0.8230 |
+| 8 | entangled_pi | pi | 1 | 256 | 0.8200 | 0.8077 | 0.8400 | 0.8235 |
 
 ## Threshold Experiment Result
 
 | selected_stable_threshold | test_accuracy | test_stable_precision | test_stable_recall | test_stable_f1 |
 | --- | --- | --- | --- | --- |
-| 0.5000 | 0.8200 | 0.7963 | 0.8600 | 0.8269 |
+| 0.3000 | 0.8300 | 0.8000 | 0.8800 | 0.8381 |
 
 ## Kernel Alignment Experiment Result
 
@@ -49,8 +49,8 @@ optional entangled quantum-kernel simulation.
 | --- | --- | --- |
 | Original QML baseline | 0.8100 | 0.8173 |
 | Tuned QML baseline | 0.8200 | 0.8269 |
-| Improved QML separate experiment | 0.8150 | 0.8230 |
-| Improved QML with threshold tuning | 0.8200 | 0.8269 |
+| Improved QML separate experiment | 0.8200 | 0.8235 |
+| Improved QML with threshold tuning | 0.8300 | 0.8381 |
 | Improved QML with kernel alignment | 0.8200 | 0.8302 |
 | Same-data XGBoost baseline | 0.8300 | 0.8283 |
 

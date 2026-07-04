@@ -41,6 +41,9 @@ if sys.platform == "darwin":
 
 from xgboost import XGBClassifier
 
+from qiskit_quantum_kernel import create_qiskit_kernel_matrix
+from qiskit_quantum_kernel import create_qiskit_state_table
+
 
 processed_folder = project_folder / "data" / "processed"
 metadata_folder = project_folder / "data" / "metadata"
@@ -137,29 +140,16 @@ def check_required_columns(dataframe):
 
 
 def create_quantum_state_table(feature_table):
-    state_rows = []
-
-    for feature_row in feature_table:
-        quantum_state = np.array([1.0])
-
-        for feature_value in feature_row:
-            angle = np.pi * feature_value
-            single_qubit_state = np.array(
-                [
-                    np.cos(angle / 2.0),
-                    np.sin(angle / 2.0),
-                ]
-            )
-            quantum_state = np.kron(quantum_state, single_qubit_state)
-
-        state_rows.append(quantum_state)
-
-    return np.vstack(state_rows)
+    state_table = create_qiskit_state_table(
+        feature_table,
+        angle_scale_value=np.pi,
+        entanglement_strength=0.0,
+    )
+    return state_table
 
 
 def create_kernel_matrix(left_states, right_states):
-    inner_product_matrix = left_states @ right_states.T
-    kernel_matrix = inner_product_matrix**2
+    kernel_matrix = create_qiskit_kernel_matrix(left_states, right_states)
     return kernel_matrix
 
 
@@ -337,20 +327,23 @@ Generated on: {date.today().isoformat()}
 
 ## QML Method Used
 
-Simulated quantum kernel classifier.
+Qiskit Statevector quantum kernel classifier.
 
 ## Feature Map
 
-Each scaled feature is treated as one qubit rotation:
+Each scaled feature is treated as one Qiskit qubit rotation:
 
 `angle = pi * scaled_feature_value`
 
-Each qubit uses this simple state:
+In the code, this is built with a Qiskit `QuantumCircuit` using `RY` gates.
+Qiskit `Statevector.from_instruction(...)` then gives the simulated quantum
+state.
+
+Each qubit follows this simple rotation idea:
 
 `[cos(angle / 2), sin(angle / 2)]`
 
-The full material state is made by combining all qubit states with a tensor
-product.
+The full material state is produced by Qiskit from the circuit.
 
 ## Kernel Formula
 
@@ -365,9 +358,9 @@ The kernel value between two materials is:
 
 ## Important Note
 
-This is a simulated QML baseline. It does not run on real quantum hardware yet.
-It is still useful because it tests the QML-style feature map and kernel
-classification workflow.
+This is a Qiskit Statevector simulation. It does not run on IBM quantum
+hardware yet. It is still useful because it tests the QML-style feature map and
+kernel classification workflow with actual Qiskit circuit objects.
 """
 
     step_02_markdown_path.write_text(report_text)
@@ -463,7 +456,8 @@ strong classical method for tabular data.
 - Try different quantum feature maps.
 - Tune the SVM `C` value.
 - Compare against more classical baselines.
-- Later, test a Qiskit or PennyLane circuit if the environment supports it.
+- Later, test the same Qiskit circuit on IBM quantum hardware or a shot-based
+  Qiskit backend.
 """
 
     step_05_markdown_path.write_text(report_text)
@@ -492,7 +486,7 @@ Train the first simple QML classifier and compare it with XGBoost.
 
 ## Model Used
 
-Simulated quantum kernel classifier with one qubit per scaled feature.
+Qiskit Statevector quantum kernel classifier with one qubit per scaled feature.
 
 ## Main Comparison
 

@@ -1,6 +1,6 @@
 # QML Baseline Results
 
-Generated on: 2026-06-28
+Generated on: 2026-07-04
 
 ## Input
 
@@ -16,7 +16,7 @@ Train the first simple QML classifier and compare it with XGBoost.
 
 ## Model Used
 
-Simulated quantum kernel classifier with one qubit per scaled feature.
+Qiskit Statevector quantum kernel classifier with one qubit per scaled feature.
 
 ## Main Comparison
 

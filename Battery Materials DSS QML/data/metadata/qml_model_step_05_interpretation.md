@@ -1,6 +1,6 @@
 # QML Model Step 05: Interpretation
 
-Generated on: 2026-06-28
+Generated on: 2026-07-04
 
 ## Main Finding
 
@@ -25,4 +25,5 @@ strong classical method for tabular data.
 - Try different quantum feature maps.
 - Tune the SVM `C` value.
 - Compare against more classical baselines.
-- Later, test a Qiskit or PennyLane circuit if the environment supports it.
+- Later, test the same Qiskit circuit on IBM quantum hardware or a shot-based
+  Qiskit backend.

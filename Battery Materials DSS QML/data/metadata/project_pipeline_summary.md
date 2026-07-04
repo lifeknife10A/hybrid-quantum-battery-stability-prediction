@@ -599,8 +599,8 @@ The project is not finished yet. The next missing parts are:
 
 - Write final academic interpretation of the top materials.
 - Write final DSS-style interpretation of the ranked compound formulas.
-- Try a real Qiskit or PennyLane hardware-oriented circuit after the simulated
-  kernel experiments.
+- Try the same Qiskit circuit on IBM quantum hardware or a shot-based Qiskit
+  backend after the current Statevector kernel experiments.
 
 ## Recommended Next Step
 

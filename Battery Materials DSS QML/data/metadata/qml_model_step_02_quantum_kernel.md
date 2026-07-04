@@ -1,23 +1,26 @@
 # QML Model Step 02: Quantum Kernel
 
-Generated on: 2026-06-28
+Generated on: 2026-07-04
 
 ## QML Method Used
 
-Simulated quantum kernel classifier.
+Qiskit Statevector quantum kernel classifier.
 
 ## Feature Map
 
-Each scaled feature is treated as one qubit rotation:
+Each scaled feature is treated as one Qiskit qubit rotation:
 
 `angle = pi * scaled_feature_value`
 
-Each qubit uses this simple state:
+In the code, this is built with a Qiskit `QuantumCircuit` using `RY` gates.
+Qiskit `Statevector.from_instruction(...)` then gives the simulated quantum
+state.
+
+Each qubit follows this simple rotation idea:
 
 `[cos(angle / 2), sin(angle / 2)]`
 
-The full material state is made by combining all qubit states with a tensor
-product.
+The full material state is produced by Qiskit from the circuit.
 
 ## Kernel Formula
 
@@ -32,6 +35,6 @@ The kernel value between two materials is:
 
 ## Important Note
 
-This is a simulated QML baseline. It does not run on real quantum hardware yet.
-It is still useful because it tests the QML-style feature map and kernel
-classification workflow.
+This is a Qiskit Statevector simulation. It does not run on IBM quantum
+hardware yet. It is still useful because it tests the QML-style feature map and
+kernel classification workflow with actual Qiskit circuit objects.

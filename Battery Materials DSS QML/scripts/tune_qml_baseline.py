@@ -14,6 +14,9 @@ from sklearn.model_selection import StratifiedKFold
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 
+from qiskit_quantum_kernel import create_qiskit_kernel_matrix
+from qiskit_quantum_kernel import create_qiskit_state_table
+
 
 project_folder = Path(__file__).resolve().parents[1]
 processed_folder = project_folder / "data" / "processed"
@@ -123,29 +126,16 @@ def check_required_columns(dataframe):
 
 
 def create_quantum_state_table(feature_table, angle_scale_value):
-    state_rows = []
-
-    for feature_row in feature_table:
-        quantum_state = np.array([1.0])
-
-        for feature_value in feature_row:
-            angle = angle_scale_value * feature_value
-            single_qubit_state = np.array(
-                [
-                    np.cos(angle / 2.0),
-                    np.sin(angle / 2.0),
-                ]
-            )
-            quantum_state = np.kron(quantum_state, single_qubit_state)
-
-        state_rows.append(quantum_state)
-
-    return np.vstack(state_rows)
+    state_table = create_qiskit_state_table(
+        feature_table,
+        angle_scale_value=angle_scale_value,
+        entanglement_strength=0.0,
+    )
+    return state_table
 
 
 def create_kernel_matrix(left_states, right_states):
-    inner_product_matrix = left_states @ right_states.T
-    kernel_matrix = inner_product_matrix**2
+    kernel_matrix = create_qiskit_kernel_matrix(left_states, right_states)
     return kernel_matrix
 
 

@@ -6,3 +6,4 @@ xgboost
 matplotlib
 notebook
 ipython
+qiskit==2.4.2

@@ -1,6 +1,6 @@
 # Improved QML Step 01: Feature Importance
 
-Generated on: 2026-06-28
+Generated on: 2026-07-04
 
 ## Separate Section
 
@@ -26,26 +26,26 @@ baseline or tuned-QML baseline.
 
 | feature | importance | rank |
 | --- | --- | --- |
-| formation_energy_per_atom | 0.2491 | 1 |
-| has_o | 0.1797 | 2 |
-| space_group_number | 0.1181 | 3 |
-| theoretical | 0.0880 | 4 |
-| band_gap | 0.0553 | 5 |
-| battery_family_Other lithium material | 0.0458 | 6 |
-| crystal_system_Triclinic | 0.0310 | 7 |
-| has_mn | 0.0293 | 8 |
-| number_of_elements | 0.0215 | 9 |
-| has_co | 0.0183 | 10 |
-| has_f | 0.0178 | 11 |
-| battery_family_LCO-family | 0.0163 | 12 |
-| crystal_system_Monoclinic | 0.0144 | 13 |
-| battery_family_LMO-family | 0.0128 | 14 |
-| crystal_system_Cubic | 0.0115 | 15 |
-| is_metal | 0.0109 | 16 |
-| has_p | 0.0105 | 17 |
-| has_fe | 0.0103 | 18 |
-| has_s | 0.0081 | 19 |
-| battery_family_Li-S or sulfide-family | 0.0072 | 20 |
+| formation_energy_per_atom | 0.2335 | 1 |
+| has_o | 0.1882 | 2 |
+| space_group_number | 0.1183 | 3 |
+| theoretical | 0.0928 | 4 |
+| band_gap | 0.0503 | 5 |
+| battery_family_Other lithium material | 0.0449 | 6 |
+| crystal_system_Triclinic | 0.0352 | 7 |
+| has_mn | 0.0296 | 8 |
+| number_of_elements | 0.0224 | 9 |
+| battery_family_LCO-family | 0.0217 | 10 |
+| has_f | 0.0184 | 11 |
+| has_co | 0.0157 | 12 |
+| crystal_system_Monoclinic | 0.0129 | 13 |
+| crystal_system_Cubic | 0.0126 | 14 |
+| has_fe | 0.0117 | 15 |
+| has_s | 0.0114 | 16 |
+| battery_family_LMO-family | 0.0110 | 17 |
+| is_metal | 0.0107 | 18 |
+| has_p | 0.0090 | 19 |
+| battery_family_Li-S or sulfide-family | 0.0064 | 20 |
 
 ## Features Selected For PCA
 
@@ -60,10 +60,10 @@ baseline or tuned-QML baseline.
 | crystal_system_Triclinic |
 | has_mn |
 | number_of_elements |
-| has_co |
-| has_f |
 | battery_family_LCO-family |
+| has_f |
+| has_co |
 | crystal_system_Monoclinic |
-| battery_family_LMO-family |
 | crystal_system_Cubic |
-| is_metal |
+| has_fe |
+| has_s |

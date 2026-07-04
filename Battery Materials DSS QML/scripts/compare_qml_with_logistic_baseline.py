@@ -14,6 +14,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.svm import SVC
 
+from qiskit_quantum_kernel import create_qiskit_kernel_matrix
+from qiskit_quantum_kernel import create_qiskit_state_table
+
 
 project_folder = Path(__file__).resolve().parents[1]
 processed_folder = project_folder / "data" / "processed"
@@ -165,56 +168,17 @@ def create_balanced_split(clean_dataframe, split_random_state):
     return balanced_dataframe, train_indices, test_indices
 
 
-def get_bit_matrix(number_of_features):
-    state_count = 2**number_of_features
-    bit_matrix = np.zeros((state_count, number_of_features), dtype=float)
-
-    for state_index in range(state_count):
-        for feature_index in range(number_of_features):
-            bit_value = (state_index >> (number_of_features - feature_index - 1)) & 1
-            bit_matrix[state_index, feature_index] = bit_value
-
-    return bit_matrix
-
-
 def create_quantum_state_table(feature_table):
-    number_of_features = feature_table.shape[1]
-    bit_matrix = get_bit_matrix(number_of_features)
-    state_rows = []
-
-    for feature_row in feature_table:
-        quantum_state = np.array([1.0 + 0.0j])
-
-        for feature_value in feature_row:
-            angle = angle_scale_value * feature_value
-            single_qubit_state = np.array(
-                [
-                    np.cos(angle / 2.0),
-                    np.sin(angle / 2.0),
-                ],
-                dtype=np.complex128,
-            )
-            quantum_state = np.kron(quantum_state, single_qubit_state)
-
-        phase_argument = np.zeros(len(quantum_state))
-        for feature_index in range(number_of_features - 1):
-            phase_argument += (
-                bit_matrix[:, feature_index]
-                * bit_matrix[:, feature_index + 1]
-                * feature_row[feature_index]
-                * feature_row[feature_index + 1]
-            )
-
-        phase_vector = np.exp(1j * entanglement_strength * phase_argument)
-        quantum_state = quantum_state * phase_vector
-        state_rows.append(quantum_state)
-
-    return np.vstack(state_rows)
+    state_table = create_qiskit_state_table(
+        feature_table,
+        angle_scale_value=angle_scale_value,
+        entanglement_strength=entanglement_strength,
+    )
+    return state_table
 
 
 def create_kernel_matrix(left_states, right_states):
-    inner_product_matrix = left_states @ np.conjugate(right_states.T)
-    kernel_matrix = np.abs(inner_product_matrix) ** 2
+    kernel_matrix = create_qiskit_kernel_matrix(left_states, right_states)
     return kernel_matrix
 
 
