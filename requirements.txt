@@ -5,3 +5,6 @@ scikit-learn
 xgboost
 matplotlib
 notebook
+ipython
+qiskit==2.4.2
+pylatexenc==2.10

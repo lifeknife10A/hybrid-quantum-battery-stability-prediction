@@ -31,7 +31,6 @@ Generated on: 2026-07-04
 
 ## Files Created
 
-- `scripts/tune_qml_baseline.py`
 - `data/processed/qml tuning results.csv`
 - `data/processed/qml tuned best predictions.csv`
 - `data/metadata/qml_tuning_results.md`

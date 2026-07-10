@@ -1,198 +1,174 @@
 # Battery Materials DSS QML
 
-Decision Support System for lithium-ion battery compound recommendation using
-Materials Project data, India-focused feasibility scoring, XGBoost, and a
-simulated QML kernel.
+This folder contains the main lithium battery material Decision Support System
+project.
 
-## What This Project Is About
+The project is student-level by design: the code is kept simple, the Qiskit
+QML simulation is explained directly, and the final output is a clear compound
+ranking table.
 
-This project recommends **specific lithium battery compound formulas**, not only
-broad chemistry families. The final DSS ranks compounds such as `SrLi2SiO4`,
-`Li2MnGeS4`, `LiGaSiO4`, and other lithium compounds using:
+## Problem
 
-- material stability signals,
-- India feasibility score,
-- simulated QML stable probability,
-- XGBoost stable probability,
-- predicted energy above hull,
-- battery-family context.
+The project asks:
 
-The output is not direct commercial purchase advice. It is a decision-support
-ranking for research, screening, and business discussion.
+> Which exact lithium compound formulas should be recommended first for
+> India-focused battery material research and business screening?
 
-## What The Project Is Trying To Prove
+The DSS does not recommend only broad names like LFP or LMFP. It ranks exact
+formulas and material IDs.
 
-The project is trying to show a safe student-level idea:
+## Current Project Position
 
-> Battery materials are quantum systems, so simulated QML can be used as the
-> primary research signal for future-facing material screening, while XGBoost
-> acts as a strong classical correction and benchmark.
+The final DSS is now **QML-primary**:
 
-We do **not** claim full quantum advantage. XGBoost is still stronger on the
-full imbalanced tabular benchmark. The project uses QML as the main DSS
-discovery signal, and uses XGBoost when QML is uncertain or when both models
-disagree.
+1. QML gives the first stable-material probability.
+2. XGBoost gives a strong classical correction signal.
+3. If QML is confident, QML receives more ranking weight.
+4. If QML is uncertain, XGBoost acts as backup.
+5. If QML and XGBoost disagree strongly, the row is marked for review.
 
-## Main Idea
+This is a safe presentation position because we are not claiming full quantum
+advantage. We are showing that QML can lead the research signal while XGBoost
+acts as a practical current benchmark.
 
-1. Start with a large public Materials Project dataset.
-2. Filter lithium-containing compounds.
-3. Add India-focused feasibility and battery chemistry context.
-4. Train XGBoost as the strong classical benchmark.
-5. Build a balanced QML-ready dataset.
-6. Tune a simulated QML kernel classifier.
-7. Use a QML-primary hybrid score for final compound ranking.
-8. Show exact compound recommendations in a presentation-ready notebook.
+## Main Dataset
 
-## Dataset
+Main source:
 
-Main source: [Hugging Face Materials Project snapshot](https://huggingface.co/datasets/xpanceo-team/materials-project)
+[Hugging Face Materials Project snapshot](https://huggingface.co/datasets/xpanceo-team/materials-project)
 
-| Stage | Size |
-| --- | ---: |
-| Full Materials Project snapshot | 210,579 rows |
-| Lithium-only dataset | 24,957 rows |
-| India-scored lithium dataset | 24,957 rows x 37 columns |
-| Final India battery shortlist | 629 rows |
-| Hybrid DSS compound ranking | 629 rows x 22 columns |
-| QML-ready balanced dataset | 1,000 rows x 27 columns |
+The large raw parquet files are not the main GitHub focus. The repo keeps the
+processed summaries, saved model outputs, and presentation notebook needed to
+explain the project.
 
-## Final DSS Output
+## Current Results
 
-Main output file:
+- Full raw dataset: 210,579 rows
+- Lithium-only dataset: 24,957 rows
+- India-scored lithium dataset: 24,957 rows and 37 columns
+- Final India battery shortlist: 629 rows
+- Hybrid DSS compound ranking: 629 rows and 22 columns
+- Supporting battery-family context: 6 rows
+- QML-ready balanced dataset: 1,000 rows and 27 columns
+- XGBoost classifier accuracy: 0.9091
+- XGBoost stable recall: 0.7000
+- XGBoost stable F1: 0.7100
+- Repeated-split best QML mean accuracy: 0.8550
+- Repeated-split best QML mean stable recall: 0.8800
+- Repeated-split best QML mean stable F1: 0.8583
+- QML vs Logistic Regression mean accuracy: 0.8550 vs 0.8410
+- QML vs Logistic Regression mean stable F1: 0.8583 vs 0.8473
+- Same-data XGBoost accuracy on the first QML-ready test split: 0.8300
 
-`Battery Materials DSS QML/data/processed/hybrid qml xgboost compound ranking.csv`
+## Top Hybrid DSS Compounds
 
-The same table is also saved as:
+| Rank | Formula | Material ID | Battery Context | QML Stable Prob. | XGBoost Stable Prob. | Hybrid Score |
+| ---: | --- | --- | --- | ---: | ---: | ---: |
+| 1 | `SrLi2SiO4` | `mp-1191141` | Silicon-family | 0.8502 | 0.8252 | 88.4614 |
+| 2 | `Li2MnGeS4` | `mp-3268644` | Li-S or sulfide-family | 0.8454 | 0.9033 | 87.7711 |
+| 3 | `LiGaSiO4` | `mp-18147` | Silicon-family | 0.8516 | 0.8054 | 87.5648 |
+| 4 | `SrLi2SnS4` | `mp-3210567` | Li-S or sulfide-family | 0.8671 | 0.8955 | 87.2897 |
+| 5 | `Rb2Li2SnS4` | `mp-3205208` | Li-S or sulfide-family | 0.8570 | 0.9042 | 87.2338 |
 
-`Battery Materials DSS QML/data/processed/dss compound recommendation ranking.csv`
+These are DSS research-screening candidates, not final commercial purchase
+instructions.
 
-Top current QML-primary compound candidates:
+## Pipeline
 
-| Rank | Compound Formula | Material ID | QML Stable Prob. | XGBoost Stable Prob. | Hybrid Score |
-| ---: | --- | --- | ---: | ---: | ---: |
-| 1 | `SrLi2SiO4` | `mp-1191141` | 0.8502 | 0.8252 | 88.4616 |
-| 2 | `Li2MnGeS4` | `mp-3268644` | 0.8453 | 0.9033 | 87.7709 |
-| 3 | `LiGaSiO4` | `mp-18147` | 0.8516 | 0.8054 | 87.5647 |
-| 4 | `SrLi2SnS4` | `mp-3210567` | 0.8670 | 0.8955 | 87.2890 |
-| 5 | `Rb2Li2SnS4` | `mp-3205208` | 0.8569 | 0.9042 | 87.2332 |
+1. Download Materials Project snapshot.
+2. Filter materials that contain lithium.
+3. Add India feasibility scores and battery-family labels.
+4. Run EDA.
+5. Train XGBoost baseline models.
+6. Apply India and safety filters after prediction.
+7. Create the final India battery shortlist.
+8. Create the QML-ready balanced dataset.
+9. Train and tune Qiskit Statevector QML kernel classifiers.
+10. Run exhaustive feature-combination tuning for the simple QML kernel.
+11. Validate best QML across repeated random train/test splits.
+12. Compare best QML with Logistic Regression and same-data XGBoost.
+13. Create a QML circuit diagram.
+14. Create QML-primary hybrid DSS recommendation rankings.
+15. Present the final results through the notebook.
 
-## Hybrid DSS Logic
+## Important Files
 
-The final DSS is **QML-primary**:
-
-- QML gives the first stable-material probability.
-- XGBoost gives a classical correction signal.
-- If QML is confident, QML receives more ranking weight.
-- If QML is uncertain, XGBoost receives more corrective weight.
-- If QML and XGBoost strongly disagree, the row is flagged for research review.
-
-Final score uses:
-
-- `hybrid_recommendation_score`
-- `hybrid_stable_probability`
-- `qml_stable_probability`
-- `xgboost_stable_probability`
-- `india_feasibility_score`
-- `predicted_energy_above_hull_clipped`
-- `shortlist_score`
-- model disagreement penalty
-
-## Model Results
-
-These two rows are from different evaluation settings, so they should not be
-presented as a direct apples-to-apples battle.
-
-| Model | Dataset Setting | Accuracy | Stable Recall | Stable F1 |
-| --- | --- | ---: | ---: | ---: |
-| XGBoost full classifier | Full lithium tabular benchmark | 0.9091 | 0.7000 | 0.7100 |
-| Final repeated-split QML | Balanced QML task, 10 splits | 0.8550 | 0.8800 | 0.8583 |
-
-The useful interpretation is:
-
-- XGBoost is the strong present-day benchmark.
-- QML gives stronger stable-class recall and F1 on the balanced QML task.
-- The final DSS uses QML first, with XGBoost as a correction layer.
+| File | Purpose |
+| --- | --- |
+| `Student Level Project Flow.md` | Safe student-level explanation of the project story. |
+| `Project understanding.md` | Main project understanding document. |
+| `Main.ipynb` | Presentation notebook with outputs in every cell. |
+| `data/processed/hybrid qml xgboost compound ranking.csv` | Main hybrid compound ranking table. |
+| `data/processed/qml exhaustive feature combination results.csv` | Full 8,388-row exhaustive QML tuning table. |
+| `data/processed/qml exhaustive feature combination top results.csv` | Top 20 exhaustive QML tuning results. |
+| `data/processed/dss compound recommendation ranking.csv` | Same compound ranking table for DSS naming. |
+| `data/metadata/dss_recommendation_summary.md` | Summary of final DSS ranking logic. |
+| `data/metadata/qiskit_implementation_summary.md` | Simple explanation of the Qiskit circuit and statevector workflow. |
+| `data/metadata/qml_exhaustive_feature_tuning_summary.md` | Summary of exhaustive feature-combination tuning. |
+| `data/processed/qml circuit diagram.png` | Circuit visual for presentation. |
 
 ## Why XGBoost
 
-XGBoost was chosen because the main dataset is structured tabular data:
-formation energy, band gap, symmetry, element flags, battery-family labels, and
-stability-related columns.
+XGBoost is used because the project data is tabular. It handles numeric,
+boolean, and encoded categorical features well. It is also strong enough to be a
+serious classical benchmark.
 
-XGBoost is suitable because:
+Classifier settings:
 
-- it works well on tabular data,
-- it handles non-linear patterns,
-- it gives probability outputs for ranking,
-- it is a strong classical benchmark,
-- it is explainable enough for a student-level project.
+| Hyperparameter | Value |
+| --- | ---: |
+| `n_estimators` | 250 |
+| `max_depth` | 5 |
+| `learning_rate` | 0.05 |
+| `subsample` | 0.90 |
+| `colsample_bytree` | 0.90 |
+| `objective` | `binary:logistic` |
+| `eval_metric` | `logloss` |
 
-## XGBoost Hyperparameters
-
-Classifier target: `is_stable`
-
-| Hyperparameter | Value | Reason |
-| --- | ---: | --- |
-| `n_estimators` | 250 | Enough trees for stable learning. |
-| `max_depth` | 5 | Keeps trees moderately simple. |
-| `learning_rate` | 0.05 | Slower, smoother learning. |
-| `subsample` | 0.90 | Helps reduce overfitting. |
-| `colsample_bytree` | 0.90 | Reduces feature overdependence. |
-| `objective` | `binary:logistic` | Stable vs unstable classification. |
-| `eval_metric` | `logloss` | Checks probability quality. |
-| `random_state` | 42 | Reproducible result. |
-
-These values were chosen as conservative student-level settings: strong enough
-for a serious baseline, but still easy to explain.
+These are conservative, explainable settings suitable for a student project.
 
 ## Why QML
 
-Battery materials are controlled by atomic and electronic behavior. That is why
-quantum computing is relevant to the problem. In this project, QML is used as a
-simulated quantum-kernel experiment.
+Battery materials are quantum systems at atomic scale. QML is included because
+quantum feature spaces are a future direction for material discovery.
 
-The implementation does not use PennyLane. The quantum kernel is simulated with
-NumPy linear algebra and then used with an SVM precomputed kernel. This keeps the
-code simple enough to study while still showing the QML idea.
+The project uses Qiskit, not PennyLane. Each material row is converted into a
+small Qiskit `QuantumCircuit`. The circuit uses `RY` rotation gates and
+controlled-phase gates. Qiskit `Statevector.from_instruction(...)` is then used
+to get the quantum state. The quantum kernel matrix is passed to an SVM
+classifier as a precomputed kernel.
 
-## QML Hyperparameters
+This is still a local simulator workflow, not an IBM hardware run.
 
-Final repeated-split QML setup:
+Final QML setup:
 
-| Hyperparameter | Value |
+| Parameter | Value |
 | --- | --- |
 | Features | `formation_energy_per_atom`, `has_o`, `space_group_number`, `theoretical` |
 | Qubits | 4 |
 | Kernel | `entangled_pi` |
 | Angle scale | `pi` |
 | Entanglement strength | `pi` |
-| Classifier | SVM with precomputed quantum kernel |
+| Qiskit circuit | `QuantumCircuit` with `RY` and `CP` gates |
+| Qiskit simulator object | `Statevector` |
 | SVM `C` | 5.0 |
 | Rows per class | 500 stable + 500 unstable |
 | Validation | 10 random train/test splits |
 
-## How QML Hyperparameters Were Found
+## Exhaustive QML Feature Tuning
 
-The project used two tuning passes instead of guessing manually.
+The earlier tuning tested ordered top-N features. The final saved exhaustive
+tuning table tests all feature combinations for the selected feature counts.
 
-First, the original grid search tested ordered top-N feature groups:
-
-- feature counts: `4`, `6`, `8`, `10`
-- angle scales: `pi/2`, `pi`, `2pi`
-- SVM `C`: `0.1`, `0.5`, `1.0`, `2.0`, `5.0`, `10.0`
-- total initial tuning experiments: `72`
-- validation method: 4-fold cross-validation
-
-Then an exhaustive feature-combination search was added:
-
-- feature counts tested: `4`, `6`, `8`, `10`
-- available scaled features: `10`
-- feature combinations tested: `466`
-- angle scales tested: `pi/2`, `pi`, `2pi`
-- SVM `C` values tested: `0.1`, `0.5`, `1.0`, `2.0`, `5.0`, `10.0`
-- total saved configurations: `8,388`
-- validation method: 4-fold cross-validation
+| Item | Value |
+| --- | ---: |
+| Feature counts | `4`, `6`, `8`, `10` |
+| Available scaled features | 10 |
+| Feature combinations | 466 |
+| Angle scales | `pi/2`, `pi`, `2pi` |
+| SVM C values | `0.1`, `0.5`, `1.0`, `2.0`, `5.0`, `10.0` |
+| Total saved configurations | 8,388 |
+| Cross-validation folds | 4 |
 
 Best exhaustive simple-kernel result:
 
@@ -206,31 +182,20 @@ Best exhaustive feature group:
 `scaled_formation_energy_per_atom`, `scaled_number_of_elements`,
 `scaled_has_fe`, `scaled_has_p`, `scaled_has_c`, `scaled_has_s`
 
-The final improved QML setup was separately checked across 10 random balanced
-splits.
+## Reproduce Locally
 
-## Important Files
-
-| File | Purpose |
-| --- | --- |
-| `Battery Materials DSS QML/Main.ipynb` | Main presentation notebook with outputs in every cell. |
-| `Battery Materials DSS QML/scripts/create_dss_recommendation_ranking.py` | Builds the QML-primary hybrid DSS table. |
-| `Battery Materials DSS QML/scripts/tune_qml_feature_combinations.py` | Runs exhaustive QML feature-combination tuning. |
-| `Battery Materials DSS QML/data/processed/hybrid qml xgboost compound ranking.csv` | Main hybrid recommendation table. |
-| `Battery Materials DSS QML/data/processed/qml exhaustive feature combination results.csv` | Full 8,388-row exhaustive QML tuning result table. |
-| `Battery Materials DSS QML/data/processed/qml exhaustive feature combination top results.csv` | Top 20 exhaustive QML tuning results. |
-| `Battery Materials DSS QML/data/metadata/dss_recommendation_summary.md` | Explanation of DSS ranking logic. |
-| `Battery Materials DSS QML/data/metadata/qml_exhaustive_feature_tuning_summary.md` | Summary of exhaustive feature-combination tuning. |
-| `Battery Materials DSS QML/data/processed/qml circuit diagram.png` | QML circuit diagram for presentation. |
-
-## How To Run
+Install dependencies:
 
 ```bash
 python3 -m pip install -r requirements.txt
-cd "Battery Materials DSS QML"
-python3 scripts/tune_qml_feature_combinations.py
-python3 scripts/create_dss_recommendation_ranking.py
-python3 scripts/create_main_presentation_notebook.py
 ```
 
-Full pipeline scripts are inside `Battery Materials DSS QML/scripts/`.
+Open and run:
+
+```bash
+jupyter notebook Main.ipynb
+```
+
+The notebook is self-contained for presentation. It reads the saved CSV files
+from `data/processed/` and shows the Qiskit circuit directly inside the
+notebook.

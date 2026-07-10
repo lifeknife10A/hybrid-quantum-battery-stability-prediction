@@ -4,7 +4,7 @@ Created: 2026-06-14
 
 Folder studied:
 
-- `Battery Materials DSS QML/Paper/`
+- `Paper/`
 - Pasted project reset text
 - Existing prototype files in the main project folder
 
@@ -900,15 +900,7 @@ India_Compliant_QML_Battery_Discovery/
 │   ├── 05_qml_feature_extraction.ipynb
 │   ├── 06_hybrid_model_comparison.ipynb
 │   └── 07_final_ranking_demo.ipynb
-├── src/
-│   ├── data_loader.py
-│   ├── formula_parser.py
-│   ├── india_filter.py
-│   ├── feature_engineering.py
-│   ├── classical_models.py
-│   ├── quantum_features.py
-│   ├── scoring.py
-│   └── ranking.py
+├── Main.ipynb
 ├── results/
 │   ├── model_results.csv
 │   ├── final_ranked_materials.csv

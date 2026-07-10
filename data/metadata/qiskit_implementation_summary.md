@@ -6,9 +6,12 @@ Generated on: 2026-07-04
 
 The QML part now uses Qiskit directly.
 
-The shared implementation is in:
+The visible Qiskit implementation is shown inside:
 
-`scripts/qiskit_quantum_kernel.py`
+`Main.ipynb`
+
+The saved exhaustive feature-combination tuning results were generated using
+Qiskit Statevector kernels.
 
 ## Qiskit Objects Used
 

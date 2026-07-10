@@ -9,7 +9,6 @@ optional entangled quantum-kernel simulation.
 
 ## Files Created
 
-- `scripts/run_improved_qml_experiments.py`
 - `data/processed/improved qml feature pca.csv`
 - `data/processed/improved qml tuning results.csv`
 - `data/processed/improved qml best predictions.csv`

@@ -1,12 +1,33 @@
+# macOS and editor files
 .DS_Store
-__pycache__/
+**/.DS_Store
+.idea/
 .ipynb_checkpoints/
-*.pyc
-*.pyo
-*.pyd
+~$*
 
+# Python cache and local package folders
+__pycache__/
+*.py[cod]
+.python_packages/
 .venv/
 venv/
 env/
 
+# Local generated previews
+.rendered_indian_battery_materials_report/
+
+# Large reproducible raw dataset files
+data/raw/materials_project_hf/*.parquet
+
+# Large compressed reference archives
+Paper/*.zip
+
+# Local reference PDFs are not redistributed through the public repository
+Paper/*.pdf
+
+# Optional large processed binary data
+data/processed/*.parquet
+
+# Temporary or local logs
 *.log
+*.tmp
