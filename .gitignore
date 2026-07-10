@@ -31,3 +31,11 @@ data/processed/*.parquet
 # Temporary or local logs
 *.log
 *.tmp
+
+# Local reports and study documents
+/Battery Materials DSS QML Cell by Cell Explanation.docx
+/Battery Materials DSS QML Cell by Cell Explanation.pdf
+/Indian Battery Materials Report.docx
+/Literature Review.xlsx
+/Project understanding.md
+/Student Level Project Flow.md

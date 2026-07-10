@@ -95,8 +95,6 @@ instructions.
 
 | File | Purpose |
 | --- | --- |
-| `Student Level Project Flow.md` | Safe student-level explanation of the project story. |
-| `Project understanding.md` | Main project understanding document. |
 | `Main.ipynb` | Presentation notebook with outputs in every cell. |
 | `data/processed/hybrid qml xgboost compound ranking.csv` | Main hybrid compound ranking table. |
 | `data/processed/qml exhaustive feature combination results.csv` | Full 8,388-row exhaustive QML tuning table. |
